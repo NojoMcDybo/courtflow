@@ -39,8 +39,10 @@ docs/quellen/     Primärquellen (DOCX) und ihre Rohauszüge
 tools/            Extraktion, Normalisierung, Taxonomie, Prüfstand (Python)
 data/             erzeugte Datenstände: drills.json, taxonomy.json
 src/              Oberfläche (Vite + Vanilla TypeScript, kein Framework)
+src/stil/         zwei getrennte Gestaltungssysteme, Marken und Bauteile
 assets/reference/ Charakterreferenz, keine Kartenmotive
 PROJEKT.md        Steuerungsdokument: Entscheidungen, Regeln, offene Befunde
+docs/gestaltung.md  Gestaltungssysteme: Marken, Regeln, Ziffernmechanik
 ```
 
 `data/` wird aus `docs/quellen/` erzeugt und nicht von Hand bearbeitet.
@@ -54,6 +56,8 @@ PROJEKT.md        Steuerungsdokument: Entscheidungen, Regeln, offene Befunde
   bekannt schlechten Fall. Ohne bestandenen Selbsttest läuft keine Datenprüfung.
 - Übungsbeschreibungen sind redaktionelle Eigenformulierungen mit Link auf das
   Original, nie übernommener Quelltext.
+- Zwei Gestaltungssysteme, getrennt gehalten: Plakat am Einstieg, Werkzeug auf
+  den Arbeitsflächen. Ein fester Farbwert in einer Bauteildatei ist ein Fehler.
 
 ## Datenquellen
 

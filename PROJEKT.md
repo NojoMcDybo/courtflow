@@ -54,6 +54,26 @@ src/                       Vite + Vanilla TypeScript, statisch
 Beides ist reproduzierbar aus der DOCX — die Zwischendateien sind Artefakte,
 keine Quelle.
 
+## Gestaltung
+
+Zwei getrennte Systeme, beschrieben in [`docs/gestaltung.md`](docs/gestaltung.md):
+
+- **System Plakat** auf den Einstiegsflächen — schwarzer Grund, übergroße
+  Ziffern mit Verlauf, angeschnitten. Vorlage ist eine Saisongrafik; übernommen
+  ist die Machart, nicht die Marke.
+- **System Werkzeug** auf den Arbeitsflächen — Apple Human Interface Guidelines
+  über [Puppertino](https://github.com/codedgar/Puppertino) (MIT), Akzent Apple
+  Indigo.
+
+Die Grenze verläuft am Attribut `data-ansicht` auf dem Wurzelelement. Marken
+liegen in `src/stil/tokens-*.css`, Bauteile in `src/stil/werkzeug.css` und
+`src/stil/plakat.css`. Ein fester Farbwert in einer Bauteildatei ist ein Fehler.
+
+Die Ziffern der Startseite bemessen sich an der Höhe ihrer eigenen Zeile, nicht
+am Bildschirm: ein Regelsatz füllt jede Zeile auf jedem Gerät und hält
+gleichzeitig den Platz frei, den der Text braucht. Die Rechnung steht in
+`docs/gestaltung.md`, die Prüfgrößen ebenfalls.
+
 ## Regeln mit Zähnen
 
 - **Belegpflicht.** Kein Feld wird gefüllt, das im Katalog nicht steht. Fehlende
@@ -68,6 +88,9 @@ keine Quelle.
   Hinsehen. Codelesen ersetzt das nicht.
 - **Fremdtext bleibt draußen.** Übungsbeschreibungen sind redaktionelle
   Eigenformulierungen mit Link auf das Original, nie übernommener Quelltext.
+- **Ein System, keine Ausnahmen daneben.** Eine Regel für ein einzelnes Gerät
+  ist erlaubt, solange sie eine Marke des Systems ändert. Wer stattdessen die
+  Systemregel überschreibt, hat kein System mehr, sondern zwei Sonderfälle.
 
 ## Entscheidungen
 
@@ -83,6 +106,8 @@ keine Quelle.
 | 08.09.2026 | Gestaltungsgrundlage ist Puppertino (MIT), CSS-Umsetzung der Apple HIG | Systemfarben, Schatten- und Vibrancy-Stufen und Radien kommen aus einer fremden, geprüften Quelle statt aus eigener Schätzung. Als Referenz gelesen, nicht als Abhängigkeit eingebunden |
 | 08.09.2026 | Akzent ist Apple Indigo rgb(88,86,214) | Trifft Jords LED-Violett und ist zugleich eine Systemfarbe — beide Vorgaben ohne Kompromiss erfüllt |
 | 08.09.2026 | Belegtiefe wird neutral dargestellt, nicht grün | Grün liest sich als Gütesiegel. Belegtiefe ist eine Menge, keine Bewertung |
+| 08.09.2026 | Zwei getrennte Gestaltungssysteme statt eines gemischten | Einstieg und Werkzeug haben unterschiedliche Aufgaben und Aufenthaltsdauern; ein System für beides wäre für beide falsch |
+| 08.09.2026 | Ziffern bemessen sich an ihrer Zeile, nicht am Bildschirm | Ein Regelsatz statt Schriftgrade je Gerät; füllt jede Zeile und hält zugleich den Textplatz frei |
 | 08.09.2026 | Die Jord-Bilder werden nicht auf der Seite verwendet | Sie zeigen echte Marken (NBA, Chicago Bulls, Nike, Jordan) und sind für eine öffentliche Seite kein nutzbares Asset |
 
 ## Drei Elemente, die über die Tabelle hinausgehen

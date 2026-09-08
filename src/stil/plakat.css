@@ -1,0 +1,204 @@
+/* SYSTEM PLAKAT — Bauteile
+   Verwendet ausschließlich Marken aus tokens-plakat.css.
+   Grenze zum Werkzeugsystem: data-ansicht auf dem Wurzelelement. */
+
+:root[data-ansicht="start"],
+:root[data-ansicht="generator"],
+:root[data-ansicht="builder"] { background: var(--plakat-grund); }
+:root[data-ansicht="start"] body,
+:root[data-ansicht="generator"] body,
+:root[data-ansicht="builder"] body {
+  background: var(--plakat-grund);
+  color: var(--plakat-tinte);
+}
+
+.poster {
+  display: flex;
+  flex-direction: column;
+  min-height: 100svh;
+  padding: 0 clamp(16px, 5vw, 64px);
+  overflow-x: clip;
+}
+
+.poster-kopf {
+  flex: 0 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 6px 20px;
+  padding: clamp(12px, 2.4vh, 32px) 0 clamp(10px, 2vh, 22px);
+}
+
+.poster-marke {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  font: 600 17px/1 var(--sf);
+  letter-spacing: -0.02em;
+  color: var(--plakat-tinte);
+  text-decoration: none;
+}
+.poster-marke i {
+  width: 24px;
+  height: 24px;
+  border-radius: 7px;
+  background: var(--verlauf-1);
+  color: #fff;
+  font: 700 11px/24px var(--sf);
+  font-style: normal;
+  text-align: center;
+}
+
+/* Gesperrte Versalien mit Verlauf */
+.mikro {
+  margin: 0;
+  font: 600 11px/1.45 "SF Compact Text", "Helvetica Neue", "Arial Narrow", var(--sf);
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+  background-image: var(--verlauf-mikro);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Die drei Einstiege teilen sich die Resthöhe zu gleichen Teilen. */
+.tore {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.tor {
+  position: relative;
+  flex: 1 1 0;
+  display: flex;
+  align-items: center;
+  min-height: 148px;
+  padding: 0;
+  overflow: hidden;
+  border-top: 1px solid var(--plakat-linie);
+  color: var(--plakat-tinte);
+  text-decoration: none;
+}
+.tore .tor:last-of-type { border-bottom: 1px solid var(--plakat-linie); }
+
+/* Die Ziffer bemisst sich an der Höhe ihrer eigenen Zeile, nicht am
+   Bildschirm. Dadurch füllt sie jede Zeile auf jedem Gerät gleich aus und
+   wird oben wie unten angeschnitten. */
+.ziffer {
+  position: absolute;
+  left: clamp(-40px, -2.6vw, -14px);
+  top: 50%;
+  transform: translateY(-50%) scaleX(var(--ziffer-breite));
+  transform-origin: left center;
+  font: 900 clamp(200px, 34vh, 380px)/0.7 var(--sf);
+  letter-spacing: -0.07em;
+  background-image: var(--verlauf-1);
+  background-size: 240% 100%;
+  background-position: 0% 50%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  transition: background-position 0.6s var(--feder);
+  pointer-events: none;
+}
+
+/* Ohne Container-Einheiten bleibt der Platz eine Schätzung nach Fensterbreite. */
+@supports not (container-type: size) {
+  .tor { padding-left: clamp(150px, 16vw, 250px); }
+  .ziffer { font-size: clamp(200px, 34vh, 380px); }
+}
+
+@supports (container-type: size) {
+  .tor { container-type: size; padding-left: 0; }
+  .ziffer { font-size: calc(var(--ziffer-ueberstand) * 100cqh); }
+  /* Der Textblock hält genau den Platz frei, den die Ziffer belegt. */
+  .tor-text { margin-left: calc(var(--ziffer-platz) * 100cqh + var(--ziffer-luft)); }
+  .standbild .tor-text { margin-left: calc(var(--ziffer-platz) * 100cqh + var(--ziffer-luft)); }
+}
+
+.tor--1 .ziffer { background-image: var(--verlauf-1); }
+.tor--2 .ziffer { background-image: var(--verlauf-2); }
+.tor--3 .ziffer { background-image: var(--verlauf-3); }
+.tor--2 .tor-meta { background-image: var(--verlauf-2); }
+.tor--3 .tor-meta { background-image: var(--verlauf-3); }
+
+.tor-text { flex: 1 1 auto; min-width: 0; }
+.tor-name {
+  display: block;
+  font: 640 clamp(19px, 3.1vw, 34px)/1.08 var(--sf);
+  letter-spacing: -0.025em;
+  text-wrap: balance;
+}
+.tor-meta { display: block; margin-top: 7px; }
+
+.pfeil {
+  flex: 0 0 auto;
+  align-self: center;
+  font-size: 24px;
+  color: var(--plakat-tinte-3);
+  transition: transform 0.3s var(--feder), color 0.3s var(--feder);
+}
+
+.tor:hover .ziffer,
+.tor:focus-visible .ziffer { background-position: 100% 50%; }
+.tor:hover .pfeil,
+.tor:focus-visible .pfeil { transform: translateX(7px); color: var(--plakat-tinte); }
+.tor:focus-visible { outline: none; box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.5); }
+
+.tor.geplant .tor-name { color: var(--plakat-tinte-2); }
+.tor.geplant .ziffer { opacity: 0.78; }
+
+.poster-fuss { flex: 0 0 auto; padding: clamp(10px, 2vh, 26px) 0 clamp(14px, 3vh, 32px); }
+.poster-fuss .mikro {
+  overflow-wrap: anywhere;
+  background-image: none;
+  color: var(--plakat-tinte-3);
+  -webkit-text-fill-color: var(--plakat-tinte-3);
+  letter-spacing: 0.07em;
+}
+
+/* Gesperrte Bereiche */
+.standbild {
+  flex: 0 0 auto;
+  min-height: clamp(180px, 30vh, 300px);
+  margin-top: clamp(10px, 3vh, 40px);
+  border: 0;
+  pointer-events: none;
+}
+.sperrgrund {
+  max-width: 62ch;
+  margin: clamp(14px, 3vh, 28px) 0 0;
+  font-size: 14.5px;
+  line-height: 1.6;
+  color: var(--plakat-tinte-2);
+}
+.weiter {
+  align-self: flex-start;
+  margin: clamp(18px, 3vh, 32px) 0 auto;
+  padding: 11px 20px;
+  border-radius: var(--pille);
+  background: var(--verlauf-1);
+  color: #fff;
+  font: 600 14px/1 var(--sf);
+  text-decoration: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ziffer, .pfeil { transition: none; }
+}
+
+@media (max-width: 700px) {
+  .tor { min-height: 132px; }
+  .ziffer { left: -10px; }
+  .pfeil { display: none; }
+}
+
+@supports not (container-type: size) {
+  @media (max-width: 700px) {
+    .tor { padding-left: clamp(92px, 27vw, 150px); }
+    .ziffer { font-size: clamp(132px, 42vw, 220px); }
+  }
+}

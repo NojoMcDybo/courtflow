@@ -1,0 +1,101 @@
+/* SYSTEM WERKZEUG — Marken
+   Gilt auf allen Arbeitsflächen. Grundlage: Puppertino (MIT), CSS-Umsetzung
+   der Apple Human Interface Guidelines, https://github.com/codedgar/Puppertino
+   Übernommen sind Apples Systemfarben, die Schatten- und Vibrancy-Stufen und
+   die Radien 6/10/50. Akzent ist Apple Indigo: trifft Jords LED-Violett und
+   ist trotzdem eine Systemfarbe.
+   Beschrieben in docs/gestaltung.md. */
+
+:root {
+  color-scheme: light dark;
+
+  /* Apple Systemfarben, hell */
+  --indigo: rgb(88, 86, 214);
+  --orange: rgb(255, 149, 0);
+  --gruen: rgb(40, 205, 65);
+  --grau: rgb(142, 142, 147);
+
+  --fenster: #f2f2f7;
+  --inhalt: #ffffff;
+  --erhoben: #ffffff;
+  --fuellung: rgba(120, 120, 128, 0.12);
+  --fuellung-stark: rgba(120, 120, 128, 0.2);
+  --haarlinie: rgba(60, 60, 67, 0.14);
+  --tinte: #1d1d1f;
+  --tinte-2: rgba(60, 60, 67, 0.6);
+  --tinte-3: rgba(60, 60, 67, 0.35);
+
+  --dichte-1: rgba(88, 86, 214, 0.14);
+  --dichte-2: rgba(88, 86, 214, 0.3);
+  --dichte-3: rgba(88, 86, 214, 0.52);
+  --dichte-4: rgba(88, 86, 214, 0.76);
+  --dichte-tinte: #ffffff;
+
+  --schatten-1: 0 0.5px 1px 0.5px rgba(0, 0, 0, 0.1);
+  --schatten-2: 0 2px 10px rgba(0, 0, 0, 0.1);
+  --schatten-4: 0 20px 30px rgba(0, 0, 0, 0.2);
+
+  --sf: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto,
+    "Helvetica Neue", sans-serif;
+  --sf-mono: ui-monospace, "SF Mono", SFMono-Regular, Menlo, monospace;
+
+  --r-klein: 6px;
+  --r: 10px;
+  --r-gross: 14px;
+  --pille: 50px;
+
+  /* Apples Sheet-Kurve: schnell los, weich aus */
+  --feder: cubic-bezier(0.32, 0.72, 0, 1);
+  --rand: clamp(14px, 3vw, 34px);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-thema="hell"]) {
+    --indigo: rgb(94, 92, 230);
+    --orange: rgb(255, 159, 10);
+    --gruen: rgb(40, 215, 75);
+    --grau: rgb(152, 152, 157);
+
+    --fenster: #1c1c1e;
+    --inhalt: #000000;
+    --erhoben: #2c2c2e;
+    --fuellung: rgba(120, 120, 128, 0.24);
+    --fuellung-stark: rgba(120, 120, 128, 0.36);
+    --haarlinie: rgba(255, 255, 255, 0.12);
+    --tinte: #f5f5f7;
+    --tinte-2: rgba(235, 235, 245, 0.6);
+    --tinte-3: rgba(235, 235, 245, 0.32);
+
+    --dichte-1: rgba(94, 92, 230, 0.24);
+    --dichte-2: rgba(94, 92, 230, 0.44);
+    --dichte-3: rgba(94, 92, 230, 0.66);
+    --dichte-4: rgba(94, 92, 230, 0.9);
+
+    --schatten-1: 0 0.5px 1px 0.5px rgba(0, 0, 0, 0.5);
+    --schatten-2: 0 2px 10px rgba(0, 0, 0, 0.5);
+    --schatten-4: 0 20px 30px rgba(0, 0, 0, 0.6);
+  }
+}
+
+:root[data-thema="dunkel"] {
+  --indigo: rgb(94, 92, 230);
+  --orange: rgb(255, 159, 10);
+  --gruen: rgb(40, 215, 75);
+  --grau: rgb(152, 152, 157);
+  --fenster: #1c1c1e;
+  --inhalt: #000000;
+  --erhoben: #2c2c2e;
+  --fuellung: rgba(120, 120, 128, 0.24);
+  --fuellung-stark: rgba(120, 120, 128, 0.36);
+  --haarlinie: rgba(255, 255, 255, 0.12);
+  --tinte: #f5f5f7;
+  --tinte-2: rgba(235, 235, 245, 0.6);
+  --tinte-3: rgba(235, 235, 245, 0.32);
+  --dichte-1: rgba(94, 92, 230, 0.24);
+  --dichte-2: rgba(94, 92, 230, 0.44);
+  --dichte-3: rgba(94, 92, 230, 0.66);
+  --dichte-4: rgba(94, 92, 230, 0.9);
+  --schatten-1: 0 0.5px 1px 0.5px rgba(0, 0, 0, 0.5);
+  --schatten-2: 0 2px 10px rgba(0, 0, 0, 0.5);
+  --schatten-4: 0 20px 30px rgba(0, 0, 0, 0.6);
+}

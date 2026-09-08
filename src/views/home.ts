@@ -7,7 +7,6 @@ type Tor = {
   ziel: string;
   meta: string[];
   gebaut: boolean;
-  verlauf: string;
 };
 
 const zahlen = () => kennzahlen(alleDrills);
@@ -19,25 +18,22 @@ function tore(): Tor[] {
       ziffer: "1",
       name: "Drill-Liste",
       ziel: "#/bibliothek",
-      meta: [`${z.gesamt} Übungen`, `${taxonomie.kompetenzen.length} Kompetenzen`, "U8–U18", "Quelle je Karte"],
+      meta: [`${z.gesamt} Übungen`, "U8–U18", "mit Quelle"],
       gebaut: true,
-      verlauf: "linear-gradient(104deg,#8b2cf5 0%,#e0308f 38%,#ff7a1a 72%,#ffb02e 100%)",
     },
     {
       ziffer: "2",
       name: "Automatischer Plan",
       ziel: "#/generator",
-      meta: ["Rahmen rein", "Plan raus", "nur freigegebene Übungen"],
+      meta: ["Rahmen rein, Plan raus"],
       gebaut: false,
-      verlauf: "linear-gradient(104deg,#ff7a1a 0%,#e0308f 34%,#8b2cf5 68%,#2f6bff 100%)",
     },
     {
       ziffer: "3",
       name: "Halbautomatischer Trainingsplan",
       ziel: "#/builder",
-      meta: ["Schritt für Schritt", "vier Bausteine", "du entscheidest"],
+      meta: ["Schritt für Schritt"],
       gebaut: false,
-      verlauf: "linear-gradient(104deg,#e0308f 0%,#8b2cf5 40%,#2f6bff 70%,#ff7a1a 100%)",
     },
   ];
 }
@@ -59,15 +55,16 @@ export function startseite(wurzel: HTMLElement): () => void {
 
   const liste = el("nav", { class: "tore", "aria-label": "Bereiche" });
   for (const t of tore()) {
-    const a = el("a", { class: t.gebaut ? "tor" : "tor geplant", href: t.ziel });
+    const a = el("a", {
+      class: `tor tor--${t.ziffer}${t.gebaut ? "" : " geplant"}`,
+      href: t.ziel,
+    });
     const ziffer = el("span", { class: "ziffer", "aria-hidden": "true" }, [t.ziffer]);
-    ziffer.style.backgroundImage = t.verlauf;
 
     const text = el("span", { class: "tor-text" });
     const meta = el("span", { class: "mikro tor-meta" }, [
       t.meta.join(" • ") + (t.gebaut ? "" : " • noch nicht gebaut"),
     ]);
-    if (!t.gebaut) meta.style.backgroundImage = t.verlauf;
     text.append(el("span", { class: "tor-name" }, [t.name]), meta);
 
     a.append(ziffer, text, el("span", { class: "pfeil", "aria-hidden": "true" }, ["→"]));
@@ -99,12 +96,10 @@ export function geplant(wurzel: HTMLElement, was: "generator" | "builder"): () =
   kopf.append(zurueck);
   seite.append(kopf);
 
-  const block = el("div", { class: "tor geplant standbild" });
+  const block = el("div", { class: `tor tor--${t.ziffer} geplant standbild` });
   const ziffer = el("span", { class: "ziffer", "aria-hidden": "true" }, [t.ziffer]);
-  ziffer.style.backgroundImage = t.verlauf;
   const text = el("span", { class: "tor-text" });
   const meta = el("span", { class: "mikro tor-meta" }, ["noch nicht gebaut"]);
-  meta.style.backgroundImage = t.verlauf;
   text.append(el("span", { class: "tor-name" }, [t.name]), meta);
   block.append(ziffer, text);
   seite.append(block);

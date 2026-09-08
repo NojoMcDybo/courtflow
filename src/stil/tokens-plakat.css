@@ -1,0 +1,71 @@
+/* SYSTEM PLAKAT — Marken
+   Gilt nur auf den Einstiegsflächen (Start und gesperrte Bereiche).
+   Grundlage ist eine Saisongrafik als Stilvorlage: schwarzer Grund,
+   übergroße Ziffern mit mehrstufigem Verlauf, oben und unten angeschnitten,
+   dazu eine Zeile gesperrter Versalien. Übernommen ist die Machart, nicht
+   die Marke. Beschrieben in docs/gestaltung.md. */
+
+:root {
+  /* Fünf Farben, aus denen jeder Verlauf gemischt wird */
+  --neon-violett: #8b2cf5;
+  --neon-magenta: #e0308f;
+  --neon-orange: #ff7a1a;
+  --neon-amber: #ffb02e;
+  --neon-blau: #2f6bff;
+
+  /* Ein Verlauf je Einstieg, immer 104 Grad, immer drei bis vier Halte */
+  --verlauf-1: linear-gradient(
+    104deg,
+    var(--neon-violett) 0%,
+    var(--neon-magenta) 45%,
+    var(--neon-orange) 100%
+  );
+  --verlauf-2: linear-gradient(
+    104deg,
+    var(--neon-orange) 0%,
+    var(--neon-magenta) 34%,
+    var(--neon-violett) 68%,
+    var(--neon-blau) 100%
+  );
+  --verlauf-3: linear-gradient(
+    104deg,
+    var(--neon-magenta) 0%,
+    var(--neon-violett) 40%,
+    var(--neon-blau) 70%,
+    var(--neon-orange) 100%
+  );
+  --verlauf-mikro: linear-gradient(
+    96deg,
+    var(--neon-magenta),
+    var(--neon-orange) 60%,
+    var(--neon-amber)
+  );
+
+  --plakat-grund: #000;
+  --plakat-tinte: #fff;
+  --plakat-tinte-2: rgba(255, 255, 255, 0.66);
+  --plakat-tinte-3: rgba(255, 255, 255, 0.34);
+  --plakat-linie: rgba(255, 255, 255, 0.16);
+
+  /* Die Ziffer bemisst sich an der Höhe ihrer Zeile.
+     ueberstand: Schriftgrad als Vielfaches der Zeilenhöhe — daraus entsteht
+       der Anschnitt oben und unten.
+     breite: waagerechte Dehnung, macht aus der Systemschrift eine Plakatschrift.
+     aspekt: Vorschub einer Ziffer in em, gemessen an der Systemschrift.
+     platz: was die Ziffer waagerecht belegt — Produkt der drei. Der Text
+       hält genau diesen Abstand, deshalb kollidiert nichts, egal wie hoch
+       die Zeile gerade ist. */
+  --ziffer-ueberstand: 1.34;
+  --ziffer-breite: 1.28;
+  --ziffer-aspekt: 0.58;
+  --ziffer-platz: calc(
+    var(--ziffer-ueberstand) * var(--ziffer-breite) * var(--ziffer-aspekt)
+  );
+  --ziffer-luft: clamp(12px, 3vw, 44px);
+}
+
+/* Auf schmalen Geräten wird die Ziffer nicht kleiner, sondern schlanker:
+   volle Höhe bleibt, der Text bekommt trotzdem Platz. */
+@media (max-width: 500px) {
+  :root { --ziffer-breite: 0.94; --ziffer-luft: 10px; }
+}
