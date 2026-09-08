@@ -8,6 +8,7 @@ import {
   baustein,
   belastungsbefund,
   bloecke,
+  minutenVerteilen,
   modell,
   neuWuerfeln,
 } from "../plan";
@@ -50,6 +51,11 @@ export function training(wurzel: HTMLElement, modus: Modus): () => void {
   let plan: Block[] = [];
   let schritt = 0;
   let letzte: Block[] | null = null;
+  /* Die Führung fragt nacheinander: erst die Altersgruppe, dann die
+     Trainingsart, dann kommen die Übungsblöcke. Die Automatik überspringt
+     das nicht — sie hat dieselben Angaben nur alle in einer Zeile. */
+  type Phase = "alter" | "art" | "bloecke";
+  let phase: Phase = modus === "fuehrung" ? "alter" : "bloecke";
 
   try {
     const roh = localStorage.getItem(`${SPEICHER}.${modus}`);
@@ -149,17 +155,150 @@ export function training(wurzel: HTMLElement, modus: Modus): () => void {
     zeichnen();
   });
 
-  zeile.append(sAlter, sDauer, sWeg);
-  if (modus === "automatik") zeile.append(wuerfeln);
-  zeile.append(hinweis);
+  if (modus === "automatik") {
+    zeile.append(sAlter, sDauer, sWeg, wuerfeln, hinweis);
+  }
 
   /* ---- Inhalt ---- */
   const bereich = el("main", { class: "bereich plan" });
+
+  function minutenText(folge: string[]): number[] {
+    return minutenVerteilen(folge, rahmen.dauer, rahmen.altersstufe);
+  }
 
   function neuAufbauen(): void {
     plan = modus === "automatik" ? neuWuerfeln(rahmen, null) : bloecke(rahmen);
     schritt = 0;
     zeichnen();
+  }
+
+  function schrittleiste(): HTMLElement {
+    const leiste = el("nav", { class: "schritte", "aria-label": "Ablauf" });
+    const stufen: [Phase, string, string | null][] = [
+      ["alter", "Altersgruppe", phase === "alter" ? null : `U${rahmen.altersstufe}`],
+      ["art", "Trainingsart", phase === "bloecke" ? pfadName(rahmen.pfadId) : null],
+      ["bloecke", "Übungen", null],
+    ];
+    stufen.forEach(([p, name, wert], i) => {
+      const erledigt =
+        (p === "alter" && phase !== "alter") || (p === "art" && phase === "bloecke");
+      const knopf = el("button", {
+        class: `schritt${phase === p ? " jetzt" : ""}${erledigt ? " fertig" : ""}`,
+        type: "button",
+        ...(erledigt ? {} : { disabled: "" }),
+      });
+      knopf.append(
+        el("span", { class: "schrittnr" }, [String(i + 1)]),
+        el("span", { class: "schrittname" }, [name]),
+      );
+      if (wert) knopf.append(el("span", { class: "schrittwert" }, [wert]));
+      knopf.addEventListener("click", () => {
+        phase = p;
+        zeichnen();
+      });
+      leiste.append(knopf);
+    });
+    return leiste;
+  }
+
+  function alterWaehlen(): HTMLElement {
+    const box = el("section", { class: "wahlbild" });
+    box.append(
+      el("h2", {}, ["Für welche Altersgruppe?"]),
+      el("p", { class: "blockfunktion" }, [
+        "Die Altersstufe steuert, welche Trainingsarten zur Wahl stehen und wie die Zeit auf die Blöcke verteilt wird.",
+      ]),
+    );
+    const raster = el("div", { class: "grossewahl" });
+    for (const u of [8, 10, 12, 14, 16, 18]) {
+      const wege = modell.pfade.filter(
+        (p) => (p.alter_von ?? 8) <= u && u <= (p.alter_bis ?? 18),
+      ).length;
+      const knopf = el("button", {
+        class: `grosskarte${rahmen.altersstufe === u ? " gewaehlt" : ""}`,
+        type: "button",
+      });
+      knopf.append(
+        el("span", { class: "grossziffer" }, [`U${u}`]),
+        el("span", { class: "grossnote" }, [`${wege} Trainingsarten`]),
+      );
+      knopf.addEventListener("click", () => {
+        rahmen.altersstufe = u;
+        const moeglich = wegOptionen();
+        if (!moeglich.some(([id]) => id === rahmen.pfadId)) rahmen.pfadId = moeglich[0]![0];
+        sichern();
+        phase = "art";
+        zeichnen();
+      });
+      raster.append(knopf);
+    }
+    box.append(raster);
+    return box;
+  }
+
+  function artWaehlen(): HTMLElement {
+    const box = el("section", { class: "wahlbild" });
+    box.append(
+      el("h2", {}, [`Welche Trainingsart für U${rahmen.altersstufe}?`]),
+      el("p", { class: "blockfunktion" }, [
+        "Die Trainingsart legt die Blockfolge fest. Referenzpfade stammen aus dem Katalog, abgeleitete Wege sind gekennzeichnet.",
+      ]),
+    );
+
+    const dauerzeile = el("div", { class: "dauerwahl" });
+    dauerzeile.append(el("span", { class: "dauerlabel" }, ["Dauer"]));
+    const segmente = el("div", { class: "segmente" });
+    for (const d of modell.referenzdauern) {
+      const k = el("button", {
+        type: "button",
+        "aria-selected": String(rahmen.dauer === d),
+      }, [`${d} min`]);
+      k.addEventListener("click", () => {
+        rahmen.dauer = d;
+        sichern();
+        zeichnen();
+      });
+      segmente.append(k);
+    }
+    dauerzeile.append(segmente);
+    box.append(dauerzeile);
+
+    const raster = el("div", { class: "grossewahl breit" });
+    for (const p of modell.pfade.filter(
+      (x) => (x.alter_von ?? 8) <= rahmen.altersstufe && rahmen.altersstufe <= (x.alter_bis ?? 18),
+    )) {
+      const minuten = minutenText(p.folge);
+      const knopf = el("button", {
+        class: `grosskarte artkarte${rahmen.pfadId === p.id ? " gewaehlt" : ""}`,
+        type: "button",
+      });
+      const kopfEl = el("span", { class: "artkopf" });
+      kopfEl.append(el("span", { class: "artname" }, [pfadName(p.id)]));
+      kopfEl.append(
+        el("span", { class: p.herkunft === "abgeleitet" ? "pille schwach" : "pille" }, [
+          p.herkunft === "abgeleitet" ? "abgeleitet" : p.id,
+        ]),
+      );
+      knopf.append(kopfEl);
+      const folge = el("span", { class: "artfolge" });
+      p.folge.forEach((c, i) => {
+        folge.append(el("span", { class: "blockcode" }, [c]));
+        folge.append(el("span", { class: "folgezeit" }, [`${minuten[i]}′`]));
+      });
+      knopf.append(folge);
+      if (p.individualisierung) {
+        knopf.append(el("span", { class: "artnote" }, [p.individualisierung]));
+      }
+      knopf.addEventListener("click", () => {
+        rahmen.pfadId = p.id;
+        sichern();
+        phase = "bloecke";
+        neuAufbauen();
+      });
+      raster.append(knopf);
+    }
+    box.append(raster);
+    return box;
   }
 
   function planZeilen(): HTMLElement {
@@ -248,7 +387,14 @@ export function training(wurzel: HTMLElement, modus: Modus): () => void {
     const drucken = el("button", { class: "haupttaste", type: "button" }, ["Drucken"]);
     drucken.addEventListener("click", () => window.print());
     const nochmal = el("button", { class: "textknopf", type: "button" }, ["Von vorn"]);
-    nochmal.addEventListener("click", neuAufbauen);
+    nochmal.addEventListener("click", () => {
+      if (modus === "fuehrung") {
+        phase = "alter";
+        zeichnen();
+      } else {
+        neuAufbauen();
+      }
+    });
     box.append(el("div", { class: "abschluss-tasten" }, [drucken, nochmal]));
     return box;
   }
@@ -259,6 +405,11 @@ export function training(wurzel: HTMLElement, modus: Modus): () => void {
       el("b", {}, [pfad.folge.join(" → ")]),
       pfad.herkunft === "abgeleitet" ? " · abgeleitete Aufbauweise" : ` · ${pfad.id}`,
     );
+
+    if (modus === "fuehrung" && phase !== "bloecke") {
+      bereich.replaceChildren(schrittleiste(), phase === "alter" ? alterWaehlen() : artWaehlen());
+      return;
+    }
 
     const spalten = el("div", { class: "plan-spalten" });
     const links = el("div", { class: "plan-links" });
@@ -277,7 +428,7 @@ export function training(wurzel: HTMLElement, modus: Modus): () => void {
     } else {
       spalten.append(offen >= 0 ? auswahlKarten(plan[offen]!) : abschluss());
     }
-    bereich.replaceChildren(spalten);
+    bereich.replaceChildren(...(modus === "fuehrung" ? [schrittleiste()] : []), spalten);
   }
 
   const fuss = el("footer", { class: "fuss" });
@@ -290,8 +441,9 @@ export function training(wurzel: HTMLElement, modus: Modus): () => void {
     ]),
   );
 
-  wurzel.append(kopf, zeile, bereich, fuss);
-  neuAufbauen();
+  wurzel.append(kopf, ...(modus === "automatik" ? [zeile] : []), bereich, fuss);
+  if (modus === "automatik") neuAufbauen();
+  else zeichnen();
 
   return () => {
     for (const k of [kopf, zeile, bereich, fuss]) k.remove();

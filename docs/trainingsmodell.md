@@ -73,6 +73,21 @@ AW-Spiel       Spielweg       A → C → D → E → F   ohne isolierten Techni
 AW-Wettkampf   Wettkampfweg   A → B → D → E → F   kurz aufbauen, lange anwenden
 ```
 
+## Der Ablauf im Trainingsaufbau
+
+Die Führung fragt nacheinander, statt alles in eine Filterzeile zu legen:
+
+1. **Altersgruppe** — U8 bis U18. Die Stufe steuert, welche Trainingsarten zur
+   Wahl stehen und wie die Zeit auf die Blöcke verteilt wird.
+2. **Trainingsart** — die Wege für diese Stufe, jeder mit seiner Blockfolge und
+   den Minuten, die sich aus der gewählten Dauer ergeben. Die Dauer steht auf
+   demselben Schritt, weil sie die Blockfolge sichtbar verändert.
+3. **Übungen** — Block für Block, je 4 bis 6 Karten zur Wahl.
+
+Die Schrittleiste bleibt sichtbar und führt zurück; bereits gewählte Übungen
+bleiben dabei erhalten. Der automatische Plan hat dieselben Angaben, nur alle
+in einer Zeile — er fragt nichts, er baut.
+
 ## Wie aus Dauer Minuten werden
 
 Der Katalog nennt vier Referenzdauern: 60, 75, 90 und 120 Minuten. Die

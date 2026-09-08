@@ -566,3 +566,104 @@ dialog[open]::backdrop { animation: ein 0.34s var(--feder); }
   .planzeile { break-inside: avoid; box-shadow: none; border: 1px solid #ccc; }
   body { background: #fff; color: #000; }
 }
+
+/* ---------- Geführter Ablauf ---------- */
+
+.schritte {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  max-width: 1360px;
+  margin: 0 auto 22px;
+}
+.schritt {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 12px 7px 8px;
+  border: 1px solid var(--haarlinie);
+  border-radius: var(--pille);
+  background: transparent;
+  color: var(--tinte-3);
+  font: 13px/1 var(--sf);
+  cursor: default;
+}
+.schritt.fertig { cursor: pointer; color: var(--tinte-2); }
+.schritt.fertig:hover { border-color: var(--indigo); color: var(--tinte); }
+.schritt.jetzt {
+  border-color: transparent;
+  background: var(--indigo);
+  color: #fff;
+}
+.schrittnr {
+  display: inline-grid;
+  place-items: center;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--fuellung);
+  color: var(--tinte-2);
+  font: 600 10.5px/1 var(--sf);
+}
+.schritt.jetzt .schrittnr { background: rgba(255, 255, 255, 0.25); color: #fff; }
+.schritt.fertig .schrittnr { background: var(--indigo); color: #fff; }
+.schrittname { font-weight: 520; }
+.schrittwert {
+  padding-left: 8px;
+  margin-left: 2px;
+  border-left: 1px solid var(--haarlinie);
+  color: var(--tinte-3);
+  font-size: 12.5px;
+}
+
+.wahlbild { max-width: 1360px; margin: 0 auto; }
+.wahlbild h2 { margin: 0 0 3px; font-size: 21px; font-weight: 630; letter-spacing: -0.02em; }
+
+.dauerwahl { display: flex; align-items: center; gap: 10px; margin-top: 18px; }
+.dauerlabel { font-size: 12.5px; color: var(--tinte-2); }
+
+.grossewahl {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 10px;
+  margin-top: 18px;
+}
+.grossewahl.breit { grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); }
+
+.grosskarte {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 16px;
+  text-align: left;
+  border: 1px solid var(--haarlinie);
+  border-radius: var(--r);
+  background: var(--erhoben);
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+  transition: border-color 0.15s var(--feder), transform 0.15s var(--feder);
+}
+.grosskarte:hover { border-color: var(--indigo); transform: translateY(-1px); }
+.grosskarte.gewaehlt { border-color: var(--indigo); box-shadow: 0 0 0 1px var(--indigo); }
+
+.grossziffer { font: 640 26px/1 var(--sf); letter-spacing: -0.03em; }
+.grossnote { font-size: 12.5px; color: var(--tinte-2); }
+
+.artkarte { gap: 10px; }
+.artkopf { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.artname { font-size: 15px; font-weight: 600; letter-spacing: -0.015em; }
+.artfolge { display: flex; align-items: center; gap: 3px; flex-wrap: wrap; }
+.folgezeit {
+  margin-right: 5px;
+  font: 11px/1 var(--sf-mono);
+  color: var(--tinte-3);
+  font-variant-numeric: tabular-nums;
+}
+.artnote { font-size: 12.5px; color: var(--tinte-2); }
+
+@media (max-width: 700px) {
+  .schritte { gap: 4px; }
+  .schrittname { display: none; }
+  .schritt.jetzt .schrittname { display: inline; }
+}
