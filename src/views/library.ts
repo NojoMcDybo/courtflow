@@ -1,16 +1,11 @@
 import { el } from "../dom";
 import { themaIstDunkel, themaUmschalten } from "../thema";
-import {
-  TIEFE_LABEL,
-  aliaseVon,
-  alleDrills,
-  filtern,
-  kompetenzName,
-  taxonomie,
-} from "../data";
+import { TIEFE_LABEL, aliaseVon, alleDrills, filtern, kompetenzName, taxonomie } from "../data";
 import type { Drill, Filter } from "../types";
+import { matrix } from "./abdeckung";
 
 const REPO = "https://github.com/NojoMcDybo/courtflow";
+const STUFEN = [8, 10, 12, 14, 16, 18];
 
 const SKALEN_LABEL: Record<string, string> = {
   entscheidung: "Entscheidung",
@@ -23,7 +18,6 @@ const SKALEN_LABEL: Record<string, string> = {
   kooperation: "Kooperation",
 };
 
-/** Belegtiefe als drei Stufen -- ablesbar ohne Beschriftung. */
 const STUFE: Record<string, number> = {
   vollstaendig: 3,
   standard: 2,
@@ -33,8 +27,6 @@ const STUFE: Record<string, number> = {
   nur_titel: 0,
 };
 
-/** Wer die Quelle ist, in einem Wort. Ein gekürzter Fließtexttitel sagt nichts;
- *  die herausgebende Organisation schon. */
 const HERAUSGEBER: [RegExp, string][] = [
   [/(^|\.)jr\.nba\.com$/, "Jr. NBA"],
   [/(^|\.)nba\.com$/, "NBA"],
@@ -53,80 +45,43 @@ function herkunft(url: string): string {
   return host;
 }
 
-const alterKurz = (d: Drill): string =>
-  d.alter.von ? `U${d.alter.von}–U${d.alter.bis}` : "—";
-
-type Sortierung = { feld: "id" | "titel" | "alter" | "beleg"; ab: boolean };
+/** Altersfenster als Strecke U8…U18 statt als Text. Ein leeres Gleis heißt:
+ *  der Katalog nennt kein Fenster. */
+function altersspur(d: Drill): HTMLElement {
+  const leer = d.alter.von === null || d.alter.bis === null;
+  const spur = el("span", {
+    class: leer ? "spur leer" : "spur",
+    title: leer ? "kein Altersfenster im Katalog" : `U${d.alter.von}–U${d.alter.bis}`,
+  });
+  for (const s of STUFEN) {
+    const an = !leer && d.alter.von! <= s && s <= d.alter.bis!;
+    spur.append(el("i", { class: an ? "an" : "" }));
+  }
+  return spur;
+}
 
 function belegbalken(d: Drill): HTMLElement {
-  const stufe = STUFE[d.dokumentationstiefe] ?? 0;
+  const n = STUFE[d.dokumentationstiefe] ?? 0;
   const box = el("span", {
     class: "balken",
     title: TIEFE_LABEL[d.dokumentationstiefe] ?? d.dokumentationstiefe,
   });
-  for (let i = 1; i <= 3; i++) {
-    box.append(el("i", { class: i <= stufe ? "an" : "" }));
-  }
+  for (let i = 1; i <= 3; i++) box.append(el("i", { class: i <= n ? "an" : "" }));
   return box;
 }
 
-function zeile(d: Drill, oeffnen: (d: Drill) => void): HTMLElement {
-  const tr = el("tr", { tabindex: "0" });
-
-  const codes = el("span", { class: "codes" });
-  for (const c of d.kompetenz.alle.slice(0, 3)) {
-    codes.append(el("span", { class: `code ${c[0]}` }, [c]));
-  }
-
-  const quelle = el("td", { class: "sp-quelle quelle-zelle" });
-  if (d.quelle.url) {
-    const a = el("a", {
-      href: d.quelle.url,
-      target: "_blank",
-      rel: "noreferrer noopener",
-      title: d.quelle.name ?? d.quelle.url,
-    }, [herkunft(d.quelle.url)]);
-    a.addEventListener("click", (e) => e.stopPropagation());
-    quelle.append(a);
-  } else if (d.quelle.name) {
-    quelle.title = d.quelle.name;
-    quelle.append(d.quelle.name);
-  } else {
-    quelle.className = "sp-quelle quelle-zelle fehlt";
-    quelle.append("ohne Quelle");
-  }
-
-  tr.append(
-    el("td", { class: "sp-id" }, [d.id]),
-    el("td", { class: "sp-titel" }, [d.titel]),
-    el("td", { class: "sp-alter" }, [alterKurz(d)]),
-    el("td", { class: "sp-komp" }, [codes]),
-    el("td", { class: "sp-beleg" }, [belegbalken(d)]),
-    quelle,
-  );
-
-  tr.addEventListener("click", () => oeffnen(d));
-  tr.addEventListener("keydown", (e) => {
-    if (e.key === "Enter" || e.key === " ") {
-      e.preventDefault();
-      oeffnen(d);
-    }
-  });
-  return tr;
-}
-
-function paar(label: string, wert: string | null): HTMLElement | null {
+function feld(label: string, wert: string | null): HTMLElement | null {
   return wert ? el("div", {}, [el("b", {}, [label]), wert]) : null;
 }
 
-function blatt(d: Drill, dialog: HTMLDialogElement): void {
+function blattInhalt(d: Drill, schliessen: () => void): HTMLElement {
   const inhalt = el("div", { class: "blatt" });
 
   const kopf = el("div", { class: "blatt-kopf" });
   const titel = el("div", {});
   titel.append(el("span", { class: "kennung" }, [d.id]), el("h2", {}, [d.titel]));
-  const zu = el("button", { class: "zu", type: "button", "aria-label": "Schließen" }, ["✕"]);
-  zu.addEventListener("click", () => dialog.close());
+  const zu = el("button", { class: "schliessen", type: "button", "aria-label": "Schließen" }, ["✕"]);
+  zu.addEventListener("click", schliessen);
   kopf.append(titel, zu);
   inhalt.append(kopf);
 
@@ -138,28 +93,27 @@ function blatt(d: Drill, dialog: HTMLDialogElement): void {
     ["Regression", d.regression],
     ["Progression", d.progression],
   ] as [string, string | null][]) {
-    if (!text) continue;
-    inhalt.append(el("h4", {}, [label]), el("p", {}, [text]));
+    if (text) inhalt.append(el("h4", {}, [label]), el("p", {}, [text]));
   }
 
-  const paare = el("div", { class: "paare" });
-  for (const p of [
-    paar("Alter", d.alter.roh),
-    paar("Kompetenz", d.kompetenz.alle.map(kompetenzName).join(", ") || null),
-    paar("Dauer", d.dauer_min.roh),
-    paar("Spieler", d.spielerzahl.roh),
-    paar("Raum", d.raum),
-    paar("Material", d.material),
-    paar("Methodik", d.methodik),
-    paar("Erfahrung", d.erfahrung),
+  const felder = el("div", { class: "felder" });
+  for (const f of [
+    feld("Alter", d.alter.roh),
+    feld("Kompetenz", d.kompetenz.alle.map(kompetenzName).join(", ") || null),
+    feld("Dauer", d.dauer_min.roh),
+    feld("Spieler", d.spielerzahl.roh),
+    feld("Raum", d.raum),
+    feld("Material", d.material),
+    feld("Methodik", d.methodik),
+    feld("Erfahrung", d.erfahrung),
   ]) {
-    if (p) paare.append(p);
+    if (f) felder.append(f);
   }
   for (const [name, wert] of Object.entries(d.skalen)) {
     if (!wert || wert.wert === null) continue;
-    paare.append(el("div", {}, [el("b", {}, [SKALEN_LABEL[name] ?? name]), wert.roh]));
+    felder.append(el("div", {}, [el("b", {}, [SKALEN_LABEL[name] ?? name]), wert.roh]));
   }
-  if (paare.childElementCount) inhalt.append(el("h4", {}, ["Merkmale"]), paare);
+  if (felder.childElementCount) inhalt.append(el("h4", {}, ["Merkmale"]), felder);
 
   inhalt.append(el("h4", {}, ["Quelle"]));
   const q = el("p", {});
@@ -175,19 +129,17 @@ function blatt(d: Drill, dialog: HTMLDialogElement): void {
   inhalt.append(q);
 
   const notizen = [
-    TIEFE_LABEL[d.dokumentationstiefe] &&
-      `Beleg: ${TIEFE_LABEL[d.dokumentationstiefe]}${
-        d.dokumentationstiefe === "vollstaendig" ? "" : " — leere Felder fehlen in der Quelle"
-      }`,
+    `Beleg: ${TIEFE_LABEL[d.dokumentationstiefe]}${
+      d.dokumentationstiefe === "vollstaendig" ? "" : " — leere Felder fehlen in der Quelle"
+    }`,
     d.qa.stufe && `Status ${d.qa.stufe}`,
     d.qa.note && `QA ${d.qa.note}`,
     d.qa.bewertung?.roh && `Bewertung ${d.qa.bewertung.roh}`,
-    aliaseVon(d.id).length && `Dublette zu ${aliaseVon(d.id).join(", ")}`,
+    aliaseVon(d.id).length ? `Dublette zu ${aliaseVon(d.id).join(", ")}` : "",
   ].filter(Boolean);
-  if (notizen.length) inhalt.append(el("p", { class: "notiz" }, [notizen.join(" · ")]));
+  inhalt.append(el("p", { class: "fussnote" }, [notizen.join(" · ")]));
 
-  dialog.replaceChildren(inhalt);
-  dialog.showModal();
+  return inhalt;
 }
 
 export function seite(wurzel: HTMLElement): void {
@@ -199,54 +151,77 @@ export function seite(wurzel: HTMLElement): void {
     tiefe: null,
     nurMitQuelle: false,
   };
-  let sortierung: Sortierung = { feld: "beleg", ab: true };
+  let sortierung: { feld: "id" | "titel" | "alter" | "beleg"; ab: boolean } = {
+    feld: "beleg",
+    ab: true,
+  };
+  let ansicht: "liste" | "abdeckung" = "liste";
+  let sichtbar: Drill[] = [];
+  let markiert = -1;
 
-  /* Kopf */
-  const kopf = el("header", { class: "kopf" });
+  const dialog = el("dialog") as HTMLDialogElement;
+  dialog.addEventListener("close", () => zeilenFokus());
+
+  /* ---- Leiste ---- */
+  const leiste = el("header", { class: "leiste" });
   const suche = el("input", {
     type: "search",
-    class: "suche",
+    class: "suchfeld",
     placeholder: "Suchen",
     "aria-label": "Übungen durchsuchen",
   }) as HTMLInputElement;
   suche.addEventListener("input", () => {
     filter.suche = suche.value;
+    markiert = -1;
     zeichnen();
   });
 
-  const themaKnopf = el("button", { type: "button" });
-  const beschriften = () => (themaKnopf.textContent = themaIstDunkel() ? "Hell" : "Dunkel");
+  const segListe = el("button", { type: "button", "aria-selected": "true" }, ["Liste"]);
+  const segMatrix = el("button", { type: "button", "aria-selected": "false" }, ["Abdeckung"]);
+  const segmente = el("div", { class: "segmente", role: "tablist" }, [segListe, segMatrix]);
+  const umschalten = (neu: typeof ansicht) => {
+    ansicht = neu;
+    segListe.setAttribute("aria-selected", String(neu === "liste"));
+    segMatrix.setAttribute("aria-selected", String(neu === "abdeckung"));
+    zeichnen();
+  };
+  segListe.addEventListener("click", () => umschalten("liste"));
+  segMatrix.addEventListener("click", () => umschalten("abdeckung"));
+
+  const thema = el("button", { type: "button" });
+  const beschriften = () => (thema.textContent = themaIstDunkel() ? "Hell" : "Dunkel");
   beschriften();
-  themaKnopf.addEventListener("click", () => {
+  thema.addEventListener("click", () => {
     themaUmschalten();
     beschriften();
   });
 
-  kopf.append(
-    el("span", { class: "marke" }, [el("i", { "aria-hidden": "true" }, ["CF"]), "CourtFlow"]),
+  leiste.append(
+    el("span", { class: "wortmarke" }, [el("i", { "aria-hidden": "true" }, ["CF"]), "CourtFlow"]),
     suche,
-    el("span", { class: "kopf-rechts" }, [
-      themaKnopf,
+    segmente,
+    el("span", { class: "leiste-rechts" }, [
+      thema,
       el("a", { href: REPO, target: "_blank", rel: "noreferrer noopener" }, ["Code"]),
     ]),
   );
 
-  /* Werkzeugleiste */
-  const leiste = el("div", { class: "werkzeugleiste" });
-  const zaehler = el("span", { class: "zaehler" });
+  /* ---- Filter ---- */
+  const filterzeile = el("div", { class: "filterzeile" });
+  const stand = el("span", { class: "stand" });
 
   const auswahl = (
-    beschriftung: string,
+    name: string,
     optionen: [string, string][],
     beim: (w: string) => void,
   ): HTMLSelectElement => {
-    const s = el("select", { "aria-label": beschriftung, "data-leer": "" });
-    s.append(el("option", { value: "" }, [beschriftung]));
+    const s = el("select", { "aria-label": name, "data-leer": "" });
+    s.append(el("option", { value: "" }, [name]));
     for (const [w, t] of optionen) s.append(el("option", { value: w }, [t]));
     s.addEventListener("change", () => {
-      if (s.value) s.removeAttribute("data-leer");
-      else s.setAttribute("data-leer", "");
+      s.value ? s.removeAttribute("data-leer") : s.setAttribute("data-leer", "");
       beim(s.value);
+      markiert = -1;
       zeichnen();
     });
     return s;
@@ -274,15 +249,15 @@ export function seite(wurzel: HTMLElement): void {
     (w) => (filter.tiefe = (w || null) as Filter["tiefe"]),
   );
 
-  const nurQuelle = el("label", { class: "umschalter" });
-  const box = el("input", { type: "checkbox" }) as HTMLInputElement;
-  box.addEventListener("change", () => {
-    filter.nurMitQuelle = box.checked;
+  const hakenLabel = el("label", { class: "haken" });
+  const haken = el("input", { type: "checkbox" }) as HTMLInputElement;
+  haken.addEventListener("change", () => {
+    filter.nurMitQuelle = haken.checked;
     zeichnen();
   });
-  nurQuelle.append(box, "mit Quelle");
+  hakenLabel.append(haken, "mit Quelle");
 
-  const leeren = el("button", { class: "leeren", type: "button" }, ["Zurücksetzen"]);
+  const leeren = el("button", { class: "textknopf", type: "button" }, ["Zurücksetzen"]);
   leeren.addEventListener("click", () => {
     Object.assign(filter, {
       suche: "",
@@ -293,95 +268,195 @@ export function seite(wurzel: HTMLElement): void {
       nurMitQuelle: false,
     });
     suche.value = "";
-    box.checked = false;
+    haken.checked = false;
     for (const s of [sAlter, sFamilie, sKompetenz, sTiefe]) {
       s.value = "";
       s.setAttribute("data-leer", "");
     }
+    markiert = -1;
     zeichnen();
   });
 
-  leiste.append(sAlter, sFamilie, sKompetenz, sTiefe, nurQuelle, leeren, zaehler);
+  filterzeile.append(sAlter, sFamilie, sKompetenz, sTiefe, hakenLabel, leeren, stand);
 
-  /* Tabelle */
-  const liste = el("div", { class: "liste" });
-  const tabelle = el("table");
-  const kopfzeile = el("tr");
-  const koerper = el("tbody");
+  /* ---- Inhalt ---- */
+  const bereich = el("main", { class: "bereich" });
 
-  const SPALTEN: [string, Sortierung["feld"] | null, string][] = [
-    ["ID", "id", "sp-id"],
-    ["Übung", "titel", "sp-titel"],
-    ["Alter", "alter", "sp-alter"],
-    ["Kompetenz", null, "sp-komp"],
-    ["Beleg", "beleg", "sp-beleg"],
-    ["Quelle", null, "sp-quelle"],
-  ];
-  const kopfzellen = new Map<Sortierung["feld"], HTMLElement>();
-  for (const [label, feld, klasse] of SPALTEN) {
-    const th = el("th", { class: feld ? `${klasse} sortierbar` : klasse, scope: "col" }, [label]);
-    if (feld) {
-      kopfzellen.set(feld, th);
-      th.addEventListener("click", () => {
-        sortierung = sortierung.feld === feld ? { feld, ab: !sortierung.ab } : { feld, ab: true };
-        zeichnen();
-      });
-    }
-    kopfzeile.append(th);
+  function oeffnen(d: Drill): void {
+    dialog.replaceChildren(blattInhalt(d, () => dialog.close()));
+    if (!dialog.open) dialog.showModal();
   }
-  tabelle.append(el("thead", {}, [kopfzeile]), koerper);
-  liste.append(tabelle);
 
-  const dialog = el("dialog") as HTMLDialogElement;
+  function zeilenFokus(): void {
+    const tr = bereich.querySelectorAll("tbody tr")[markiert] as HTMLElement | undefined;
+    tr?.focus();
+  }
+
+  function markieren(i: number): void {
+    if (!sichtbar.length) return;
+    markiert = Math.max(0, Math.min(sichtbar.length - 1, i));
+    for (const [n, tr] of [...bereich.querySelectorAll("tbody tr")].entries()) {
+      tr.setAttribute("aria-selected", String(n === markiert));
+    }
+    const tr = bereich.querySelectorAll("tbody tr")[markiert] as HTMLElement | undefined;
+    tr?.scrollIntoView({ block: "nearest" });
+    if (dialog.open) oeffnen(sichtbar[markiert]!);
+    else tr?.focus();
+  }
+
+  /* Quick Look: Leertaste zeigt, Leertaste schließt, Pfeile blättern weiter. */
+  document.addEventListener("keydown", (e) => {
+    if (ansicht !== "liste") return;
+    const imFeld = e.target instanceof HTMLInputElement || e.target instanceof HTMLSelectElement;
+    if (e.key === "ArrowDown" && !imFeld) {
+      e.preventDefault();
+      markieren(markiert + 1);
+    } else if (e.key === "ArrowUp" && !imFeld) {
+      e.preventDefault();
+      markieren(markiert - 1);
+    } else if (e.key === " " && !imFeld) {
+      e.preventDefault();
+      if (dialog.open) dialog.close();
+      else if (markiert >= 0) oeffnen(sichtbar[markiert]!);
+      else markieren(0);
+    } else if (e.key === "/" && !imFeld) {
+      e.preventDefault();
+      suche.focus();
+    }
+  });
+
+  function zeile(d: Drill, i: number): HTMLElement {
+    const tr = el("tr", { tabindex: "-1", "aria-selected": String(i === markiert) });
+
+    const codes = el("span", { class: "codes" });
+    for (const c of d.kompetenz.alle.slice(0, 3)) codes.append(el("span", { class: "code" }, [c]));
+
+    const quelle = el("td", { class: "s-quelle" });
+    if (d.quelle.url) {
+      const a = el("a", {
+        href: d.quelle.url,
+        target: "_blank",
+        rel: "noreferrer noopener",
+        title: d.quelle.name ?? d.quelle.url,
+      }, [herkunft(d.quelle.url)]);
+      a.addEventListener("click", (e) => e.stopPropagation());
+      quelle.append(a);
+    } else if (d.quelle.name) {
+      quelle.title = d.quelle.name;
+      quelle.append(d.quelle.name);
+    } else {
+      quelle.className = "s-quelle fehlt";
+      quelle.append("ohne Quelle");
+    }
+
+    tr.append(
+      el("td", { class: "s-id kennung" }, [d.id]),
+      el("td", { class: "s-titel" }, [d.titel]),
+      el("td", { class: "s-alter" }, [altersspur(d)]),
+      el("td", { class: "s-komp" }, [codes]),
+      el("td", { class: "s-beleg" }, [belegbalken(d)]),
+      quelle,
+    );
+
+    tr.addEventListener("click", () => {
+      markieren(i);
+      oeffnen(d);
+    });
+    return tr;
+  }
+
+  function listeZeichnen(): HTMLElement {
+    const t = el("table");
+    const kopfzeile = el("tr");
+    const SPALTEN: [string, typeof sortierung.feld | null, string][] = [
+      ["ID", "id", "s-id"],
+      ["Übung", "titel", "s-titel"],
+      ["Alter", "alter", "s-alter"],
+      ["Kompetenz", null, "s-komp"],
+      ["Beleg", "beleg", "s-beleg"],
+      ["Quelle", null, "s-quelle"],
+    ];
+    for (const [label, f, klasse] of SPALTEN) {
+      const th = el("th", { class: f ? `${klasse} klickbar` : klasse, scope: "col" }, [label]);
+      if (f) {
+        if (sortierung.feld === f) {
+          th.setAttribute("aria-sort", sortierung.ab ? "descending" : "ascending");
+        }
+        th.addEventListener("click", () => {
+          sortierung = sortierung.feld === f ? { feld: f, ab: !sortierung.ab } : { feld: f, ab: true };
+          markiert = -1;
+          zeichnen();
+        });
+      }
+      kopfzeile.append(th);
+    }
+
+    const koerper = el("tbody");
+    if (!sichtbar.length) {
+      koerper.append(el("tr", {}, [el("td", { colspan: "6", class: "nichts" }, ["Kein Treffer"])]));
+    } else {
+      sichtbar.forEach((d, i) => koerper.append(zeile(d, i)));
+    }
+    t.append(el("thead", {}, [kopfzeile]), koerper);
+    return t;
+  }
 
   function sortieren(treffer: Drill[]): Drill[] {
-    const { feld, ab } = sortierung;
+    const { feld: f, ab } = sortierung;
     const wert = (d: Drill): string | number =>
-      feld === "id" ? d.id
-      : feld === "titel" ? d.titel.toLowerCase()
-      : feld === "alter" ? (d.alter.von ?? 99)
+      f === "id" ? d.id
+      : f === "titel" ? d.titel.toLowerCase()
+      : f === "alter" ? (d.alter.von ?? 99)
       : STUFE[d.dokumentationstiefe] ?? 0;
     return [...treffer].sort((a, b) => {
       const [x, y] = [wert(a), wert(b)];
       const r = x < y ? -1 : x > y ? 1 : a.id.localeCompare(b.id);
-      return ab && feld === "beleg" ? -r : ab ? r : -r;
+      return f === "beleg" ? (ab ? -r : r) : ab ? r : -r;
     });
   }
 
   function zeichnen(): void {
-    const treffer = sortieren(filtern(alleDrills, filter));
-    const ohne = treffer.filter((d) => !d.quelle.url && !d.quelle.name).length;
-
-    zaehler.replaceChildren(
-      el("b", {}, [String(treffer.length)]),
+    sichtbar = sortieren(filtern(alleDrills, filter));
+    const ohne = sichtbar.filter((d) => !d.quelle.url && !d.quelle.name).length;
+    stand.replaceChildren(
+      el("b", {}, [String(sichtbar.length)]),
       ` / ${alleDrills.length}`,
       ...(ohne ? [" · ", el("s", {}, [`${ohne} ohne Quelle`])] : []),
     );
 
-    for (const [feld, th] of kopfzellen) {
-      if (sortierung.feld === feld) th.setAttribute("aria-sort", sortierung.ab ? "descending" : "ascending");
-      else th.removeAttribute("aria-sort");
-    }
-
-    koerper.replaceChildren();
-    if (!treffer.length) {
-      koerper.append(
-        el("tr", {}, [el("td", { colspan: "6", class: "leer-hinweis" }, ["Kein Treffer"])]),
-      );
-      return;
-    }
-    for (const d of treffer) koerper.append(zeile(d, (x) => blatt(x, dialog)));
+    bereich.replaceChildren(
+      ansicht === "liste"
+        ? listeZeichnen()
+        : matrix(filter, (code, stufe) => {
+            filter.kompetenz = code;
+            filter.altersstufe = stufe;
+            sKompetenz.value = code;
+            sKompetenz.removeAttribute("data-leer");
+            sAlter.value = String(stufe);
+            sAlter.removeAttribute("data-leer");
+            markiert = -1;
+            umschalten("liste");
+          }),
+    );
   }
 
-  const fuss = el("footer", { class: "fuss" }, [
-    `Quelle der Daten: ${taxonomie.quelle} · Beschreibungen sind Eigenformulierungen, Originalquelle je Zeile verlinkt · `,
-  ]);
+  const fuss = el("footer", { class: "fuss" });
+  fuss.append(
+    el("span", { class: "taste" }, ["↑"]),
+    " ",
+    el("span", { class: "taste" }, ["↓"]),
+    " blättern · ",
+    el("span", { class: "taste" }, ["Leer"]),
+    " Vorschau · ",
+    el("span", { class: "taste" }, ["/"]),
+    " suchen · Daten aus dem Kompetenzkatalog, Originalquelle je Zeile verlinkt · ",
+  );
   fuss.append(
     el("a", { href: `${REPO}/blob/main/PROJEKT.md`, target: "_blank", rel: "noreferrer noopener" }, [
       "offene Punkte",
     ]),
   );
 
-  wurzel.append(kopf, leiste, liste, dialog, fuss);
+  wurzel.append(leiste, filterzeile, bereich, dialog, fuss);
   zeichnen();
 }

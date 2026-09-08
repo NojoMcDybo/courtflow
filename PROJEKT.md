@@ -80,7 +80,24 @@ keine Quelle.
 | 08.09.2026 | Repo öffentlich, Auslieferung über GitHub Pages und Actions | Auf Wunsch von Nojo; damit sind auch die Primärquellen unter docs/quellen/ öffentlich |
 | 08.09.2026 | Oberfläche als Tabellenwerkzeug statt Landingpage | Hero, Kennzahlenband, Prozessstrecke und Kartenraster waren Fläche ohne Funktion. 146 strukturierte Datensätze sind eine Tabelle, keine Kachelwand |
 | 08.09.2026 | Text ist kein Gestaltungsmittel | Erklärender Fließtext wurde durch Spalten, Marken und Zahlen ersetzt. Vollständiger Text nur noch im Detailblatt, wo er der Inhalt ist |
+| 08.09.2026 | Gestaltungsgrundlage ist Puppertino (MIT), CSS-Umsetzung der Apple HIG | Systemfarben, Schatten- und Vibrancy-Stufen und Radien kommen aus einer fremden, geprüften Quelle statt aus eigener Schätzung. Als Referenz gelesen, nicht als Abhängigkeit eingebunden |
+| 08.09.2026 | Akzent ist Apple Indigo rgb(88,86,214) | Trifft Jords LED-Violett und ist zugleich eine Systemfarbe — beide Vorgaben ohne Kompromiss erfüllt |
+| 08.09.2026 | Belegtiefe wird neutral dargestellt, nicht grün | Grün liest sich als Gütesiegel. Belegtiefe ist eine Menge, keine Bewertung |
 | 08.09.2026 | Die Jord-Bilder werden nicht auf der Seite verwendet | Sie zeigen echte Marken (NBA, Chicago Bulls, Nike, Jordan) und sind für eine öffentliche Seite kein nutzbares Asset |
+
+## Drei Elemente, die über die Tabelle hinausgehen
+
+1. **Vorschau auf Leertaste.** Pfeiltasten wählen eine Zeile, Leertaste öffnet
+   das Blatt, Leertaste schließt es. Bleibt es offen, blättern die Pfeiltasten
+   durch die Datensätze weiter — dasselbe Verhalten wie die Übersicht im Finder.
+2. **Altersspur statt Alterstext.** Das Altersfenster jeder Übung ist eine
+   Strecke von U8 bis U18, nicht die Zeichenfolge „U8–U10". Der Bestand wird
+   dadurch beim Überfliegen lesbar, und die 18 Karten ohne Fenster zeigen ein
+   leeres Gleis statt eines Gedankenstrichs.
+3. **Abdeckung als zweite Ansicht.** Die Matrix Kompetenz × Altersstufe aus dem
+   Prüfstand wird zur Oberfläche: sie rechnet mit dem aktuellen Filter, und ein
+   Klick auf eine Zelle setzt Kompetenz und Altersstufe als Filter. Leere Zellen
+   sind unverändert leer — die Lücke ist der Zweck der Ansicht, nicht ihr Fehler.
 
 ## Offene Befunde
 
