@@ -14,10 +14,17 @@ Datensätze gleich aussehen zu lassen.
 
 ## Stand
 
-Die Bibliothek läuft: 146 kanonische Karten mit Suche, Filtern nach Alter,
-Kompetenzfamilie, Kompetenz und Dokumentationstiefe sowie Detailansicht mit
-Quelle und QA-Status. Generator, geführter Builder und Trainingsplan sind noch
-nicht gebaut — die Reihenfolge und die offenen Blocker stehen in
+Drei Flächen:
+
+1. **Drill-Liste** — 146 Karten mit Suche, Filtern, Abdeckungsmatrix und
+   Detailblatt; Quelle und Belegtiefe an jeder Karte.
+2. **Trainingsaufbau** — führt Block für Block durch eine Einheit; du wählst je
+   Block aus passenden Übungen.
+3. **Automatischer Plan** — baut die Einheit selbst und würfelt auf Wunsch eine
+   neue, die sich wirklich unterscheidet.
+
+Aufbau und Generator benutzen dasselbe Modell, siehe
+[`docs/trainingsmodell.md`](docs/trainingsmodell.md). Offene Punkte stehen in
 [`PROJEKT.md`](PROJEKT.md).
 
 ## Loslegen
@@ -26,8 +33,9 @@ nicht gebaut — die Reihenfolge und die offenen Blocker stehen in
 npm install
 npm run dev       # Entwicklungsserver
 npm run build     # statischer Build nach dist/
-npm run daten     # Datenstände aus der DOCX-Primärquelle neu erzeugen
-npm run pruefen   # Prüfstand + Abdeckungsmatrix
+npm run daten        # Datenstände aus der DOCX-Primärquelle neu erzeugen
+npm run pruefen      # Prüfstand Übungsdaten + Abdeckungsmatrix
+npm run pruefen:plan # Prüfstand Trainingsmodell gegen den Bestand
 ```
 
 Node ≥ 20 und Python 3 für die Datenkette.
@@ -43,6 +51,7 @@ src/stil/         zwei getrennte Gestaltungssysteme, Marken und Bauteile
 assets/reference/ Charakterreferenz, keine Kartenmotive
 PROJEKT.md        Steuerungsdokument: Entscheidungen, Regeln, offene Befunde
 docs/gestaltung.md  Gestaltungssysteme: Marken, Regeln, Ziffernmechanik
+docs/trainingsmodell.md  Bausteine, Aufbauweisen, Zeitrechnung, Quellen
 ```
 
 `data/` wird aus `docs/quellen/` erzeugt und nicht von Hand bearbeitet.

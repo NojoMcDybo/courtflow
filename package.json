@@ -7,11 +7,14 @@
     "dev": "vite",
     "build": "tsc --noEmit && vite build",
     "preview": "vite preview",
-    "daten": "python3 tools/extract.py && python3 tools/normalize.py && python3 tools/taxonomy.py",
-    "pruefen": "python3 tools/validate.py --matrix"
+    "daten": "python3 tools/extract.py && python3 tools/normalize.py && python3 tools/taxonomy.py && python3 tools/trainingsmodell.py",
+    "pruefen": "python3 tools/validate.py --matrix",
+    "modell": "python3 tools/trainingsmodell.py",
+    "pruefen:plan": "esbuild tools/pruefe-plan.ts --bundle --platform=node --format=esm --loader:.json=json --outfile=node_modules/.cache/pruefe-plan.mjs --log-level=error && node node_modules/.cache/pruefe-plan.mjs"
   },
   "devDependencies": {
     "typescript": "^5.7.2",
-    "vite": "^6.0.7"
+    "vite": "^6.0.7",
+    "esbuild": "^0.25.0"
   }
 }

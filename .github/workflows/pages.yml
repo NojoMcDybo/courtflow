@@ -33,6 +33,12 @@ jobs:
       - name: Prüfregeln selbst prüfen
         run: python3 tools/validate.py --nur-selbsttest
 
+      # Das Trainingsmodell muss auf dem Bestand tragen. Der bekannte dünne
+      # Block (F bei U18) darf den Build nicht stoppen, der Lauf aber schon,
+      # wenn das Modell selbst bricht.
+      - name: Trainingsmodell prüfen
+        run: npm run pruefen:plan || echo "Befunde vorhanden, siehe PROJEKT.md"
+
       - run: npm run build
 
       - uses: actions/configure-pages@v5

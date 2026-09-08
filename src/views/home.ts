@@ -23,17 +23,17 @@ function tore(): Tor[] {
     },
     {
       ziffer: "2",
-      name: "Automatischer Plan",
-      ziel: "#/generator",
-      meta: ["Rahmen rein, Plan raus"],
-      gebaut: false,
+      name: "Trainingsaufbau",
+      ziel: "#/aufbau",
+      meta: ["Block für Block", "du wählst die Übungen"],
+      gebaut: true,
     },
     {
       ziffer: "3",
-      name: "Halbautomatischer Trainingsplan",
-      ziel: "#/builder",
-      meta: ["Schritt für Schritt"],
-      gebaut: false,
+      name: "Automatischer Plan",
+      ziel: "#/generator",
+      meta: ["Rahmen rein, Einheit raus", "jedes Mal neu"],
+      gebaut: true,
     },
   ];
 }
@@ -78,40 +78,6 @@ export function startseite(wurzel: HTMLElement): () => void {
         `Grundlage: Kompetenzkatalog v${taxonomie.katalogversion} · Beschreibungen sind Eigenformulierungen mit Link auf das Original`,
       ]),
     ]),
-  );
-
-  wurzel.append(seite);
-  return () => seite.remove();
-}
-
-export function geplant(wurzel: HTMLElement, was: "generator" | "builder"): () => void {
-  const t = tore().find((x) => x.ziel.endsWith(was))!;
-  const seite = el("div", { class: "poster" });
-
-  const kopf = el("header", { class: "poster-kopf" });
-  const zurueck = el("a", { class: "poster-marke", href: "#/" }, [
-    el("i", { "aria-hidden": "true" }, ["CF"]),
-    "CourtFlow",
-  ]);
-  kopf.append(zurueck);
-  seite.append(kopf);
-
-  const block = el("div", { class: `tor tor--${t.ziffer} geplant standbild` });
-  const ziffer = el("span", { class: "ziffer", "aria-hidden": "true" }, [t.ziffer]);
-  const text = el("span", { class: "tor-text" });
-  const meta = el("span", { class: "mikro tor-meta" }, ["noch nicht gebaut"]);
-  text.append(el("span", { class: "tor-name" }, [t.name]), meta);
-  block.append(ziffer, text);
-  seite.append(block);
-
-  const grund =
-    was === "generator"
-      ? "Der Generator darf laut Katalog nur freigegebene Übungen ausspielen. Ausdrücklich freigegeben sind fünf. Vorher muss entschieden werden, welche vorhandene Statusangabe als Freigabe gilt — QA A/B, Statusstufe S2 bis S4 oder die Redaktionsbewertung."
-      : "Der geführte Aufbau setzt auf demselben freigegebenen Bestand auf und braucht zusätzlich das Trainingsplan-Modell mit lokaler Ablage. Beides steht noch aus; die Reihenfolge ist im Steuerungsdokument festgelegt.";
-
-  seite.append(
-    el("p", { class: "sperrgrund" }, [grund]),
-    el("a", { class: "weiter", href: "#/bibliothek" }, ["Zur Drill-Liste"]),
   );
 
   wurzel.append(seite);

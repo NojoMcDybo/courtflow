@@ -108,7 +108,27 @@ gleichzeitig den Platz frei, den der Text braucht. Die Rechnung steht in
 | 08.09.2026 | Belegtiefe wird neutral dargestellt, nicht grün | Grün liest sich als Gütesiegel. Belegtiefe ist eine Menge, keine Bewertung |
 | 08.09.2026 | Zwei getrennte Gestaltungssysteme statt eines gemischten | Einstieg und Werkzeug haben unterschiedliche Aufgaben und Aufenthaltsdauern; ein System für beides wäre für beide falsch |
 | 08.09.2026 | Ziffern bemessen sich an ihrer Zeile, nicht am Bildschirm | Ein Regelsatz statt Schriftgrade je Gerät; füllt jede Zeile und hält zugleich den Textplatz frei |
+| 08.09.2026 | Trainingsmodell wird aus dem Katalog ausgelesen, nicht neu erfunden | Bausteine, Pfade und Regeln stehen quellenbelegt in Forschungsblock XIII; eine zweite, eigene Fassung wäre eine unbelegte Parallelwahrheit |
+| 08.09.2026 | Ein Modul für beide Systeme, Unterschied ist nur, wer wählt | Aufbau und Generator teilen Modell, Zeitrechnung und Kandidatenlogik; getrennter Code hätte zwei Wahrheiten erzeugt |
+| 08.09.2026 | Freigabeprüfung vorerst ausgesetzt, alle Karten im Pool | Entscheidung von Nojo, um das Modell überhaupt testen zu können; Belegtiefe bleibt an jeder Karte sichtbar |
 | 08.09.2026 | Die Jord-Bilder werden nicht auf der Seite verwendet | Sie zeigen echte Marken (NBA, Chicago Bulls, Nike, Jordan) und sind für eine öffentliche Seite kein nutzbares Asset |
+
+## Trainingsmodell
+
+Beschrieben in [`docs/trainingsmodell.md`](docs/trainingsmodell.md). Der Katalog
+enthält das Modell bereits quellenbelegt (Forschungsblock XIII): sieben
+Bausteine A–G, zehn Referenzpfade TR-01 bis TR-10, die Belastungsregel und die
+Eigenständigkeitsregel. `tools/trainingsmodell.py` liest sie aus den
+Katalogtabellen aus; erfunden wurde nichts.
+
+Ableitung — und als solche gekennzeichnet — sind: Intensität und Zeitgewicht je
+Baustein, der Altersfaktor auf die Gewichte, die drei zusätzlichen
+Aufbauweisen für Altersstufen mit nur einem Referenzpfad, und die Zuordnung
+Übung → Baustein, weil der Katalog je Karte keine Bausteinmarke vergibt.
+
+`npm run pruefen:plan` misst das Modell gegen den Bestand: Kandidaten je
+Baustein und Altersstufe, Minutensumme, Wege je Referenzfall, Verschiedenheit
+der Auswürfelungen.
 
 ## Drei Elemente, die über die Tabelle hinausgehen
 
@@ -139,6 +159,12 @@ gleichzeitig den Platz frei, den der Text braucht. Die Rechnung steht in
   Der Katalog nennt für EX-153–158 selbst einen offenen Standardexport.
 - **S7 U8 ist die einzige benannte inhaltliche Lücke** (Katalog 62.11); die
   Abdeckungsmatrix bestätigt zusätzlich dünne Belegung bei K4, K5 und in U16/U18.
+- **F Wettbewerb bei U18 hat drei Kandidaten.** Der einzige Block, der den
+  Mindestwert reißt. Keine Modellschwäche, sondern die bekannte Bestandslücke
+  bei U16 und U18. Die Oberfläche sagt es an Ort und Stelle.
+- **Die QA-Freigabe ist ausgesetzt.** Auf Entscheidung von Nojo ziehen
+  Aufbau und Generator aus allen 146 Karten, nicht nur aus freigegebenen. Die
+  Belegtiefe steht an jeder Karte. Die Freigabestufe bleibt zu entscheiden.
 - **Öffentlich mit 32 unbelegten Karten.** Die Seite ist live, obwohl der
   Prüfstand 35 Befunde meldet. Das ist eine bewusste Zwischenstufe, kein
   erreichter Zustand — die Karten sind in der Oberfläche als unbelegt

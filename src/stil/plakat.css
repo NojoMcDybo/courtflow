@@ -1,13 +1,12 @@
 /* SYSTEM PLAKAT — Bauteile
    Verwendet ausschließlich Marken aus tokens-plakat.css.
-   Grenze zum Werkzeugsystem: data-ansicht auf dem Wurzelelement. */
+   Grenze zum Werkzeugsystem: data-ansicht="start" auf dem Wurzelelement.
+   Genau diese eine Route. Wer hier eine weitere einträgt, muss prüfen, ob
+   die Seite wirklich ein Plakat ist -- sonst steht weiße Schrift auf weißem
+   Grund, weil die Werkzeugfarben überschrieben werden. */
 
-:root[data-ansicht="start"],
-:root[data-ansicht="generator"],
-:root[data-ansicht="builder"] { background: var(--plakat-grund); }
-:root[data-ansicht="start"] body,
-:root[data-ansicht="generator"] body,
-:root[data-ansicht="builder"] body {
+:root[data-ansicht="start"] { background: var(--plakat-grund); }
+:root[data-ansicht="start"] body {
   background: var(--plakat-grund);
   color: var(--plakat-tinte);
 }
@@ -116,7 +115,6 @@
   .ziffer { font-size: calc(var(--ziffer-ueberstand) * 100cqh); }
   /* Der Textblock hält genau den Platz frei, den die Ziffer belegt. */
   .tor-text { margin-left: calc(var(--ziffer-platz) * 100cqh + var(--ziffer-luft)); }
-  .standbild .tor-text { margin-left: calc(var(--ziffer-platz) * 100cqh + var(--ziffer-luft)); }
 }
 
 .tor--1 .ziffer { background-image: var(--verlauf-1); }
@@ -158,32 +156,6 @@
   color: var(--plakat-tinte-3);
   -webkit-text-fill-color: var(--plakat-tinte-3);
   letter-spacing: 0.07em;
-}
-
-/* Gesperrte Bereiche */
-.standbild {
-  flex: 0 0 auto;
-  min-height: clamp(180px, 30vh, 300px);
-  margin-top: clamp(10px, 3vh, 40px);
-  border: 0;
-  pointer-events: none;
-}
-.sperrgrund {
-  max-width: 62ch;
-  margin: clamp(14px, 3vh, 28px) 0 0;
-  font-size: 14.5px;
-  line-height: 1.6;
-  color: var(--plakat-tinte-2);
-}
-.weiter {
-  align-self: flex-start;
-  margin: clamp(18px, 3vh, 32px) 0 auto;
-  padding: 11px 20px;
-  border-radius: var(--pille);
-  background: var(--verlauf-1);
-  color: #fff;
-  font: 600 14px/1 var(--sf);
-  text-decoration: none;
 }
 
 @media (prefers-reduced-motion: reduce) {

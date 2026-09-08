@@ -1,7 +1,8 @@
 import "./styles.css";
 import { themaInitialisieren } from "./thema";
 import { seite } from "./views/library";
-import { geplant, startseite } from "./views/home";
+import { startseite } from "./views/home";
+import { training } from "./views/training";
 
 themaInitialisieren();
 
@@ -18,8 +19,8 @@ function route(): void {
   window.scrollTo(0, 0);
   aufraeumen =
     pfad === "bibliothek" ? seite(wurzel)
-    : pfad === "generator" ? geplant(wurzel, "generator")
-    : pfad === "builder" ? geplant(wurzel, "builder")
+    : pfad === "aufbau" ? training(wurzel, "fuehrung")
+    : pfad === "generator" ? training(wurzel, "automatik")
     : startseite(wurzel);
 }
 

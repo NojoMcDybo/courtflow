@@ -13,8 +13,13 @@ aus und dürfen sich nicht vermischen.
 | Schrift | 900, übergroß, angeschnitten | 13 px, ruhig, tabellarisch |
 
 Die Grenze verläuft am Attribut `data-ansicht` auf dem Wurzelelement, gesetzt
-vom Router in `src/main.ts`. `start`, `generator` und `builder` sind Plakat;
-alles andere ist Werkzeug. Es gibt keine Fläche, auf der beide gelten.
+vom Router in `src/main.ts`. **Nur `start` ist Plakat**, alles andere ist
+Werkzeug. Es gibt keine Fläche, auf der beide gelten.
+
+Als `generator` von einer Sperrseite zu einer Arbeitsfläche wurde, blieb die
+Route im Plakatzweig stehen. Ergebnis: weiße Schrift auf weißem Grund, weil das
+Plakatsystem die Werkzeugfarben überschrieb. Wer die Liste erweitert, muss
+prüfen, ob die Seite wirklich ein Plakat ist.
 
 **Warum getrennt.** Neonverläufe hinter einer Tabelle mit 146 Zeilen sind nach
 fünf Minuten anstrengend; eine graue Systemleiste als Einstieg macht keine

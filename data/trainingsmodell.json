@@ -1,0 +1,350 @@
+{
+ "katalogversion": "3.8",
+ "herkunft": "Bausteine, Pfade und Regeln aus dem Katalog; Intensität, Zeitgewichte und Altersfaktoren sind redaktionelle Ableitung",
+ "bausteine": [
+  {
+   "code": "A",
+   "name": "Aktivieren",
+   "funktion": "Körper + Wahrnehmung hochfahren",
+   "inhalte": "Bewegung, Ballgewöhnung, Reaktion",
+   "hebel": "Ball, Signal, Raum, Tempo",
+   "intensitaet": 2,
+   "gewicht": 12,
+   "kurz": "Aktivieren"
+  },
+  {
+   "code": "B",
+   "name": "Fundament",
+   "funktion": "eine Kernfertigkeit stabilisieren",
+   "inhalte": "Dribbling, Pass, Wurf, Fußarbeit, Defense",
+   "hebel": "Seite, Distanz, Tempo, Material",
+   "intensitaet": 2,
+   "gewicht": 20,
+   "kurz": "Fundament"
+  },
+  {
+   "code": "C",
+   "name": "Wahrnehmen/Entscheiden",
+   "funktion": "Fertigkeit an Information koppeln",
+   "inhalte": "Partner, Reiz, Gegner, 1v1",
+   "hebel": "Informationsmenge, Start, Zeitdruck",
+   "intensitaet": 3,
+   "gewicht": 18,
+   "kurz": "Wahrnehmen"
+  },
+  {
+   "code": "D",
+   "name": "Kleingruppe",
+   "funktion": "Kompetenz im Spielproblem anwenden",
+   "inhalte": "2v1, 2v2, 3v3, Screening",
+   "hebel": "Überzahl, Raum, Regel, Scoring",
+   "intensitaet": 4,
+   "gewicht": 22,
+   "kurz": "Kleingruppe"
+  },
+  {
+   "code": "E",
+   "name": "Transfer",
+   "funktion": "Schwerpunkt unter offenen Bedingungen prüfen",
+   "inhalte": "3v3, 4v4, 5v5, Transition",
+   "hebel": "Punkte, Shot Clock, Restriktion",
+   "intensitaet": 5,
+   "gewicht": 20,
+   "kurz": "Transfer"
+  },
+  {
+   "code": "F",
+   "name": "Wettbewerb",
+   "funktion": "Energie und Abschluss",
+   "inhalte": "Challenge, Teamwertung, Best-of",
+   "hebel": "Score, Zeit, Rollen",
+   "intensitaet": 5,
+   "gewicht": 12,
+   "kurz": "Wettbewerb"
+  },
+  {
+   "code": "G",
+   "name": "Cooldown/Reflexion",
+   "funktion": "Belastung senken + Lernen verbalisieren",
+   "inhalte": "Freiwurf, ruhige Technik, kurzes Feedback",
+   "hebel": "Partnerfrage, Selbstbewertung",
+   "intensitaet": 1,
+   "gewicht": 8,
+   "kurz": "Ausklang"
+  }
+ ],
+ "pfade": [
+  {
+   "id": "TR-01",
+   "alter_roh": "U8",
+   "alter_von": 8,
+   "alter_bis": 8,
+   "ziel": "Ball + Bewegung",
+   "folge": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "F"
+   ],
+   "individualisierung": "Anfänger: weniger Regeln; Erfahren: Zusatzsignal"
+  },
+  {
+   "id": "TR-02",
+   "alter_roh": "U8–U10",
+   "alter_von": 8,
+   "alter_bis": 10,
+   "ziel": "Passen/Fangen + Freilaufen",
+   "folge": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "individualisierung": "Gruppengröße und Raum variieren"
+  },
+  {
+   "id": "TR-03",
+   "alter_roh": "U10",
+   "alter_von": 10,
+   "alter_bis": 10,
+   "ziel": "Ballhandling + 1v1",
+   "folge": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "F"
+   ],
+   "individualisierung": "schwächer: passiver Druck; stärker: Live-1v1"
+  },
+  {
+   "id": "TR-04",
+   "alter_roh": "U10–U12",
+   "alter_von": 10,
+   "alter_bis": 12,
+   "ziel": "Spacing + Zusammenspiel",
+   "folge": [
+    "A",
+    "C",
+    "D",
+    "E",
+    "F"
+   ],
+   "individualisierung": "No-dribble / Zeitdruck / Bonuspunkte"
+  },
+  {
+   "id": "TR-05",
+   "alter_roh": "U12",
+   "alter_von": 12,
+   "alter_bis": 12,
+   "ziel": "Defense + Transition",
+   "folge": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "individualisierung": "Stop- statt Score-Wertung"
+  },
+  {
+   "id": "TR-06",
+   "alter_roh": "U12",
+   "alter_von": 12,
+   "alter_bis": 12,
+   "ziel": "Wurf nach Entscheidung",
+   "folge": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "F"
+   ],
+   "individualisierung": "Closeout, Wurf/Drive/Pass"
+  },
+  {
+   "id": "TR-07",
+   "alter_roh": "U14",
+   "alter_von": 14,
+   "alter_bis": 14,
+   "ziel": "Angriff gegen Closeout",
+   "folge": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ],
+   "individualisierung": "Startposition + Gegnerdruck"
+  },
+  {
+   "id": "TR-08",
+   "alter_roh": "U14–U16",
+   "alter_von": 14,
+   "alter_bis": 16,
+   "ziel": "Pick-and-Roll",
+   "folge": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F"
+   ],
+   "individualisierung": "Coverage des Verteidigers wechseln"
+  },
+  {
+   "id": "TR-09",
+   "alter_roh": "U16",
+   "alter_von": 16,
+   "alter_bis": 16,
+   "ziel": "Team Defense + Rebound + Transition",
+   "folge": [
+    "A",
+    "C",
+    "D",
+    "E",
+    "F"
+   ],
+   "individualisierung": "Rebound als Pflichtkriterium"
+  },
+  {
+   "id": "TR-10",
+   "alter_roh": "U18",
+   "alter_von": 18,
+   "alter_bis": 18,
+   "ziel": "Screening + 5v5 Transfer",
+   "folge": [
+    "B",
+    "C",
+    "D",
+    "E",
+    "F"
+   ],
+   "individualisierung": "Screen-Typ, Help-Regel, Shot Clock"
+  },
+  {
+   "id": "AW-Technik",
+   "alter_roh": "U8–U18",
+   "alter_von": 8,
+   "alter_bis": 18,
+   "ziel": "Eine Fertigkeit stabilisieren und anwenden",
+   "folge": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "G"
+   ],
+   "individualisierung": "Viel Zeit im Fundament, ruhiger Ausklang. Für neue Inhalte und für Gruppen, die eine Technik erst aufbauen.",
+   "herkunft": "abgeleitet",
+   "name": "Technikweg"
+  },
+  {
+   "id": "AW-Spiel",
+   "alter_roh": "U8–U18",
+   "alter_von": 8,
+   "alter_bis": 18,
+   "ziel": "Früh ins Spielproblem",
+   "folge": [
+    "A",
+    "C",
+    "D",
+    "E",
+    "F"
+   ],
+   "individualisierung": "Ohne isolierten Techniknblock. Gelernt wird an der Situation, wie in den Referenzpfaden TR-04 und TR-09.",
+   "herkunft": "abgeleitet",
+   "name": "Spielweg"
+  },
+  {
+   "id": "AW-Wettkampf",
+   "alter_roh": "U8–U18",
+   "alter_von": 8,
+   "alter_bis": 18,
+   "ziel": "Kurz aufbauen, lange anwenden",
+   "folge": [
+    "A",
+    "B",
+    "D",
+    "E",
+    "F"
+   ],
+   "individualisierung": "Kurzer Aufbau, dann durchgehend Anwendung unter Druck. Für erfahrene Gruppen und Einheiten nah am Spiel.",
+   "herkunft": "abgeleitet",
+   "name": "Wettkampfweg"
+  }
+ ],
+ "referenzdauern": [
+  60,
+  75,
+  90,
+  120
+ ],
+ "altersfaktor": {
+  "jung": {
+   "A": 1.25,
+   "D": 1.25,
+   "F": 1.2,
+   "B": 0.85,
+   "C": 0.9,
+   "E": 0.85
+  },
+  "mittel": {},
+  "alt": {
+   "B": 1.15,
+   "C": 1.15,
+   "E": 1.15,
+   "A": 0.85,
+   "F": 0.9
+  }
+ },
+ "regeln": {
+  "bloecke_min": 4,
+  "bloecke_max": 7,
+  "karten_je_schritt": [
+   4,
+   6
+  ],
+  "organisationsanteil": 0.1,
+  "block_min_minuten": 5,
+  "alterstoleranz": [
+   "A",
+   "G"
+  ],
+  "belastung": "Hohe Intensitäten werden nicht ununterbrochen aneinandergereiht; nach einem sehr intensiven Block folgt ein kontrollierterer.",
+  "eigenstaendigkeit": "Zwei Trainings gelten als unterschiedlich, wenn sich mindestens zwei Dimensionen ändern: Lernziel, Spielproblem, Spielerzahl, Raum, Gegnerdruck, Informationsmenge, Startbedingung, Scoring, Belastungsprofil, Abschlussform."
+ },
+ "quellen": [
+  {
+   "was": "Trainingspfad-Modell, Bausteine A–G, Referenzpfade",
+   "wo": "Kompetenzkatalog v3.8, Forschungsblock XIII, Abschnitt 56.2 und 56.4",
+   "art": "Projektquelle"
+  },
+  {
+   "was": "Praxis als Abfolge unterschiedlicher Lernkontexte statt linearer Drillliste",
+   "wo": "Jr. NBA Instructional Curriculum",
+   "url": "https://jr.nba.com/jr-nba-instructional-curriculum/",
+   "art": "Primärquelle"
+  },
+  {
+   "was": "Belastungswechsel innerhalb einer Einheit, körperlich und psychologisch",
+   "wo": "FIBA/WABC Level 1, Kapitel 2.1.7 Planning Practice",
+   "url": "https://assets.fiba.basketball/image/upload/documents-corporate-wabc-coaching-level-manuals-level-1-eng.pdf",
+   "art": "Primärquelle"
+  },
+  {
+   "was": "Beispielhafte Mischung aus Warm-up, Stationsarbeit, Spielformen",
+   "wo": "FIBA/WABC Facilitator Handbook, Sample Practice Plan",
+   "url": "https://assets.fiba.basketball/image/upload/documents-corporate-wabc-start-coaching-eng-facilitator-handbook.pdf",
+   "art": "Primärquelle"
+  },
+  {
+   "was": "Aufbau des Aktivierungsblocks: Raise, Activate, Mobilise, Potentiate",
+   "wo": "Jeffreys, I. (2007): Warm-up revisited – the RAMP method of optimising warm-ups. Professional Strength and Conditioning 6, 12–18",
+   "art": "Externe Fachquelle, nicht im Katalog enthalten"
+  }
+ ]
+}
