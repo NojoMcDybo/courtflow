@@ -238,6 +238,8 @@ def abdeckung(drills, tax):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--matrix", action="store_true", help="Abdeckungsmatrix ausgeben")
+    ap.add_argument("--nur-selbsttest", action="store_true",
+                    help="nur prüfen, ob die Prüfregeln selbst funktionieren")
     args = ap.parse_args()
 
     fehler = selbsttest()
@@ -246,6 +248,8 @@ def main():
         print(f"  ! {f}")
     if fehler:
         sys.exit(2)
+    if args.nur_selbsttest:
+        return
 
     drills = json.loads(DRILLS.read_text(encoding="utf-8"))
     tax = json.loads(TAXONOMY.read_text(encoding="utf-8"))
