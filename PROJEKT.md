@@ -78,6 +78,8 @@ keine Quelle.
 | 08.09.2026 | Erste Fläche ist die Bibliothek, nicht der Generator | Sie prüft das Datenmodell an allen 146 Karten, bevor Generator und Builder darauf aufsetzen |
 | 08.09.2026 | Bildkacheln bleiben leer statt Platzhalterbild | Es existiert kein Bildbestand; ein Platzhalter würde Vollständigkeit vortäuschen |
 | 08.09.2026 | Repo öffentlich, Auslieferung über GitHub Pages und Actions | Auf Wunsch von Nojo; damit sind auch die Primärquellen unter docs/quellen/ öffentlich |
+| 08.09.2026 | Oberfläche nach den Referenzbildern: Aufbau aus dem UI-Entwurf, Farbwelt aus Jord | Der Entwurf liefert Struktur, Dichte und das Hell/Dunkel-Paar; Violett statt des generischen Blaus bindet die Oberfläche an den Markencharakter |
+| 08.09.2026 | Die Jord-Bilder werden nicht auf der Seite verwendet | Sie zeigen echte Marken (NBA, Chicago Bulls, Nike, Jordan) und sind für eine öffentliche Seite kein nutzbares Asset |
 
 ## Offene Befunde
 
@@ -98,6 +100,11 @@ keine Quelle.
   Prüfstand 35 Befunde meldet. Das ist eine bewusste Zwischenstufe, kein
   erreichter Zustand — die Karten sind in der Oberfläche als unbelegt
   gekennzeichnet.
+- **Jord trägt fremde Marken.** Beide Referenzbilder zeigen NBA-, Bulls-,
+  Nike- und Jordan-Zeichen samt Trikot „Jordan 23". Solange das so ist, ist
+  Jord auf einer öffentlichen Seite nicht einsetzbar — weder als Hero noch als
+  Kartenmotiv. Entweder eine markenfreie Fassung des Charakters oder Jord
+  bleibt internes Moodboard.
 - **Kein Bildbestand.** Die Bildprompt-Datei beschreibt Motive, enthält aber keine
   Bilder. Die drei Jord-Referenzbilder unter `assets/reference/` sind
   Charakterreferenz, keine Kartenmotive.

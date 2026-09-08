@@ -1,50 +1,50 @@
+import { el } from "../dom";
 import {
   TIEFE_LABEL,
   aliaseVon,
   alleDrills,
   filtern,
-  kennzahlen,
   kompetenzName,
   taxonomie,
 } from "../data";
 import type { Drill, Filter } from "../types";
 
-const el = <K extends keyof HTMLElementTagNameMap>(
-  tag: K,
-  attrs: Record<string, string> = {},
-  kinder: (Node | string)[] = [],
-): HTMLElementTagNameMap[K] => {
-  const node = document.createElement(tag);
-  for (const [k, v] of Object.entries(attrs)) node.setAttribute(k, v);
-  for (const kind of kinder) node.append(kind);
-  return node;
-};
-
 const SKALEN_LABEL: Record<string, string> = {
-  entscheidung: "Entscheidungsschwierigkeit",
+  entscheidung: "Entscheidung",
   gegnerdruck: "Gegnerdruck",
-  technik: "Technikschwierigkeit",
+  technik: "Technik",
   spielnaehe: "Spielnähe",
   zeitdruck: "Zeitdruck",
   raumdruck: "Raumdruck",
-  wahrnehmung: "Wahrnehmungsanforderung",
-  kooperation: "Kooperationsgrad",
+  wahrnehmung: "Wahrnehmung",
+  kooperation: "Kooperation",
+};
+
+const TIEFE_RANG: Record<string, "voll" | "mittel" | ""> = {
+  vollstaendig: "voll",
+  standard: "mittel",
+  redaktionsscore: "mittel",
 };
 
 const altersLabel = (d: Drill): string =>
-  d.alter.roh ?? (d.alter.von ? `U${d.alter.von}–U${d.alter.bis}` : "Alter nicht dokumentiert");
+  d.alter.roh ?? (d.alter.von ? `U${d.alter.von}–U${d.alter.bis}` : "Alter offen");
 
 const kurzfassung = (d: Drill): string =>
-  d.lernziel ?? d.ablauf ?? d.evidenz ?? d.redaktionsnotiz ?? "Für diese Karte ist im Katalog noch keine Durchführung erfasst.";
+  d.lernziel ??
+  d.ablauf ??
+  d.evidenz ??
+  d.redaktionsnotiz ??
+  "Für diese Karte ist im Katalog noch keine Durchführung erfasst.";
 
 function marken(d: Drill): HTMLElement {
   const box = el("div", { class: "marken" });
-  box.append(el("span", { class: "marke alter" }, [altersLabel(d)]));
+  box.append(el("span", { class: "marke-pille alter" }, [altersLabel(d)]));
   for (const code of d.kompetenz.alle.slice(0, 3)) {
-    box.append(el("span", { class: `marke ${code[0]}` }, [code]));
+    box.append(el("span", { class: `marke-pille ${code[0]}` }, [code]));
   }
+  const voll = d.dokumentationstiefe === "vollstaendig";
   box.append(
-    el("span", { class: `marke tiefe-${d.dokumentationstiefe}` }, [
+    el("span", { class: `marke-pille tiefe${voll ? " voll" : ""}` }, [
       TIEFE_LABEL[d.dokumentationstiefe] ?? d.dokumentationstiefe,
     ]),
   );
@@ -53,9 +53,17 @@ function marken(d: Drill): HTMLElement {
 
 function karte(d: Drill, oeffnen: (d: Drill) => void): HTMLElement {
   const knopf = el("button", { class: "karte", type: "button" });
-  knopf.append(
-    el("div", { class: "motiv", "aria-hidden": "true", title: "Für diese Karte liegt noch kein Bild vor" }),
+  const kopf = el("div", { class: "kartenkopf" });
+  kopf.append(
     el("span", { class: "kennung" }, [d.id]),
+    el("span", {
+      class: `tiefe-punkt ${TIEFE_RANG[d.dokumentationstiefe] ?? ""}`.trim(),
+      title: `Dokumentationstiefe: ${TIEFE_LABEL[d.dokumentationstiefe] ?? d.dokumentationstiefe}`,
+    }),
+  );
+  knopf.append(
+    el("div", { class: "motiv", "aria-hidden": "true", title: "Noch kein Bild im Bestand" }),
+    kopf,
     el("h3", {}, [d.titel]),
     el("p", {}, [kurzfassung(d)]),
     marken(d),
@@ -71,13 +79,18 @@ function wertfeld(label: string, wert: string | null): HTMLElement | null {
 
 function detail(d: Drill, dialog: HTMLDialogElement): void {
   const inhalt = el("div", { class: "detail-inhalt" });
+
+  const kopf = el("div", { class: "detail-kopf" });
+  const titelblock = el("div", {});
+  titelblock.append(el("span", { class: "kennung" }, [d.id]), el("h2", {}, [d.titel]));
   const schliessen = el("button", { class: "schliessen", type: "button" }, ["Schließen"]);
   schliessen.addEventListener("click", () => dialog.close());
-  inhalt.append(schliessen, el("span", { class: "kennung" }, [d.id]), el("h2", {}, [d.titel]));
+  kopf.append(titelblock, schliessen);
+  inhalt.append(kopf, marken(d));
+
   if (d.originaltitel && d.originaltitel !== d.titel) {
-    inhalt.append(el("p", { class: "kennung" }, [`Originaltitel: ${d.originaltitel}`]));
+    inhalt.append(el("p", { class: "hinweis" }, [`Originaltitel: ${d.originaltitel}`]));
   }
-  inhalt.append(marken(d));
 
   const abschnitte: [string, string | null][] = [
     ["Lernziel", d.lernziel],
@@ -106,9 +119,9 @@ function detail(d: Drill, dialog: HTMLDialogElement): void {
   ]) {
     if (feld) werte.append(feld);
   }
-  const skalen = Object.entries(d.skalen).filter(([, v]) => v && v.wert !== null);
-  for (const [name, wert] of skalen) {
-    werte.append(el("div", {}, [el("b", {}, [SKALEN_LABEL[name] ?? name]), wert?.roh ?? ""]));
+  for (const [name, wert] of Object.entries(d.skalen)) {
+    if (!wert || wert.wert === null) continue;
+    werte.append(el("div", {}, [el("b", {}, [SKALEN_LABEL[name] ?? name]), wert.roh]));
   }
   if (werte.childElementCount) inhalt.append(el("h4", {}, ["Merkmale"]), werte);
 
@@ -158,7 +171,7 @@ function detail(d: Drill, dialog: HTMLDialogElement): void {
   dialog.showModal();
 }
 
-export function bibliothek(wurzel: HTMLElement): void {
+export function bibliothek(): HTMLElement {
   const filter: Filter = {
     suche: "",
     altersstufe: null,
@@ -168,38 +181,20 @@ export function bibliothek(wurzel: HTMLElement): void {
     nurMitQuelle: false,
   };
 
-  const zahlen = kennzahlen(alleDrills);
-  const kopf = el("header", { class: "kopf" });
-  kopf.append(
-    el("h1", {}, ["Court", el("span", {}, ["Flow"])]),
-    el("p", {}, [
-      `Übungsbibliothek Kinder- und Jugendbasketball U8–U18, aufgebaut aus dem Kompetenzkatalog v${taxonomie.katalogversion}. Jede Karte zeigt ihre Quelle und wie tief sie belegt ist.`,
-    ]),
-  );
-  const kz = el("div", { class: "kennzahlen" });
-  for (const [wert, label] of [
-    [zahlen.gesamt, "Karten"],
-    [zahlen.mitQuelle, "mit Quellenangabe"],
-    [zahlen.vollstaendig, "vollständig erfasst"],
-    [zahlen.publishReady, "als publish-ready ausgewiesen"],
-    [taxonomie.kompetenzen.length, "Kompetenzen im Modell"],
-  ] as [number, string][]) {
-    kz.append(el("div", { class: "kennzahl" }, [el("b", {}, [String(wert)]), el("span", {}, [label])]));
-  }
-  kopf.append(kz);
+  const bereich = el("section", { class: "bibliothek", id: "bibliothek" });
+  const huelle = el("div", { class: "bibliothek-huelle" });
+  const kopf = el("div", { class: "bibliothek-kopf" });
+  const trefferzeile = el("p", { class: "trefferzeile" });
+  kopf.append(el("h2", {}, ["Bibliothek"]), trefferzeile);
 
-  const huelle = el("div", { class: "huelle" });
+  const spalten = el("div", { class: "spalten" });
   const seitenleiste = el("details", { class: "filter" }) as HTMLDetailsElement;
-  // Auf breiten Fenstern offen, auf schmalen zugeklappt -- und beim Wechsel
-  // mitgeführt, sonst bleibt ein schmal geladenes Fenster nach dem Aufziehen
-  // dauerhaft mit zugeklapptem Filter stehen.
-  const breit = window.matchMedia("(min-width: 861px)");
+  const breit = window.matchMedia("(min-width: 901px)");
   seitenleiste.open = breit.matches;
   breit.addEventListener("change", (e) => {
     seitenleiste.open = e.matches;
   });
-  const spalte = el("section", {});
-  const trefferzeile = el("p", { class: "trefferzeile" });
+
   const raster = el("div", { class: "raster" });
   const dialog = el("dialog", { class: "detail" }) as HTMLDialogElement;
 
@@ -291,28 +286,18 @@ export function bibliothek(wurzel: HTMLElement): void {
     const ohneQuelle = treffer.filter((d) => !d.quelle.url && !d.quelle.name).length;
     trefferzeile.textContent =
       `${treffer.length} von ${alleDrills.length} Karten` +
-      (ohneQuelle ? ` · ${ohneQuelle} davon ohne hinterlegte Quelle` : "") +
-      " · Bildbestand noch leer, die Kacheln bleiben bis dahin frei";
+      (ohneQuelle ? ` · ${ohneQuelle} davon ohne hinterlegte Quelle` : "");
     raster.replaceChildren();
     if (!treffer.length) {
-      raster.append(
-        el("p", { class: "leer" }, ["Keine Karte passt zu dieser Kombination."]),
-      );
+      raster.append(el("p", { class: "leer" }, ["Keine Karte passt zu dieser Kombination."]));
       return;
     }
     for (const d of treffer) raster.append(karte(d, (x) => detail(x, dialog)));
   }
 
-  spalte.append(trefferzeile, raster);
-  huelle.append(seitenleiste, spalte);
-
-  const fuss = el("footer", { class: "fuss" });
-  fuss.append(
-    el("p", {}, [
-      `Datengrundlage: ${taxonomie.quelle}. Übungsbeschreibungen sind redaktionelle Eigenformulierungen; die Originalquelle ist je Karte verlinkt. Karten ohne Quellenangabe sind als solche gekennzeichnet und nicht veröffentlichungsreif.`,
-    ]),
-  );
-
-  wurzel.append(kopf, huelle, dialog, fuss);
+  spalten.append(seitenleiste, raster);
+  huelle.append(kopf, spalten);
+  bereich.append(huelle, dialog);
   zeichnen();
+  return bereich;
 }
