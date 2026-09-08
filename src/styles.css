@@ -75,8 +75,8 @@ a { color: var(--teal); }
   .filter[open] summary { margin-bottom: 12px; }
 }
 @media (min-width: 861px) {
-  .filter summary { list-style: none; cursor: default; pointer-events: none; }
-  .filter summary::-webkit-details-marker { display: none; }
+  .filter summary::marker,
+  .filter summary::-webkit-details-marker { content: ""; display: none; }
 }
 
 .filter {

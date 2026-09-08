@@ -190,7 +190,14 @@ export function bibliothek(wurzel: HTMLElement): void {
 
   const huelle = el("div", { class: "huelle" });
   const seitenleiste = el("details", { class: "filter" }) as HTMLDetailsElement;
-  seitenleiste.open = window.matchMedia("(min-width: 861px)").matches;
+  // Auf breiten Fenstern offen, auf schmalen zugeklappt -- und beim Wechsel
+  // mitgeführt, sonst bleibt ein schmal geladenes Fenster nach dem Aufziehen
+  // dauerhaft mit zugeklapptem Filter stehen.
+  const breit = window.matchMedia("(min-width: 861px)");
+  seitenleiste.open = breit.matches;
+  breit.addEventListener("change", (e) => {
+    seitenleiste.open = e.matches;
+  });
   const spalte = el("section", {});
   const trefferzeile = el("p", { class: "trefferzeile" });
   const raster = el("div", { class: "raster" });

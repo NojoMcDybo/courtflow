@@ -1,6 +1,7 @@
 # CourtFlow — Steuerungsdokument
 
 Stand: 08.09.2026 · Datengrundlage: Kompetenzkatalog v3.8 (Research Freeze mit Backlog)
+Repo: <https://github.com/NojoMcDybo/courtflow> · Live: <https://nojomcdybo.github.io/courtflow/>
 
 ## Was das Vorhaben liefert, das die Quellen nicht liefern
 
@@ -76,6 +77,7 @@ keine Quelle.
 | 08.09.2026 | Ziel: öffentliche Website für Trainer:innen | Quelle und QA je Karte sichtbar; Karten ohne Quelle sind nicht veröffentlichungsreif |
 | 08.09.2026 | Erste Fläche ist die Bibliothek, nicht der Generator | Sie prüft das Datenmodell an allen 146 Karten, bevor Generator und Builder darauf aufsetzen |
 | 08.09.2026 | Bildkacheln bleiben leer statt Platzhalterbild | Es existiert kein Bildbestand; ein Platzhalter würde Vollständigkeit vortäuschen |
+| 08.09.2026 | Repo öffentlich, Auslieferung über GitHub Pages und Actions | Auf Wunsch von Nojo; damit sind auch die Primärquellen unter docs/quellen/ öffentlich |
 
 ## Offene Befunde
 
@@ -92,6 +94,10 @@ keine Quelle.
   Der Katalog nennt für EX-153–158 selbst einen offenen Standardexport.
 - **S7 U8 ist die einzige benannte inhaltliche Lücke** (Katalog 62.11); die
   Abdeckungsmatrix bestätigt zusätzlich dünne Belegung bei K4, K5 und in U16/U18.
+- **Öffentlich mit 32 unbelegten Karten.** Die Seite ist live, obwohl der
+  Prüfstand 35 Befunde meldet. Das ist eine bewusste Zwischenstufe, kein
+  erreichter Zustand — die Karten sind in der Oberfläche als unbelegt
+  gekennzeichnet.
 - **Kein Bildbestand.** Die Bildprompt-Datei beschreibt Motive, enthält aber keine
   Bilder. Die drei Jord-Referenzbilder unter `assets/reference/` sind
   Charakterreferenz, keine Kartenmotive.
