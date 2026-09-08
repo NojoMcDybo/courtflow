@@ -78,7 +78,8 @@ keine Quelle.
 | 08.09.2026 | Erste Fläche ist die Bibliothek, nicht der Generator | Sie prüft das Datenmodell an allen 146 Karten, bevor Generator und Builder darauf aufsetzen |
 | 08.09.2026 | Bildkacheln bleiben leer statt Platzhalterbild | Es existiert kein Bildbestand; ein Platzhalter würde Vollständigkeit vortäuschen |
 | 08.09.2026 | Repo öffentlich, Auslieferung über GitHub Pages und Actions | Auf Wunsch von Nojo; damit sind auch die Primärquellen unter docs/quellen/ öffentlich |
-| 08.09.2026 | Oberfläche nach den Referenzbildern: Aufbau aus dem UI-Entwurf, Farbwelt aus Jord | Der Entwurf liefert Struktur, Dichte und das Hell/Dunkel-Paar; Violett statt des generischen Blaus bindet die Oberfläche an den Markencharakter |
+| 08.09.2026 | Oberfläche als Tabellenwerkzeug statt Landingpage | Hero, Kennzahlenband, Prozessstrecke und Kartenraster waren Fläche ohne Funktion. 146 strukturierte Datensätze sind eine Tabelle, keine Kachelwand |
+| 08.09.2026 | Text ist kein Gestaltungsmittel | Erklärender Fließtext wurde durch Spalten, Marken und Zahlen ersetzt. Vollständiger Text nur noch im Detailblatt, wo er der Inhalt ist |
 | 08.09.2026 | Die Jord-Bilder werden nicht auf der Seite verwendet | Sie zeigen echte Marken (NBA, Chicago Bulls, Nike, Jordan) und sind für eine öffentliche Seite kein nutzbares Asset |
 
 ## Offene Befunde
