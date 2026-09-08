@@ -142,7 +142,7 @@ function blattInhalt(d: Drill, schliessen: () => void): HTMLElement {
   return inhalt;
 }
 
-export function seite(wurzel: HTMLElement): void {
+export function seite(wurzel: HTMLElement): () => void {
   const filter: Filter = {
     suche: "",
     altersstufe: null,
@@ -197,7 +197,10 @@ export function seite(wurzel: HTMLElement): void {
   });
 
   leiste.append(
-    el("span", { class: "wortmarke" }, [el("i", { "aria-hidden": "true" }, ["CF"]), "CourtFlow"]),
+    el("a", { class: "wortmarke", href: "#/", title: "Zur Startseite" }, [
+      el("i", { "aria-hidden": "true" }, ["CF"]),
+      "CourtFlow",
+    ]),
     suche,
     segmente,
     el("span", { class: "leiste-rechts" }, [
@@ -305,7 +308,7 @@ export function seite(wurzel: HTMLElement): void {
   }
 
   /* Quick Look: Leertaste zeigt, Leertaste schließt, Pfeile blättern weiter. */
-  document.addEventListener("keydown", (e) => {
+  const tasten = (e: KeyboardEvent) => {
     if (ansicht !== "liste") return;
     const imFeld = e.target instanceof HTMLInputElement || e.target instanceof HTMLSelectElement;
     if (e.key === "ArrowDown" && !imFeld) {
@@ -323,7 +326,8 @@ export function seite(wurzel: HTMLElement): void {
       e.preventDefault();
       suche.focus();
     }
-  });
+  };
+  document.addEventListener("keydown", tasten);
 
   function zeile(d: Drill, i: number): HTMLElement {
     const tr = el("tr", { tabindex: "-1", "aria-selected": String(i === markiert) });
@@ -459,4 +463,9 @@ export function seite(wurzel: HTMLElement): void {
 
   wurzel.append(leiste, filterzeile, bereich, dialog, fuss);
   zeichnen();
+
+  return () => {
+    document.removeEventListener("keydown", tasten);
+    for (const k of [leiste, filterzeile, bereich, dialog, fuss]) k.remove();
+  };
 }
