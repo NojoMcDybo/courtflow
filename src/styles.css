@@ -1,0 +1,276 @@
+/* Farbklima nach Katalogvorgabe: Holz, Cream, Terracotta, Amber, gedämpftes
+   Grün, zurückhaltendes Teal. Violett nur als Technikakzent, nie als Fläche. */
+:root {
+  --cream: #faf6ef;
+  --cream-2: #f3ecdf;
+  --papier: #fffdf9;
+  --holz: #3d2f24;
+  --holz-2: #6b5745;
+  --linie: #e2d6c3;
+  --terracotta: #b8563a;
+  --amber: #c98a2b;
+  --gruen: #5c7a5a;
+  --teal: #3d6b6b;
+  --violett: #6b5ba8;
+  --schrift: 15px/1.55 "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+  --ui: 13px/1.4 ui-sans-serif, system-ui, "Segoe UI", Roboto, sans-serif;
+  --radius: 10px;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font: var(--schrift);
+  color: var(--holz);
+  background: var(--cream);
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: var(--teal); }
+
+.kopf {
+  border-bottom: 1px solid var(--linie);
+  background: var(--papier);
+  padding: 20px clamp(16px, 4vw, 48px);
+}
+.kopf h1 {
+  margin: 0;
+  font-size: 24px;
+  letter-spacing: -0.01em;
+}
+.kopf h1 span { color: var(--terracotta); }
+.kopf p {
+  margin: 6px 0 0;
+  font: var(--ui);
+  color: var(--holz-2);
+  max-width: 68ch;
+}
+
+.kennzahlen {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+  margin-top: 14px;
+  font: var(--ui);
+}
+.kennzahl b {
+  display: block;
+  font: 600 20px/1.1 ui-sans-serif, system-ui, sans-serif;
+  color: var(--holz);
+}
+.kennzahl span { color: var(--holz-2); }
+
+.huelle {
+  display: grid;
+  grid-template-columns: 260px minmax(0, 1fr);
+  gap: clamp(16px, 3vw, 36px);
+  padding: clamp(16px, 3vw, 32px) clamp(16px, 4vw, 48px) 64px;
+  align-items: start;
+}
+@media (max-width: 860px) {
+  .huelle { grid-template-columns: 1fr; }
+  .filter { position: static; }
+  .filter summary { margin-bottom: 0; }
+  .filter[open] summary { margin-bottom: 12px; }
+}
+@media (min-width: 861px) {
+  .filter summary { list-style: none; cursor: default; pointer-events: none; }
+  .filter summary::-webkit-details-marker { display: none; }
+}
+
+.filter {
+  position: sticky;
+  top: 16px;
+  background: var(--papier);
+  border: 1px solid var(--linie);
+  border-radius: var(--radius);
+  padding: 16px;
+  font: var(--ui);
+}
+.filter summary {
+  margin: 0 0 12px;
+  cursor: pointer;
+  font: 600 12px/1 ui-sans-serif, system-ui, sans-serif;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--holz-2);
+}
+.feld { margin-bottom: 14px; }
+.feld > label {
+  display: block;
+  margin-bottom: 5px;
+  color: var(--holz-2);
+}
+.filter input[type="search"],
+.filter select {
+  width: 100%;
+  padding: 7px 9px;
+  font: var(--ui);
+  color: var(--holz);
+  background: var(--cream);
+  border: 1px solid var(--linie);
+  border-radius: 7px;
+}
+.filter input[type="search"]:focus-visible,
+.filter select:focus-visible {
+  outline: 2px solid var(--teal);
+  outline-offset: 1px;
+}
+.schalter { display: flex; align-items: center; gap: 8px; cursor: pointer; }
+.zuruecksetzen {
+  margin-top: 4px;
+  width: 100%;
+  padding: 7px;
+  font: var(--ui);
+  color: var(--holz-2);
+  background: var(--cream-2);
+  border: 1px solid var(--linie);
+  border-radius: 7px;
+  cursor: pointer;
+}
+.zuruecksetzen:hover { color: var(--terracotta); }
+
+.trefferzeile {
+  font: var(--ui);
+  color: var(--holz-2);
+  margin: 0 0 14px;
+}
+
+.raster {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(266px, 1fr));
+  gap: 14px;
+}
+
+.karte {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  padding: 15px;
+  text-align: left;
+  background: var(--papier);
+  border: 1px solid var(--linie);
+  border-radius: var(--radius);
+  cursor: pointer;
+  font: inherit;
+  color: inherit;
+}
+.karte:hover { border-color: var(--terracotta); }
+.karte:focus-visible { outline: 2px solid var(--teal); outline-offset: 2px; }
+
+/* Kein Bildbestand vorhanden: die Kachel bleibt eine ruhige Fläche statt
+   ein Platzhalterbild vorzutäuschen. */
+.motiv {
+  height: 14px;
+  border-radius: 7px;
+  background:
+    linear-gradient(115deg, var(--cream-2), var(--cream)),
+    var(--cream-2);
+  border: 1px dashed var(--linie);
+  font: var(--ui);
+  color: #b0a290;
+}
+.motiv span { color: #b0a290; letter-spacing: 0.06em; }
+
+.karte h3 { margin: 0; font-size: 16px; line-height: 1.3; }
+.kennung {
+  font: 600 11px/1 ui-monospace, SFMono-Regular, Menlo, monospace;
+  letter-spacing: 0.06em;
+  color: var(--holz-2);
+}
+.karte p {
+  margin: 0;
+  font: var(--ui);
+  color: var(--holz-2);
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.marken { display: flex; flex-wrap: wrap; gap: 5px; }
+.marke {
+  font: 600 11px/1 ui-sans-serif, system-ui, sans-serif;
+  padding: 4px 7px;
+  border-radius: 5px;
+  background: var(--cream-2);
+  color: var(--holz-2);
+}
+.marke.alter { background: #efe3cd; color: #7a5c22; }
+.marke.T { background: #f0ded7; color: #8d3b23; }
+.marke.K { background: #dfe7dd; color: #3f5b3d; }
+.marke.S { background: #d9e5e5; color: #2c5555; }
+.marke.tiefe-vollstaendig { background: #dfe7dd; color: #3f5b3d; }
+.marke.tiefe-standard { background: #e3e7ea; color: #445562; }
+.marke.tiefe-redaktionsscore { background: #eee3d0; color: #7a5c22; }
+.marke.tiefe-kurz { background: #f2e6dc; color: #8a5a3a; }
+.marke.tiefe-nur_belege,
+.marke.tiefe-nur_titel { background: #ece7e0; color: #7d7166; }
+
+dialog.detail {
+  width: min(720px, 94vw);
+  max-height: 88vh;
+  padding: 0;
+  border: 1px solid var(--linie);
+  border-radius: 14px;
+  background: var(--papier);
+  color: var(--holz);
+}
+dialog.detail::backdrop { background: rgba(61, 47, 36, 0.42); }
+.detail-inhalt { padding: 26px clamp(18px, 4vw, 32px) 30px; overflow: auto; max-height: 88vh; }
+.detail-inhalt h2 { margin: 6px 0 4px; font-size: 22px; }
+.detail-inhalt h4 {
+  margin: 20px 0 5px;
+  font: 600 11px/1 ui-sans-serif, system-ui, sans-serif;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--holz-2);
+}
+.detail-inhalt p { margin: 0; }
+.schliessen {
+  float: right;
+  border: 1px solid var(--linie);
+  background: var(--cream);
+  border-radius: 7px;
+  padding: 5px 10px;
+  cursor: pointer;
+  font: var(--ui);
+}
+.werte {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 10px;
+  margin-top: 8px;
+  font: var(--ui);
+}
+.werte div { background: var(--cream); border-radius: 7px; padding: 8px 10px; }
+.werte b { display: block; color: var(--holz-2); font-weight: 600; }
+
+.hinweis {
+  margin-top: 18px;
+  padding: 12px 14px;
+  border-left: 3px solid var(--amber);
+  background: var(--cream);
+  border-radius: 0 7px 7px 0;
+  font: var(--ui);
+  color: var(--holz-2);
+}
+.hinweis.streng { border-left-color: var(--terracotta); }
+
+.leer {
+  padding: 40px;
+  text-align: center;
+  color: var(--holz-2);
+  font: var(--ui);
+  border: 1px dashed var(--linie);
+  border-radius: var(--radius);
+}
+
+.fuss {
+  border-top: 1px solid var(--linie);
+  padding: 22px clamp(16px, 4vw, 48px);
+  font: var(--ui);
+  color: var(--holz-2);
+  background: var(--papier);
+}

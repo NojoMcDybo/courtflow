@@ -1,0 +1,17 @@
+{
+  "name": "courtflow",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview",
+    "daten": "python3 tools/extract.py && python3 tools/normalize.py && python3 tools/taxonomy.py",
+    "pruefen": "python3 tools/validate.py --matrix"
+  },
+  "devDependencies": {
+    "typescript": "^5.7.2",
+    "vite": "^6.0.7"
+  }
+}

@@ -1,0 +1,9 @@
+node_modules/
+dist/
+.DS_Store
+
+# aus der Primärquelle erzeugt, siehe: npm run daten
+docs/quellen/records-raw.json
+
+# vom Cowork-Client abgelegte Vorschauen
+Claude outputs/

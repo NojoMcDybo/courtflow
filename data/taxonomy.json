@@ -1,0 +1,568 @@
+{
+ "quelle": "Jugendbasketball_Kompetenzkatalog_v3_8_final.docx",
+ "katalogversion": "3.8",
+ "altersstufen": [
+  {
+   "code": "U8",
+   "alter_bis": 8
+  },
+  {
+   "code": "U10",
+   "alter_bis": 10
+  },
+  {
+   "code": "U12",
+   "alter_bis": 12
+  },
+  {
+   "code": "U14",
+   "alter_bis": 14
+  },
+  {
+   "code": "U16",
+   "alter_bis": 16
+  },
+  {
+   "code": "U18",
+   "alter_bis": 18
+  }
+ ],
+ "kompetenzen": [
+  {
+   "code": "T1",
+   "familie": "Technik",
+   "name": "Ballhandling",
+   "quellenorganisationen": [
+    "FIBA/WABC",
+    "Jr. NBA"
+   ],
+   "altersprogression": {
+    "U8": "Ball kontrollieren; rechts/links kennenlernen; einfache Fortbewegung",
+    "U10": "beide Hände; einfache Hand-/Richtungswechsel; Bewegung mit Ball",
+    "U12": "Tempo/Richtung wechseln; Blick lösen; Ball schützen; Druck/Gegner integrieren"
+   },
+   "karten_im_katalog": 10,
+   "bewertung_katalog": "stark; breit über Basis und Bewegung verteilt"
+  },
+  {
+   "code": "T2",
+   "familie": "Technik",
+   "name": "Passen/Fangen",
+   "quellenorganisationen": [
+    "DBB",
+    "FIBA/WABC",
+    "Jr. NBA"
+   ],
+   "altersprogression": {
+    "U8": "fangen, rollen/werfen, kurze Pässe",
+    "U10": "Pass-/Fangtechnik in Bewegung; einfache Zielwahl",
+    "U12": "Passwinkel, Timing und Auswahl unter Bewegung/Gegnerdruck"
+   },
+   "karten_im_katalog": 8,
+   "bewertung_katalog": "gut; U8-Anteil vorhanden, weitere Spielnähe sinnvoll"
+  },
+  {
+   "code": "T3",
+   "familie": "Technik",
+   "name": "Werfen/Abschluss",
+   "quellenorganisationen": [
+    "DBB",
+    "Jr. NBA"
+   ],
+   "altersprogression": {
+    "U8": "Ziel auf Korb; einfache Nahwürfe; Layup als Bewegungsmuster",
+    "U10": "Layup beidseitig; Wurf nach Pass/Dribbling",
+    "U12": "Abschluss nach Vorteil; Wurf/Drive/Pass auswählen; Gegnerdruck"
+   },
+   "karten_im_katalog": 7,
+   "bewertung_katalog": "gut; beidseitige Abschlussbasis vorhanden"
+  },
+  {
+   "code": "T4",
+   "familie": "Technik",
+   "name": "Fußarbeit",
+   "quellenorganisationen": [
+    "FIBA/WABC",
+    "Jr. NBA"
+   ],
+   "altersprogression": {
+    "U8": "Stoppen, Starten, Gleichgewicht",
+    "U10": "Jump Stop, 1-2 Stop, Pivot, Richtungswechsel",
+    "U12": "Fußarbeit als Mittel für Vorteil/Verteidigung; unter Geschwindigkeit"
+   },
+   "karten_im_katalog": 8,
+   "bewertung_katalog": "gut; besonders U8–U10 belastbar"
+  },
+  {
+   "code": "T5",
+   "familie": "Technik",
+   "name": "Individualverteidigung",
+   "quellenorganisationen": [
+    "DBB",
+    "Jr. NBA"
+   ],
+   "altersprogression": {
+    "U8": "Körper zwischen Gegner und Ziel; einfache Bewegung",
+    "U10": "Grundposition, laterale Bewegung, einfache 1v1 Defense",
+    "U12": "Abstand, Closeout, Drive verhindern, Help/Recover-Grundlagen"
+   },
+   "karten_im_katalog": 6,
+   "bewertung_katalog": "gut, U8 deutlich verbessert; weitere spielnahe Variationen sinnvoll"
+  },
+  {
+   "code": "T6",
+   "familie": "Technik",
+   "name": "Rebounding",
+   "quellenorganisationen": [
+    "DBB",
+    "Jr. NBA"
+   ],
+   "altersprogression": {
+    "U8": "Ball verfolgen und sicher fangen",
+    "U10": "Position + Körper zwischen Gegner/Ball",
+    "U12": "Box Out, Ball sichern, Outlet und Übergang"
+   },
+   "karten_im_katalog": 6,
+   "bewertung_katalog": "gut; Rebound-Pipeline jetzt eigenständig vertreten"
+  },
+  {
+   "code": "K1",
+   "familie": "Koordination",
+   "name": "Gleichgewicht",
+   "quellenorganisationen": [
+    "Jr. NBA"
+   ],
+   "altersprogression": null,
+   "karten_im_katalog": 5,
+   "bewertung_katalog": "ausreichend; Landung/Balance vorhanden"
+  },
+  {
+   "code": "K2",
+   "familie": "Koordination",
+   "name": "Orientierung",
+   "quellenorganisationen": [
+    "DBB",
+    "FIBA/WABC",
+    "Jr. NBA"
+   ],
+   "altersprogression": null,
+   "karten_im_katalog": 10,
+   "bewertung_katalog": "stark; gute Wahrnehmungsintegration"
+  },
+  {
+   "code": "K3",
+   "familie": "Koordination",
+   "name": "Reaktion",
+   "quellenorganisationen": [
+    "DBB",
+    "Jr. NBA"
+   ],
+   "altersprogression": null,
+   "karten_im_katalog": 5,
+   "bewertung_katalog": "ausreichend; starke Signalformen"
+  },
+  {
+   "code": "K4",
+   "familie": "Koordination",
+   "name": "Rhythmus",
+   "quellenorganisationen": [
+    "Jr. NBA"
+   ],
+   "altersprogression": null,
+   "karten_im_katalog": 2,
+   "bewertung_katalog": "dünn; nur 2 Karten"
+  },
+  {
+   "code": "K5",
+   "familie": "Koordination",
+   "name": "Differenzierung",
+   "quellenorganisationen": [
+    "Jr. NBA"
+   ],
+   "altersprogression": null,
+   "karten_im_katalog": 1,
+   "bewertung_katalog": "kritisch dünn; nur 1 Karte"
+  },
+  {
+   "code": "K6",
+   "familie": "Koordination",
+   "name": "Kopplung",
+   "quellenorganisationen": [
+    "Jr. NBA"
+   ],
+   "altersprogression": null,
+   "karten_im_katalog": 1,
+   "bewertung_katalog": "kritisch dünn; nur 1 Karte"
+  },
+  {
+   "code": "K7",
+   "familie": "Koordination",
+   "name": "Agilität",
+   "quellenorganisationen": [
+    "Jr. NBA"
+   ],
+   "altersprogression": null,
+   "karten_im_katalog": 6,
+   "bewertung_katalog": "gut; mehrere Agilitätskontexte"
+  },
+  {
+   "code": "S1",
+   "familie": "Spielfähigkeit / Taktik",
+   "name": "1v1 Angriff",
+   "quellenorganisationen": [
+    "DBB",
+    "Jr. NBA"
+   ],
+   "altersprogression": {
+    "U8": "Korb/ Ziel erkennen; losdribbeln",
+    "U10": "Verteidiger beobachten; einfache Richtung-/Tempoauswahl",
+    "U12": "Vorteil erzeugen und passende Lösung wählen"
+   },
+   "karten_im_katalog": 4,
+   "bewertung_katalog": "ausreichend; 1v1-Angriff weiter diversifizieren"
+  },
+  {
+   "code": "S2",
+   "familie": "Spielfähigkeit / Taktik",
+   "name": "1v1 Verteidigung",
+   "quellenorganisationen": [
+    "DBB",
+    "Jr. NBA"
+   ],
+   "altersprogression": {
+    "U8": "zwischen Gegner und Korb bleiben",
+    "U10": "Abstand und Richtung kontrollieren",
+    "U12": "Closeout, Drive verhindern, Help erkennen"
+   },
+   "karten_im_katalog": 5,
+   "bewertung_katalog": "ausreichend; Gegnerbezug vorhanden"
+  },
+  {
+   "code": "S3",
+   "familie": "Spielfähigkeit / Taktik",
+   "name": "Off-Ball/Freilaufen",
+   "quellenorganisationen": [
+    "Jr. NBA"
+   ],
+   "altersprogression": {
+    "U8": "Raum finden; zum Ball bewegen",
+    "U10": "Freilaufen, Passfenster, einfache Cuts",
+    "U12": "Timing, Spacing, Cut-Entscheidung, Help Defender wahrnehmen"
+   },
+   "karten_im_katalog": 4,
+   "bewertung_katalog": "ausreichend; U8 weiterhin Lücke"
+  },
+  {
+   "code": "S4",
+   "familie": "Spielfähigkeit / Taktik",
+   "name": "Zusammenspiel",
+   "quellenorganisationen": [
+    "DBB",
+    "Jr. NBA"
+   ],
+   "altersprogression": {
+    "U8": "Passen + Bewegen in einfachen Spielen",
+    "U10": "Give & Go, 2v1",
+    "U12": "2v2, Extra Pass, Überzahl ausspielen"
+   },
+   "karten_im_katalog": 11,
+   "bewertung_katalog": "sehr stark; derzeit dichteste Spielfähigkeitsfamilie"
+  },
+  {
+   "code": "S5",
+   "familie": "Spielfähigkeit / Taktik",
+   "name": "Spacing",
+   "quellenorganisationen": [
+    "Jr. NBA"
+   ],
+   "altersprogression": {
+    "U8": "Grundidee: nicht alle zum Ball",
+    "U10": "Abstände einhalten",
+    "U12": "Räume gezielt besetzen und für Drive/Pass öffnen"
+   },
+   "karten_im_katalog": 3,
+   "bewertung_katalog": "dünn; 3 Karten, aber gute Progressionsmöglichkeiten"
+  },
+  {
+   "code": "S6",
+   "familie": "Spielfähigkeit / Taktik",
+   "name": "Transition",
+   "quellenorganisationen": [
+    "DBB",
+    "Jr. NBA"
+   ],
+   "altersprogression": {
+    "U8": "Richtung wechseln; zum Ziel laufen",
+    "U10": "umschalten und freie Räume anlaufen",
+    "U12": "Überzahl erkennen, schnelle Entscheidung, Transition Defense"
+   },
+   "karten_im_katalog": 3,
+   "bewertung_katalog": "dünn; 3 Karten, Transition aber qualitativ gut gekoppelt"
+  },
+  {
+   "code": "S7",
+   "familie": "Spielfähigkeit / Taktik",
+   "name": "Team Defense",
+   "quellenorganisationen": [
+    "—"
+   ],
+   "altersprogression": {
+    "U8": "gemeinsam Ziel schützen",
+    "U10": "einfache Hilfeidee",
+    "U12": "Help/Recover, Passwege, Kommunikation, Rebound als Teamaufgabe"
+   },
+   "karten_im_katalog": 0,
+   "bewertung_katalog": "kritische Lücke; keine Kernkarte vorhanden"
+  }
+ ],
+ "belastungsskalen": [
+  {
+   "name": "Entscheidung",
+   "min": 0,
+   "max": 5,
+   "stufen": {
+    "0": "Keine echte Auswahl; Ausführung ist vorgegeben.",
+    "1": "Einfache Auswahl, z. B. rechts/links oder Reizantwort.",
+    "2": "Zwei reale Handlungsoptionen, z. B. Pass oder Drive.",
+    "3": "Entscheidung hängt von Gegner/Mitspieler ab.",
+    "4": "Mehrere Optionen; Situation muss aktiv gelesen werden.",
+    "5": "Komplexe spielnahe Situation mit mehreren interdependenten Optionen."
+   }
+  },
+  {
+   "name": "Gegnerdruck",
+   "min": 0,
+   "max": 5,
+   "stufen": {
+    "0": "Kein Verteidiger.",
+    "1": "Passiv oder stark eingeschränkter Verteidiger.",
+    "2": "Aktiver Verteidiger mit klaren Einschränkungen.",
+    "3": "Freie spielnahe Verteidigung / echter Wettbewerb."
+   }
+  }
+ ],
+ "merkmalsregister": [
+  {
+   "merkmal": "Technikschwierigkeit",
+   "skala_roh": "1–5",
+   "min": 1,
+   "max": 5,
+   "leitfrage": "Wie anspruchsvoll ist die motorische Ausführung selbst?"
+  },
+  {
+   "merkmal": "Entscheidungsschwierigkeit",
+   "skala_roh": "0–5",
+   "min": 0,
+   "max": 5,
+   "leitfrage": "Wie komplex ist die Auswahl einer Handlung?"
+  },
+  {
+   "merkmal": "Gegnerdruck",
+   "skala_roh": "0–3",
+   "min": 0,
+   "max": 3,
+   "leitfrage": "Wie real und frei ist der defensive Widerstand?"
+  },
+  {
+   "merkmal": "Zeitdruck",
+   "skala_roh": "0–3",
+   "min": 0,
+   "max": 3,
+   "leitfrage": "Keine / moderat / hoch / sehr hoch"
+  },
+  {
+   "merkmal": "Raumdruck",
+   "skala_roh": "0–3",
+   "min": 0,
+   "max": 3,
+   "leitfrage": "Großer Raum / normal / eng / sehr eng"
+  },
+  {
+   "merkmal": "Wahrnehmungsanforderung",
+   "skala_roh": "0–3",
+   "min": 0,
+   "max": 3,
+   "leitfrage": "keine / ein Reiz / mehrere Reize / kontinuierliche Wahrnehmung"
+  },
+  {
+   "merkmal": "Kooperationsgrad",
+   "skala_roh": "0–3",
+   "min": 0,
+   "max": 3,
+   "leitfrage": "allein / Partner / Kleingruppe / spielähnlich"
+  },
+  {
+   "merkmal": "Spielnähe",
+   "skala_roh": "1–5",
+   "min": 1,
+   "max": 5,
+   "leitfrage": "isoliert bis nahezu vollständige Spielsituation"
+  },
+  {
+   "merkmal": "Vorhersagbarkeit",
+   "skala_roh": "Vorhersagbarkeit 1–5",
+   "min": 1,
+   "max": 5,
+   "leitfrage": "Ablauf bekannt → Situation variiert"
+  },
+  {
+   "merkmal": "Entscheidungsfreiheit",
+   "skala_roh": "Entscheidungsgrad 0–5",
+   "min": 0,
+   "max": 5,
+   "leitfrage": "Trainer/Signal gibt Lösung vor → mehrere Lösungen"
+  },
+  {
+   "merkmal": "Raum",
+   "skala_roh": "Raumconstraint",
+   "min": null,
+   "max": null,
+   "leitfrage": "großer/vereinfachter Raum → enger/komplexer Raum"
+  },
+  {
+   "merkmal": "Zeit",
+   "skala_roh": "Zeitconstraint",
+   "min": null,
+   "max": null,
+   "leitfrage": "viel Zeit → Zeitdruck"
+  },
+  {
+   "merkmal": "Informationslast",
+   "skala_roh": "Informationslast 1–5",
+   "min": 1,
+   "max": 5,
+   "leitfrage": "Ball + eine Information → Ball + Mitspieler + Gegner + Raum"
+  },
+  {
+   "merkmal": "Variabilität",
+   "skala_roh": "Variabilität 1–5",
+   "min": 1,
+   "max": 5,
+   "leitfrage": "identische Wiederholung → wechselnde Bedingungen"
+  }
+ ],
+ "statusleiter": [
+  {
+   "stufe": "S0",
+   "bezeichnung": "S0 – Kandidat",
+   "bedeutung": "Quelle gefunden, noch nicht geprüft",
+   "voraussetzung": "Minimaldaten vorhanden"
+  },
+  {
+   "stufe": "S1",
+   "bezeichnung": "S1 – verifiziert",
+   "bedeutung": "Beschreibung und Quelle geprüft",
+   "voraussetzung": "Aufgabe nachvollziehbar"
+  },
+  {
+   "stufe": "S2",
+   "bezeichnung": "S2 – pädagogisch eingeordnet",
+   "bedeutung": "Kompetenz, Alter, Methodik und Progression geprüft",
+   "voraussetzung": "Katalogkriterien erfüllt"
+  },
+  {
+   "stufe": "S3",
+   "bezeichnung": "S3 – hochwertiger Eintrag",
+   "bedeutung": "Video/Text sauber geprüft, Quellenqualität hoch",
+   "voraussetzung": "alle Pflichtfelder + Qualitätsprüfung"
+  },
+  {
+   "stufe": "S4",
+   "bezeichnung": "S4 – evidenzbezogener Eintrag",
+   "bedeutung": "zusätzliche Forschungsliteratur vorhanden",
+   "voraussetzung": "Evidenzbezug separat dokumentiert"
+  }
+ ],
+ "quellenregister": [
+  {
+   "sigel": "Q1",
+   "name": "DBB – Kinder- & Minibasketball",
+   "nutzen": "Offizielle DBB-Einordnung des Bereichs U12; Schwerpunkte: spielerischer Erwerb individueller Fertigkeiten, Spielfähigkeit und Basketballfreude.",
+   "url": "https://www.basketball-bund.de/jugend/kinder-und-minibasketball/",
+   "typ": "Primärquelle"
+  },
+  {
+   "sigel": "Q2",
+   "name": "DBB – Videos zum Minibasketball",
+   "nutzen": "Hinweis auf knapp 60 Videos aus Minitrainer-Offensive und internationale Beiträge.",
+   "url": "https://www.basketball-bund.de/videos-minibasketball/",
+   "typ": "Primärquelle"
+  },
+  {
+   "sigel": "Q3",
+   "name": "DBB – Videokatalog Minibasketball",
+   "nutzen": "Kuratiertes Video-/Playlist-Verzeichnis der Minibasketball-Fortbildungen.",
+   "url": "https://www.basketball-bund.de/wp-content/uploads/sites/2/2022/02/Videokatalog-Minibasketball.pdf",
+   "typ": "Primärquelle"
+  },
+  {
+   "sigel": "Q4",
+   "name": "FIBA/WABC – Mini-Basketball Coaches Manual",
+   "nutzen": "Konkrete Mini-Basketball-Aktivitäten für Dribbling, Passing, Shooting sowie Kombinationen mehrerer Skills.",
+   "url": "https://assets.fiba.basketball/image/upload/documents-corporate-wabc-coaching-manual-mini-basketball-eng.pdf",
+   "typ": "Primärquelle"
+  },
+  {
+   "sigel": "Q5",
+   "name": "Jr. NBA – Instructional Curriculum",
+   "nutzen": "Vier Kompetenzstufen; 48 Practice Plans; mehr als 250 Lehrvideos; Games Approach und Decision Making.",
+   "url": "https://jr.nba.com/jr-nba-instructional-curriculum/",
+   "typ": "Primärquelle"
+  },
+  {
+   "sigel": "Q6",
+   "name": "Jr. NBA – Pathway",
+   "nutzen": "Kompetenzbasierte Entwicklung statt reiner Alterslogik.",
+   "url": "https://jr.nba.com/jr-nba-pathway/",
+   "typ": "Primärquelle"
+  },
+  {
+   "sigel": "Q7",
+   "name": "Jr. NBA – Practice Plans",
+   "nutzen": "Interaktive Practice Plans mit Videos, Diagrammen, Skill-Checklisten und Level-Struktur.",
+   "url": "https://jr.nba.com/basketball-practice-plans/",
+   "typ": "Primärquelle"
+  },
+  {
+   "sigel": "Q8",
+   "name": "PubMed – Decision Making Youth Team Sports",
+   "nutzen": "Systematische Übersicht zur Entwicklung von Entscheidungsfähigkeit.",
+   "url": "https://pubmed.ncbi.nlm.nih.gov/32471126/",
+   "typ": "Wissenschaft"
+  },
+  {
+   "sigel": "Q9",
+   "name": "PubMed – SSG technical/tactical meta-analysis",
+   "nutzen": "Systematische Übersicht/Meta-Analyse zu Small-Sided Games und technischer Ausführung.",
+   "url": "https://pubmed.ncbi.nlm.nih.gov/34025529/",
+   "typ": "Wissenschaft"
+  },
+  {
+   "sigel": "Q10",
+   "name": "PubMed – SSG youth basketball 2024",
+   "nutzen": "Systematische Übersicht zu physiologischen/athletischen Effekten von SSG im Jugendbasketball.",
+   "url": "https://pubmed.ncbi.nlm.nih.gov/38444385/",
+   "typ": "Wissenschaft"
+  },
+  {
+   "sigel": "Q11",
+   "name": "PubMed – SSG basketball RCT meta-analysis 2026",
+   "nutzen": "Aktuelle Meta-Analyse zu Small-Sided Games, Agilität und basketballspezifischen Leistungen.",
+   "url": "https://pubmed.ncbi.nlm.nih.gov/42433491/",
+   "typ": "Wissenschaft"
+  }
+ ],
+ "aliase": {
+  "EX-001": "EX-017",
+  "EX-007": "EX-037",
+  "EX-009": "EX-147",
+  "EX-047": "EX-147",
+  "EX-104": "EX-077",
+  "EX-119": "EX-077",
+  "EX-122": "EX-134",
+  "EX-123": "EX-139",
+  "EX-121": "EX-149",
+  "EX-143": "EX-146",
+  "EX-144": "EX-147"
+ }
+}
