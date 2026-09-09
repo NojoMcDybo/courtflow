@@ -24,6 +24,90 @@ const pfadName = (id: string): string => {
   return p.name ?? `${p.id} · ${p.ziel}`;
 };
 
+const FEDER = "cubic-bezier(0.32, 0.72, 0, 1)";
+const ruhig = () => window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+const SKALEN_KURZ: Record<string, string> = {
+  entscheidung: "Entscheidung",
+  gegnerdruck: "Gegnerdruck",
+  technik: "Technik",
+  spielnaehe: "Spielnähe",
+  zeitdruck: "Zeitdruck",
+  raumdruck: "Raumdruck",
+  wahrnehmung: "Wahrnehmung",
+  kooperation: "Kooperation",
+};
+
+/** Was in der aufgeklappten Karte steht. Leere Felder bleiben weg statt
+ *  als Platzhalter zu erscheinen. */
+function detailInhalt(d: Drill): HTMLElement {
+  const box = el("div", { class: "detailinhalt" });
+  for (const [label, wert] of [
+    ["Lernziel", d.lernziel],
+    ["Ablauf", d.ablauf ?? d.evidenz],
+    ["Coachingpunkte", d.coachingpunkte],
+    ["Typische Fehler", d.typische_fehler],
+    ["Regression", d.regression],
+    ["Progression", d.progression],
+  ] as [string, string | null][]) {
+    if (wert) box.append(el("h4", {}, [label]), el("p", {}, [wert]));
+  }
+
+  const felder = el("div", { class: "felder" });
+  const paar = (l: string, w: string | null) =>
+    w ? felder.append(el("div", {}, [el("b", {}, [l]), w])) : undefined;
+  paar("Dauer", d.dauer_min.roh);
+  paar("Spieler", d.spielerzahl.roh);
+  paar("Raum", d.raum);
+  paar("Material", d.material);
+  paar("Methodik", d.methodik);
+  paar("Erfahrung", d.erfahrung);
+  for (const [name, wert] of Object.entries(d.skalen)) {
+    if (wert && wert.wert !== null) paar(SKALEN_KURZ[name] ?? name, wert.roh);
+  }
+  if (felder.childElementCount) box.append(el("h4", {}, ["Merkmale"]), felder);
+
+  box.append(el("h4", {}, ["Quelle"]));
+  const q = el("p", {});
+  if (d.quelle.url) {
+    q.append(
+      el("a", { href: d.quelle.url, target: "_blank", rel: "noreferrer noopener" }, [
+        d.quelle.name ?? d.quelle.url,
+      ]),
+    );
+  } else {
+    q.append(d.quelle.name ?? "keine im Katalog hinterlegt");
+  }
+  box.append(q);
+  box.append(
+    el("p", { class: "fussnote" }, [
+      `Beleg: ${TIEFE_LABEL[d.dokumentationstiefe]}${
+        d.dokumentationstiefe === "vollstaendig" ? "" : " — leere Felder fehlen in der Quelle"
+      }`,
+    ]),
+  );
+  return box;
+}
+
+/** Aufklappen und Zuklappen mit gemessener Höhe, damit es nicht springt. */
+function klappen(huelle: HTMLElement, auf: boolean): void {
+  const inhalt = huelle.firstElementChild as HTMLElement | null;
+  if (!inhalt) return;
+  if (ruhig()) {
+    huelle.style.height = auf ? "auto" : "0px";
+    return;
+  }
+  const von = huelle.getBoundingClientRect().height;
+  const bis = auf ? inhalt.scrollHeight : 0;
+  huelle.style.height = `${von}px`;
+  huelle.animate([{ height: `${von}px` }, { height: `${bis}px` }], {
+    duration: 300,
+    easing: FEDER,
+  }).addEventListener("finish", () => {
+    huelle.style.height = auf ? "auto" : "0px";
+  });
+}
+
 function drillZeile(d: Drill, stufe: number): HTMLElement {
   const box = el("span", { class: "karte-zeile" });
   box.append(
@@ -56,6 +140,10 @@ export function training(wurzel: HTMLElement, modus: Modus): () => void {
      das nicht — sie hat dieselben Angaben nur alle in einer Zeile. */
   type Phase = "alter" | "art" | "bloecke";
   let phase: Phase = modus === "fuehrung" ? "alter" : "bloecke";
+  const offen = new Set<string>();
+  /* Beim Wählen fliegt die Karte an ihren Platz. Der Startpunkt wird vor dem
+     Neuzeichnen gemessen, das Ziel danach — FLIP. */
+  let flugstart: { rect: DOMRect; knoten: HTMLElement } | null = null;
 
   try {
     const roh = localStorage.getItem(`${SPEICHER}.${modus}`);
@@ -161,6 +249,55 @@ export function training(wurzel: HTMLElement, modus: Modus): () => void {
 
   /* ---- Inhalt ---- */
   const bereich = el("main", { class: "bereich plan" });
+
+  /* Die gewählte Karte läuft von ihrem Platz im Raster an ihren Platz im Plan.
+     Gemessen wird vorher und nachher, bewegt wird eine Kopie — das Layout
+     bleibt davon unberührt. */
+  function fliegen(code: string): void {
+    const start = flugstart;
+    flugstart = null;
+    if (!start || ruhig()) return;
+    const ziel = bereich.querySelector<HTMLElement>(`.planzeile[data-block="${code}"]`);
+    if (!ziel) return;
+
+    const zielRect = ziel.getBoundingClientRect();
+    const kopie = start.knoten.cloneNode(true) as HTMLElement;
+    kopie.classList.add("flugkarte");
+    Object.assign(kopie.style, {
+      top: `${start.rect.top}px`,
+      left: `${start.rect.left}px`,
+      width: `${start.rect.width}px`,
+      height: `${start.rect.height}px`,
+    });
+    document.body.append(kopie);
+
+    const dx = zielRect.left - start.rect.left;
+    const dy = zielRect.top - start.rect.top;
+    const sx = zielRect.width / start.rect.width;
+
+    ziel.style.opacity = "0";
+    kopie.animate(
+      [
+        { transform: "translate(0,0) scale(1)", opacity: 1 },
+        { transform: `translate(${dx}px, ${dy}px) scale(${sx})`, opacity: 0 },
+      ],
+      { duration: 460, easing: FEDER, fill: "forwards" },
+    ).addEventListener("finish", () => {
+      kopie.remove();
+      ziel.style.opacity = "";
+    });
+
+    ziel.animate(
+      [
+        { opacity: 0, transform: "translateX(14px)" },
+        { opacity: 1, transform: "none" },
+      ],
+      { duration: 340, delay: 200, easing: FEDER, fill: "backwards" },
+    );
+    setTimeout(() => {
+      ziel.style.opacity = "";
+    }, 220);
+  }
 
   function minutenText(folge: string[]): number[] {
     return minutenVerteilen(folge, rahmen.dauer, rahmen.altersstufe);
@@ -318,14 +455,38 @@ export function training(wurzel: HTMLElement, modus: Modus): () => void {
       );
       zeileEl.append(kopfEl);
       if (b.gewaehlt) {
-        zeileEl.append(drillZeile(b.gewaehlt, rahmen.altersstufe));
+        const d = b.gewaehlt;
+        zeileEl.dataset["block"] = b.code;
+        const istOffen = offen.has(b.code);
+
+        const auslöser = el("button", {
+          class: "kartenkopf-taste",
+          type: "button",
+          "aria-expanded": String(istOffen),
+        });
+        auslöser.append(drillZeile(d, rahmen.altersstufe), el("span", { class: "pfeilchen" }, ["⌄"]));
+
+        const huelle = el("div", { class: "detailhuelle" });
+        huelle.style.height = istOffen ? "auto" : "0px";
+        huelle.append(detailInhalt(d));
+
+        auslöser.addEventListener("click", () => {
+          const jetztOffen = !offen.has(b.code);
+          jetztOffen ? offen.add(b.code) : offen.delete(b.code);
+          auslöser.setAttribute("aria-expanded", String(jetztOffen));
+          zeileEl.classList.toggle("offen", jetztOffen);
+          klappen(huelle, jetztOffen);
+        });
+
+        if (istOffen) zeileEl.classList.add("offen");
         const tauschen = el("button", { class: "textknopf", type: "button" }, ["Tauschen"]);
         tauschen.addEventListener("click", () => {
           schritt = i;
+          offen.delete(b.code);
           b.gewaehlt = null;
           zeichnen();
         });
-        zeileEl.append(tauschen);
+        zeileEl.append(auslöser, huelle, tauschen);
       } else {
         zeileEl.append(el("p", { class: "blockfunktion" }, [bs.funktion]));
       }
@@ -360,10 +521,12 @@ export function training(wurzel: HTMLElement, modus: Modus): () => void {
         knopf.append(el("p", {}, [(d.lernziel ?? d.ablauf ?? d.evidenz)!]));
       }
       knopf.addEventListener("click", () => {
+        flugstart = { rect: knopf.getBoundingClientRect(), knoten: knopf };
         b.gewaehlt = d;
         const naechster = plan.findIndex((x) => !x.gewaehlt);
         schritt = naechster < 0 ? plan.length : naechster;
         zeichnen();
+        fliegen(b.code);
       });
       raster.append(knopf);
     }

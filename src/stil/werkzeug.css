@@ -667,3 +667,77 @@ dialog[open]::backdrop { animation: ein 0.34s var(--feder); }
   .schrittname { display: none; }
   .schritt.jetzt .schrittname { display: inline; }
 }
+
+/* ---------- Aufklappbare Planzeilen ---------- */
+
+.kartenkopf-taste {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+.kartenkopf-taste > .karte-zeile { flex: 1 1 auto; min-width: 0; }
+.pfeilchen {
+  flex: 0 0 auto;
+  margin-top: 8px;
+  color: var(--tinte-3);
+  font-size: 13px;
+  transition: transform 0.28s var(--feder), color 0.2s var(--feder);
+}
+.planzeile.offen .pfeilchen { transform: rotate(180deg); color: var(--indigo); }
+.kartenkopf-taste:hover .pfeilchen { color: var(--tinte-2); }
+
+.detailhuelle { overflow: hidden; height: 0; }
+.detailinhalt {
+  padding-top: 12px;
+  margin-top: 10px;
+  border-top: 1px solid var(--haarlinie);
+}
+.detailinhalt h4 {
+  margin: 12px 0 3px;
+  font: 500 10.5px/1 var(--sf);
+  letter-spacing: 0.04em;
+  color: var(--tinte-3);
+}
+.detailinhalt h4:first-child { margin-top: 0; }
+.detailinhalt p { margin: 0; font-size: 12.5px; line-height: 1.5; }
+.detailinhalt .felder {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(104px, 1fr));
+  gap: 8px 14px;
+  margin-top: 4px;
+}
+.detailinhalt .felder div { font-size: 12px; }
+.detailinhalt .felder b {
+  display: block;
+  font: 500 10px/1.3 var(--sf);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--tinte-3);
+  overflow-wrap: anywhere;
+}
+.detailinhalt .fussnote { margin-top: 12px; font-size: 11.5px; }
+
+/* Die fliegende Kopie liegt über allem und beeinflusst kein Layout. */
+.flugkarte {
+  position: fixed;
+  z-index: 80;
+  margin: 0;
+  pointer-events: none;
+  transform-origin: top left;
+  border: 1px solid var(--indigo);
+  border-radius: var(--r);
+  background: var(--erhoben);
+  box-shadow: var(--schatten-2);
+  overflow: hidden;
+}
+
+.planzeile { transition: background 0.25s var(--feder); }
+.planzeile.offen { background: var(--erhoben); box-shadow: var(--schatten-1); }

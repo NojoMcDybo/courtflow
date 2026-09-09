@@ -145,6 +145,25 @@ Die Mechanik wird nicht nach Augenmaß beurteilt, sondern gemessen. Je Fenster­
 
 Geprüfte Größen: 360×640, 390×844, 430×932, 820×1180, 1440×900.
 
+## Bewegung im Werkzeugsystem
+
+Es gibt genau zwei Bewegungen, beide auf derselben Kurve
+`cubic-bezier(0.32, 0.72, 0, 1)`:
+
+**Die gewählte Karte läuft an ihren Platz.** Vor dem Neuzeichnen wird das
+Rechteck der angeklickten Karte gemessen, danach das Rechteck ihrer Planzeile.
+Bewegt wird eine Kopie über allem, das Layout bleibt davon unberührt — das
+Verfahren heißt FLIP. 460 ms, dabei blendet die Kopie aus, während die Zeile
+einblendet. Sie zeigt, wohin die Entscheidung gewandert ist, statt sie
+kommentarlos an anderer Stelle erscheinen zu lassen.
+
+**Die Planzeile klappt auf.** Die Zielhöhe wird gemessen und animiert, danach
+steht `height: auto` — sonst springt der Inhalt, sobald sich der Text ändert.
+300 ms.
+
+Beides ist unter `prefers-reduced-motion: reduce` abgeschaltet: die Karte
+erscheint dann direkt an ihrem Platz, das Detail klappt ohne Übergang auf.
+
 ## Was für beide gilt
 
 - **Kein Feld wird gefüllt, das im Katalog nicht steht.** Lücken bleiben

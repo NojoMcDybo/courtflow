@@ -85,7 +85,10 @@ Die Führung fragt nacheinander, statt alles in eine Filterzeile zu legen:
 3. **Übungen** — Block für Block, je 4 bis 6 Karten zur Wahl.
 
 Die Schrittleiste bleibt sichtbar und führt zurück; bereits gewählte Übungen
-bleiben dabei erhalten. Der automatische Plan hat dieselben Angaben, nur alle
+bleiben dabei erhalten. Eine gewählte Karte läuft sichtbar an ihren Platz in der
+Einheit und lässt sich dort aufklappen — mit Lernziel, Ablauf, Coachingpunkten,
+typischen Fehlern, Regression, Progression, allen belegten Merkmalen und der
+Quelle. Der automatische Plan hat dieselben Angaben, nur alle
 in einer Zeile — er fragt nichts, er baut.
 
 ## Wie aus Dauer Minuten werden
