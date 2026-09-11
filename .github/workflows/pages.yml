@@ -39,6 +39,9 @@ jobs:
       - name: Trainingsmodell prüfen
         run: npm run pruefen:plan || echo "Befunde vorhanden, siehe PROJEKT.md"
 
+      - name: Planablage prüfen
+        run: npm run pruefen:speicher
+
       - run: npm run build
 
       - uses: actions/configure-pages@v5

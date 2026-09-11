@@ -1,0 +1,165 @@
+/* ---------- Startseite ----------
+   Plakatlogik nach dem Vorbild einer Saisongrafik: schwarzer Grund,
+   übergroße Ziffern mit Verlauf, angeschnitten, dazu eine Zeile
+   gesperrter Versalien. Der Stil bleibt auf der Startseite; die
+   Arbeitsflächen behalten die ruhige Systemgestaltung. */
+
+:root[data-ansicht="start"],
+:root[data-ansicht="generator"],
+:root[data-ansicht="builder"] { background: #000; }
+:root[data-ansicht="start"] body,
+:root[data-ansicht="generator"] body,
+:root[data-ansicht="builder"] body { background: #000; color: #fff; }
+
+.poster {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  min-height: 100svh;
+  padding: 0 clamp(16px, 5vw, 64px);
+}
+
+.poster-kopf {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 8px 20px;
+  padding: clamp(18px, 4vh, 40px) 0 clamp(14px, 3vh, 28px);
+}
+
+.poster-marke {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  font: 600 17px/1 var(--sf);
+  letter-spacing: -0.02em;
+  color: #fff;
+  text-decoration: none;
+}
+.poster-marke i {
+  width: 24px;
+  height: 24px;
+  border-radius: 7px;
+  background: linear-gradient(140deg, #8b2cf5, #e0308f 55%, #ff7a1a);
+  color: #fff;
+  font: 700 11px/24px var(--sf);
+  font-style: normal;
+  text-align: center;
+}
+
+/* Gesperrte Versalien mit Verlauf — die Mikroschrift des Vorbilds */
+.mikro {
+  margin: 0;
+  font: 600 11px/1.45 "SF Compact Text", "Helvetica Neue", "Arial Narrow", var(--sf);
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+  background-image: linear-gradient(96deg, #e0308f, #ff7a1a 60%, #ffb02e);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.tore { display: flex; flex-direction: column; flex: 1 1 auto; justify-content: center; }
+
+.tor {
+  position: relative;
+  display: flex;
+  align-items: center;
+  min-height: clamp(168px, 27vh, 256px);
+  padding: 0 0 0 clamp(162px, 17vw, 262px);
+  overflow: hidden;
+  border-top: 1px solid rgba(255, 255, 255, 0.16);
+  color: #fff;
+  text-decoration: none;
+}
+.tore .tor:last-of-type { border-bottom: 1px solid rgba(255, 255, 255, 0.16); }
+
+/* Die Ziffer ist größer als ihre Zeile und wird oben wie unten angeschnitten. */
+.ziffer {
+  position: absolute;
+  left: clamp(-34px, -2.4vw, -12px);
+  top: 50%;
+  transform: translateY(-50%) scaleX(1.28);
+  transform-origin: left center;
+  font: 900 clamp(230px, 44vh, 430px)/0.7 var(--sf);
+  letter-spacing: -0.07em;
+  background-image: linear-gradient(104deg, #8b2cf5, #e0308f 45%, #ff7a1a);
+  background-size: 240% 100%;
+  background-position: 0% 50%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  transition: background-position 0.6s var(--feder);
+  pointer-events: none;
+}
+
+.tor-text { flex: 1 1 auto; min-width: 0; }
+.tor-name {
+  display: block;
+  font: 640 clamp(20px, 3.1vw, 34px)/1.08 var(--sf);
+  letter-spacing: -0.025em;
+  text-wrap: balance;
+}
+.tor-meta { display: block; margin-top: 7px; }
+
+.pfeil {
+  flex: 0 0 auto;
+  align-self: center;
+  font-size: 24px;
+  color: rgba(255, 255, 255, 0.35);
+  transition: transform 0.3s var(--feder), color 0.3s var(--feder);
+}
+
+.tor:hover .ziffer,
+.tor:focus-visible .ziffer { background-position: 100% 50%; }
+.tor:hover .pfeil,
+.tor:focus-visible .pfeil { transform: translateX(7px); color: #fff; }
+.tor:focus-visible { outline: none; box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.5); }
+
+.tor.geplant .tor-name { color: rgba(255, 255, 255, 0.62); }
+.tor.geplant .ziffer { opacity: 0.78; }
+
+.poster-fuss { padding: clamp(14px, 3vh, 30px) 0 clamp(18px, 4vh, 36px); }
+.poster-fuss .mikro {
+  overflow-wrap: anywhere;
+  background-image: none;
+  color: rgba(255, 255, 255, 0.34);
+  -webkit-text-fill-color: rgba(255, 255, 255, 0.34);
+  letter-spacing: 0.07em;
+}
+
+/* Gesperrte Bereiche */
+.standbild { border: 0; margin-top: clamp(20px, 6vh, 70px); pointer-events: none; }
+.sperrgrund {
+  max-width: 62ch;
+  margin: clamp(16px, 3vh, 30px) 0 0;
+  font-size: 14.5px;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.66);
+}
+.weiter {
+  align-self: flex-start;
+  margin: clamp(18px, 3vh, 32px) 0 auto;
+  padding: 11px 20px;
+  border-radius: var(--pille);
+  background: linear-gradient(104deg, #8b2cf5, #e0308f 50%, #ff7a1a);
+  color: #fff;
+  font: 600 14px/1 var(--sf);
+  text-decoration: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ziffer, .pfeil { transition: none; }
+}
+
+@media (max-width: 700px) {
+  .poster { overflow-x: hidden; }
+  .tor {
+    min-height: 0;
+    padding: clamp(14px, 3vw, 22px) 0 clamp(16px, 3vw, 24px) clamp(92px, 26vw, 140px);
+  }
+  .ziffer { font-size: clamp(132px, 42vw, 220px); left: -10px; transform: translateY(-50%) scaleX(1.2); }
+  .pfeil { display: none; }
+  .tor-name { font-size: clamp(19px, 5.4vw, 26px); }
+}

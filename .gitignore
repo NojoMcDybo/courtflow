@@ -7,3 +7,7 @@ docs/quellen/records-raw.json
 
 # vom Cowork-Client abgelegte Vorschauen
 Claude outputs/
+
+# ausgemustertes vinext-Scaffold; kam über die OneDrive-Synchronisierung zurück.
+# Kann im Explorer gelöscht werden, bis dahin bleibt es aus dem Repo heraus.
+_to_delete/

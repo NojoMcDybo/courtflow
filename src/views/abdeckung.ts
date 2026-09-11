@@ -1,79 +1,93 @@
 import { el } from "../dom";
-import { alleDrills, filtern, kompetenzName, taxonomie } from "../data";
-import type { Drill, Filter } from "../types";
+import { alleDrills, filtern, taxonomie } from "../data";
+import type { Drill, Filter, Kompetenz } from "../types";
 
-const STUFEN = [8, 10, 12, 14, 16, 18];
+const STUFEN = taxonomie.altersstufen.map((stufe) => stufe.alter_bis);
 
-/** Eine Sequenz, ein Farbton, hell nach dunkel. Null ist keine Rampenstufe,
- *  sondern eine leere Zelle -- die Lücke ist die Aussage. */
+/** Die Klassen bilden eine einzelne, von CSS lesbare Dichteskala. */
 const dichte = (n: number): string =>
   n === 0 ? "" : n <= 2 ? "d1" : n <= 5 ? "d2" : n <= 10 ? "d3" : "d4";
 
+const nameVon = (kompetenz: Kompetenz): string => kompetenz.name ?? kompetenz.code;
+const vollstaendigerName = (kompetenz: Kompetenz): string =>
+  kompetenz.name ? `${kompetenz.code} ${kompetenz.name}` : kompetenz.code;
+
 export function matrix(
   filter: Filter,
-  waehlen: (code: string, stufe: number) => void,
+  waehlen: (code: string | null, stufe: number | null) => void,
 ): HTMLElement {
-  const treffer = filtern(alleDrills, filter);
+  // Kompetenz und Alter sind Ziele der Matrix, keine Einschränkungen ihres Bestands.
+  const matrixFilter: Filter = { ...filter, kompetenz: null, altersstufe: null, familie: null };
+  const drills = filtern(alleDrills, matrixFilter);
+  const zaehlen = (code: string, stufe: number): number =>
+    drills.filter(
+      (drill: Drill) =>
+        drill.kompetenz.alle.includes(code) && drill.alter.von !== null && drill.alter.bis !== null &&
+        drill.alter.von <= stufe && stufe <= drill.alter.bis,
+    ).length;
 
-  const zaehlen = (code: string, stufe: number): Drill[] =>
-    treffer.filter(
-      (d) =>
-        d.kompetenz.alle.includes(code) &&
-        d.alter.von !== null &&
-        d.alter.bis !== null &&
-        d.alter.von <= stufe &&
-        stufe <= d.alter.bis,
-    );
-
-  const huelle = el("div", { class: "matrix-huelle" });
-  const t = el("table", { class: "matrix" });
-
-  const kopf = el("tr", {}, [el("th", {})]);
-  for (const s of STUFEN) kopf.append(el("th", { scope: "col" }, [`U${s}`]));
-  t.append(el("thead", {}, [kopf]));
-
-  const blase = el("div", { class: "blase", hidden: "" });
-
-  const koerper = el("tbody");
-  for (const k of taxonomie.kompetenzen) {
-    const zeile = el("tr", {}, [el("th", { scope: "row" }, [kompetenzName(k.code)])]);
-    for (const s of STUFEN) {
-      const n = zaehlen(k.code, s).length;
-      const knopf = el("button", {
-        class: `zelle ${dichte(n)}`.trim(),
-        type: "button",
-        "aria-label": `${kompetenzName(k.code)}, U${s}: ${n} Übungen`,
-      });
-      knopf.addEventListener("click", () => waehlen(k.code, s));
-      knopf.addEventListener("mouseenter", (e) => {
-        blase.replaceChildren(
-          `${kompetenzName(k.code)} · U${s} · `,
-          el("b", {}, [String(n)]),
-          n === 1 ? " Übung" : " Übungen",
-        );
-        blase.hidden = false;
-        const r = (e.currentTarget as HTMLElement).getBoundingClientRect();
-        blase.style.left = `${Math.min(r.left, window.innerWidth - 260)}px`;
-        blase.style.top = `${r.bottom + 6}px`;
-      });
-      knopf.addEventListener("mouseleave", () => (blase.hidden = true));
-      zeile.append(el("td", {}, [knopf]));
-    }
-    koerper.append(zeile);
+  const huelle = el("div", { class: "coverage" });
+  const familien = new Map<string, Kompetenz[]>();
+  for (const kompetenz of taxonomie.kompetenzen) {
+    const gruppe = familien.get(kompetenz.familie) ?? [];
+    gruppe.push(kompetenz);
+    familien.set(kompetenz.familie, gruppe);
   }
-  t.append(koerper);
 
-  const skala = el("div", { class: "skala" });
-  skala.append(
-    "keine",
-    el("span", { class: "s0" }),
-    el("span", { class: "s1" }),
-    el("span", { class: "s2" }),
-    el("span", { class: "s3" }),
-    el("span", { class: "s4" }),
-    "mehr als 10",
-  );
+  for (const [familie, kompetenzen] of familien) {
+    const id = `coverage-${kompetenzen[0]!.code}`;
+    const abschnitt = el("section", { class: "coverage-family", "aria-label": familie, "aria-labelledby": id });
+    abschnitt.append(el("h2", { id }, [familie]));
+    const tabelle = el("table", { class: "coverage-table" });
+    tabelle.append(el("caption", {}, [`Übungsabdeckung: ${familie}`]));
+    const kopf = el("tr", {}, [el("th", { scope: "col" }, ["Thema"])]);
+    for (const stufe of STUFEN) {
+      const knopf = el("button", {
+        class: "coverage-age", type: "button", "data-code": "", "data-age": String(stufe),
+        "aria-label": `U${stufe} auswählen`, "aria-pressed": String(filter.altersstufe === stufe),
+      }, [`U${stufe}`]);
+      knopf.addEventListener("click", () => waehlen(null, stufe));
+      kopf.append(el("th", { scope: "col" }, [knopf]));
+    }
+    tabelle.append(el("thead", {}, [kopf]));
 
-  huelle.append(t, skala, blase);
+    const koerper = el("tbody");
+    for (const kompetenz of kompetenzen) {
+      const aktiv = filter.kompetenz === kompetenz.code;
+      const thema = el("button", {
+        class: "coverage-topic", type: "button", "data-code": kompetenz.code, "data-age": "",
+        "aria-label": `${vollstaendigerName(kompetenz)} auswählen`, "aria-pressed": String(aktiv),
+      }, [nameVon(kompetenz)]);
+      thema.addEventListener("click", () => waehlen(kompetenz.code, null));
+      const zeile = el("tr", {}, [el("th", { scope: "row" }, [thema])]);
+      for (const stufe of STUFEN) {
+        const anzahl = zaehlen(kompetenz.code, stufe);
+        const knopf = el("button", {
+          class: `coverage-cell ${dichte(anzahl)}`.trim(), type: "button",
+          "data-code": kompetenz.code, "data-age": String(stufe),
+          "aria-label": `${vollstaendigerName(kompetenz)}, U${stufe}: ${anzahl} ${anzahl === 1 ? "Übung" : "Übungen"}`,
+          "aria-pressed": String(aktiv && filter.altersstufe === stufe),
+        }, [anzahl === 0 ? "–" : String(anzahl)]);
+        knopf.addEventListener("click", () => waehlen(kompetenz.code, stufe));
+        zeile.append(el("td", {}, [knopf]));
+      }
+      koerper.append(zeile);
+    }
+    tabelle.append(koerper);
+    abschnitt.append(tabelle);
+    huelle.append(abschnitt);
+  }
+
+  const ohneZuordnung = drills.filter((drill) =>
+    drill.alter.von === null || drill.alter.bis === null ||
+    !STUFEN.some((stufe) => drill.alter.von! <= stufe && stufe <= drill.alter.bis!),
+  ).length;
+  const legende = el("p", { class: "coverage-legend" }, [el("span", {}, ["Zahlen: Übungen je Altersstufe · – keine Übung"])]);
+  if (ohneZuordnung) {
+    legende.append(el("span", {}, [
+      `${ohneZuordnung} ohne Altersangabe · unter „Alles anzeigen“.`,
+    ]));
+  }
+  huelle.append(legende);
   return huelle;
 }

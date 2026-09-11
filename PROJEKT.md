@@ -1,7 +1,17 @@
 # CourtFlow — Steuerungsdokument
 
-Stand: 08.09.2026 · Datengrundlage: Kompetenzkatalog v3.8 (Research Freeze mit Backlog)
+Stand: 11.09.2026 · Datengrundlage: Kompetenzkatalog v3.8 (Research Freeze mit Backlog)
 Repo: <https://github.com/NojoMcDybo/courtflow> · Live: <https://nojomcdybo.github.io/courtflow/>
+
+## Was steht
+
+| Fläche | Route | Zustand |
+|---|---|---|
+| Startseite, drei Einstiege | `#/` | gebaut |
+| Drill-Bibliothek mit Matrix-Navigation und Karten | `#/bibliothek` | gebaut |
+| Trainingsaufbau, geführt in drei Schritten | `#/aufbau` | gebaut |
+| Automatischer Plan mit Neu-Würfeln | `#/generator` | gebaut |
+| Gemeinsame lokale Ablage, letzte zehn Pläne und Entwürfe | Aufbau und Generator | gebaut |
 
 ## Was das Vorhaben liefert, das die Quellen nicht liefern
 
@@ -23,7 +33,7 @@ entdecken hätte einen Umbau bedeutet.
    Vollfassung mit QA. Ein Zielschema ist deshalb ein Obermenge-Schema, kein
    gemeinsamer Nenner.
 2. **Ungleiche Auflösungsdichte.** 8 Karten sind vollständig erfasst, 146
-   existieren. Die Oberfläche zeigt das über `dokumentationstiefe` an jeder Karte,
+   existieren. Die Oberfläche zeigt das über `dokumentationstiefe` im geöffneten Kartendetail,
    statt die dünnen Karten wie die dichten aussehen zu lassen.
 3. **Zwei Skalensysteme.** Merkmale laufen teils 0–3, teils 1–5, teils 0–5. Werte
    werden mit ihrer Skala gespeichert (`{wert, skala, roh}`), nie auf eine
@@ -101,7 +111,7 @@ gleichzeitig den Platz frei, den der Text braucht. Die Rechnung steht in
 | 08.09.2026 | Erste Fläche ist die Bibliothek, nicht der Generator | Sie prüft das Datenmodell an allen 146 Karten, bevor Generator und Builder darauf aufsetzen |
 | 08.09.2026 | Bildkacheln bleiben leer statt Platzhalterbild | Es existiert kein Bildbestand; ein Platzhalter würde Vollständigkeit vortäuschen |
 | 08.09.2026 | Repo öffentlich, Auslieferung über GitHub Pages und Actions | Auf Wunsch von Nojo; damit sind auch die Primärquellen unter docs/quellen/ öffentlich |
-| 08.09.2026 | Oberfläche als Tabellenwerkzeug statt Landingpage | Hero, Kennzahlenband, Prozessstrecke und Kartenraster waren Fläche ohne Funktion. 146 strukturierte Datensätze sind eine Tabelle, keine Kachelwand |
+| 08.09.2026 | Ursprünglich Tabellenwerkzeug; ersetzt am 11.09.2026 | Die neue Entscheidung setzt Matrix-Navigation und reduzierte Übungskarten ein |
 | 08.09.2026 | Text ist kein Gestaltungsmittel | Erklärender Fließtext wurde durch Spalten, Marken und Zahlen ersetzt. Vollständiger Text nur noch im Detailblatt, wo er der Inhalt ist |
 | 08.09.2026 | Gestaltungsgrundlage ist Puppertino (MIT), CSS-Umsetzung der Apple HIG | Systemfarben, Schatten- und Vibrancy-Stufen und Radien kommen aus einer fremden, geprüften Quelle statt aus eigener Schätzung. Als Referenz gelesen, nicht als Abhängigkeit eingebunden |
 | 08.09.2026 | Akzent ist Apple Indigo rgb(88,86,214) | Trifft Jords LED-Violett und ist zugleich eine Systemfarbe — beide Vorgaben ohne Kompromiss erfüllt |
@@ -112,6 +122,11 @@ gleichzeitig den Platz frei, den der Text braucht. Die Rechnung steht in
 | 08.09.2026 | Ein Modul für beide Systeme, Unterschied ist nur, wer wählt | Aufbau und Generator teilen Modell, Zeitrechnung und Kandidatenlogik; getrennter Code hätte zwei Wahrheiten erzeugt |
 | 08.09.2026 | Freigabeprüfung vorerst ausgesetzt, alle Karten im Pool | Entscheidung von Nojo, um das Modell überhaupt testen zu können; Belegtiefe bleibt an jeder Karte sichtbar |
 | 08.09.2026 | Die Jord-Bilder werden nicht auf der Seite verwendet | Sie zeigen echte Marken (NBA, Chicago Bulls, Nike, Jordan) und sind für eine öffentliche Seite kein nutzbares Asset |
+| 09.09.2026 | Trainingsaufbau fragt in drei Schritten statt in einer Filterzeile | Drei gleichzeitige Entscheidungen ohne Vorschau auf ihre Wirkung; jetzt Altersgruppe, dann Trainingsart, dann die Übungsblöcke |
+| 09.09.2026 | Die Dauer steht beim Schritt „Trainingsart", nicht davor | Sie verändert die Blockminuten sichtbar; danach zu fragen wäre eine Entscheidung ohne Vorschau |
+| 09.09.2026 | Gewählte Karten laufen sichtbar an ihren Platz (FLIP) | Sie zeigt, wohin die Entscheidung gewandert ist, statt sie kommentarlos an anderer Stelle erscheinen zu lassen |
+| 09.09.2026 | Planzeilen sind aufklappbar statt nur Titel | Die Einheit wird dadurch ein lesbarer Stapel; leere Felder erscheinen nicht als Platzhalter |
+| 11.09.2026 | System 1: Abdeckung als Hauptnavigation, Übungen als Karten | Wunsch von Nojo: Thema × Alter direkt wählen; Name und Alter sofort, Beschreibung und Fachangaben erst im geöffneten Detail |
 
 ## Trainingsmodell
 
@@ -130,19 +145,25 @@ Aufbauweisen für Altersstufen mit nur einem Referenzpfad, und die Zuordnung
 Baustein und Altersstufe, Minutensumme, Wege je Referenzfall, Verschiedenheit
 der Auswürfelungen.
 
-## Drei Elemente, die über die Tabelle hinausgehen
+## Navigation in System 1
 
-1. **Vorschau auf Leertaste.** Pfeiltasten wählen eine Zeile, Leertaste öffnet
-   das Blatt, Leertaste schließt es. Bleibt es offen, blättern die Pfeiltasten
-   durch die Datensätze weiter — dasselbe Verhalten wie die Übersicht im Finder.
-2. **Altersspur statt Alterstext.** Das Altersfenster jeder Übung ist eine
-   Strecke von U8 bis U18, nicht die Zeichenfolge „U8–U10". Der Bestand wird
-   dadurch beim Überfliegen lesbar, und die 18 Karten ohne Fenster zeigen ein
-   leeres Gleis statt eines Gedankenstrichs.
-3. **Abdeckung als zweite Ansicht.** Die Matrix Kompetenz × Altersstufe aus dem
-   Prüfstand wird zur Oberfläche: sie rechnet mit dem aktuellen Filter, und ein
-   Klick auf eine Zelle setzt Kompetenz und Altersstufe als Filter. Leere Zellen
-   sind unverändert leer — die Lücke ist der Zweck der Ansicht, nicht ihr Fehler.
+Die Abdeckung steht vor den Übungskarten. Drei Bereiche zeigen die Zahl der
+Übungen je Thema und Altersstufe. Zelle, Themenname und Alterskopf sind
+bedienbar; die Auswahl markiert die Matrix und filtert die Karten darunter.
+Andere Themen und Altersstufen bleiben erreichbar. Suche und Belegtiefe bzw.
+Quellenfilter beeinflussen die Zahlen; die aktuelle Themen-, Familien- und
+Altersauswahl schränkt die Navigation selbst nicht ein.
+
+Karten zeigen Übungsname und Altersfenster. Klick, Enter oder Leertaste öffnen
+das Detail mit Beschreibung, ID, Kompetenz, Quelle und Belegtiefe. Escape
+schließt es und gibt den Fokus zurück. Weitere Filter sind zunächst zugeklappt.
+Auf schmalen Bildschirmen klappt die Matrix nach der Auswahl ein und lässt
+sich über ihre beschriftete Zusammenfassung wieder öffnen. „Alles anzeigen“
+entfernt sämtliche Filter; Karten ohne Altersangabe bleiben so erreichbar.
+
+Einzelne Quelldatensätze enthalten QA oder Fließtext im Titelfeld. Diese Karten
+heißen vorläufig „Übung ohne Kurztitel“; der unveränderte Text bleibt im Detail.
+Es wurden keine Übungsnamen oder fehlenden Beschreibungen erfunden.
 
 ## Offene Befunde
 
@@ -150,11 +171,12 @@ der Auswürfelungen.
   veröffentlichungsreif. `tools/validate.py` listet sie. Bevor sie online gehen,
   muss je Karte die Originalquelle aus dem Katalog nachgetragen werden.
 - **Nur 5 Karten sind explizit als publish-ready ausgewiesen.** Der Katalog
-  vergibt dieses Merkmal nur im jüngsten Forschungsblock. Der Generator darf laut
-  Spezifikation ausschließlich solche Karten ausspielen — mit 5 Karten ist er
-  nicht baubar. Vor dem Generator muss geklärt werden, welche vorhandene
-  Statusangabe (QA A/B, Statusstufe S2–S4, Redaktionsbewertung) als
-  Veröffentlichungsfreigabe gilt.
+  vergibt dieses Merkmal nur im jüngsten Forschungsblock. Die Spezifikation will,
+  dass der Generator ausschließlich solche Karten ausspielt. Die Prüfung ist
+  ausgesetzt, damit das Modell überhaupt testbar ist. Zu entscheiden bleibt,
+  welche vorhandene Statusangabe (QA A/B, Statusstufe S2–S4,
+  Redaktionsbewertung) als Veröffentlichungsfreigabe gilt. **Das ist der einzige
+  echte Blocker im Vorhaben.**
 - **18 Karten ohne Kompetenzcode und Altersfenster** (EX-111–114, EX-153–158 u. a.).
   Der Katalog nennt für EX-153–158 selbst einen offenen Standardexport.
 - **S7 U8 ist die einzige benannte inhaltliche Lücke** (Katalog 62.11); die
@@ -180,7 +202,13 @@ der Auswürfelungen.
 
 ## Nächste Schritte
 
-1. Freigabekriterium für den Generator festlegen (siehe offene Befunde).
+1. **Freigabekriterium entscheiden** und als Filter im Generator setzen. Der
+   einzige echte Blocker.
 2. Quellen für die 32 unbelegten Karten nachtragen; Prüfstand muss auf 0 Befunde.
-3. Trainingsplan-Modell + localStorage-Schicht, dann geführter Builder.
-4. Generator zuletzt — er ist nur so gut wie das Freigabekriterium darunter.
+3. Bestandslücke U16/U18 schließen, vor allem Wettbewerbsformate für Baustein F.
+4. Gruppengröße und Material als Filter in die Kandidatenauswahl aufnehmen; der
+   Katalog nennt dafür Organisationsregeln in 61.3 bis 61.7.
+5. Erledigt am 10.09.2026: vollständige Trainingspläne und Entwürfe lokal
+   speichern, automatisch sichern und über „Letzte Pläne“ wieder öffnen.
+   Gemeinsames Speichermodul für beide Arbeitsweisen; Minuten und Auswahl
+   bleiben erhalten. Browser-/Gerätewechsel sind keine Synchronisierung.

@@ -4,9 +4,6 @@ import { TIEFE_LABEL, aliaseVon, alleDrills, filtern, kompetenzName, taxonomie }
 import type { Drill, Filter } from "../types";
 import { matrix } from "./abdeckung";
 
-const REPO = "https://github.com/NojoMcDybo/courtflow";
-const STUFEN = [8, 10, 12, 14, 16, 18];
-
 const SKALEN_LABEL: Record<string, string> = {
   entscheidung: "Entscheidung",
   gegnerdruck: "Gegnerdruck",
@@ -17,58 +14,6 @@ const SKALEN_LABEL: Record<string, string> = {
   wahrnehmung: "Wahrnehmung",
   kooperation: "Kooperation",
 };
-
-const STUFE: Record<string, number> = {
-  vollstaendig: 3,
-  standard: 2,
-  redaktionsscore: 2,
-  kurz: 1,
-  nur_belege: 1,
-  nur_titel: 0,
-};
-
-const HERAUSGEBER: [RegExp, string][] = [
-  [/(^|\.)jr\.nba\.com$/, "Jr. NBA"],
-  [/(^|\.)nba\.com$/, "NBA"],
-  [/basketball-bund\.de$/, "DBB"],
-  [/fiba\.basketball$/, "FIBA"],
-];
-
-function herkunft(url: string): string {
-  let host: string;
-  try {
-    host = new URL(url).hostname.replace(/^www\./, "");
-  } catch {
-    return "Quelle";
-  }
-  for (const [muster, name] of HERAUSGEBER) if (muster.test(host)) return name;
-  return host;
-}
-
-/** Altersfenster als Strecke U8…U18 statt als Text. Ein leeres Gleis heißt:
- *  der Katalog nennt kein Fenster. */
-function altersspur(d: Drill): HTMLElement {
-  const leer = d.alter.von === null || d.alter.bis === null;
-  const spur = el("span", {
-    class: leer ? "spur leer" : "spur",
-    title: leer ? "kein Altersfenster im Katalog" : `U${d.alter.von}–U${d.alter.bis}`,
-  });
-  for (const s of STUFEN) {
-    const an = !leer && d.alter.von! <= s && s <= d.alter.bis!;
-    spur.append(el("i", { class: an ? "an" : "" }));
-  }
-  return spur;
-}
-
-function belegbalken(d: Drill): HTMLElement {
-  const n = STUFE[d.dokumentationstiefe] ?? 0;
-  const box = el("span", {
-    class: "balken",
-    title: TIEFE_LABEL[d.dokumentationstiefe] ?? d.dokumentationstiefe,
-  });
-  for (let i = 1; i <= 3; i++) box.append(el("i", { class: i <= n ? "an" : "" }));
-  return box;
-}
 
 function feld(label: string, wert: string | null): HTMLElement | null {
   return wert ? el("div", {}, [el("b", {}, [label]), wert]) : null;
@@ -143,329 +88,150 @@ function blattInhalt(d: Drill, schliessen: () => void): HTMLElement {
 }
 
 export function seite(wurzel: HTMLElement): () => void {
-  const filter: Filter = {
-    suche: "",
-    altersstufe: null,
-    familie: null,
-    kompetenz: null,
-    tiefe: null,
-    nurMitQuelle: false,
-  };
-  let sortierung: { feld: "id" | "titel" | "alter" | "beleg"; ab: boolean } = {
-    feld: "beleg",
-    ab: true,
-  };
-  let ansicht: "liste" | "abdeckung" = "liste";
-  let sichtbar: Drill[] = [];
-  let markiert = -1;
+  const filter: Filter = { suche: "", altersstufe: null, familie: null, kompetenz: null, tiefe: null, nurMitQuelle: false };
+  let sortierung = "titel";
+  let ausloeser: HTMLButtonElement | null = null;
+  const dialog = el("dialog", { "aria-label": "Übungsdetails", class: "drill-dialog" });
+  dialog.addEventListener("close", () => ausloeser?.focus());
 
-  const dialog = el("dialog") as HTMLDialogElement;
-  dialog.addEventListener("close", () => zeilenFokus());
-
-  /* ---- Leiste ---- */
-  const leiste = el("header", { class: "leiste" });
-  const suche = el("input", {
-    type: "search",
-    class: "suchfeld",
-    placeholder: "Suchen",
-    "aria-label": "Übungen durchsuchen",
-  }) as HTMLInputElement;
-  suche.addEventListener("input", () => {
-    filter.suche = suche.value;
-    markiert = -1;
-    zeichnen();
-  });
-
-  const segListe = el("button", { type: "button", "aria-selected": "true" }, ["Liste"]);
-  const segMatrix = el("button", { type: "button", "aria-selected": "false" }, ["Abdeckung"]);
-  const segmente = el("div", { class: "segmente", role: "tablist" }, [segListe, segMatrix]);
-  const umschalten = (neu: typeof ansicht) => {
-    ansicht = neu;
-    segListe.setAttribute("aria-selected", String(neu === "liste"));
-    segMatrix.setAttribute("aria-selected", String(neu === "abdeckung"));
-    zeichnen();
-  };
-  segListe.addEventListener("click", () => umschalten("liste"));
-  segMatrix.addEventListener("click", () => umschalten("abdeckung"));
-
+  const leiste = el("header", { class: "leiste bibliothek-leiste" });
   const thema = el("button", { type: "button" });
   const beschriften = () => (thema.textContent = themaIstDunkel() ? "Hell" : "Dunkel");
   beschriften();
-  thema.addEventListener("click", () => {
-    themaUmschalten();
-    beschriften();
-  });
-
+  thema.addEventListener("click", () => { themaUmschalten(); beschriften(); });
   leiste.append(
-    el("a", { class: "wortmarke", href: "#/", title: "Zur Startseite" }, [
-      el("i", { "aria-hidden": "true" }, ["CF"]),
-      "CourtFlow",
-    ]),
-    suche,
-    segmente,
-    el("span", { class: "leiste-rechts" }, [
-      thema,
-      el("a", { href: REPO, target: "_blank", rel: "noreferrer noopener" }, ["Code"]),
-    ]),
+    el("a", { class: "wortmarke", href: "#/", title: "Zur Startseite" }, [el("i", { "aria-hidden": "true" }, ["CF"]), "CourtFlow"]),
+    el("span", { class: "seitentitel" }, ["01 / Bibliothek"]),
+    el("span", { class: "leiste-rechts" }, [thema, el("a", { href: "#/aufbau" }, ["Training bauen ↗"])]),
   );
 
-  /* ---- Filter ---- */
-  const filterzeile = el("div", { class: "filterzeile" });
-  const stand = el("span", { class: "stand" });
-
-  const auswahl = (
-    name: string,
-    optionen: [string, string][],
-    beim: (w: string) => void,
-  ): HTMLSelectElement => {
-    const s = el("select", { "aria-label": name, "data-leer": "" });
-    s.append(el("option", { value: "" }, [name]));
-    for (const [w, t] of optionen) s.append(el("option", { value: w }, [t]));
-    s.addEventListener("change", () => {
-      s.value ? s.removeAttribute("data-leer") : s.setAttribute("data-leer", "");
-      beim(s.value);
-      markiert = -1;
-      zeichnen();
-    });
+  const bereich = el("main", { class: "bibliothek" });
+  const suche = el("input", { type: "search", class: "suchfeld", placeholder: "Übung suchen …", "aria-label": "Übungen durchsuchen" });
+  suche.addEventListener("input", () => { filter.suche = suche.value; zeichnen(); });
+  const reset = el("button", { type: "button", class: "bibliothek-reset" }, ["Alles anzeigen"]);
+  const extras = el("details", { class: "bibliothek-extras" });
+  const extrasTitel = el("summary", {}, ["Weitere Filter"]);
+  const extraFelder = el("div", { class: "bibliothek-extra-felder" });
+  const select = (name: string, optionen: [string, string][], callback: (wert: string) => void) => {
+    const s = el("select", { "aria-label": name }, optionen.map(([value, label]) => el("option", { value }, [label])));
+    s.addEventListener("change", () => { callback(s.value); zeichnen(); });
     return s;
   };
-
-  const familien = [...new Set(taxonomie.kompetenzen.map((k) => k.familie))];
-  const sAlter = auswahl(
-    "Alter",
-    taxonomie.altersstufen.map((a) => [String(a.alter_bis), a.code] as [string, string]),
-    (w) => (filter.altersstufe = w ? Number(w) : null),
-  );
-  const sFamilie = auswahl(
-    "Familie",
-    familien.map((f) => [f, f] as [string, string]),
-    (w) => (filter.familie = w || null),
-  );
-  const sKompetenz = auswahl(
-    "Kompetenz",
-    taxonomie.kompetenzen.map((k) => [k.code, kompetenzName(k.code)] as [string, string]),
-    (w) => (filter.kompetenz = w || null),
-  );
-  const sTiefe = auswahl(
-    "Beleg",
-    Object.entries(TIEFE_LABEL) as [string, string][],
-    (w) => (filter.tiefe = (w || null) as Filter["tiefe"]),
-  );
-
-  const hakenLabel = el("label", { class: "haken" });
-  const haken = el("input", { type: "checkbox" }) as HTMLInputElement;
-  haken.addEventListener("change", () => {
-    filter.nurMitQuelle = haken.checked;
-    zeichnen();
+  const familie = select("Familie", [["", "Alle Bereiche"], ...[...new Set(taxonomie.kompetenzen.map(k => k.familie))].map(f => [f, f] as [string, string])], w => {
+    filter.familie = w || null;
+    filter.kompetenz = null;
   });
-  hakenLabel.append(haken, "mit Quelle");
-
-  const leeren = el("button", { class: "textknopf", type: "button" }, ["Zurücksetzen"]);
-  leeren.addEventListener("click", () => {
-    Object.assign(filter, {
-      suche: "",
-      altersstufe: null,
-      familie: null,
-      kompetenz: null,
-      tiefe: null,
-      nurMitQuelle: false,
-    });
-    suche.value = "";
-    haken.checked = false;
-    for (const s of [sAlter, sFamilie, sKompetenz, sTiefe]) {
-      s.value = "";
-      s.setAttribute("data-leer", "");
-    }
-    markiert = -1;
+  const tiefe = select("Belegtiefe", [["", "Alle Belegtiefen"], ...Object.entries(TIEFE_LABEL)], w => filter.tiefe = (w || null) as Filter["tiefe"]);
+  const quelle = el("input", { type: "checkbox" });
+  quelle.addEventListener("change", () => { filter.nurMitQuelle = quelle.checked; zeichnen(); });
+  extraFelder.append(familie, tiefe, el("label", { class: "haken" }, [quelle, "Mit Quelle"]));
+  extras.append(extrasTitel, extraFelder);
+  reset.addEventListener("click", () => {
+    Object.assign(filter, { suche: "", altersstufe: null, familie: null, kompetenz: null, tiefe: null, nurMitQuelle: false });
+    suche.value = ""; familie.value = ""; tiefe.value = ""; quelle.checked = false;
     zeichnen();
   });
 
-  filterzeile.append(sAlter, sFamilie, sKompetenz, sTiefe, hakenLabel, leeren, stand);
+  const intro = el("div", { class: "bibliothek-kopf" }, [
+    el("div", {}, [el("h1", {}, ["Übungen entdecken"]), el("p", {}, ["Thema und Alter wählen. Passende Übungen öffnen."])]),
+    suche,
+  ]);
+  const navigation = el("details", { class: "bibliothek-navigation", open: "" });
+  const navTitel = el("summary", {}, ["Abdeckung"]);
+  const matrixPlatz = el("div");
+  navigation.append(navTitel, matrixPlatz);
+  const ergebnisse = el("section", { class: "bibliothek-ergebnisse", "aria-labelledby": "ergebnis-titel" });
+  const titel = el("h2", { id: "ergebnis-titel" });
+  const anzahl = el("span", { class: "ergebnis-anzahl", role: "status", "aria-live": "polite", "aria-atomic": "true" });
+  const sort = select("Sortierung", [["titel", "Name A–Z"], ["alter", "Alter aufsteigend"]], w => sortierung = w);
+  const auswahl = el("div", { class: "bibliothek-auswahl" });
+  const karten = el("div", { class: "drill-karten" });
+  ergebnisse.append(
+    el("div", { class: "ergebnis-kopf" }, [el("div", { class: "ergebnis-titel" }, [titel, anzahl]), sort]),
+    auswahl, karten,
+  );
+  bereich.append(intro, navigation, el("div", { class: "bibliothek-werkzeuge" }, [reset, extras]), ergebnisse);
 
-  /* ---- Inhalt ---- */
-  const bereich = el("main", { class: "bereich" });
+  const altersname = (d: Drill): string => d.alter.von === null || d.alter.bis === null
+    ? "Alter offen" : d.alter.von === d.alter.bis ? `U${d.alter.von}` : `U${d.alter.von}–U${d.alter.bis}`;
 
-  function oeffnen(d: Drill): void {
-    dialog.replaceChildren(blattInhalt(d, () => dialog.close()));
-    if (!dialog.open) dialog.showModal();
-  }
+  // Einige Quelldatensätze tragen QA oder Fließtext im Titelfeld.
+  // Keine Übungsnamen erfinden; den unveränderten Eintrag im Detail erhalten.
+  const kurzname = (d: Drill): string => /^QA\s/.test(d.titel) || d.titel.length > 180
+    ? d.originaltitel ?? "Übung ohne Kurztitel" : d.titel;
 
-  function zeilenFokus(): void {
-    const tr = bereich.querySelectorAll("tbody tr")[markiert] as HTMLElement | undefined;
-    tr?.focus();
-  }
-
-  function markieren(i: number): void {
-    if (!sichtbar.length) return;
-    markiert = Math.max(0, Math.min(sichtbar.length - 1, i));
-    for (const [n, tr] of [...bereich.querySelectorAll("tbody tr")].entries()) {
-      tr.setAttribute("aria-selected", String(n === markiert));
-    }
-    const tr = bereich.querySelectorAll("tbody tr")[markiert] as HTMLElement | undefined;
-    tr?.scrollIntoView({ block: "nearest" });
-    if (dialog.open) oeffnen(sichtbar[markiert]!);
-    else tr?.focus();
-  }
-
-  /* Quick Look: Leertaste zeigt, Leertaste schließt, Pfeile blättern weiter. */
-  const tasten = (e: KeyboardEvent) => {
-    if (ansicht !== "liste") return;
-    const imFeld = e.target instanceof HTMLInputElement || e.target instanceof HTMLSelectElement;
-    if (e.key === "ArrowDown" && !imFeld) {
-      e.preventDefault();
-      markieren(markiert + 1);
-    } else if (e.key === "ArrowUp" && !imFeld) {
-      e.preventDefault();
-      markieren(markiert - 1);
-    } else if (e.key === " " && !imFeld) {
-      e.preventDefault();
-      if (dialog.open) dialog.close();
-      else if (markiert >= 0) oeffnen(sichtbar[markiert]!);
-      else markieren(0);
-    } else if (e.key === "/" && !imFeld) {
-      e.preventDefault();
-      suche.focus();
-    }
-  };
-  document.addEventListener("keydown", tasten);
-
-  function zeile(d: Drill, i: number): HTMLElement {
-    const tr = el("tr", { tabindex: "-1", "aria-selected": String(i === markiert) });
-
-    const codes = el("span", { class: "codes" });
-    for (const c of d.kompetenz.alle.slice(0, 3)) codes.append(el("span", { class: "code" }, [c]));
-
-    const quelle = el("td", { class: "s-quelle" });
-    if (d.quelle.url) {
-      const a = el("a", {
-        href: d.quelle.url,
-        target: "_blank",
-        rel: "noreferrer noopener",
-        title: d.quelle.name ?? d.quelle.url,
-      }, [herkunft(d.quelle.url)]);
-      a.addEventListener("click", (e) => e.stopPropagation());
-      quelle.append(a);
-    } else if (d.quelle.name) {
-      quelle.title = d.quelle.name;
-      quelle.append(d.quelle.name);
-    } else {
-      quelle.className = "s-quelle fehlt";
-      quelle.append("ohne Quelle");
-    }
-
-    tr.append(
-      el("td", { class: "s-id kennung" }, [d.id]),
-      el("td", { class: "s-titel" }, [d.titel]),
-      el("td", { class: "s-alter" }, [altersspur(d)]),
-      el("td", { class: "s-komp" }, [codes]),
-      el("td", { class: "s-beleg" }, [belegbalken(d)]),
-      quelle,
-    );
-
-    tr.addEventListener("click", () => {
-      markieren(i);
-      oeffnen(d);
+  function karte(d: Drill): HTMLElement {
+    const knopf = el("button", { type: "button", class: "drill-karte", "aria-haspopup": "dialog" }, [
+      el("span", { class: "drill-alter" }, [altersname(d)]),
+      el("span", { class: "drill-name" }, [kurzname(d)]),
+      el("span", { class: "drill-oeffnen", "aria-hidden": "true" }, ["Ansehen", el("span", {}, ["↗"])]),
+    ]);
+    knopf.addEventListener("click", () => {
+      ausloeser = knopf;
+      dialog.setAttribute("aria-label", d.titel);
+      dialog.replaceChildren(blattInhalt(d, () => dialog.close()));
+      dialog.showModal();
     });
-    return tr;
-  }
-
-  function listeZeichnen(): HTMLElement {
-    const t = el("table");
-    const kopfzeile = el("tr");
-    const SPALTEN: [string, typeof sortierung.feld | null, string][] = [
-      ["ID", "id", "s-id"],
-      ["Übung", "titel", "s-titel"],
-      ["Alter", "alter", "s-alter"],
-      ["Kompetenz", null, "s-komp"],
-      ["Beleg", "beleg", "s-beleg"],
-      ["Quelle", null, "s-quelle"],
-    ];
-    for (const [label, f, klasse] of SPALTEN) {
-      const th = el("th", { class: f ? `${klasse} klickbar` : klasse, scope: "col" }, [label]);
-      if (f) {
-        if (sortierung.feld === f) {
-          th.setAttribute("aria-sort", sortierung.ab ? "descending" : "ascending");
-        }
-        th.addEventListener("click", () => {
-          sortierung = sortierung.feld === f ? { feld: f, ab: !sortierung.ab } : { feld: f, ab: true };
-          markiert = -1;
-          zeichnen();
-        });
-      }
-      kopfzeile.append(th);
-    }
-
-    const koerper = el("tbody");
-    if (!sichtbar.length) {
-      koerper.append(el("tr", {}, [el("td", { colspan: "6", class: "nichts" }, ["Kein Treffer"])]));
-    } else {
-      sichtbar.forEach((d, i) => koerper.append(zeile(d, i)));
-    }
-    t.append(el("thead", {}, [kopfzeile]), koerper);
-    return t;
-  }
-
-  function sortieren(treffer: Drill[]): Drill[] {
-    const { feld: f, ab } = sortierung;
-    const wert = (d: Drill): string | number =>
-      f === "id" ? d.id
-      : f === "titel" ? d.titel.toLowerCase()
-      : f === "alter" ? (d.alter.von ?? 99)
-      : STUFE[d.dokumentationstiefe] ?? 0;
-    return [...treffer].sort((a, b) => {
-      const [x, y] = [wert(a), wert(b)];
-      const r = x < y ? -1 : x > y ? 1 : a.id.localeCompare(b.id);
-      return f === "beleg" ? (ab ? -r : r) : ab ? r : -r;
-    });
+    return knopf;
   }
 
   function zeichnen(): void {
-    sichtbar = sortieren(filtern(alleDrills, filter));
-    const ohne = sichtbar.filter((d) => !d.quelle.url && !d.quelle.name).length;
-    stand.replaceChildren(
-      el("b", {}, [String(sichtbar.length)]),
-      ` / ${alleDrills.length}`,
-      ...(ohne ? [" · ", el("s", {}, [`${ohne} ohne Quelle`])] : []),
-    );
-
-    bereich.replaceChildren(
-      ansicht === "liste"
-        ? listeZeichnen()
-        : matrix(filter, (code, stufe) => {
-            filter.kompetenz = code;
-            filter.altersstufe = stufe;
-            sKompetenz.value = code;
-            sKompetenz.removeAttribute("data-leer");
-            sAlter.value = String(stufe);
-            sAlter.removeAttribute("data-leer");
-            markiert = -1;
-            umschalten("liste");
-          }),
-    );
+    // Preserve keyboard position when the matrix is replaced after a selection.
+    const fokus = document.activeElement;
+    const matrixFokus = fokus instanceof HTMLButtonElement && matrixPlatz.contains(fokus)
+      ? { code: fokus.dataset.code, age: fokus.dataset.age, family: fokus.closest("section")?.getAttribute("aria-label") } : null;
+    matrixPlatz.replaceChildren(matrix(filter, (code, alter) => {
+      filter.kompetenz = code; filter.altersstufe = alter;
+      // A new matrix choice must not be blocked by an old family filter.
+      filter.familie = null; familie.value = "";
+      zeichnen();
+      if (window.matchMedia("(max-width: 1179px)").matches) {
+        navigation.open = false;
+        navTitel.focus();
+      }
+    }));
+    if (matrixFokus) {
+      const knoepfe = [...matrixPlatz.querySelectorAll<HTMLButtonElement>("button[data-code][data-age]")];
+      knoepfe.find(b => b.dataset.code === matrixFokus.code && b.dataset.age === matrixFokus.age &&
+        b.closest("section")?.getAttribute("aria-label") === matrixFokus.family)?.focus({ preventScroll: true });
+    }
+    const treffer = [...filtern(alleDrills, filter)].sort((a, b) =>
+      (sortierung === "alter" ? (a.alter.von ?? 99) - (b.alter.von ?? 99) : 0) || a.titel.localeCompare(b.titel, "de") || a.id.localeCompare(b.id));
+    const themaName = taxonomie.kompetenzen.find(k => k.code === filter.kompetenz)?.name;
+    titel.textContent = themaName ?? filter.familie ?? "Alle Übungen";
+    anzahl.textContent = `${treffer.length} ${treffer.length === 1 ? "Übung" : "Übungen"}`;
+    navTitel.textContent = `Abdeckung${themaName ? ` · ${themaName}` : ""}${filter.altersstufe ? ` · U${filter.altersstufe}` : ""}`;
+    auswahl.replaceChildren();
+    const chip = (text: string, entfernen: () => void) => {
+      const b = el("button", { type: "button", "aria-label": `${text} entfernen` }, [text, el("span", { "aria-hidden": "true" }, [" ×"])]);
+      b.addEventListener("click", () => { entfernen(); zeichnen(); reset.focus(); });
+      auswahl.append(b);
+    };
+    if (themaName) chip(themaName, () => filter.kompetenz = null);
+    if (filter.altersstufe) chip(`U${filter.altersstufe}`, () => filter.altersstufe = null);
+    if (filter.familie) chip(filter.familie, () => { filter.familie = null; familie.value = ""; });
+    if (filter.tiefe) chip(TIEFE_LABEL[filter.tiefe] ?? filter.tiefe, () => { filter.tiefe = null; tiefe.value = ""; });
+    if (filter.nurMitQuelle) chip("Mit Quelle", () => { filter.nurMitQuelle = false; quelle.checked = false; });
+    extrasTitel.textContent = `Weitere Filter${filter.familie || filter.tiefe || filter.nurMitQuelle ? " · aktiv" : ""}`;
+    karten.replaceChildren(...treffer.map(karte));
+    if (!treffer.length) karten.append(el("div", { class: "bibliothek-leer" }, [
+      el("h3", {}, ["Hier gibt es noch keine passende Übung."]),
+      el("p", {}, ["Andere Zelle wählen oder Filter zurücksetzen."]),
+    ]));
   }
 
-  const fuss = el("footer", { class: "fuss" });
-  fuss.append(
-    el("span", { class: "taste" }, ["↑"]),
-    " ",
-    el("span", { class: "taste" }, ["↓"]),
-    " blättern · ",
-    el("span", { class: "taste" }, ["Leer"]),
-    " Vorschau · ",
-    el("span", { class: "taste" }, ["/"]),
-    " suchen · Daten aus dem Kompetenzkatalog, Originalquelle je Zeile verlinkt · ",
-  );
-  fuss.append(
-    el("a", { href: `${REPO}/blob/main/PROJEKT.md`, target: "_blank", rel: "noreferrer noopener" }, [
-      "offene Punkte",
-    ]),
-  );
-
-  wurzel.append(leiste, filterzeile, bereich, dialog, fuss);
+  const tasten = (e: KeyboardEvent) => {
+    if (e.key === "/" && !dialog.open && !e.ctrlKey && !e.metaKey && !e.altKey &&
+      !(e.target instanceof HTMLInputElement || e.target instanceof HTMLSelectElement || (e.target instanceof HTMLElement && e.target.isContentEditable))) {
+      e.preventDefault(); suche.focus();
+    }
+  };
+  document.addEventListener("keydown", tasten);
+  const fuss = el("footer", { class: "fuss" }, ["Kompetenzkatalog v3.8 · Quellen und Belegangaben in den Übungsdetails."]);
+  wurzel.append(leiste, bereich, dialog, fuss);
   zeichnen();
-
   return () => {
     document.removeEventListener("keydown", tasten);
-    for (const k of [leiste, filterzeile, bereich, dialog, fuss]) k.remove();
+    for (const element of [leiste, bereich, dialog, fuss]) element.remove();
   };
 }

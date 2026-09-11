@@ -32,7 +32,7 @@ falsche.
 src/stil/tokens-werkzeug.css   Marken des Werkzeugsystems
 src/stil/tokens-plakat.css     Marken des Plakatsystems
 src/stil/basis.css             gilt für beide: Reset, Fließtext, Fokus
-src/stil/werkzeug.css          Bauteile: Leiste, Filter, Tabelle, Blatt
+src/stil/werkzeug.css          Bauteile: Leiste, Matrix, Karten, Blatt
 src/stil/plakat.css            Bauteile: Einstiege, Ziffern, Mikroschrift
 src/styles.css                 bindet die fünf in dieser Reihenfolge ein
 ```
@@ -71,8 +71,11 @@ Apples Sheet-Kurve, schnell los, weich aus. Vibrancy auf den Leisten:
 
 - Farbe trägt eine Menge, nie eine Bewertung. Die Belegtiefe ist deshalb
   neutral und nicht grün; grün liest sich als Gütesiegel.
-- Dichte ist eine Anforderung, kein Nebeneffekt: sichtbare Zeilen pro Bildschirm
-  sind ein Qualitätsmaß der Bibliothek.
+- System 1 verwendet die Abdeckung als Hauptnavigation. Drei Themenbereiche
+  nutzen die Bildschirmbreite; Zahlen machen die Zellbelegung direkt lesbar.
+  Darunter zeigen Karten nur Übungsname und Altersfenster. Beschreibung,
+  Kennung, Kompetenz, Quelle und Belegtiefe stehen im geöffneten Detail.
+  Auf schmalen Bildschirmen klappt die Matrix nach einer Auswahl ein.
 - Text ist kein Gestaltungsmittel. Zusammenhängender Text steht nur im
   Detailblatt, wo er der Inhalt ist.
 
@@ -167,7 +170,7 @@ erscheint dann direkt an ihrem Platz, das Detail klappt ohne Übergang auf.
 ## Was für beide gilt
 
 - **Kein Feld wird gefüllt, das im Katalog nicht steht.** Lücken bleiben
-  sichtbar leer — das leere Altersgleis in der Tabelle, die leere Zelle in der
+  sichtbar — „Alter offen“ an einer Karte, die leere Zelle in der
   Abdeckung, der gedämpfte Einstieg für einen Bereich, den es nicht gibt.
 - **Nichts sieht fertig aus, was es nicht ist.** Ein Einstieg ohne Funktion
   trägt „noch nicht gebaut" und führt auf eine Seite, die den Grund nennt.

@@ -13,6 +13,7 @@ import {
   neuWuerfeln,
 } from "../plan";
 import type { Drill } from "../types";
+import { lesen, speichern, validiereRahmen, wiederherstellen, type GespeicherterPlan } from "../speicher";
 
 const REPO = "https://github.com/NojoMcDybo/courtflow";
 const SPEICHER = "courtflow.plan";
@@ -145,20 +146,90 @@ export function training(wurzel: HTMLElement, modus: Modus): () => void {
      Neuzeichnen gemessen, das Ziel danach — FLIP. */
   let flugstart: { rect: DOMRect; knoten: HTMLElement } | null = null;
 
+  let archiv: GespeicherterPlan[] = [];
+  let speicherFehler: string | null = null;
+  let ladeHinweise: string[] = [];
+  let planId: string = crypto.randomUUID();
+  let planName = "";
+  let letzteSignatur = "";
+  let aktiveId: string | null = null;
+
   try {
-    const roh = localStorage.getItem(`${SPEICHER}.${modus}`);
-    if (roh) Object.assign(rahmen, JSON.parse(roh) as Rahmen);
+    const gelesen = lesen(localStorage);
+    archiv = gelesen.plaene;
+    speicherFehler = gelesen.fehler;
+    aktiveId = localStorage.getItem(`courtflow.aktiv.${modus}`);
+    // Alte Rahmeneinstellungen sind optional; kaputtes JSON darf das Archiv nicht sperren.
+    try {
+      const roh = localStorage.getItem(`${SPEICHER}.${modus}`);
+      const alt = roh ? validiereRahmen(JSON.parse(roh)) : null;
+      if (alt) Object.assign(rahmen, alt);
+    } catch { /* Ungültige Altdaten: geprüfte Vorgabewerte nutzen. */ }
   } catch {
-    /* privates Fenster — dann eben Vorgabewerte */
+    speicherFehler = "Browserspeicher nicht verfügbar. Änderungen bleiben nur bis zum Schließen erhalten.";
   }
+
+  const standardName = () => `U${rahmen.altersstufe} · ${pfadName(rahmen.pfadId)}`;
+  const entwurf = (): GespeicherterPlan => ({
+    version: 1, id: planId, name: planName.trim() || standardName(), modus,
+    rahmen: { ...rahmen },
+    bloecke: plan.map((b) => ({ code: b.code, minuten: b.minuten, drillId: b.gewaehlt?.id ?? null })),
+    aktualisiert: new Date().toISOString(),
+  });
+  const signatur = (p: GespeicherterPlan) => JSON.stringify({ ...p, aktualisiert: "" });
+
+  function laden(p: GespeicherterPlan): void {
+    const geladen = wiederherstellen(p);
+    Object.assign(rahmen, p.rahmen);
+    planId = p.id;
+    planName = p.name;
+    plan = geladen.bloecke;
+    ladeHinweise = geladen.hinweise;
+    schritt = plan.findIndex((b) => !b.gewaehlt);
+    if (schritt < 0) schritt = plan.length;
+    phase = "bloecke";
+    offen.clear();
+    letzteSignatur = signatur(entwurf());
+  }
+
+  const fortsetzen = archiv.find((p) => p.id === aktiveId) ?? archiv.find((p) => p.modus === modus);
+  if (fortsetzen) laden(fortsetzen);
 
   const sichern = () => {
     try {
       localStorage.setItem(`${SPEICHER}.${modus}`, JSON.stringify(rahmen));
+      if (archiv.some((p) => p.id === planId)) localStorage.setItem(`courtflow.aktiv.${modus}`, planId);
     } catch {
       /* egal */
     }
   };
+
+  /* Ein gemeinsames Archiv für beide Wege; Speichern nur bei Inhaltsänderung. */
+  function planSichern(): void {
+    if (!plan.length || phase !== "bloecke") return;
+    const p = entwurf();
+    const neu = signatur(p);
+    if (neu === letzteSignatur) return;
+    try {
+      const ergebnis = speichern(localStorage, p);
+      speicherFehler = ergebnis.fehler;
+      if (!ergebnis.fehler) {
+        archiv = ergebnis.plaene;
+        letzteSignatur = neu;
+        sichern();
+      }
+    } catch {
+      speicherFehler = "Speichern nicht möglich. Änderungen bleiben nur bis zum Schließen erhalten.";
+    }
+  }
+
+  function neuerEntwurf(): void {
+    planId = crypto.randomUUID();
+    planName = "";
+    letzteSignatur = "";
+    ladeHinweise = [];
+    offen.clear();
+  }
 
   /* ---- Kopf ---- */
   const kopf = el("header", { class: "leiste" });
@@ -184,6 +255,69 @@ export function training(wurzel: HTMLElement, modus: Modus): () => void {
     ]),
   );
 
+  const ablage = el("section", { class: "planablage", "aria-label": "Gespeicherte Trainingspläne" });
+  const nameLabel = el("label", { class: "planname-label" }, ["Planname"]);
+  const nameEingabe = el("input", { type: "text", maxlength: "80", "aria-label": "Planname" });
+  nameLabel.append(nameEingabe);
+  const verlaufLabel = el("label", { class: "verlauf-label" }, ["Letzte Pläne"]);
+  const verlauf = el("select", { "aria-label": "Letzte Pläne" });
+  verlaufLabel.append(verlauf);
+  const neu = el("button", { type: "button", class: "textknopf" }, ["Neues Training"]);
+  const speicherStand = el("p", { class: "speicherstand", role: "status", "aria-live": "polite" });
+  const erneut = el("button", { type: "button", class: "textknopf" }, ["Erneut speichern"]);
+  ablage.append(nameLabel, verlaufLabel, neu, speicherStand, erneut);
+
+  function ablageZeichnen(): void {
+    nameLabel.hidden = phase !== "bloecke" || !plan.length;
+    if (document.activeElement !== nameEingabe) nameEingabe.value = planName || standardName();
+    verlauf.replaceChildren(el("option", { value: "" }, [archiv.length ? "Plan öffnen …" : "Noch keine Pläne"]));
+    for (const p of archiv) {
+      const fertig = p.bloecke.every((b) => b.drillId !== null);
+      const datum = new Date(p.aktualisiert).toLocaleDateString("de-DE", { day: "2-digit", month: "2-digit" });
+      verlauf.append(el("option", { value: p.id }, [
+        `${p.name} · ${p.rahmen.dauer} min · ${datum}${fertig ? "" : " · Entwurf"}`,
+      ]));
+    }
+    verlauf.value = archiv.some((p) => p.id === planId) ? planId : "";
+    verlauf.disabled = !archiv.length;
+    speicherStand.textContent = speicherFehler ?? (letzteSignatur
+      ? "In diesem Browser gespeichert · letzte 10 Pläne"
+      : "Pläne werden in diesem Browser gespeichert · letzte 10 Pläne");
+    speicherStand.classList.toggle("speicherfehler", Boolean(speicherFehler));
+    erneut.hidden = !speicherFehler || !plan.length || phase !== "bloecke";
+  }
+
+  nameEingabe.addEventListener("input", () => {
+    planName = nameEingabe.value;
+    const druckName = bereich.querySelector(".druck-planname");
+    if (druckName) druckName.textContent = planName.trim() || standardName();
+    planSichern();
+    ablageZeichnen();
+  });
+  nameEingabe.addEventListener("blur", () => { nameEingabe.value = planName.trim() || standardName(); });
+  erneut.addEventListener("click", () => { planSichern(); ablageZeichnen(); });
+  verlauf.addEventListener("change", () => {
+    const p = archiv.find((x) => x.id === verlauf.value);
+    if (!p) return;
+    laden(p);
+    // Öffnen ändert weder Auswahl noch Archiv; nur der Fortsetzungszeiger wechselt.
+    sAlter.value = String(rahmen.altersstufe);
+    sDauer.value = String(rahmen.dauer);
+    sWeg.replaceChildren(...wegOptionen().map(([id, t]) => el("option", { value: id }, [t])));
+    sWeg.value = rahmen.pfadId;
+    sichern();
+    zeichnen();
+  });
+  function neuesTraining(): void {
+    neuerEntwurf();
+    plan = [];
+    letzte = null;
+    schritt = 0;
+    if (modus === "fuehrung") { phase = "alter"; zeichnen(); }
+    else neuAufbauen();
+  }
+  neu.addEventListener("click", neuesTraining);
+
   /* ---- Rahmenzeile ---- */
   const zeile = el("div", { class: "filterzeile" });
   const hinweis = el("span", { class: "stand" });
@@ -200,6 +334,7 @@ export function training(wurzel: HTMLElement, modus: Modus): () => void {
     s.addEventListener("change", () => {
       beim(s.value);
       sichern();
+      neuerEntwurf();
       neuAufbauen();
     });
     return s;
@@ -239,6 +374,7 @@ export function training(wurzel: HTMLElement, modus: Modus): () => void {
   const wuerfeln = el("button", { class: "haupttaste", type: "button" }, ["Neu würfeln"]);
   wuerfeln.addEventListener("click", () => {
     letzte = plan.some((b) => b.gewaehlt) ? plan : null;
+    neuerEntwurf();
     plan = neuWuerfeln(rahmen, letzte);
     zeichnen();
   });
@@ -360,6 +496,10 @@ export function training(wurzel: HTMLElement, modus: Modus): () => void {
         el("span", { class: "grossnote" }, [`${wege} Trainingsarten`]),
       );
       knopf.addEventListener("click", () => {
+        if (rahmen.altersstufe !== u) {
+          neuerEntwurf();
+          plan = [];
+        }
         rahmen.altersstufe = u;
         const moeglich = wegOptionen();
         if (!moeglich.some(([id]) => id === rahmen.pfadId)) rahmen.pfadId = moeglich[0]![0];
@@ -391,6 +531,10 @@ export function training(wurzel: HTMLElement, modus: Modus): () => void {
         "aria-selected": String(rahmen.dauer === d),
       }, [`${d} min`]);
       k.addEventListener("click", () => {
+        if (rahmen.dauer !== d) {
+          neuerEntwurf();
+          plan = [];
+        }
         rahmen.dauer = d;
         sichern();
         zeichnen();
@@ -427,10 +571,13 @@ export function training(wurzel: HTMLElement, modus: Modus): () => void {
         knopf.append(el("span", { class: "artnote" }, [p.individualisierung]));
       }
       knopf.addEventListener("click", () => {
+        const behalten = rahmen.pfadId === p.id && plan.length > 0;
+        if (!behalten) neuerEntwurf();
         rahmen.pfadId = p.id;
         sichern();
         phase = "bloecke";
-        neuAufbauen();
+        if (behalten) zeichnen();
+        else neuAufbauen();
       });
       raster.append(knopf);
     }
@@ -550,19 +697,14 @@ export function training(wurzel: HTMLElement, modus: Modus): () => void {
     const drucken = el("button", { class: "haupttaste", type: "button" }, ["Drucken"]);
     drucken.addEventListener("click", () => window.print());
     const nochmal = el("button", { class: "textknopf", type: "button" }, ["Von vorn"]);
-    nochmal.addEventListener("click", () => {
-      if (modus === "fuehrung") {
-        phase = "alter";
-        zeichnen();
-      } else {
-        neuAufbauen();
-      }
-    });
+    nochmal.addEventListener("click", neuesTraining);
     box.append(el("div", { class: "abschluss-tasten" }, [drucken, nochmal]));
     return box;
   }
 
   function zeichnen(): void {
+    planSichern();
+    ablageZeichnen();
     const pfad = modell.pfade.find((p) => p.id === rahmen.pfadId)!;
     hinweis.replaceChildren(
       el("b", {}, [pfad.folge.join(" → ")]),
@@ -577,9 +719,11 @@ export function training(wurzel: HTMLElement, modus: Modus): () => void {
     const spalten = el("div", { class: "plan-spalten" });
     const links = el("div", { class: "plan-links" });
     links.append(
+      el("p", { class: "druck-planname" }, [planName.trim() || standardName()]),
       el("h2", { class: "plan-ziel" }, [pfad.ziel]),
       planZeilen(),
     );
+    for (const text of ladeHinweise) links.prepend(el("p", { class: "duenn" }, [text]));
     if (pfad.individualisierung) {
       links.append(el("p", { class: "blockfunktion" }, [pfad.individualisierung]));
     }
@@ -604,11 +748,11 @@ export function training(wurzel: HTMLElement, modus: Modus): () => void {
     ]),
   );
 
-  wurzel.append(kopf, ...(modus === "automatik" ? [zeile] : []), bereich, fuss);
-  if (modus === "automatik") neuAufbauen();
+  wurzel.append(kopf, ablage, ...(modus === "automatik" ? [zeile] : []), bereich, fuss);
+  if (modus === "automatik" && !fortsetzen) neuAufbauen();
   else zeichnen();
 
   return () => {
-    for (const k of [kopf, zeile, bereich, fuss]) k.remove();
+    for (const k of [kopf, ablage, zeile, bereich, fuss]) k.remove();
   };
 }

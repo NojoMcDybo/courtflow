@@ -151,6 +151,33 @@ Kandidaten. Das ist keine Modellschwäche, sondern die bekannte Bestandslücke
 bei U16 und U18, die auch die Abdeckungsmatrix zeigt. Die Oberfläche sagt es an
 der Stelle, an der es auftritt.
 
+## Lokale Planablage (10.09.2026)
+
+Aufbau und Automatik verwenden `src/speicher.ts` und ein gemeinsames,
+versioniertes Archiv `courtflow.plaene.v1`. Gespeichert werden Plan-ID, Name,
+Arbeitsweise, Rahmen, geordnete Blöcke mit Übungs-ID und konkreten Minuten sowie
+der Änderungszeitpunkt. Kandidatenlisten werden beim Öffnen neu berechnet;
+die gespeicherte Auswahl wird dabei nicht neu ausgewürfelt. Details kommen
+aus dem aktuellen Katalog, es wird keine historische Textkopie gespeichert.
+
+Auswahl, Austausch und Umbenennen aktualisieren denselben Eintrag automatisch.
+„Neues Training“, „Neu würfeln“ und ein geänderter Rahmen beginnen einen neuen
+Eintrag. Die zehn zuletzt geänderten Pläne sind aus beiden Arbeitsweisen
+erreichbar. Ein Fortsetzungszeiger je Arbeitsweise merkt den geöffneten Plan.
+Unvollständige Pläne werden als Entwurf fortgesetzt. Altere reine
+Rahmeneinstellungen werden validiert übernommen; daraus wird keine frühere
+Übungsauswahl erfunden.
+
+Beschädigte oder unbekannte Archivformate werden nicht überschrieben. Ein
+fehlender Katalogeintrag wird als offener Block mit Hinweis geladen; bekannte
+Alias-IDs werden kanonisch aufgelöst. Speicherfehler erscheinen an der Ablage,
+statt eine erfolgreiche Speicherung vorzutäuschen. Die Ablage ist an Browser,
+Gerät und Website-Adresse gebunden; das Löschen der Browserdaten entfernt sie.
+
+`npm run pruefen:speicher` prüft vollständige und unvollständige Rundläufe,
+beide Arbeitsweisen, Minuten und Reihenfolge, Aktualisieren ohne Duplikate,
+die Zehnergrenze, ungültige Daten, Alias-/fehlende IDs und gesperrten Speicher.
+
 ## Was noch offen ist
 
 - Die Kartenzuordnung ist eine Bewertung über Textmuster und Skalen. Sie wäre

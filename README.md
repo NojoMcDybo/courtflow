@@ -16,8 +16,10 @@ Datensätze gleich aussehen zu lassen.
 
 Drei Flächen:
 
-1. **Drill-Liste** — 146 Karten mit Suche, Filtern, Abdeckungsmatrix und
-   Detailblatt; Quelle und Belegtiefe an jeder Karte.
+1. **Drill-Bibliothek** — die Abdeckungsmatrix navigiert durch Thema und Alter.
+   146 Übungskarten zeigen Name und Altersfenster; Beschreibung, Kompetenz,
+   Quelle und Belegtiefe stehen im geöffneten Detail. Suche und weitere Filter
+   grenzen den Bestand ein.
 2. **Trainingsaufbau** — führt Block für Block durch eine Einheit; du wählst je
    Block aus passenden Übungen.
 3. **Automatischer Plan** — baut die Einheit selbst und würfelt auf Wunsch eine
@@ -26,6 +28,12 @@ Drei Flächen:
 Aufbau und Generator benutzen dasselbe Modell, siehe
 [`docs/trainingsmodell.md`](docs/trainingsmodell.md). Offene Punkte stehen in
 [`PROJEKT.md`](PROJEKT.md).
+
+Beide Wege speichern vollständige Einheiten und angefangene Entwürfe automatisch
+in diesem Browser. „Letzte Pläne“ öffnet die zehn zuletzt geänderten Pläne;
+Name, Übungsauswahl, Blockreihenfolge und Minuten bleiben nach einem Neuladen
+erhalten. „Neues Training“ und „Neu würfeln“ erzeugen jeweils einen neuen Eintrag.
+Die Ablage gilt nur für diesen Browser und diese Website-Adresse, ohne Cloud-Synchronisierung.
 
 ## Loslegen
 
@@ -36,6 +44,7 @@ npm run build     # statischer Build nach dist/
 npm run daten        # Datenstände aus der DOCX-Primärquelle neu erzeugen
 npm run pruefen      # Prüfstand Übungsdaten + Abdeckungsmatrix
 npm run pruefen:plan # Prüfstand Trainingsmodell gegen den Bestand
+npm run pruefen:speicher # Speicherung, Wiederherstellung und Fehlerfälle
 ```
 
 Node ≥ 20 und Python 3 für die Datenkette.
@@ -70,5 +79,5 @@ docs/trainingsmodell.md  Bausteine, Aufbauweisen, Zeitrechnung, Quellen
 
 ## Datenquellen
 
-Jr. NBA, FIBA/WABC und DBB. Die Originalquelle ist je Karte verlinkt; Karten
+Jr. NBA, FIBA/WABC und DBB. Die Originalquelle ist im Kartendetail verlinkt; Karten
 ohne Quellenangabe sind als solche gekennzeichnet und nicht veröffentlichungsreif.

@@ -10,7 +10,8 @@
     "daten": "python3 tools/extract.py && python3 tools/normalize.py && python3 tools/taxonomy.py && python3 tools/trainingsmodell.py",
     "pruefen": "python3 tools/validate.py --matrix",
     "modell": "python3 tools/trainingsmodell.py",
-    "pruefen:plan": "esbuild tools/pruefe-plan.ts --bundle --platform=node --format=esm --loader:.json=json --outfile=node_modules/.cache/pruefe-plan.mjs --log-level=error && node node_modules/.cache/pruefe-plan.mjs"
+    "pruefen:plan": "esbuild tools/pruefe-plan.ts --bundle --platform=node --format=esm --loader:.json=json --outfile=node_modules/.cache/pruefe-plan.mjs --log-level=error && node node_modules/.cache/pruefe-plan.mjs",
+    "pruefen:speicher": "esbuild tools/pruefe-speicher.ts --bundle --platform=node --format=esm --loader:.json=json --outfile=node_modules/.cache/pruefe-speicher.mjs --log-level=error && node node_modules/.cache/pruefe-speicher.mjs"
   },
   "devDependencies": {
     "typescript": "^5.7.2",
