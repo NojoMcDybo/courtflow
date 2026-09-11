@@ -1,4 +1,5 @@
 import { el } from "../dom";
+import { markenIcon } from "../marke";
 import { alleDrills, kennzahlen, taxonomie } from "../data";
 
 type Tor = {
@@ -44,7 +45,7 @@ export function startseite(wurzel: HTMLElement): () => void {
 
   const kopf = el("header", { class: "poster-kopf" });
   kopf.append(
-    el("span", { class: "poster-marke" }, [el("i", { "aria-hidden": "true" }, ["CF"]), "CourtFlow"]),
+    el("span", { class: "poster-marke" }, [markenIcon(), "CourtFlow"]),
     el("p", { class: "mikro" }, [
       `Saison 26/27 · Kinder- und Jugendbasketball · ${z.gesamt} Übungen · ${z.mitQuelle} mit Quelle · ${
         z.gesamt - z.mitQuelle

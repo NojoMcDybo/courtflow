@@ -1,4 +1,5 @@
 import { el } from "../dom";
+import { markenIcon } from "../marke";
 import { themaIstDunkel, themaUmschalten } from "../thema";
 import { TIEFE_LABEL, aliaseVon, alleDrills, filtern, kompetenzName, taxonomie } from "../data";
 import type { Drill, Filter } from "../types";
@@ -100,7 +101,7 @@ export function seite(wurzel: HTMLElement): () => void {
   beschriften();
   thema.addEventListener("click", () => { themaUmschalten(); beschriften(); });
   leiste.append(
-    el("a", { class: "wortmarke", href: "#/", title: "Zur Startseite" }, [el("i", { "aria-hidden": "true" }, ["CF"]), "CourtFlow"]),
+    el("a", { class: "wortmarke", href: "#/", title: "Zur Startseite" }, [markenIcon(), "CourtFlow"]),
     el("span", { class: "seitentitel" }, ["01 / Bibliothek"]),
     el("span", { class: "leiste-rechts" }, [thema, el("a", { href: "#/aufbau" }, ["Training bauen ↗"])]),
   );

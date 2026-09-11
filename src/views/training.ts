@@ -1,6 +1,8 @@
 import { el } from "../dom";
+import { markenIcon } from "../marke";
 import { themaIstDunkel, themaUmschalten } from "../thema";
-import { TIEFE_LABEL } from "../data";
+import { TIEFE_LABEL, kompetenzName } from "../data";
+import { kartenbewegung } from "../bewegung";
 import {
   type Block,
   type Rahmen,
@@ -43,6 +45,7 @@ const SKALEN_KURZ: Record<string, string> = {
  *  als Platzhalter zu erscheinen. */
 function detailInhalt(d: Drill): HTMLElement {
   const box = el("div", { class: "detailinhalt" });
+  box.append(el("p", { class: "kennung" }, [d.id]));
   for (const [label, wert] of [
     ["Lernziel", d.lernziel],
     ["Ablauf", d.ablauf ?? d.evidenz],
@@ -57,6 +60,8 @@ function detailInhalt(d: Drill): HTMLElement {
   const felder = el("div", { class: "felder" });
   const paar = (l: string, w: string | null) =>
     w ? felder.append(el("div", {}, [el("b", {}, [l]), w])) : undefined;
+  paar("Alter", d.alter.roh);
+  paar("Kompetenz", d.kompetenz.alle.map(kompetenzName).join(", "));
   paar("Dauer", d.dauer_min.roh);
   paar("Spieler", d.spielerzahl.roh);
   paar("Raum", d.raum);
@@ -109,28 +114,17 @@ function klappen(huelle: HTMLElement, auf: boolean): void {
   });
 }
 
-function drillZeile(d: Drill, stufe: number): HTMLElement {
-  const box = el("span", { class: "karte-zeile" });
-  box.append(
-    el("span", { class: "kennung" }, [d.id]),
-    el("span", { class: "karte-titel" }, [d.titel]),
-  );
-  const marken = el("span", { class: "karte-marken" });
-  if (d.alter.von) {
-    marken.append(
-      el("span", { class: ausserhalbAlter(d, stufe) ? "pille ausser" : "pille" }, [
-        `U${d.alter.von}–U${d.alter.bis}`,
-      ]),
-    );
-  }
-  for (const c of d.kompetenz.alle.slice(0, 3)) marken.append(el("span", { class: "pille" }, [c]));
-  if (d.dokumentationstiefe !== "vollstaendig") {
-    marken.append(el("span", { class: "pille schwach" }, [TIEFE_LABEL[d.dokumentationstiefe]!]));
-  }
-  box.append(marken);
-  return box;
-}
+const drillName = (d: Drill): string => /^QA\s/.test(d.titel) || d.titel.length > 180
+  ? d.originaltitel ?? "Übung ohne Kurztitel" : d.titel;
 
+function drillZeile(d: Drill, stufe: number): HTMLElement {
+  const alter = d.alter.von === null || d.alter.bis === null ? "Alter offen"
+    : d.alter.von === d.alter.bis ? `U${d.alter.von}` : `U${d.alter.von}–U${d.alter.bis}`;
+  return el("span", { class: "karte-zeile" }, [
+    el("span", { class: ausserhalbAlter(d, stufe) ? "drill-alter ausser" : "drill-alter" }, [alter]),
+    el("span", { class: "karte-titel" }, [drillName(d)]),
+  ]);
+}
 export function training(wurzel: HTMLElement, modus: Modus): () => void {
   const rahmen: Rahmen = { pfadId: "TR-05", dauer: 90, altersstufe: 12 };
   let plan: Block[] = [];
@@ -142,9 +136,14 @@ export function training(wurzel: HTMLElement, modus: Modus): () => void {
   type Phase = "alter" | "art" | "bloecke";
   let phase: Phase = modus === "fuehrung" ? "alter" : "bloecke";
   const offen = new Set<string>();
-  /* Beim Wählen fliegt die Karte an ihren Platz. Der Startpunkt wird vor dem
-     Neuzeichnen gemessen, das Ziel danach — FLIP. */
-  let flugstart: { rect: DOMRect; knoten: HTMLElement } | null = null;
+  const bewegung = kartenbewegung();
+  let beschaeftigt = false;
+  let verteilen = false;
+  let beendet = false;
+  let austausch: string | null = null;
+  let ankunft: string | null = null;
+  let rueckgabe: Drill | null = null;
+  const ausstehend = new Set<string>();
 
   let archiv: GespeicherterPlan[] = [];
   let speicherFehler: string | null = null;
@@ -179,6 +178,8 @@ export function training(wurzel: HTMLElement, modus: Modus): () => void {
   const signatur = (p: GespeicherterPlan) => JSON.stringify({ ...p, aktualisiert: "" });
 
   function laden(p: GespeicherterPlan): void {
+    austausch = null;
+    ankunft = null;
     const geladen = wiederherstellen(p);
     Object.assign(rahmen, p.rahmen);
     planId = p.id;
@@ -224,6 +225,8 @@ export function training(wurzel: HTMLElement, modus: Modus): () => void {
   }
 
   function neuerEntwurf(): void {
+    austausch = null;
+    ankunft = null;
     planId = crypto.randomUUID();
     planName = "";
     letzteSignatur = "";
@@ -242,7 +245,7 @@ export function training(wurzel: HTMLElement, modus: Modus): () => void {
   });
   kopf.append(
     el("a", { class: "wortmarke", href: "#/", title: "Zur Startseite" }, [
-      el("i", { "aria-hidden": "true" }, ["CF"]),
+      markenIcon(),
       "CourtFlow",
     ]),
     el("span", { class: "seitentitel" }, [
@@ -251,11 +254,11 @@ export function training(wurzel: HTMLElement, modus: Modus): () => void {
     el("span", { class: "leiste-rechts" }, [
       thema,
       el("a", { href: "#/bibliothek" }, ["Bibliothek"]),
-      el("a", { href: REPO, target: "_blank", rel: "noreferrer noopener" }, ["Code"]),
     ]),
   );
 
   const ablage = el("section", { class: "planablage", "aria-label": "Gespeicherte Trainingspläne" });
+  const verwaltung = el("details", { class: "planverwaltung" }, [el("summary", {}, ["Meine Pläne"]), ablage]);
   const nameLabel = el("label", { class: "planname-label" }, ["Planname"]);
   const nameEingabe = el("input", { type: "text", maxlength: "80", "aria-label": "Planname" });
   nameLabel.append(nameEingabe);
@@ -319,7 +322,7 @@ export function training(wurzel: HTMLElement, modus: Modus): () => void {
   neu.addEventListener("click", neuesTraining);
 
   /* ---- Rahmenzeile ---- */
-  const zeile = el("div", { class: "filterzeile" });
+  const zeile = el("div", { class: "filterzeile trainingsrahmen" });
   const hinweis = el("span", { class: "stand" });
 
   const auswahl = (
@@ -373,10 +376,10 @@ export function training(wurzel: HTMLElement, modus: Modus): () => void {
 
   const wuerfeln = el("button", { class: "haupttaste", type: "button" }, ["Neu würfeln"]);
   wuerfeln.addEventListener("click", () => {
+    if (beschaeftigt) return;
     letzte = plan.some((b) => b.gewaehlt) ? plan : null;
     neuerEntwurf();
-    plan = neuWuerfeln(rahmen, letzte);
-    zeichnen();
+    void automatischEinsetzen(neuWuerfeln(rahmen, letzte));
   });
 
   if (modus === "automatik") {
@@ -384,55 +387,98 @@ export function training(wurzel: HTMLElement, modus: Modus): () => void {
   }
 
   /* ---- Inhalt ---- */
-  const bereich = el("main", { class: "bereich plan" });
+  const bereich = el("main", { class: "bereich plan trainingsstudio" });
+  const meldung = el("p", { class: "bewegungsstatus", role: "status", "aria-live": "polite", "aria-atomic": "true" });
+  const dialog = el("dialog", { class: "drill-dialog" });
+  let detailAusloeser: HTMLElement | null = null;
+  dialog.addEventListener("close", () => detailAusloeser?.focus());
 
-  /* Die gewählte Karte läuft von ihrem Platz im Raster an ihren Platz im Plan.
-     Gemessen wird vorher und nachher, bewegt wird eine Kopie — das Layout
-     bleibt davon unberührt. */
-  function fliegen(code: string): void {
-    const start = flugstart;
-    flugstart = null;
-    if (!start || ruhig()) return;
-    const ziel = bereich.querySelector<HTMLElement>(`.planzeile[data-block="${code}"]`);
-    if (!ziel) return;
+  function vorschau(d: Drill, taste: HTMLElement): void {
+    detailAusloeser = taste;
+    dialog.setAttribute("aria-label", drillName(d));
+    const zu = el("button", { class: "schliessen", type: "button", "aria-label": "Schließen" }, ["✕"]);
+    zu.addEventListener("click", () => dialog.close());
+    dialog.replaceChildren(el("div", { class: "blatt" }, [
+      el("div", { class: "blatt-kopf" }, [el("h2", {}, [d.titel]), zu]), detailInhalt(d),
+    ]));
+    dialog.showModal();
+  }
 
-    const zielRect = ziel.getBoundingClientRect();
-    const kopie = start.knoten.cloneNode(true) as HTMLElement;
-    kopie.classList.add("flugkarte");
-    Object.assign(kopie.style, {
-      top: `${start.rect.top}px`,
-      left: `${start.rect.left}px`,
-      width: `${start.rect.width}px`,
-      height: `${start.rect.height}px`,
-    });
-    document.body.append(kopie);
+  function bewegungsZiel(code: string): HTMLElement | null {
+    if (window.matchMedia("(max-width: 900px)").matches) {
+      return bereich.querySelector<HTMLElement>(".mobiles-ziel .zielkarte");
+    }
+    const ziel = bereich.querySelector<HTMLElement>(`.planzeile[data-block="${code}"] .plan-einsatz`);
+    // Only move the internal plan list; never move the user's whole page mid-flight.
+    const liste = bereich.querySelector<HTMLElement>(".plan-scroll");
+    if (ziel && liste) {
+      const r = ziel.getBoundingClientRect();
+      const l = liste.getBoundingClientRect();
+      if (r.top < l.top || r.bottom > l.bottom) liste.scrollTop += r.top - l.top - 12;
+    }
+    return ziel;
+  }
 
-    const dx = zielRect.left - start.rect.left;
-    const dy = zielRect.top - start.rect.top;
-    const sx = zielRect.width / start.rect.width;
+  async function einsetzen(b: Block, d: Drill, karte: HTMLElement): Promise<void> {
+    if (beschaeftigt) return;
+    const start = bewegung.merken(karte);
+    const alt = b.gewaehlt;
+    const alterPlatz = bewegungsZiel(b.code);
+    const rueckStart = alt && alterPlatz ? bewegung.merken(alterPlatz) : null;
+    rueckgabe = alt;
+    beschaeftigt = true;
+    ankunft = b.code;
+    b.gewaehlt = d;
+    offen.delete(b.code);
+    zeichnen();
+    const ziel = bewegungsZiel(b.code);
+    const zurueck = bereich.querySelector<HTMLElement>(".rueckgabe .vorschlagskarte");
+    await Promise.all([
+      ...(ziel ? [bewegung.fliegen(start, ziel)] : []),
+      ...(rueckStart && zurueck ? [bewegung.fliegen(rueckStart, zurueck)] : []),
+    ]);
+    if (beendet) return;
+    beschaeftigt = false;
+    verteilen = false;
+    austausch = null;
+    ankunft = null;
+    rueckgabe = null;
+    schritt = plan.findIndex(x => !x.gewaehlt);
+    if (schritt < 0) schritt = plan.length;
+    zeichnen();
+    meldung.textContent = `${drillName(d)} → ${baustein(b.code).kurz}${alt ? ` · ersetzt ${drillName(alt)}` : ""}`;
+    bereich.querySelector<HTMLElement>(".auswahlbereich h2, .abschluss h2")?.focus({ preventScroll: true });
+  }
 
-    ziel.style.opacity = "0";
-    kopie.animate(
-      [
-        { transform: "translate(0,0) scale(1)", opacity: 1 },
-        { transform: `translate(${dx}px, ${dy}px) scale(${sx})`, opacity: 0 },
-      ],
-      { duration: 460, easing: FEDER, fill: "forwards" },
-    ).addEventListener("finish", () => {
-      kopie.remove();
-      ziel.style.opacity = "";
-    });
-
-    ziel.animate(
-      [
-        { opacity: 0, transform: "translateX(14px)" },
-        { opacity: 1, transform: "none" },
-      ],
-      { duration: 340, delay: 200, easing: FEDER, fill: "backwards" },
-    );
-    setTimeout(() => {
-      ziel.style.opacity = "";
-    }, 220);
+  async function automatischEinsetzen(neu: Block[]): Promise<void> {
+    if (beschaeftigt || beendet) return;
+    plan = neu;
+    verteilen = !ruhig();
+    austausch = null;
+    ausstehend.clear();
+    if (!ruhig()) for (const b of plan) if (b.gewaehlt) ausstehend.add(b.code);
+    beschaeftigt = ausstehend.size > 0;
+    schritt = plan.length;
+    zeichnen(); // Persist the full result once; animation never changes the stored plan.
+    for (const b of plan) {
+      if (beendet) return;
+      if (!ausstehend.has(b.code)) continue;
+      const karte = bereich.querySelector<HTMLElement>(`[data-vorschlag="${b.code}"]`);
+      const start = karte ? bewegung.merken(karte) : null;
+      ankunft = b.code;
+      ausstehend.delete(b.code);
+      zeichnen();
+      const ziel = bewegungsZiel(b.code);
+      if (start && ziel) await bewegung.fliegen(start, ziel);
+    }
+    if (beendet) return;
+    beschaeftigt = false;
+    verteilen = false;
+    ankunft = null;
+    schritt = plan.findIndex(b => !b.gewaehlt);
+    if (schritt < 0) schritt = plan.length;
+    zeichnen();
+    meldung.textContent = schritt === plan.length ? "Dein Training steht. Alle Karten sind eingesetzt." : "Vorschläge eingesetzt. Offene Blöcke kannst du selbst füllen.";
   }
 
   function minutenText(folge: string[]): number[] {
@@ -440,7 +486,8 @@ export function training(wurzel: HTMLElement, modus: Modus): () => void {
   }
 
   function neuAufbauen(): void {
-    plan = modus === "automatik" ? neuWuerfeln(rahmen, null) : bloecke(rahmen);
+    if (modus === "automatik") { void automatischEinsetzen(neuWuerfeln(rahmen, null)); return; }
+    plan = bloecke(rahmen);
     schritt = 0;
     zeichnen();
   }
@@ -585,108 +632,155 @@ export function training(wurzel: HTMLElement, modus: Modus): () => void {
     return box;
   }
 
+  function aktiverBlock(): Block | undefined {
+    return plan.find(b => b.code === (ankunft ?? austausch)) ?? plan.find(b => !b.gewaehlt);
+  }
+
   function planZeilen(): HTMLElement {
     const liste = el("ol", { class: "planliste" });
+    const aktiv = aktiverBlock();
     plan.forEach((b, i) => {
       const bs = baustein(b.code);
+      const d = ausstehend.has(b.code) ? null : b.gewaehlt;
       const zeileEl = el("li", {
-        class: `planzeile${modus === "fuehrung" && i === schritt ? " aktiv" : ""}${
-          b.gewaehlt ? " voll" : ""
-        }`,
+        class: `planzeile${aktiv === b ? " aktiv" : ""}${d ? " voll" : ""}`,
+        "data-block": b.code,
       });
-      const kopfEl = el("div", { class: "planzeile-kopf" });
-      kopfEl.append(
-        el("span", { class: "blockcode" }, [b.code]),
+      zeileEl.append(el("div", { class: "planzeile-kopf" }, [
+        el("span", { class: "blockcode" }, [String(i + 1).padStart(2, "0")]),
         el("span", { class: "blockname" }, [bs.kurz]),
         el("span", { class: "blockzeit" }, [`${b.minuten} min`]),
-      );
-      zeileEl.append(kopfEl);
-      if (b.gewaehlt) {
-        const d = b.gewaehlt;
-        zeileEl.dataset["block"] = b.code;
+      ]));
+      const einsatz = el("div", { class: "plan-einsatz" });
+      if (d) {
         const istOffen = offen.has(b.code);
-
-        const auslöser = el("button", {
-          class: "kartenkopf-taste",
-          type: "button",
-          "aria-expanded": String(istOffen),
-        });
-        auslöser.append(drillZeile(d, rahmen.altersstufe), el("span", { class: "pfeilchen" }, ["⌄"]));
-
-        const huelle = el("div", { class: "detailhuelle" });
+        const taste = el("button", {
+          class: "kartenkopf-taste", type: "button", "aria-expanded": String(istOffen),
+          "aria-controls": `detail-${b.code}`, "aria-label": `${drillName(d)} – Details`,
+        }, [drillZeile(d, rahmen.altersstufe), el("span", { class: "pfeilchen", "aria-hidden": "true" }, ["⌄"])]);
+        const huelle = el("div", { class: "detailhuelle", id: `detail-${b.code}` });
         huelle.style.height = istOffen ? "auto" : "0px";
+        huelle.inert = !istOffen;
         huelle.append(detailInhalt(d));
-
-        auslöser.addEventListener("click", () => {
-          const jetztOffen = !offen.has(b.code);
-          jetztOffen ? offen.add(b.code) : offen.delete(b.code);
-          auslöser.setAttribute("aria-expanded", String(jetztOffen));
-          zeileEl.classList.toggle("offen", jetztOffen);
-          klappen(huelle, jetztOffen);
+        taste.addEventListener("click", () => {
+          const auf = !offen.has(b.code);
+          auf ? offen.add(b.code) : offen.delete(b.code);
+          taste.setAttribute("aria-expanded", String(auf));
+          huelle.inert = !auf;
+          zeileEl.classList.toggle("offen", auf);
+          klappen(huelle, auf);
         });
-
         if (istOffen) zeileEl.classList.add("offen");
-        const tauschen = el("button", { class: "textknopf", type: "button" }, ["Tauschen"]);
+        einsatz.append(taste);
+        const tauschen = el("button", { class: "tauschen-taste", type: "button", "aria-label": `${bs.kurz}: Übung tauschen` }, ["⇄ Tauschen"]);
         tauschen.addEventListener("click", () => {
+          if (beschaeftigt) return;
+          austausch = b.code;
           schritt = i;
           offen.delete(b.code);
-          b.gewaehlt = null;
           zeichnen();
+          bereich.querySelector<HTMLElement>(".auswahlbereich")?.scrollIntoView({ block: "start", behavior: "instant" });
+          bereich.querySelector<HTMLElement>(".auswahlbereich h2")?.focus({ preventScroll: true });
         });
-        zeileEl.append(auslöser, huelle, tauschen);
+        zeileEl.append(einsatz, huelle, tauschen);
       } else {
-        zeileEl.append(el("p", { class: "blockfunktion" }, [bs.funktion]));
+        const waehlen = el("button", { class: "platzhalter-karte", type: "button", "aria-label": `${bs.kurz}: Übung auswählen` }, [
+          el("span", { "aria-hidden": "true" }, ["＋"]), ausstehend.has(b.code) ? "Karte kommt hierhin" : "Übung einsetzen",
+        ]);
+        waehlen.addEventListener("click", () => {
+          austausch = b.code;
+          schritt = i;
+          zeichnen();
+          bereich.querySelector<HTMLElement>(".auswahlbereich")?.scrollIntoView({ block: "start", behavior: "instant" });
+          bereich.querySelector<HTMLElement>(".auswahlbereich h2")?.focus({ preventScroll: true });
+        });
+        einsatz.append(waehlen);
+        zeileEl.append(einsatz);
       }
       liste.append(zeileEl);
     });
     return liste;
   }
 
+  function kandidatenKarte(d: Drill, b: Block): HTMLElement {
+    const karte = el("article", { class: "vorschlagskarte", "data-drill": d.id });
+    const details = el("button", { class: "vorschau-taste", type: "button", "aria-haspopup": "dialog", "aria-label": `${drillName(d)} – Details` }, [
+      drillZeile(d, rahmen.altersstufe), el("span", { class: "kartendetail-link" }, ["Details ↗"]),
+    ]);
+    details.addEventListener("click", () => vorschau(d, details));
+    const waehlen = el("button", { class: "einsetzen-taste", type: "button", "aria-label": `${drillName(d)} einsetzen` }, [
+      b.gewaehlt ? "Ersetzen" : "Einsetzen", el("span", { "aria-hidden": "true" }, ["→"]),
+    ]);
+    waehlen.addEventListener("click", () => { void einsetzen(b, d, karte); });
+    karte.append(details, waehlen);
+    return karte;
+  }
+
   function auswahlKarten(b: Block): HTMLElement {
-    const box = el("section", { class: "auswahlbereich" });
+    const box = el("section", { class: "auswahlbereich", "aria-label": "Übungsauswahl" });
     const bs = baustein(b.code);
-    const [min, max] = modell.regeln.karten_je_schritt as [number, number];
-    const gezeigt = b.kandidaten.filter((d) => !plan.some((x) => x.gewaehlt?.id === d.id)).slice(0, max);
-
+    const [, max] = modell.regeln.karten_je_schritt as [number, number];
+    const gezeigt = b.kandidaten.filter(d => !plan.some(x => x.gewaehlt?.id === d.id)).slice(0, max);
     box.append(
-      el("h2", {}, [`${b.code} · ${bs.name}`]),
-      el("p", { class: "blockfunktion" }, [`${bs.funktion} · ${b.minuten} min · Hebel: ${bs.hebel ?? "—"}`]),
+      el("span", { class: "studio-augenbraue" }, ["Aus der Übungsauswahl"]),
+      el("h2", { tabindex: "-1" }, [b.gewaehlt ? `Alternative für ${bs.kurz}` : `Wähle für ${bs.kurz}`]),
+      el("p", { class: "blockfunktion" }, [`U${rahmen.altersstufe} · ${b.minuten} Minuten im Plan`]),
     );
-    if (gezeigt.length < min) {
-      box.append(
-        el("p", { class: "duenn" }, [
-          `Nur ${gezeigt.length} passende Karten für diesen Block bei U${rahmen.altersstufe}. Der Bestand ist hier dünn.`,
-        ]),
-      );
-    }
-
-    const raster = el("div", { class: "kartenwahl" });
-    for (const d of gezeigt) {
-      const knopf = el("button", { class: "wahlkarte", type: "button" });
-      knopf.append(drillZeile(d, rahmen.altersstufe));
-      if (d.lernziel ?? d.ablauf ?? d.evidenz) {
-        knopf.append(el("p", {}, [(d.lernziel ?? d.ablauf ?? d.evidenz)!]));
-      }
-      knopf.addEventListener("click", () => {
-        flugstart = { rect: knopf.getBoundingClientRect(), knoten: knopf };
-        b.gewaehlt = d;
-        const naechster = plan.findIndex((x) => !x.gewaehlt);
-        schritt = naechster < 0 ? plan.length : naechster;
+    if (b.gewaehlt && !beschaeftigt) {
+      const abbrechen = el("button", { class: "tauschen-taste", type: "button" }, ["Bisherige Übung behalten"]);
+      abbrechen.addEventListener("click", () => {
+        austausch = null;
         zeichnen();
-        fliegen(b.code);
+        bereich.querySelector<HTMLElement>(`.planzeile[data-block="${b.code}"] .tauschen-taste`)?.focus();
       });
-      raster.append(knopf);
+      box.append(abbrechen);
     }
+    if (rueckgabe) {
+      box.append(el("div", { class: "rueckgabe" }, [
+        el("span", { class: "studio-augenbraue" }, ["Zurück in die Auswahl"]), kandidatenKarte(rueckgabe, b),
+      ]));
+    }
+    const raster = el("div", { class: "kartenwahl" });
+    for (const d of gezeigt) if (d.id !== rueckgabe?.id) raster.append(kandidatenKarte(d, b));
+    if (!gezeigt.length && !rueckgabe) raster.append(el("p", { class: "duenn" }, ["Keine weitere passende Übung im Bestand. Wähle einen anderen Block oder behalte deine Auswahl."]));
     box.append(raster);
     return box;
   }
 
+  function vorschlagsStapel(): HTMLElement {
+    const box = el("section", { class: "auswahlbereich verteilstapel", "aria-label": "Automatische Vorschläge" }, [
+      el("span", { class: "studio-augenbraue" }, ["Aus der Übungsauswahl"]),
+      el("h2", { tabindex: "-1" }, ["Dein Training entsteht"]),
+      el("p", { class: "blockfunktion" }, ["Passende Karten wandern in ihre Trainingsblöcke."]),
+    ]);
+    const raster = el("div", { class: "kartenwahl" });
+    for (const b of plan) {
+      if (!b.gewaehlt || !ausstehend.has(b.code)) continue;
+      raster.append(el("article", { class: "vorschlagskarte automatisch-karte", "data-vorschlag": b.code }, [
+        drillZeile(b.gewaehlt, rahmen.altersstufe),
+        el("span", { class: "karten-route" }, [`→ ${baustein(b.code).kurz} · ${b.minuten} min`]),
+      ]));
+    }
+    if (!raster.childElementCount) raster.append(el("p", { class: "blockfunktion" }, ["Die letzte Karte wird eingesetzt …"]));
+    box.append(raster);
+    return box;
+  }
+
+  function mobilesZiel(): HTMLElement {
+    const b = aktiverBlock() ?? plan[plan.length - 1];
+    const box = el("aside", { class: "mobiles-ziel", "aria-label": "Ziel im Trainingsplan" });
+    if (b) box.append(el("div", { class: "zielkarte" }, [
+      el("span", { class: "studio-augenbraue" }, [`Dein Plan → ${baustein(b.code).kurz} · ${b.minuten} min`]),
+      el("strong", {}, [b.gewaehlt && !ausstehend.has(b.code) ? drillName(b.gewaehlt) : "Hier kommt deine Karte hin"]),
+    ]));
+    return box;
+  }
   function abschluss(): HTMLElement {
     const box = el("section", { class: "abschluss" });
     const befund = belastungsbefund(plan);
     const summe = plan.reduce((a, b) => a + b.minuten, 0);
     box.append(
-      el("h2", {}, ["Einheit steht"]),
+      el("h2", { tabindex: "-1" }, ["Alle Karten am richtigen Platz."]),
       el("p", { class: "blockfunktion" }, [
         `${summe} Minuten Übungszeit · ${plan.length} Blöcke · ${Math.round(
           rahmen.dauer * modell.regeln.organisationsanteil,
@@ -703,41 +797,57 @@ export function training(wurzel: HTMLElement, modus: Modus): () => void {
   }
 
   function zeichnen(): void {
+    if (beendet) return;
     planSichern();
     ablageZeichnen();
-    const pfad = modell.pfade.find((p) => p.id === rahmen.pfadId)!;
-    hinweis.replaceChildren(
-      el("b", {}, [pfad.folge.join(" → ")]),
-      pfad.herkunft === "abgeleitet" ? " · abgeleitete Aufbauweise" : ` · ${pfad.id}`,
-    );
-
+    const pfad = modell.pfade.find(p => p.id === rahmen.pfadId)!;
+    hinweis.textContent = `${plan.length} Blöcke`;
+    verwaltung.inert = beschaeftigt;
+    zeile.inert = beschaeftigt;
+    bereich.inert = beschaeftigt;
+    bereich.setAttribute("aria-busy", String(beschaeftigt));
+    const intro = el("div", { class: "studio-kopf" }, [
+      el("div", {}, [
+        el("span", { class: "studio-augenbraue" }, [modus === "fuehrung" ? "02 / Gemeinsam aufbauen" : "03 / Automatisch zusammenstellen"]),
+        el("h1", {}, [modus === "fuehrung" ? "Dein Training. Karte für Karte." : "Ein Plan für dein Team."]),
+      ]),
+      ...(phase === "bloecke" ? [el("span", { class: "studio-rahmen" }, [`U${rahmen.altersstufe} · ${rahmen.dauer} min`])] : []),
+    ]);
     if (modus === "fuehrung" && phase !== "bloecke") {
-      bereich.replaceChildren(schrittleiste(), phase === "alter" ? alterWaehlen() : artWaehlen());
+      bereich.replaceChildren(intro, schrittleiste(), phase === "alter" ? alterWaehlen() : artWaehlen());
       return;
     }
 
+    const vorherScroll = bereich.querySelector<HTMLElement>(".plan-scroll")?.scrollTop ?? 0;
     const spalten = el("div", { class: "plan-spalten" });
-    const links = el("div", { class: "plan-links" });
-    links.append(
+    const zielbereich = el("section", { class: "plan-links", "aria-label": "Dein Trainingsplan" });
+    const anzahl = plan.filter(b => b.gewaehlt && !ausstehend.has(b.code)).length;
+    zielbereich.append(
       el("p", { class: "druck-planname" }, [planName.trim() || standardName()]),
-      el("h2", { class: "plan-ziel" }, [pfad.ziel]),
-      planZeilen(),
+      el("div", { class: "plan-kopf" }, [
+        el("div", {}, [el("span", { class: "studio-augenbraue" }, ["In deinen Trainingsplan"]), el("h2", { class: "plan-ziel" }, ["Dein Training"])]),
+        el("span", { class: "plan-zaehler" }, [`${anzahl} / ${plan.length}`]),
+      ]),
+      el("progress", { class: "plan-fortschritt", value: String(anzahl), max: String(plan.length || 1), "aria-label": "Eingesetzte Übungen" }),
+      el("p", { class: "plan-art" }, [pfadName(rahmen.pfadId)]),
     );
-    for (const text of ladeHinweise) links.prepend(el("p", { class: "duenn" }, [text]));
-    if (pfad.individualisierung) {
-      links.append(el("p", { class: "blockfunktion" }, [pfad.individualisierung]));
-    }
-    spalten.append(links);
-
-    const offen = plan.findIndex((b) => !b.gewaehlt);
-    if (modus === "fuehrung") {
-      spalten.append(offen >= 0 ? auswahlKarten(plan[offen]!) : abschluss());
-    } else {
-      spalten.append(offen >= 0 ? auswahlKarten(plan[offen]!) : abschluss());
-    }
-    bereich.replaceChildren(...(modus === "fuehrung" ? [schrittleiste()] : []), spalten);
+    const liste = el("div", { class: "plan-scroll" }, [planZeilen()]);
+    zielbereich.append(liste);
+    zielbereich.append(el("details", { class: "modellinfo" }, [
+      el("summary", {}, ["Zum Trainingsaufbau"]),
+      el("p", { class: "blockfunktion" }, [pfad.ziel]),
+      el("p", { class: "blockfunktion" }, [pfad.herkunft === "abgeleitet" ? "Redaktionell abgeleitete Aufbauweise" : `Katalogpfad ${pfad.id}`]),
+      ...(pfad.individualisierung ? [el("p", { class: "blockfunktion" }, [pfad.individualisierung])] : []),
+    ]));
+    for (const text of ladeHinweise) zielbereich.append(el("p", { class: "duenn" }, [text]));
+    const aktiv = aktiverBlock();
+    const quelle = verteilen ? vorschlagsStapel() : aktiv ? auswahlKarten(aktiv) : abschluss();
+    spalten.append(quelle, zielbereich);
+    spalten.inert = beschaeftigt;
+    bereich.replaceChildren(intro, ...(modus === "fuehrung" ? [schrittleiste()] : []), mobilesZiel(), spalten);
+    liste.scrollTop = vorherScroll;
+    if (beschaeftigt && ankunft) meldung.textContent = `Karte → ${baustein(ankunft).kurz}`;
   }
-
   const fuss = el("footer", { class: "fuss" });
   fuss.append(
     `Bausteine A–G und Referenzpfade aus dem Kompetenzkatalog v${modell.katalogversion}, Forschungsblock XIII · Zeitverteilung und Kartenzuordnung sind redaktionelle Ableitung · `,
@@ -748,11 +858,13 @@ export function training(wurzel: HTMLElement, modus: Modus): () => void {
     ]),
   );
 
-  wurzel.append(kopf, ablage, ...(modus === "automatik" ? [zeile] : []), bereich, fuss);
+  wurzel.append(kopf, verwaltung, ...(modus === "automatik" ? [zeile] : []), bereich, meldung, dialog, fuss);
   if (modus === "automatik" && !fortsetzen) neuAufbauen();
   else zeichnen();
 
   return () => {
-    for (const k of [kopf, ablage, zeile, bereich, fuss]) k.remove();
+    beendet = true;
+    bewegung.abbrechen();
+    for (const k of [kopf, verwaltung, zeile, bereich, meldung, dialog, fuss]) k.remove();
   };
 }

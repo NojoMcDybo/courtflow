@@ -27,15 +27,12 @@
   letter-spacing: -0.02em;
   white-space: nowrap;
 }
-.wortmarke i {
-  width: 19px;
-  height: 19px;
-  border-radius: var(--r-klein);
-  background: var(--indigo);
-  color: #fff;
-  font: 700 9px/19px var(--sf);
-  font-style: normal;
-  text-align: center;
+.wortmarke .marken-icon {
+  display: block;
+  flex: 0 0 36px;
+  width: 36px;
+  height: 36px;
+  object-fit: contain;
 }
 
 .suchfeld {

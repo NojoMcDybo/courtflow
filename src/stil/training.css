@@ -1,0 +1,104 @@
+/* Trainingsstudio: sichtbare Herkunft links, beständiger Trainingsplan rechts. */
+.trainingsstudio { max-width: 1500px; margin: 0 auto; padding-top: 24px; }
+.studio-kopf { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin: 0 0 24px; }
+.studio-kopf h1 { font-size: clamp(23px, 2.8vw, 32px); font-weight: 650; letter-spacing: -.035em; margin: 5px 0 0; }
+.studio-augenbraue { display: block; color: var(--tinte-2); font-size: 11px; font-weight: 550; letter-spacing: .035em; }
+.studio-rahmen { flex-shrink: 0; border: 1px solid var(--haarlinie); border-radius: var(--pille); padding: 8px 12px; color: var(--tinte-2); }
+.planverwaltung { padding: 9px var(--rand); border-bottom: 1px solid var(--haarlinie); background: var(--fenster); }
+.planverwaltung > summary { cursor: pointer; width: fit-content; min-height: 28px; padding: 4px 0; color: var(--tinte-2); font-size: 12px; }
+.planverwaltung .planablage { padding: 12px 0 8px; border: 0; }
+.trainingsrahmen { position: static; padding-top: 12px; padding-bottom: 12px; }
+.trainingsrahmen select, .trainingsrahmen .haupttaste { height: 34px; }
+.trainingsrahmen .stand { font-family: var(--sf); }
+.trainingsstudio .plan-spalten { grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: clamp(24px, 4vw, 56px); max-width: none; }
+.trainingsstudio .auswahlbereich { scroll-margin-top: 180px; min-width: 0; }
+.trainingsstudio .auswahlbereich h2, .trainingsstudio .abschluss h2 { font-size: 23px; margin: 6px 0; letter-spacing: -.025em; }
+.trainingsstudio .blockfunktion { color: var(--tinte-2); }
+.trainingsstudio .kartenwahl { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; margin-top: 22px; }
+.vorschlagskarte { display: flex; flex-direction: column; min-width: 0; min-height: 180px; background: var(--erhoben); color: var(--tinte); border: 1px solid var(--haarlinie); border-radius: var(--r-gross); overflow: hidden; box-shadow: var(--schatten-1); }
+.vorschlagskarte:hover { border-color: var(--indigo); }
+.vorschau-taste { display: flex; flex-direction: column; align-items: flex-start; flex: 1; width: 100%; padding: 18px; text-align: left; border: 0; background: transparent; color: inherit; font: inherit; cursor: pointer; }
+.vorschlagskarte .karte-zeile, .plan-einsatz .karte-zeile { display: block; margin: 0; }
+.vorschlagskarte .karte-titel, .plan-einsatz .karte-titel { display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; margin-top: 12px; font-size: 16px; font-weight: 600; line-height: 1.35; overflow-wrap: anywhere; }
+.kartendetail-link { display: block; margin-top: auto; padding-top: 16px; font-size: 11px; color: var(--tinte-2); }
+.einsetzen-taste { display: flex; align-items: center; justify-content: space-between; width: 100%; border: 0; border-top: 1px solid var(--haarlinie); padding: 12px 18px; color: var(--tinte); background: var(--dichte-1); font: 550 12px var(--sf); cursor: pointer; }
+.einsetzen-taste:hover { background: var(--dichte-2); }
+.einsetzen-taste > span { font-size: 18px; line-height: 1; color: var(--indigo); }
+.automatisch-karte { padding: 18px; }
+.karten-route { display: block; margin-top: auto; padding-top: 18px; font-size: 11px; color: var(--tinte-2); }
+.trainingsstudio .plan-links { min-width: 0; border: 1px solid var(--haarlinie); border-radius: var(--r-gross); padding: 20px 14px 14px; background: var(--fenster); align-self: start; position: sticky; top: 64px; }
+.plan-kopf { display: flex; align-items: center; justify-content: space-between; padding: 0 6px; gap: 12px; }
+.trainingsstudio .plan-ziel { font-size: 23px; margin: 6px 0 0; }
+.plan-zaehler { font-size: 13px; color: var(--tinte-2); font-variant-numeric: tabular-nums; }
+.plan-fortschritt { display: block; width: calc(100% - 12px); margin: 16px 6px 8px; height: 4px; border: 0; border-radius: 4px; overflow: hidden; appearance: none; background: var(--fuellung-stark); accent-color: var(--indigo); }
+.plan-fortschritt::-webkit-progress-bar { background: var(--fuellung-stark); }
+.plan-fortschritt::-webkit-progress-value { background: var(--indigo); transition: width .3s var(--feder); }
+.plan-art { margin: 0 6px 16px; color: var(--tinte-2); font-size: 12px; }
+.plan-scroll { overflow-y: auto; max-height: max(280px, calc(100svh - 330px)); padding: 3px; scrollbar-gutter: stable; }
+.trainingsstudio .planzeile { padding: 14px; margin: 0 0 10px; background: var(--erhoben); border: 1px solid var(--haarlinie); border-radius: var(--r); }
+.trainingsstudio .planzeile.aktiv { border-color: var(--indigo); box-shadow: inset 3px 0 var(--indigo); }
+.trainingsstudio .blockcode { background: var(--fuellung); color: var(--tinte-2); width: 24px; height: 24px; }
+.trainingsstudio .planzeile.aktiv .blockcode { background: var(--indigo); color: var(--dichte-tinte); }
+.trainingsstudio .blockname { font-size: 12px; }
+.plan-einsatz { border-radius: var(--r-klein); background: var(--erhoben); color: var(--tinte); margin-top: 12px; }
+.plan-einsatz .karte-titel { font-size: 14px; margin-top: 8px; }
+.trainingsstudio .drill-alter { display: inline-block; }
+.trainingsstudio .drill-alter.ausser { color: var(--tinte); border: 1px solid var(--orange); }
+.platzhalter-karte { width: 100%; min-height: 62px; display: flex; align-items: center; justify-content: center; gap: 8px; padding: 12px; border: 1px dashed var(--haarlinie); border-radius: var(--r-klein); background: var(--fuellung); color: var(--tinte-2); font: 12px var(--sf); cursor: pointer; }
+.platzhalter-karte:hover { border-color: var(--indigo); }
+.platzhalter-karte > span { font-size: 20px; }
+.tauschen-taste { border: 0; border-radius: var(--r-klein); padding: 8px 0; background: transparent; color: var(--tinte-2); font: 12px var(--sf); cursor: pointer; min-height: 32px; }
+.tauschen-taste:hover { color: var(--indigo); }
+.trainingsstudio .detailinhalt h4, .trainingsstudio .detailinhalt .felder b { color: var(--tinte-2); }
+.trainingsstudio .abschluss { align-self: start; padding: 28px; border: 1px solid var(--haarlinie); background: var(--erhoben); border-radius: var(--r-gross); }
+.trainingsstudio .abschluss::before { content: "✓"; display: grid; place-items: center; width: 48px; height: 48px; margin-bottom: 22px; border-radius: var(--r); background: var(--dichte-1); color: var(--indigo); font-size: 25px; }
+.trainingsstudio .abschluss .haupttaste, .trainingsstudio .abschluss .textknopf { height: 36px; }
+.trainingsstudio .abschluss .textknopf { color: var(--tinte-2); }
+.trainingsstudio .schritte { margin-bottom: 26px; max-width: none; }
+.trainingsstudio .schritt { min-height: 38px; }
+.trainingsstudio .wahlbild { max-width: none; padding: 24px; border: 1px solid var(--haarlinie); border-radius: var(--r-gross); background: var(--fenster); animation: schritt-ein .25s var(--feder); }
+.trainingsstudio .grossewahl { gap: 14px; margin-top: 22px; }
+.trainingsstudio .grosskarte { min-height: 120px; padding: 22px; border-radius: var(--r-gross); }
+.trainingsstudio .grossziffer { font-size: 34px; margin-bottom: 6px; }
+.trainingsstudio .artkarte { min-height: 170px; }
+.trainingsstudio .artnote { display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+.rueckgabe { margin-top: 16px; }
+.rueckgabe .studio-augenbraue { margin-bottom: 8px; }
+.rueckgabe .vorschlagskarte { min-height: 120px; }
+.kartenflug { overflow: hidden; pointer-events: none; border-radius: var(--r-gross); box-shadow: var(--schatten-4); }
+.bewegungsstatus { min-height: 20px; margin: -28px var(--rand) 24px; font-size: 12px; color: var(--tinte-2); }
+.mobiles-ziel { display: none; }
+:where(.planverwaltung summary, .trainingsstudio h2):focus-visible { outline: 2px solid var(--indigo); outline-offset: 4px; }
+@keyframes schritt-ein { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+@media (max-width: 900px) {
+  .trainingsstudio .plan-spalten { grid-template-columns: minmax(0, 1fr); gap: 24px; }
+  .trainingsstudio .plan-links { position: static; }
+  .plan-scroll { max-height: none; overflow: visible; scrollbar-gutter: auto; }
+  .mobiles-ziel { display: block; position: sticky; top: 48px; z-index: 28; margin: 0 0 20px; padding: 10px; border: 1px solid var(--indigo); border-radius: var(--r); background: var(--erhoben); box-shadow: var(--schatten-2); }
+  .zielkarte { background: var(--erhoben); border-radius: var(--r-klein); }
+  .zielkarte strong { display: block; font-size: 13px; margin-top: 4px; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+  .trainingsstudio .auswahlbereich { scroll-margin-top: 142px; }
+}
+@media (max-width: 540px) {
+  .studio-kopf { align-items: flex-start; flex-direction: column; gap: 12px; }
+  .trainingsstudio .kartenwahl { gap: 10px; }
+  .vorschau-taste { padding: 13px; }
+  .vorschlagskarte .karte-titel { font-size: 14px; }
+  .einsetzen-taste { padding: 11px 13px; }
+  .trainingsstudio .wahlbild { padding: 18px; }
+  .trainingsstudio .grossewahl { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .trainingsstudio .grossewahl.breit { grid-template-columns: 1fr; }
+  .trainingsstudio .grosskarte { padding: 18px; }
+  .trainingsstudio .auswahlbereich h2 { font-size: 21px; }
+  .trainingsstudio .dauerwahl { align-items: flex-start; flex-direction: column; }
+  .trainingsstudio .dauerwahl .segmente { flex-wrap: wrap; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .trainingsstudio *, .plan-fortschritt::-webkit-progress-value { animation: none !important; transition: none !important; }
+}
+@media print {
+  .planverwaltung, .trainingsrahmen, .mobiles-ziel, .bewegungsstatus, .kartenflug, .trainingsstudio .studio-kopf, .trainingsstudio .schritte, .trainingsstudio .abschluss, .trainingsstudio .tauschen-taste { display: none !important; }
+  .trainingsstudio .plan-spalten { display: block; }
+  .trainingsstudio .plan-links { position: static; padding: 0; border: 0; background: transparent; }
+  .plan-scroll { overflow: visible; max-height: none; }
+}
