@@ -10,8 +10,8 @@ interface Flug {
   aufraeumen: () => void;
 }
 
-const FLUG_DAUER = 550;
-const ANKUNFT_DAUER = 180;
+const FLUG_DAUER = 540;
+const ANKUNFT_DAUER = 150;
 
 function istAusserhalb(rect: DOMRect): boolean {
   return rect.right <= 0 || rect.bottom <= 0 || rect.left >= window.innerWidth || rect.top >= window.innerHeight;
@@ -90,23 +90,15 @@ export function kartenbewegung(): {
     // supplied its own inline presentation.
     const zielStile = {
       opacity: ziel.style.opacity,
-      outlineColor: ziel.style.outlineColor,
-      outlineStyle: ziel.style.outlineStyle,
-      outlineWidth: ziel.style.outlineWidth,
-      outlineOffset: ziel.style.outlineOffset,
     };
     const sichtbareDeckkraft = window.getComputedStyle(ziel).opacity;
-    const indigo = window.getComputedStyle(ziel).getPropertyValue("--indigo").trim() || "transparent";
     const zielWiederherstellen = (): void => {
       ziel.style.opacity = zielStile.opacity;
-      ziel.style.outlineColor = zielStile.outlineColor;
-      ziel.style.outlineStyle = zielStile.outlineStyle;
-      ziel.style.outlineWidth = zielStile.outlineWidth;
-      ziel.style.outlineOffset = zielStile.outlineOffset;
     };
 
     // The real target stays hidden while its source identity is in flight.
-    ziel.style.opacity = "0";
+    const istStapel = ziel.classList.contains("stapelruecken");
+    if (!istStapel) ziel.style.opacity = "0";
     const zielRect = ziel.getBoundingClientRect();
     const quellAusserhalb = istAusserhalb(von.rect);
     const zielAusserhalb = istAusserhalb(zielRect);
@@ -131,13 +123,12 @@ export function kartenbewegung(): {
     const ankunft = async (): Promise<void> => {
       if (flug.beendet || zielAusserhalb) return;
       ziel.style.opacity = zielStile.opacity;
-      ziel.style.outlineStyle = "solid";
-      ziel.style.outlineWidth = "2px";
+      if (istStapel) return;
       const animation = ziel.animate(
         [
-          { opacity: 0, outlineColor: "transparent", outlineOffset: "5px" },
-          { opacity: sichtbareDeckkraft, outlineColor: indigo, outlineOffset: "0px" },
-          { opacity: sichtbareDeckkraft, outlineColor: "transparent", outlineOffset: "0px" },
+          { opacity: 0 },
+          { opacity: sichtbareDeckkraft, offset: 0.72 },
+          { opacity: sichtbareDeckkraft },
         ],
         { duration: ANKUNFT_DAUER, easing: "ease-out" },
       );
@@ -170,14 +161,16 @@ export function kartenbewegung(): {
       });
       document.body.append(overlay);
 
-      const x = zielRect.left - von.rect.left;
-      const y = zielRect.top - von.rect.top;
-      const scaleX = zielRect.width / von.rect.width;
-      const scaleY = zielRect.height / von.rect.height;
+      // The dealt card keeps its source dimensions and settles at the centre
+      // of its destination, where its final dissolve hands off to the target.
+      const x = zielRect.left + (zielRect.width - von.rect.width) / 2 - von.rect.left;
+      const y = zielRect.top + (zielRect.height - von.rect.height) / 2 - von.rect.top;
       const animation = overlay.animate(
         [
-          { transform: "translate(0px, 0px) scale(1, 1)" },
-          { transform: `translate(${x}px, ${y}px) scale(${scaleX}, ${scaleY})` },
+          { transform: "translate(0px, 0px) rotate(0deg)", opacity: 1 },
+          { transform: `translate(${x * 0.48}px, ${y * 0.48 - 10}px) rotate(4deg)`, opacity: 1, offset: 0.48 },
+          { transform: `translate(${x}px, ${y}px) rotate(1deg)`, opacity: 0.98, offset: 0.9 },
+          { transform: `translate(${x}px, ${y}px) rotate(0deg)`, opacity: 0 },
         ],
         { duration: FLUG_DAUER, easing: "cubic-bezier(.2, .75, .2, 1)", fill: "none" },
       );

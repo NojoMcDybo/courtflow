@@ -150,22 +150,38 @@ Geprüfte Größen: 360×640, 390×844, 430×932, 820×1180, 1440×900.
 
 ## Bewegung im Werkzeugsystem
 
-Es gibt genau zwei Bewegungen, beide auf derselben Kurve
-`cubic-bezier(0.32, 0.72, 0, 1)`:
+**Karten werden ausgeteilt, nicht verformt.** Eine bewegte Karte behält ihre
+gemessene Breite und Höhe. Sie verschiebt und dreht sich leicht; erst am Ziel
+übernimmt die Planzeile durch kurzes Einblenden. Es gibt keine Skalierung von
+Karte zu Zeile. Der Flug dauert 540 ms, die Ankunft 150 ms. Beim Tauschen geht
+die bisherige Karte sichtbar zurück in die Auswahl.
 
-**Die gewählte Karte läuft an ihren Platz.** Vor dem Neuzeichnen wird das
-Rechteck der angeklickten Karte gemessen, danach das Rechteck ihrer Planzeile.
-Bewegt wird eine Kopie über allem, das Layout bleibt davon unberührt — das
-Verfahren heißt FLIP. 460 ms, dabei blendet die Kopie aus, während die Zeile
-einblendet. Sie zeigt, wohin die Entscheidung gewandert ist, statt sie
-kommentarlos an anderer Stelle erscheinen zu lassen.
+**Der Generator arbeitet mit einem Stapel.** Beim Neu-Würfeln werden zuerst die
+bisherigen Karten eingesammelt, danach die neuen Karten einzeln ausgeteilt.
+Die Stapelrückseiten bleiben an ihrem Platz. Das Einsammeln verändert nur die
+Darstellung; gespeichert wird stets eine vollständige Auswahl. Ein Seitenwechsel
+beendet laufende Bewegungen und entfernt ihre Kopien.
+
+**System 2 bestätigt jede Auswahl.** Altersgruppe und Trainingsart haben jeweils
+einen eigenen Schritt mit sichtbarer Auswahl und Weiter-Taste. Ohne Auswahl ist
+Weiter gesperrt. Beim Wechsel gleitet der bisherige Schritt seitlich aus und der
+nächste ein (170 / 260 ms); zurück läuft die Bewegung umgekehrt. Erst wenn eine
+Übung im Plan angekommen ist, erscheint die Auswahl für den nächsten Block.
+Auf schmalen Geräten bleibt das aktuelle Kartenziel am unteren Rand sichtbar.
 
 **Die Planzeile klappt auf.** Die Zielhöhe wird gemessen und animiert, danach
 steht `height: auto` — sonst springt der Inhalt, sobald sich der Text ändert.
 300 ms.
 
-Beides ist unter `prefers-reduced-motion: reduce` abgeschaltet: die Karte
-erscheint dann direkt an ihrem Platz, das Detail klappt ohne Übergang auf.
+Unter `prefers-reduced-motion: reduce` sind diese Bewegungen abgeschaltet:
+Karten und Schritte erscheinen direkt, das Detail klappt ohne Übergang auf.
+Die Auswahl und die Weiter-Tasten funktionieren unverändert.
+
+Am 13.09.2026 im Browser geprüft: Auswahl und Bestätigung beider Schritte,
+Einsetzen und Tauschen, Austausch abbrechen, Generator mit Einsammeln und
+Austeilen, Fortsetzen nach Neuladen sowie Darstellung bei 390 × 844 px.
+Während eines Kartenflugs blieben Breite und Höhe konstant; die gemessene
+Transformation enthielt nur Verschiebung und Drehung.
 
 ## Was für beide gilt
 
@@ -175,3 +191,17 @@ erscheint dann direkt an ihrem Platz, das Detail klappt ohne Übergang auf.
 - **Nichts sieht fertig aus, was es nicht ist.** Ein Einstieg ohne Funktion
   trägt „noch nicht gebaut" und führt auf eine Seite, die den Grund nennt.
 - **Bewegung nur, wo sie etwas zeigt.** `prefers-reduced-motion` schaltet sie ab.
+# Ergänzung: Umfang und Zeit (14.09.2026)
+
+Der automatische Plan führt durch vier Schritte: Altersgruppe, Trainingsweise,
+Umfang, Übungen. Die Umfangsvorschau zeigt Modul-Karten mit direkt editierbaren
+Minuten. Plus/Minus und Zahleneingabe ergänzen sich; die Zeitbilanz zeigt Ist,
+Ziel und freien beziehungsweise überschrittenen Zeitraum. Individuelle Eingaben
+bleiben beim Zurückgehen erhalten. Auf schmalen Bildschirmen stehen die Karten
+untereinander, auf mittleren in zwei und auf breiten in drei Spalten.
+
+Im manuellen Plan stehen Minutenregler direkt am Modul. „Module anpassen“ öffnet
+die Auswahl der sieben Module und die Zielzeit. Ein in derselben Sitzung wieder
+hinzugefügtes Modul erhält seine vorherige Übung und Dauer zurück, sofern die
+Übung nicht inzwischen anderweitig eingesetzt wurde. Im Druck erscheinen nur
+die Zeiten, keine Bedienelemente.

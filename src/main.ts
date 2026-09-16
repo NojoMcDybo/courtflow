@@ -1,10 +1,12 @@
 import "./styles.css";
 import { themaInitialisieren } from "./thema";
+import { spracheInitialisieren } from "./i18n";
 import { seite } from "./views/library";
 import { startseite } from "./views/home";
 import { training } from "./views/training";
 
 themaInitialisieren();
+spracheInitialisieren();
 
 const gefunden = document.querySelector<HTMLElement>("#app");
 if (!gefunden) throw new Error("#app fehlt im Dokument");

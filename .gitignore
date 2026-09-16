@@ -1,6 +1,7 @@
 node_modules/
 dist/
 .DS_Store
+__pycache__/
 
 # aus der Primärquelle erzeugt, siehe: npm run daten
 docs/quellen/records-raw.json

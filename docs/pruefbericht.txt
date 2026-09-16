@@ -1,21 +1,10 @@
 Selbsttest: 9 Regeln geprüft, 0 Probleme
 
-Datensätze: 157   Befunde: 35
+Datensätze: 157   Befunde: 2
 
-[quelle-belegt] 35
-   EX-096: weder Quellenname noch URL
-   EX-097: weder Quellenname noch URL
-   EX-098: weder Quellenname noch URL
-   EX-099: weder Quellenname noch URL
-   EX-100: weder Quellenname noch URL
-   EX-101: weder Quellenname noch URL
-   EX-102: weder Quellenname noch URL
-   EX-103: weder Quellenname noch URL
-   EX-104: weder Quellenname noch URL
-   EX-105: weder Quellenname noch URL
+[quelle-belegt] 2
    EX-106: weder Quellenname noch URL
    EX-107: weder Quellenname noch URL
-   ... 23 weitere
 
 Abdeckung Kompetenz × Altersstufe
           U8   U10   U12   U14   U16   U18

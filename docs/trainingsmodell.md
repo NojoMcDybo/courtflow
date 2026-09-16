@@ -146,10 +146,12 @@ bis zu 24 Mal nach, bis das erfüllt ist.
 3. Gibt es je Referenzfall mehr als einen Weg?
 4. Erzeugen zwölf Auswürfelungen wirklich unterschiedliche Einheiten?
 
-**Aktueller Befund.** Ein Block bleibt dünn: **F Wettbewerb bei U18** mit drei
-Kandidaten. Das ist keine Modellschwäche, sondern die bekannte Bestandslücke
-bei U16 und U18, die auch die Abdeckungsmatrix zeigt. Die Oberfläche sagt es an
-der Stelle, an der es auftritt.
+**Aktueller Befund (14.09.2026).** Alle Kombinationen erreichen mindestens vier
+Kandidaten; **F Wettbewerb bei U18** erreicht genau vier. Der vorher fehlende
+Ablauf von EX-127 beschreibt ausdrücklich einen Wettbewerb um fünf defensive
+Rebounds (Katalog 47.3). Diese Wettbewerbsform wird jetzt bei der Zuordnung
+berücksichtigt. Der Mindestwert und die Altersregel bleiben unverändert.
+Bereits gewählte Übungen können die verbleibende Auswahl weiter verringern.
 
 ## Lokale Planablage (10.09.2026)
 
@@ -177,6 +179,29 @@ Gerät und Website-Adresse gebunden; das Löschen der Browserdaten entfernt sie.
 `npm run pruefen:speicher` prüft vollständige und unvollständige Rundläufe,
 beide Arbeitsweisen, Minuten und Reihenfolge, Aktualisieren ohne Duplikate,
 die Zehnergrenze, ungültige Daten, Alias-/fehlende IDs und gesperrten Speicher.
+
+## Individueller Umfang (14.09.2026)
+
+Beide Arbeitsweisen erlauben 30–240 Minuten Gesamtdauer und 3–7 unterschiedliche
+Module aus A–G, mit einer Übung je Modul. Individuelle Übungszeiten liegen zwischen
+1 und 120 Minuten. Das sind Bediengrenzen, keine Empfehlungen aus dem Katalog.
+Der automatische Ablauf fragt Trainingsweise und Umfang vor der Kartenauswahl ab.
+Minuten lassen sich nach Schwerpunkt, gleichmäßig oder einzeln einstellen.
+Individuelle Minuten bleiben bei Änderungen der Gesamtdauer bestehen; zusätzliche
+Module starten dann mit zehn Minuten. Die Bilanz rechnet zehn Prozent der Zielzeit
+für Organisation hinzu. Ein überfüllter automatischer Plan wird erst nach Anpassung
+erstellt. Manuelle Pläne dürfen beim Bearbeiten über dem Ziel liegen; die Abweichung
+bleibt sichtbar.
+Die automatische Verteilung kürzt nötigenfalls einzelne Minuten, damit auch kurze
+Einheiten nach Einrechnung der Organisation innerhalb der gewählten Zielzeit bleiben.
+
+Eine geänderte Modulanzahl verwendet eine redaktionelle Anpassung des Grundpfads.
+Beim Kürzen entfallen G, A, B, F, E, C, D in dieser Priorität; hinzugefügte Module
+werden in A–G-Reihenfolge einsortiert. Die Vorschau zeigt die resultierende Folge.
+Das ist kein zusätzlicher Katalogpfad. Manuell werden Module gezielt ein-/ausgeschaltet.
+Die optionalen Rahmenfelder `folge` und `minuten` erhalten diese Anpassung beim
+Neu-Würfeln. Gespeicherte Blockminuten sind beim Wiederherstellen maßgeblich;
+bestehende Archive ohne die neuen Felder bleiben lesbar.
 
 ## Was noch offen ist
 

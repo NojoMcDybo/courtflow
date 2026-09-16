@@ -102,3 +102,89 @@
   .trainingsstudio .plan-links { position: static; padding: 0; border: 0; background: transparent; }
   .plan-scroll { overflow: visible; max-height: none; }
 }
+/* Bewusste Auswahl, dann ein gerichteter Übergang zum nächsten Schritt. */
+.trainingsstudio .wahlbild { animation: none; }
+.schritt-abschluss { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 18px; padding-top: 24px; margin-top: 24px; border-top: 1px solid var(--haarlinie); }
+.schritt-weiter { min-height: 44px; padding: 12px 20px; border: 0; border-radius: var(--r); color: var(--dichte-tinte); background: var(--indigo); font: 600 14px var(--sf); cursor: pointer; }
+.schritt-weiter:disabled { background: var(--fuellung-stark); color: var(--tinte-2); cursor: default; }
+.auswahl-bestaetigung { color: var(--tinte-2); }
+.art-baustein { padding: 5px 7px; border-radius: var(--r-klein); background: var(--fuellung); font-size: 11px; color: var(--tinte-2); }
+.trainingsstudio .grosskarte.gewaehlt { background: var(--dichte-1); }
+.trainingsstudio .schritte { display: grid; grid-template-columns: repeat(var(--schrittzahl, 3), minmax(0, 1fr)); gap: 12px; }
+.trainingsstudio .schritt { justify-content: flex-start; border-radius: var(--r); min-height: 54px; flex-wrap: wrap; padding: 12px; }
+.trainingsstudio .schrittname { display: inline; }
+.trainingsstudio .schrittwert { flex-basis: 100%; margin: 0; padding: 0 0 0 26px; border: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 11px; }
+.trainingsstudio .schritt.jetzt .schrittwert { color: inherit; }
+.stapelplatz { position: relative; isolation: isolate; width: min(290px, calc(100% - 32px)); height: 236px; margin: 38px auto 28px; }
+.stapelplatz::before, .stapelplatz::after { content: ""; position: absolute; inset: 0; border: 1px solid var(--haarlinie); border-radius: var(--r-gross); background: var(--erhoben); box-shadow: var(--schatten-1); z-index: -1; }
+.stapelplatz::before { transform: translate(7px, 9px) rotate(3deg); }
+.stapelplatz::after { transform: translate(-5px, 5px) rotate(-2deg); }
+.stapelruecken { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 24px; background: var(--dichte-1); border: 1px solid var(--indigo); border-radius: var(--r-gross); color: var(--indigo); }
+.stapelruecken span { font-weight: 650; letter-spacing: -.02em; }
+.stapelruecken strong { font-size: 42px; font-weight: 400; }
+.stapel-oben { position: absolute; inset: 0; height: 100%; min-height: 0; padding: 24px; }
+.stapel-oben .karte-titel { font-size: 19px; -webkit-line-clamp: 4; }
+.kartenflug { will-change: transform, opacity; }
+@media (max-width: 540px) {
+  .trainingsstudio .schritte { gap: 6px; }
+  .trainingsstudio .schritt { padding: 8px; gap: 5px; font-size: 11px; }
+  .trainingsstudio .schrittwert { display: none; }
+  .schritt-abschluss { align-items: stretch; flex-direction: column; }
+  .schritt-weiter { width: 100%; }
+  .stapelplatz { height: 210px; }
+}
+
+.trainingsstudio { scroll-margin-top: 58px; }
+
+/* Zeit und Umfang bleiben direkt am Plan sichtbar. */
+.trainingsrahmen[hidden] { display: none; }
+.umfang-regler { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; margin: 28px 0; }
+.zahlfeld { min-width: 0; }
+.zahl-label { display: block; color: var(--tinte-2); font-size: 12px; margin-bottom: 10px; }
+.zahlsteuerung { display: flex; align-items: center; width: fit-content; max-width: 100%; border: 1px solid var(--haarlinie); border-radius: var(--r); background: var(--erhoben); overflow: hidden; }
+.zahlsteuerung button { flex-shrink: 0; width: 40px; min-height: 42px; border: 0; color: var(--tinte); background: var(--fuellung); font: 20px var(--sf); cursor: pointer; }
+.zahlsteuerung button:hover { background: var(--dichte-1); }
+.zahlsteuerung button:disabled { opacity: .35; cursor: default; }
+.zahlsteuerung input { width: 56px; min-width: 0; height: 42px; padding: 4px; border: 0; text-align: center; color: var(--tinte); background: transparent; font: 600 20px var(--sf); appearance: textfield; border-radius: 0; }
+.zahlsteuerung input::-webkit-inner-spin-button, .zahlsteuerung input::-webkit-outer-spin-button { appearance: none; margin: 0; }
+.zahl-einheit { color: var(--tinte-2); font-size: 12px; padding-right: 12px; }
+.zeitverteilung { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+.zeitverteilung > .zahl-label { margin: 0 8px 0 0; }
+.zeitmodus, .modulschalter { min-height: 40px; padding: 9px 12px; border: 1px solid var(--haarlinie); border-radius: var(--r); background: var(--erhoben); color: var(--tinte); font: 12px var(--sf); cursor: pointer; }
+.zeitmodus[aria-pressed="true"], .modulschalter[aria-pressed="true"] { background: var(--dichte-1); border-color: var(--indigo); }
+.modulschalter:disabled { opacity: .65; cursor: default; }
+.umfang-vorschau { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin: 20px 0; }
+.modul-vorschau { padding: 16px; background: var(--erhoben); border: 1px solid var(--haarlinie); border-radius: var(--r-gross); display: flex; flex-direction: column; gap: 12px; }
+.modul-vorschau strong { font-size: 15px; }
+.modul-nummer { color: var(--indigo); font: 600 12px var(--sf); }
+.modul-vorschau .zahl-label, .planzeile-kopf .zahl-label { display: none; }
+.zeitbilanz { display: flex; flex-direction: column; gap: 5px; padding: 16px; margin: 12px 0; border: 1px solid var(--haarlinie); border-radius: var(--r); background: var(--fuellung); }
+.zeitsumme strong { font-size: 23px; font-weight: 650; font-variant-numeric: tabular-nums; }
+.zeitsumme > span, .zeitaufteilung { color: var(--tinte-2); font-size: 12px; line-height: 1.5; }
+.zeitsaldo { color: var(--tinte-2); font-size: 12px; }
+.zeitbilanz.ueberzeit { border-color: var(--orange); }
+.zeitbilanz.ueberzeit .zeitsaldo { color: var(--tinte); }
+.modulverwaltung { margin: 14px 3px 20px; }
+.modulverwaltung summary { cursor: pointer; min-height: 40px; padding: 10px 0; font-size: 13px; }
+.modulauswahl { display: flex; flex-wrap: wrap; gap: 8px; margin: 12px 0 20px; }
+.planzeile-kopf .zahlfeld { margin-left: auto; }
+.planzeile-kopf .zahlsteuerung button { width: 30px; min-height: 34px; }
+.planzeile-kopf .zahlsteuerung input { width: 38px; height: 34px; font-size: 14px; }
+.planzeile-kopf .zahl-einheit { padding-right: 7px; font-size: 11px; }
+.druck-minuten { display: none; }
+@media (min-width: 541px) and (max-width: 850px) {
+  .umfang-vorschau { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 540px) {
+  .umfang-regler { grid-template-columns: 1fr; gap: 22px; }
+  .umfang-vorschau { grid-template-columns: 1fr; }
+  .modul-vorschau { display: grid; grid-template-columns: 24px 1fr; align-items: center; }
+  .modul-vorschau .zahlfeld { grid-column: 2; }
+  .trainingsstudio .schritte:has(> :nth-child(4)) { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .trainingsstudio .planzeile-kopf { flex-wrap: wrap; gap: 8px; }
+}
+@media print {
+  .modulverwaltung, .planzeile-kopf .zahlfeld { display: none !important; }
+  .druck-minuten { display: inline; margin-left: auto; }
+  .zeitbilanz { break-inside: avoid; }
+}

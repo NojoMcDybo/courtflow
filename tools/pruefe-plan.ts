@@ -1,6 +1,6 @@
 /* Prüfstand für das Trainingsmodell: trägt es auf dem vorhandenen Bestand?
    Aufruf: npm run pruefen:plan */
-import { baustein, bloecke, kandidaten, modell, neuWuerfeln, belastungsbefund, genugAnders } from "../src/plan";
+import { baustein, bloecke, kandidaten, modell, neuWuerfeln, belastungsbefund, genugAnders, folgeFuerAnzahl } from "../src/plan";
 
 const REFERENZ = [
   { alter: 8, dauer: 60 },
@@ -13,6 +13,32 @@ const REFERENZ = [
 
 let fehler = 0;
 const mind = modell.regeln.karten_je_schritt[0]!;
+const pruefe = (bedingung: unknown, text: string) => {
+  if (!bedingung) { fehler++; console.error("FEHLER: " + text); }
+};
+
+const umfang3 = folgeFuerAnzahl("TR-05", 3);
+const umfang7 = folgeFuerAnzahl("TR-05", 7);
+pruefe(umfang3.join(",") === "C,D,E", "Kürzung bewahrt die zentralen Module");
+pruefe(umfang7.join(",") === "A,B,C,D,E,F,G", "Ergänzung folgt der Code-Reihenfolge");
+const individuell = bloecke({ pfadId: "TR-05", dauer: 90, altersstufe: 12, folge: ["B", "D", "F"], minuten: [7, 13, 19] });
+pruefe(individuell.map((b) => b.code).join(",") === "B,D,F" && individuell.map((b) => b.minuten).join(",") === "7,13,19",
+  "eigener Ablauf und eigene Startminuten werden übernommen");
+const knapp = bloecke({ pfadId: "TR-05", dauer: 30, altersstufe: 12, folge: folgeFuerAnzahl("TR-05", 7) });
+pruefe(knapp.length === 7 && knapp.every((b) => b.minuten >= 5), "knapper Sieben-Modul-Rahmen bleibt begrenzt berechenbar");
+
+// Katalog 47.3 beschreibt bei EX-127 fünf defensive Rebounds als Wettbewerb.
+// Diese Information muss auch ohne „Game“ im Titel für U18 nutzbar sein.
+// Eine reine 2v2-Screenübung wird dadurch nicht zum Wettbewerbsformat.
+const wettbewerbU18 = new Set(kandidaten("F", 18).map(d => d.id));
+if (!wettbewerbU18.has("EX-127")) {
+  console.error("EX-127: belegte Wettbewerbsform fehlt bei U18.");
+  fehler++;
+}
+if (wettbewerbU18.has("EX-124")) {
+  console.error("EX-124: reine Screenübung wird als Wettbewerbsform angeboten.");
+  fehler++;
+}
 
 console.log("Kandidaten je Baustein und Altersstufe (Soll: mindestens " + mind + ")\n");
 const stufen = [8, 10, 12, 14, 16, 18];

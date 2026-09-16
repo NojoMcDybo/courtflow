@@ -1,4 +1,6 @@
 import { el } from "../dom";
+import { setText, setAttribut, sprachText, t, sprache } from "../i18n";
+import { sprachwahl } from "../sprachwahl";
 import { markenIcon } from "../marke";
 import { themaIstDunkel, themaUmschalten } from "../thema";
 import { TIEFE_LABEL, aliaseVon, alleDrills, filtern, kompetenzName, taxonomie } from "../data";
@@ -70,7 +72,7 @@ function blattInhalt(d: Drill, schliessen: () => void): HTMLElement {
       ]),
     );
   } else {
-    q.append(d.quelle.name ?? "keine im Katalog hinterlegt");
+    q.append(sprachText(d.quelle.name ?? "keine im Katalog hinterlegt"));
   }
   inhalt.append(q);
 
@@ -97,13 +99,13 @@ export function seite(wurzel: HTMLElement): () => void {
 
   const leiste = el("header", { class: "leiste bibliothek-leiste" });
   const thema = el("button", { type: "button" });
-  const beschriften = () => (thema.textContent = themaIstDunkel() ? "Hell" : "Dunkel");
+  const beschriften = () => setText(thema, themaIstDunkel() ? "Hell" : "Dunkel");
   beschriften();
   thema.addEventListener("click", () => { themaUmschalten(); beschriften(); });
   leiste.append(
     el("a", { class: "wortmarke", href: "#/", title: "Zur Startseite" }, [markenIcon(), "CourtFlow"]),
     el("span", { class: "seitentitel" }, ["01 / Bibliothek"]),
-    el("span", { class: "leiste-rechts" }, [thema, el("a", { href: "#/aufbau" }, ["Training bauen ↗"])]),
+    el("span", { class: "leiste-rechts" }, [sprachwahl(), thema, el("a", { href: "#/aufbau" }, ["Training bauen ↗"])]),
   );
 
   const bereich = el("main", { class: "bibliothek" });
@@ -169,7 +171,7 @@ export function seite(wurzel: HTMLElement): () => void {
     ]);
     knopf.addEventListener("click", () => {
       ausloeser = knopf;
-      dialog.setAttribute("aria-label", d.titel);
+      setAttribut(dialog, "aria-label", d.titel);
       dialog.replaceChildren(blattInhalt(d, () => dialog.close()));
       dialog.showModal();
     });
@@ -197,11 +199,11 @@ export function seite(wurzel: HTMLElement): () => void {
         b.closest("section")?.getAttribute("aria-label") === matrixFokus.family)?.focus({ preventScroll: true });
     }
     const treffer = [...filtern(alleDrills, filter)].sort((a, b) =>
-      (sortierung === "alter" ? (a.alter.von ?? 99) - (b.alter.von ?? 99) : 0) || a.titel.localeCompare(b.titel, "de") || a.id.localeCompare(b.id));
+      (sortierung === "alter" ? (a.alter.von ?? 99) - (b.alter.von ?? 99) : 0) || t(a.titel).localeCompare(t(b.titel), sprache()) || a.id.localeCompare(b.id));
     const themaName = taxonomie.kompetenzen.find(k => k.code === filter.kompetenz)?.name;
-    titel.textContent = themaName ?? filter.familie ?? "Alle Übungen";
-    anzahl.textContent = `${treffer.length} ${treffer.length === 1 ? "Übung" : "Übungen"}`;
-    navTitel.textContent = `Abdeckung${themaName ? ` · ${themaName}` : ""}${filter.altersstufe ? ` · U${filter.altersstufe}` : ""}`;
+    setText(titel, themaName ?? filter.familie ?? "Alle Übungen");
+    setText(anzahl, `${treffer.length} ${treffer.length === 1 ? "Übung" : "Übungen"}`);
+    setText(navTitel, `Abdeckung${themaName ? ` · ${themaName}` : ""}${filter.altersstufe ? ` · U${filter.altersstufe}` : ""}`);
     auswahl.replaceChildren();
     const chip = (text: string, entfernen: () => void) => {
       const b = el("button", { type: "button", "aria-label": `${text} entfernen` }, [text, el("span", { "aria-hidden": "true" }, [" ×"])]);
@@ -213,7 +215,7 @@ export function seite(wurzel: HTMLElement): () => void {
     if (filter.familie) chip(filter.familie, () => { filter.familie = null; familie.value = ""; });
     if (filter.tiefe) chip(TIEFE_LABEL[filter.tiefe] ?? filter.tiefe, () => { filter.tiefe = null; tiefe.value = ""; });
     if (filter.nurMitQuelle) chip("Mit Quelle", () => { filter.nurMitQuelle = false; quelle.checked = false; });
-    extrasTitel.textContent = `Weitere Filter${filter.familie || filter.tiefe || filter.nurMitQuelle ? " · aktiv" : ""}`;
+    setText(extrasTitel, `Weitere Filter${filter.familie || filter.tiefe || filter.nurMitQuelle ? " · aktiv" : ""}`);
     karten.replaceChildren(...treffer.map(karte));
     if (!treffer.length) karten.append(el("div", { class: "bibliothek-leer" }, [
       el("h3", {}, ["Hier gibt es noch keine passende Übung."]),
@@ -228,11 +230,13 @@ export function seite(wurzel: HTMLElement): () => void {
     }
   };
   document.addEventListener("keydown", tasten);
+  document.addEventListener("courtflow:sprache", zeichnen);
   const fuss = el("footer", { class: "fuss" }, ["Kompetenzkatalog v3.8 · Quellen und Belegangaben in den Übungsdetails."]);
   wurzel.append(leiste, bereich, dialog, fuss);
   zeichnen();
   return () => {
     document.removeEventListener("keydown", tasten);
+    document.removeEventListener("courtflow:sprache", zeichnen);
     for (const element of [leiste, bereich, dialog, fuss]) element.remove();
   };
 }

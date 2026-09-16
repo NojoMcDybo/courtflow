@@ -61,9 +61,45 @@ export interface Rahmen {
   pfadId: string;
   dauer: number;
   altersstufe: number;
+  /** Optionaler, vom Umfang gewählter Ablauf. Ohne Angabe gilt der Katalogpfad. */
+  folge?: string[];
+  /** Optionale Startzeiten je aktivem Baustein. Gespeicherte Blockzeiten gehen vor. */
+  minuten?: number[];
 }
 
 /* ---------- Zeitverteilung ---------- */
+
+const BAUSTEIN_CODES = ["A", "B", "C", "D", "E", "F", "G"];
+
+/**
+ * Liefert für einen gewünschten Umfang einen nachvollziehbaren Katalogablauf.
+ * Beim Kürzen weichen Ausklang, Einstieg und Technik zuerst (G, A, B); C und D
+ * bleiben als zentrale Lern- und Anwendungsschritte möglichst lange erhalten.
+ * Beim Ergänzen kommen fehlende Codes in Katalogreihenfolge hinzu. Das Ergebnis
+ * bleibt immer alphabetisch, damit es als Ablauf und Speicherformat eindeutig ist.
+ */
+export function folgeFuerAnzahl(pfadId: string, anzahl: number): string[] {
+  const pfad = modell.pfade.find((p) => p.id === pfadId);
+  if (!pfad || !Number.isInteger(anzahl) || anzahl < 3 || anzahl > BAUSTEIN_CODES.length) return [];
+
+  const aktiv = new Set(pfad.folge);
+  const kuerzen = ["G", "A", "B", "F", "E", "C", "D"];
+  for (const code of kuerzen) {
+    if (aktiv.size <= anzahl) break;
+    aktiv.delete(code);
+  }
+  for (const code of BAUSTEIN_CODES) {
+    if (aktiv.size >= anzahl) break;
+    aktiv.add(code);
+  }
+  return BAUSTEIN_CODES.filter((code) => aktiv.has(code));
+}
+
+/** Gibt den individuell gewählten Ablauf zurück, sonst den nativen Katalogpfad. */
+export function aktiveFolge(rahmen: Rahmen): string[] {
+  if (rahmen.folge) return [...rahmen.folge];
+  return [...(modell.pfade.find((p) => p.id === rahmen.pfadId)?.folge ?? [])];
+}
 
 const altersgruppe = (u: number): string => (u <= 10 ? "jung" : u <= 12 ? "mittel" : "alt");
 
@@ -72,6 +108,7 @@ const auf5 = (n: number): number => Math.max(5, Math.round(n / 5) * 5);
 /** Die Minuten folgen aus Gewicht × Altersfaktor, nicht aus einer Zeittabelle.
  *  Der Katalog schreibt ausdrücklich keine feste Verteilung vor (56.3). */
 export function minutenVerteilen(folge: string[], dauer: number, altersstufe: number): number[] {
+  if (folge.length === 0) return [];
   const faktoren = modell.altersfaktor[altersgruppe(altersstufe)] ?? {};
   const netto = dauer * (1 - modell.regeln.organisationsanteil);
   const gewichte = folge.map((c) => baustein(c).gewicht * (faktoren[c] ?? 1));
@@ -80,6 +117,13 @@ export function minutenVerteilen(folge: string[], dauer: number, altersstufe: nu
 
   // Rundungsrest auf den größten Block schieben, damit die Summe stimmt.
   const ziel = auf5(netto);
+  // Bei sehr kurzer Dauer mit vielen Modulen ist ein 5-Minuten-Minimum größer
+  // als das Nettobudget. Dann bleibt jeder Block sinnvoll nutzbar; die UI kann
+  // die Überschreitung transparent anzeigen, statt hier endlos nachzuregulieren.
+  if (ziel < folge.length * modell.regeln.block_min_minuten) {
+    return Array.from({ length: folge.length }, () => modell.regeln.block_min_minuten);
+  }
+
   let rest = ziel - roh.reduce((a, b) => a + b, 0);
   while (rest !== 0) {
     const i = rest > 0
@@ -173,6 +217,10 @@ const WERTUNG: Record<string, Wertung> = {
   F: (d) => {
     let p = 0;
     if (/game|spiel|challenge|relay|numbers|keep away|best/.test(text(d))) p += 3;
+    // Manche Titel nennen nur die Fertigkeit (z. B. Rebounding). Eine im
+    // Ablauf ausdrücklich beschriebene Wettbewerbsform zählt ebenfalls.
+    // „Ohne Wettbewerb“ oder eine bloße Zeitangabe reichen dafür nicht.
+    if (/(?:als|im) wettbewerb|wettbewerbs(?:format|regeln)/i.test(d.ablauf ?? "")) p += 3;
     const sn = zahl(d, "spielnaehe");
     if (sn !== null && sn >= 4) p += 2;
     if (spielform(d)) p += 2;
@@ -237,10 +285,12 @@ export function kandidaten(code: string, altersstufe: number, ausgeschlossen: Se
 /* ---------- Plan ---------- */
 
 export function bloecke(rahmen: Rahmen): Block[] {
-  const pfad = modell.pfade.find((p) => p.id === rahmen.pfadId)!;
-  const minuten = minutenVerteilen(pfad.folge, rahmen.dauer, rahmen.altersstufe);
+  const folge = aktiveFolge(rahmen);
+  // Explizite Minuten sind die Startverteilung. Nach dem Speichern haben die
+  // Minuten am einzelnen Block Vorrang, damit manuelle Änderungen erhalten bleiben.
+  const minuten = rahmen.minuten ? [...rahmen.minuten] : minutenVerteilen(folge, rahmen.dauer, rahmen.altersstufe);
   const belegt = new Set<string>();
-  return pfad.folge.map((code, i) => {
+  return folge.map((code, i) => {
     const k = kandidaten(code, rahmen.altersstufe, belegt);
     return { code, minuten: minuten[i]!, kandidaten: k, gewaehlt: null };
   });

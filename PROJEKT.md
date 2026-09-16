@@ -1,6 +1,6 @@
 # CourtFlow — Steuerungsdokument
 
-Stand: 11.09.2026 · Datengrundlage: Kompetenzkatalog v3.8 (Research Freeze mit Backlog)
+Stand: 14.09.2026 · Datengrundlage: Kompetenzkatalog v3.8 (Research Freeze mit Backlog)
 Repo: <https://github.com/NojoMcDybo/courtflow> · Live: <https://nojomcdybo.github.io/courtflow/>
 
 ## Was steht
@@ -89,8 +89,8 @@ gleichzeitig den Platz frei, den der Text braucht. Die Rechnung steht in
 - **Belegpflicht.** Kein Feld wird gefüllt, das im Katalog nicht steht. Fehlende
   Angaben bleiben `null` und werden in der Oberfläche als Lücke gezeigt.
 - **Keine Herleitung aus dem Umfeld.** Eine Quelle wird nicht aus der
-  Abschnittsüberschrift auf eine Karte übertragen. Lieber 32 Karten ohne
-  Quellenangabe als 32 stille Falschzuordnungen.
+  Abschnittsüberschrift auf eine Karte übertragen. Unklare Zuordnungen bleiben
+  offen; eindeutige Kartenbelege werden übernommen.
 - **Prüfregel ohne Selbsttest zählt nicht.** `tools/validate.py --selbsttest`
   läuft vor jeder Datenprüfung; eine Regel ohne bekannt-gut/bekannt-schlecht-Fall
   bricht den Lauf ab.
@@ -124,9 +124,11 @@ gleichzeitig den Platz frei, den der Text braucht. Die Rechnung steht in
 | 08.09.2026 | Die Jord-Bilder werden nicht auf der Seite verwendet | Sie zeigen echte Marken (NBA, Chicago Bulls, Nike, Jordan) und sind für eine öffentliche Seite kein nutzbares Asset |
 | 09.09.2026 | Trainingsaufbau fragt in drei Schritten statt in einer Filterzeile | Drei gleichzeitige Entscheidungen ohne Vorschau auf ihre Wirkung; jetzt Altersgruppe, dann Trainingsart, dann die Übungsblöcke |
 | 09.09.2026 | Die Dauer steht beim Schritt „Trainingsart", nicht davor | Sie verändert die Blockminuten sichtbar; danach zu fragen wäre eine Entscheidung ohne Vorschau |
-| 09.09.2026 | Gewählte Karten laufen sichtbar an ihren Platz (FLIP) | Sie zeigt, wohin die Entscheidung gewandert ist, statt sie kommentarlos an anderer Stelle erscheinen zu lassen |
+| 09.09.2026 | Gewählte Karten laufen sichtbar an ihren Platz; Bewegung am 13.09.2026 ersetzt | Die erste Fassung verformte Karten beim Übergang zur Planzeile |
 | 09.09.2026 | Planzeilen sind aufklappbar statt nur Titel | Die Einheit wird dadurch ein lesbarer Stapel; leere Felder erscheinen nicht als Platzhalter |
 | 11.09.2026 | System 1: Abdeckung als Hauptnavigation, Übungen als Karten | Wunsch von Nojo: Thema × Alter direkt wählen; Name und Alter sofort, Beschreibung und Fachangaben erst im geöffneten Detail |
+| 13.09.2026 | Karten behalten ihre Form, Generator sammelt ein und teilt aus | Wunsch von Nojo: Bewegung wie ein neu verteilter Kartenstapel, ohne Verzerrung |
+| 13.09.2026 | System 2 bestätigt Alter und Trainingsart über Weiter | Auswahl, Übergang und nächster Schritt sollen klar voneinander erkennbar sein |
 
 ## Trainingsmodell
 
@@ -161,36 +163,37 @@ Auf schmalen Bildschirmen klappt die Matrix nach der Auswahl ein und lässt
 sich über ihre beschriftete Zusammenfassung wieder öffnen. „Alles anzeigen“
 entfernt sämtliche Filter; Karten ohne Altersangabe bleiben so erreichbar.
 
-Einzelne Quelldatensätze enthalten QA oder Fließtext im Titelfeld. Diese Karten
-heißen vorläufig „Übung ohne Kurztitel“; der unveränderte Text bleibt im Detail.
-Es wurden keine Übungsnamen oder fehlenden Beschreibungen erfunden.
+Die früheren QA- und Fließtexttitel sind seit 14.09.2026 anhand expliziter
+Titelspalten repariert. Belegtexte bleiben im Detail erhalten. Die Änderungen
+und Grenzen stehen in [`docs/katalog-importkorrekturen.md`](docs/katalog-importkorrekturen.md).
 
 ## Offene Befunde
 
-- **32 Karten ohne Quellenangabe.** Sie sind für eine öffentliche Seite nicht
-  veröffentlichungsreif. `tools/validate.py` listet sie. Bevor sie online gehen,
-  muss je Karte die Originalquelle aus dem Katalog nachgetragen werden.
+- **Zwei Karten ohne eindeutige Quellenzuordnung: EX-106 und EX-107.** Beim
+  Import konnten 30 der bisherigen 32 Lücken anhand vorhandener Belege
+  geschlossen werden. EX-107 ist zudem ausdrücklich ein Methodikanker.
 - **Nur 5 Karten sind explizit als publish-ready ausgewiesen.** Der Katalog
   vergibt dieses Merkmal nur im jüngsten Forschungsblock. Die Spezifikation will,
   dass der Generator ausschließlich solche Karten ausspielt. Die Prüfung ist
   ausgesetzt, damit das Modell überhaupt testbar ist. Zu entscheiden bleibt,
   welche vorhandene Statusangabe (QA A/B, Statusstufe S2–S4,
   Redaktionsbewertung) als Veröffentlichungsfreigabe gilt. **Das ist der einzige
-  echte Blocker im Vorhaben.**
-- **18 Karten ohne Kompetenzcode und Altersfenster** (EX-111–114, EX-153–158 u. a.).
+  Freigabeentscheid vor einer abschließenden Veröffentlichung.**
+- **Zehn Karten ohne Altersfenster, elf ohne Kompetenzcode.** Betroffen sind
+  EX-111–114 und EX-153–158; bei EX-145 fehlt zusätzlich der Kompetenzcode.
   Der Katalog nennt für EX-153–158 selbst einen offenen Standardexport.
-- **S7 U8 ist die einzige benannte inhaltliche Lücke** (Katalog 62.11); die
-  Abdeckungsmatrix bestätigt zusätzlich dünne Belegung bei K4, K5 und in U16/U18.
-- **F Wettbewerb bei U18 hat drei Kandidaten.** Der einzige Block, der den
-  Mindestwert reißt. Keine Modellschwäche, sondern die bekannte Bestandslücke
-  bei U16 und U18. Die Oberfläche sagt es an Ort und Stelle.
+- **S7 U8: spezifische Help-/Recover-Lücke.** Es gibt bereits allgemeinere
+  Defense-Karten in der Matrix; sie schließen diese fachliche Lücke nicht.
+  Zusätzlich bleiben K4, K5 und einige Bereiche bei U16/U18 dünn besetzt.
+- **F Wettbewerb bei U18 erreicht jetzt vier Kandidaten.** Der belegte Ablauf
+  von EX-127 wird bei der redaktionellen Zuordnung berücksichtigt. Der
+  Trainingsprüfstand besteht; der Bestand bleibt an dieser Stelle klein.
 - **Die QA-Freigabe ist ausgesetzt.** Auf Entscheidung von Nojo ziehen
   Aufbau und Generator aus allen 146 Karten, nicht nur aus freigegebenen. Die
   Belegtiefe steht an jeder Karte. Die Freigabestufe bleibt zu entscheiden.
-- **Öffentlich mit 32 unbelegten Karten.** Die Seite ist live, obwohl der
-  Prüfstand 35 Befunde meldet. Das ist eine bewusste Zwischenstufe, kein
-  erreichter Zustand — die Karten sind in der Oberfläche als unbelegt
-  gekennzeichnet.
+- **Lokaler Datenprüfstand: zwei Befunde.** Der letzte dokumentierte
+  Veröffentlichungsstand hatte 35. Die aktuellen Änderungen sind lokal
+  geprüft und mit diesem Arbeitsschritt noch nicht veröffentlicht.
 - **Jord trägt fremde Marken.** Beide Referenzbilder zeigen NBA-, Bulls-,
   Nike- und Jordan-Zeichen samt Trikot „Jordan 23". Solange das so ist, ist
   Jord auf einer öffentlichen Seite nicht einsetzbar — weder als Hero noch als
@@ -202,13 +205,28 @@ Es wurden keine Übungsnamen oder fehlenden Beschreibungen erfunden.
 
 ## Nächste Schritte
 
-1. **Freigabekriterium entscheiden** und als Filter im Generator setzen. Der
-   einzige echte Blocker.
-2. Quellen für die 32 unbelegten Karten nachtragen; Prüfstand muss auf 0 Befunde.
-3. Bestandslücke U16/U18 schließen, vor allem Wettbewerbsformate für Baustein F.
+1. Eindeutige Quellenzuordnung für EX-106 klären; EX-107 als Methodikanker
+   gegenüber eigenständigen Übungen abgrenzen.
+2. Fehlende Altersfenster und Kompetenzcodes aus dem offenen Standardexport
+   klären; keine Altersangaben aus Jr.-NBA-Niveaustufen erfinden.
+3. Vor abschließender Veröffentlichung das Freigabekriterium entscheiden.
+   Bis dahin bleibt die ausdrücklich ausgesetzte QA-Sperre ausgesetzt.
 4. Gruppengröße und Material als Filter in die Kandidatenauswahl aufnehmen; der
    Katalog nennt dafür Organisationsregeln in 61.3 bis 61.7.
 5. Erledigt am 10.09.2026: vollständige Trainingspläne und Entwürfe lokal
    speichern, automatisch sichern und über „Letzte Pläne“ wieder öffnen.
    Gemeinsames Speichermodul für beide Arbeitsweisen; Minuten und Auswahl
    bleiben erhalten. Browser-/Gerätewechsel sind keine Synchronisierung.
+# Umsetzung 14.09.2026: Umfang vor dem Erstellen
+
+Der automatische Plan fragt jetzt Altersgruppe, Trainingsweise, Gesamtdauer,
+Übungsanzahl und Übungszeiten in getrennten Schritten ab. Manuell sind Zeiten an
+den Karten und 3–7 Module über „Module anpassen“ veränderbar. Zeitbilanz und
+Speicherung berücksichtigen die individuelle Folge. Diese Erweiterung ist lokal;
+eine Veröffentlichung gehört nicht zu diesem Arbeitsschritt.
+# Umsetzung 16.09.2026: Deutsch / Englisch
+
+DE/EN-Schalter in allen Kopfzeilen; Sprachwahl lokal gespeichert. Oberfläche,
+Übungstexte und Merkmale werden übersetzt, Filter und Trainingsentwürfe bleiben
+beim Umschalten erhalten. Zweisprachige Suche und eigene Sprachprüfungen ergänzt.
+Details: `docs/sprachen.md`. Lokal geprüft, noch nicht veröffentlicht.

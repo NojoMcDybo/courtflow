@@ -18,3 +18,18 @@ a { color: var(--indigo); }
   box-shadow: 0 0 0 3.5px color-mix(in srgb, var(--indigo) 35%, transparent);
   border-radius: var(--r-klein);
 }
+.sprachwahl { display: inline-flex; flex-shrink: 0; align-items: center; gap: 2px; padding: 3px; border: 1px solid var(--haarlinie, #bbb); border-radius: 9px; }
+.sprachwahl button { min-width: 34px; min-height: 32px; padding: 5px 8px; border: 0; border-radius: 6px; background: transparent; color: inherit; font: 600 11px/1 var(--sf, sans-serif); cursor: pointer; }
+.sprachwahl button[aria-pressed="true"] { background: var(--indigo, #6555e8); color: white; }
+.leiste-rechts .sprachwahl button[aria-pressed="true"] { background: var(--indigo); color: white; }
+.leiste .leiste-rechts > a { white-space: nowrap; }
+.poster-kopf > .sprachwahl { margin-left: auto; }
+@media (max-width: 540px) {
+  .leiste-rechts { gap: 0; }
+  .leiste .leiste-rechts > a { font-size: 11px; padding-inline: 7px; }
+  .sprachwahl button { min-width: 30px; padding-inline: 5px; }
+}
+@media print { .sprachwahl { display: none !important; } }
+@media (max-width: 360px) {
+  .leiste .wortmarke { font-size: 0; gap: 0; }
+}

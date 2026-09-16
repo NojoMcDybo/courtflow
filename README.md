@@ -14,16 +14,30 @@ Datensätze gleich aussehen zu lassen.
 
 ## Stand
 
+Über **DE / EN** in der Kopfzeile lässt sich die gesamte Oberfläche einschließlich
+Übungsbeschreibungen umschalten. Die Sprachwahl bleibt lokal gespeichert; Filter
+und laufende Trainingsentwürfe bleiben beim Wechsel erhalten. Die Suche findet
+deutsche und englische Begriffe. Eigene Plannamen und Originalquellen bleiben erhalten.
+
 Drei Flächen:
 
 1. **Drill-Bibliothek** — die Abdeckungsmatrix navigiert durch Thema und Alter.
    146 Übungskarten zeigen Name und Altersfenster; Beschreibung, Kompetenz,
    Quelle und Belegtiefe stehen im geöffneten Detail. Suche und weitere Filter
    grenzen den Bestand ein.
-2. **Trainingsaufbau** — führt Block für Block durch eine Einheit; du wählst je
-   Block aus passenden Übungen.
-3. **Automatischer Plan** — baut die Einheit selbst und würfelt auf Wunsch eine
-   neue, die sich wirklich unterscheidet.
+2. **Trainingsaufbau** — Altersgruppe wählen und bestätigen, dann Trainingsart
+   und Dauer, anschließend Block für Block passende Übungen einsetzen.
+   Minuten direkt an der Karte ändern und unter „Module anpassen“ 3–7 Module wählen.
+3. **Automatischer Plan** — fragt Altersgruppe, Trainingsweise und Umfang ab:
+   Gesamtdauer, Übungsanzahl und Minuten je Modul. Die Zeitbilanz zeigt Übungen,
+   Wechsel und Pausen vor dem Erstellen. Auf Wunsch wird eine neue Auswahl gewürfelt.
+
+Die Karten behalten während der Bewegung ihre Form. Beim Neu-Würfeln sammelt
+der Generator sie zu einem Stapel und teilt die neue Auswahl einzeln aus.
+
+Der korrigierte Katalogimport ergänzt 30 Quellenangaben und 36 Ablauftexte.
+Zwei Quellenzuordnungen bleiben offen; Details stehen in
+[`docs/katalog-importkorrekturen.md`](docs/katalog-importkorrekturen.md).
 
 Aufbau und Generator benutzen dasselbe Modell, siehe
 [`docs/trainingsmodell.md`](docs/trainingsmodell.md). Offene Punkte stehen in
@@ -45,6 +59,7 @@ npm run daten        # Datenstände aus der DOCX-Primärquelle neu erzeugen
 npm run pruefen      # Prüfstand Übungsdaten + Abdeckungsmatrix
 npm run pruefen:plan # Prüfstand Trainingsmodell gegen den Bestand
 npm run pruefen:speicher # Speicherung, Wiederherstellung und Fehlerfälle
+npm run pruefen:sprache # englische Texte, Quellenlinks und Suche DE/EN
 ```
 
 Node ≥ 20 und Python 3 für die Datenkette.

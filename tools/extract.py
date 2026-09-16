@@ -61,12 +61,39 @@ def as_fields(rows):
     return fields
 
 
+def records_from_table(rows):
+    """Mehrspaltige Kandidatentabellen nach Übungs-ID erschließen."""
+    if len(rows) < 2 or not rows[0]:
+        return {}
+    header = [cell.strip() for cell in rows[0]]
+    try:
+        id_column = next(i for i, cell in enumerate(header)
+                         if cell.lower() in {"id", "karten-id"})
+    except StopIteration:
+        return {}
+
+    found = {}
+    for row in rows[1:]:
+        if len(row) <= id_column:
+            continue
+        ids = re.findall(r"EX-\d{3}", row[id_column])
+        if not ids:
+            continue
+        fields = {header[i]: row[i].strip()
+                  for i in range(min(len(header), len(row)))
+                  if header[i].strip() and row[i].strip()}
+        for eid in ids:
+            found.setdefault(eid, {}).update(fields)
+    return found
+
+
 def main():
     if not SRC.exists():
         sys.exit(f"Quelle fehlt: {SRC}")
     document = docx.Document(str(SRC))
 
     records = []
+    table_records = {}
     current = None
     section = None
 
@@ -100,6 +127,8 @@ def main():
             if current is None:
                 continue
             rows = table_rows(item)
+            for eid, fields in records_from_table(rows).items():
+                table_records.setdefault(eid, {}).update(fields)
             fields = as_fields(rows)
             if fields and not current["felder"]:
                 current["felder"] = fields
@@ -108,6 +137,13 @@ def main():
                     current["felder"].setdefault(key, value)
             else:
                 current["zusatztabellen"].append(rows)
+
+    # Later QA paragraphs can be the only paragraphs that carry an EX ID.
+    # Retain their prose but add the earlier table row with the actual title
+    # and explicitly documented tags.
+    for record in records:
+        for key, value in table_records.get(record["id"], {}).items():
+            record["felder"].setdefault(key, value)
 
     OUT.parent.mkdir(parents=True, exist_ok=True)
     OUT.write_text(json.dumps(records, ensure_ascii=False, indent=1), encoding="utf-8")

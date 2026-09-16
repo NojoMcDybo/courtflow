@@ -11,6 +11,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 RAW = ROOT / "docs" / "quellen" / "records-raw.json"
 TABLES = ROOT / "docs" / "quellen" / "catalog-tables.json"
+EXTRACTED = ROOT / "docs" / "quellen" / "catalog-extracted.txt"
 OUT = ROOT / "data" / "drills.json"
 
 CODE = re.compile(r"\b([TKS])([1-7])\b")
@@ -110,6 +111,14 @@ NOTIZ_KEYS = ("entscheidung", "redaktionelle entscheidung", "kernbegründung",
               "redaktionelle begründung", "geprüfte merkmale")
 
 
+def titel_aus_feldern(fields):
+    """Bevorzugt die explizite Titelspalte einer Kandidatentabelle."""
+    for key in ("Übung", "Übung / Format", "Übung/Format", "Format", "Karte"):
+        if fields.get(key):
+            return fields[key].strip()
+    return None
+
+
 def tabellenbefunde():
     """Zeilenweise Befunde aus den Review-Tabellen, nach Übungs-ID."""
     tables = json.loads(TABLES.read_text(encoding="utf-8"))
@@ -138,6 +147,79 @@ def aus_befunden(befunde, keys):
             if entry.get(key):
                 return entry[key]
     return None
+
+
+def quellenbelege():
+    """Per-ID-Evidenzzeilen mit expliziter Quelle/URL aus dem DOCX-Export."""
+    index = {}
+    if not EXTRACTED.exists():
+        return index
+    for raw_line in EXTRACTED.read_text(encoding="utf-8").splitlines():
+        line = re.sub(r"^\d+:\s*", "", raw_line).strip()
+        prefix = re.match(r"^EX-(\d{3})(?:\s*/\s*(?:EX-)?(\d{3}))?\s*[–:]", line)
+        if not prefix:
+            continue
+        ids = [f"EX-{prefix.group(1)}"]
+        if prefix.group(2):
+            ids.append(f"EX-{prefix.group(2)}")
+        if "Quelle:" not in line and "Quellen:" not in line and not re.search(r"https?://", line):
+            continue
+        for eid in ids:
+            index.setdefault(eid, []).append(line)
+    return index
+
+
+SOURCE_LABEL = re.compile(
+    r"\b(Jr\.?\s*NBA(?:\s+(?:Rookie|Starter|All-Star|MVP)(?:\s+(?:Practice(?:\s+Plans)?|P\d+|\d+))?)?"
+    r"|FIBA/WABC(?:\s+(?:Mini-Basketball Coaches Manual|Level\s+\d))?"
+    r"|DBB(?:[-\s]+(?:Easybasket(?:-Handbuch)?|Jugend-Minileitfaden|3x3 Stundenbilder|Grundschulwoche|Leitfaden))?)",
+    re.I,
+)
+
+
+def quelle_aus_belegen(lines):
+    """Liest nur explizit genannte Quellen aus einer Karten-Evidenzzeile."""
+    for line in lines:
+        urls = list(dict.fromkeys(u.rstrip(".,;)") for u in re.findall(r"https?://\S+", line)))
+        # Gemeinsame Belegzeilen mit mehreren URLs geben keine eindeutige
+        # Zuordnung einer einzelnen URL zur jeweiligen Karte vor.
+        url = urls[0] if len(urls) == 1 else None
+        named = re.search(r"\bQuelle[n]?\s*:\s*([^\n]+?)(?=\s+https?://|\s+QA\b|$)", line,
+                          re.I)
+        name = named.group(1).strip(" .,;:") if named else None
+        if name and name.startswith("http"):
+            name = None
+        if not name:
+            label = SOURCE_LABEL.search(line)
+            name = label.group(1).strip() if label else None
+        if name or url:
+            return name, url, line
+    return None, None, None
+
+
+def quelle_aus_titel(titel):
+    """Nur explizite Sätze 'Quelle dokumentiert das „exakter Titel“'."""
+    if not EXTRACTED.exists() or not titel:
+        return None, None, None
+    lines = [re.sub(r"^\d+:\s*", "", line).strip()
+             for line in EXTRACTED.read_text(encoding="utf-8").splitlines()]
+    pattern = re.compile(r'^(.*?)\s+dokumentiert\s+(?:das|die|den)\s+[„"]'
+                         + re.escape(titel) + r'[“"]', re.I)
+    for line in lines:
+        match = pattern.match(line)
+        if match and SOURCE_LABEL.match(match.group(1)):
+            return match.group(1).strip(), None, line
+    return None, None, None
+
+
+def ablauf_aus_evidenz(rec, titel):
+    """Explizite 'Titel: Durchführung'-Absätze, ohne QA- und Quellenmetadaten."""
+    match = re.match(re.escape(titel) + r"\s*:\s*(.+)", rec["titel"], re.S)
+    if not match:
+        return None
+    text = re.split(r"\s+(?:Quelle[n]?|QA|Kompetenz|Arbeitsalter|Entscheidung)\s*:",
+                    match.group(1), maxsplit=1)[0].strip()
+    return text if len(text) > 80 else None
 
 
 def alias_map():
@@ -199,19 +281,23 @@ def evidenz_felder(text):
     return out
 
 
-def normalize(rec, aliases, befunde_index):
+def normalize(rec, aliases, befunde_index, quellen_index):
     f = rec["felder"]
     befunde = befunde_index.get(rec["id"], [])
     flow = rec["fliesstext"]
     kurz = parse_kurzform(flow) if not f else {}
 
+    structured_fields = ("Ablauf", "Lernziel", "Zielkompetenz", "Material", "Coachingpunkte",
+                         "Progression", "Regression", "Methodik")
     if "QA-Status" in f:
         gen, tiefe = "D", "vollstaendig"
     elif "Redaktionsscore (Q/D/A/P/E/O/V)" in f:
         gen, tiefe = "C", "redaktionsscore"
-    elif f:
+    elif f and any(f.get(key) for key in structured_fields):
         gen, tiefe = "B", "standard"
     else:
+        # Candidate tables document only title/tags. They are not a complete
+        # card merely because extraction has turned the row into fields.
         gen, tiefe = "A", None  # nach Evidenzlage unten entschieden
 
     def g(*keys):
@@ -227,10 +313,15 @@ def normalize(rec, aliases, befunde_index):
                  or ev.get("kompetenz") or ev.get("kompetenzen"))
     alle = codes(haupt_roh, sek_roh, komp_kurz)
 
-    quelle_name = (g("Originalquelle", "Quelle") or kurz.get("quelle")
-                   or aus_befunden(befunde, QUELLE_KEYS)
-                   or ev.get("originalquelle") or ev.get("quelle"))
-    url = g("Original-URL") or kurz.get("url")
+    belegg_name, belegg_url, belegg_text = quelle_aus_belegen(
+        quellen_index.get(rec["id"], []))
+    source_fields = [g("Originalquelle"), g("Quelle")]
+    quelle_name = next((value for value in source_fields if value and not value.startswith("http")), None)
+    quelle_name = (quelle_name or kurz.get("quelle") or aus_befunden(befunde, QUELLE_KEYS)
+                   or ev.get("originalquelle") or ev.get("quelle") or belegg_name)
+    url = (g("Original-URL")
+           or next((value for value in source_fields if value and value.startswith("http")), None)
+           or kurz.get("url"))
     if quelle_name and quelle_name.startswith("http") and not url:
         url, quelle_name = quelle_name, None
 
@@ -257,14 +348,39 @@ def normalize(rec, aliases, befunde_index):
 
     canonical = aliases.get(rec["id"])
     titel, evidenz = titel_und_evidenz(rec)
+    table_title = titel_aus_feldern(f) or aus_befunden(befunde, TITEL_KEYS)
+    # IDs wurden im wachsenden Katalog teils neu verwendet (EX-053/054).
+    # Ein plausibler Titel der Feldkarte hat Vorrang vor älteren Review-Zeilen.
+    # Die Titelspalte repariert nur QA/Fließtext oder einen am Doppelpunkt
+    # abgeschnittenen Titel, z. B. 'Guards: Pick & Roll Situational Shooting'.
+    if table_title and (titel.startswith("QA ") or len(titel) > 180
+                        or table_title.startswith(titel + ":")):
+        titel = table_title
+    if not belegg_name:
+        belegg_name, belegg_url, belegg_text = quelle_aus_titel(titel)
+    # Bei frühen Bullet-Karten steht die Quelle direkt vor der Durchführung:
+    # 'Titel: FIBA/WABC – ...'. Markenwörter im Titel/QA-Text reichen nicht.
+    source_body = rec["titel"].partition(":")[2].strip()
+    title_source = SOURCE_LABEL.match(source_body) if not rec["titel"].startswith("QA ") else None
+    # Some early two-column cards carry the URL under Originalquelle and a
+    # shortened provider label ("Jr") under Quelle. Prefer the explicit
+    # per-ID evidence label in that case.
+    if belegg_name and (not quelle_name or quelle_name.casefold() in {"jr", "nba", "fiba", "dbb"}):
+        quelle_name = belegg_name
+    if not quelle_name and title_source:
+        quelle_name = title_source.group(1).strip()
+    if belegg_text and not evidenz:
+        evidenz = belegg_text
     if tiefe is None:
         tiefe = "kurz" if evidenz else ("nur_belege" if befunde else "nur_titel")
         gen = "A" if evidenz else "E"
 
     if evidenz and not url:
-        m = re.search(r"https?://\S+", evidenz)
-        if m:
-            url = m.group(0).rstrip(".,;)")
+        urls = list(dict.fromkeys(u.rstrip(".,;)") for u in re.findall(r"https?://\S+", evidenz)))
+        if len(urls) == 1:
+            url = urls[0]
+    if belegg_url and not url:
+        url = belegg_url
 
     return {
         "id": rec["id"],
@@ -274,7 +390,7 @@ def normalize(rec, aliases, befunde_index):
         "evidenz": evidenz,
         "originaltitel": g("Originaltitel"),
         "lernziel": g("Lernziel", "Zielkompetenz"),
-        "ablauf": g("Ablauf"),
+        "ablauf": g("Ablauf") or ablauf_aus_evidenz(rec, titel),
         "coachingpunkte": g("Coachingpunkte"),
         "typische_fehler": g("Typische Fehler"),
         "kompetenz": {
@@ -361,8 +477,9 @@ def main():
     raw = json.loads(RAW.read_text(encoding="utf-8"))
     aliases = alias_map()
     befunde_index = tabellenbefunde()
+    quellen_index = quellenbelege()
     raw += nur_tabellenkarten(befunde_index, {r["id"] for r in raw})
-    drills = [normalize(r, aliases, befunde_index) for r in raw]
+    drills = [normalize(r, aliases, befunde_index, quellen_index) for r in raw]
     drills.sort(key=lambda d: d["id"])
     OUT.parent.mkdir(parents=True, exist_ok=True)
     OUT.write_text(json.dumps(drills, ensure_ascii=False, indent=1), encoding="utf-8")

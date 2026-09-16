@@ -1,4 +1,6 @@
 import { el } from "../dom";
+import { setText, setAttribut, sprachText } from "../i18n";
+import { sprachwahl } from "../sprachwahl";
 import { markenIcon } from "../marke";
 import { themaIstDunkel, themaUmschalten } from "../thema";
 import { TIEFE_LABEL, kompetenzName } from "../data";
@@ -10,6 +12,9 @@ import {
   baustein,
   belastungsbefund,
   bloecke,
+  aktiveFolge,
+  folgeFuerAnzahl,
+  kandidaten,
   minutenVerteilen,
   modell,
   neuWuerfeln,
@@ -82,7 +87,7 @@ function detailInhalt(d: Drill): HTMLElement {
       ]),
     );
   } else {
-    q.append(d.quelle.name ?? "keine im Katalog hinterlegt");
+    q.append(sprachText(d.quelle.name ?? "keine im Katalog hinterlegt"));
   }
   box.append(q);
   box.append(
@@ -130,15 +135,24 @@ export function training(wurzel: HTMLElement, modus: Modus): () => void {
   let plan: Block[] = [];
   let schritt = 0;
   let letzte: Block[] | null = null;
-  /* Die Führung fragt nacheinander: erst die Altersgruppe, dann die
-     Trainingsart, dann kommen die Übungsblöcke. Die Automatik überspringt
-     das nicht — sie hat dieselben Angaben nur alle in einer Zeile. */
-  type Phase = "alter" | "art" | "bloecke";
-  let phase: Phase = modus === "fuehrung" ? "alter" : "bloecke";
+  type Phase = "alter" | "art" | "umfang" | "bloecke";
+  let phase: Phase = "alter";
+  let alterAuswahl: number | null = null;
+  let artAuswahl: string | null = null;
+  let dauerAuswahl = rahmen.dauer;
+  let umfangFolge: string[] = [];
+  let umfangMinuten: number[] = [];
+  let umfangSchluessel = "";
+  let zeitverteilung: "schwerpunkt" | "gleich" | "eigen" = "schwerpunkt";
+  let moduleOffen = false;
+  const entfernteModule = new Map<string, Block>();
+  const schrittAnimationen = new Set<Animation>();
   const offen = new Set<string>();
   const bewegung = kartenbewegung();
   let beschaeftigt = false;
   let verteilen = false;
+  let einsammeln = false;
+  const eingesammelt = new Set<string>();
   let beendet = false;
   let austausch: string | null = null;
   let ankunft: string | null = null;
@@ -178,10 +192,14 @@ export function training(wurzel: HTMLElement, modus: Modus): () => void {
   const signatur = (p: GespeicherterPlan) => JSON.stringify({ ...p, aktualisiert: "" });
 
   function laden(p: GespeicherterPlan): void {
+    umfangSchluessel = "";
     austausch = null;
     ankunft = null;
     const geladen = wiederherstellen(p);
+    delete rahmen.folge;
+    delete rahmen.minuten;
     Object.assign(rahmen, p.rahmen);
+    entfernteModule.clear();
     planId = p.id;
     planName = p.name;
     plan = geladen.bloecke;
@@ -232,12 +250,13 @@ export function training(wurzel: HTMLElement, modus: Modus): () => void {
     letzteSignatur = "";
     ladeHinweise = [];
     offen.clear();
+    entfernteModule.clear();
   }
 
   /* ---- Kopf ---- */
   const kopf = el("header", { class: "leiste" });
   const thema = el("button", { type: "button" });
-  const beschriften = () => (thema.textContent = themaIstDunkel() ? "Hell" : "Dunkel");
+  const beschriften = () => setText(thema, themaIstDunkel() ? "Hell" : "Dunkel");
   beschriften();
   thema.addEventListener("click", () => {
     themaUmschalten();
@@ -252,6 +271,7 @@ export function training(wurzel: HTMLElement, modus: Modus): () => void {
       modus === "fuehrung" ? "Trainingsaufbau" : "Automatischer Plan",
     ]),
     el("span", { class: "leiste-rechts" }, [
+      sprachwahl(),
       thema,
       el("a", { href: "#/bibliothek" }, ["Bibliothek"]),
     ]),
@@ -283,9 +303,9 @@ export function training(wurzel: HTMLElement, modus: Modus): () => void {
     }
     verlauf.value = archiv.some((p) => p.id === planId) ? planId : "";
     verlauf.disabled = !archiv.length;
-    speicherStand.textContent = speicherFehler ?? (letzteSignatur
+    setText(speicherStand, speicherFehler ?? (letzteSignatur
       ? "In diesem Browser gespeichert · letzte 10 Pläne"
-      : "Pläne werden in diesem Browser gespeichert · letzte 10 Pläne");
+      : "Pläne werden in diesem Browser gespeichert · letzte 10 Pläne"));
     speicherStand.classList.toggle("speicherfehler", Boolean(speicherFehler));
     erneut.hidden = !speicherFehler || !plan.length || phase !== "bloecke";
   }
@@ -304,44 +324,31 @@ export function training(wurzel: HTMLElement, modus: Modus): () => void {
     if (!p) return;
     laden(p);
     // Öffnen ändert weder Auswahl noch Archiv; nur der Fortsetzungszeiger wechselt.
-    sAlter.value = String(rahmen.altersstufe);
-    sDauer.value = String(rahmen.dauer);
-    sWeg.replaceChildren(...wegOptionen().map(([id, t]) => el("option", { value: id }, [t])));
-    sWeg.value = rahmen.pfadId;
     sichern();
     zeichnen();
   });
   function neuesTraining(): void {
+    if (beschaeftigt) return;
+    alterAuswahl = null;
+    artAuswahl = null;
+    dauerAuswahl = rahmen.dauer;
+    umfangFolge = [];
+    umfangMinuten = [];
+    umfangSchluessel = "";
+    delete rahmen.folge;
+    delete rahmen.minuten;
     neuerEntwurf();
     plan = [];
     letzte = null;
     schritt = 0;
-    if (modus === "fuehrung") { phase = "alter"; zeichnen(); }
-    else neuAufbauen();
+    phase = "alter";
+    zeichnen();
   }
   neu.addEventListener("click", neuesTraining);
 
   /* ---- Rahmenzeile ---- */
   const zeile = el("div", { class: "filterzeile trainingsrahmen" });
   const hinweis = el("span", { class: "stand" });
-
-  const auswahl = (
-    name: string,
-    optionen: [string, string][],
-    wert: string,
-    beim: (w: string) => void,
-  ): HTMLSelectElement => {
-    const s = el("select", { "aria-label": name });
-    for (const [w, t] of optionen) s.append(el("option", { value: w }, [t]));
-    s.value = wert;
-    s.addEventListener("change", () => {
-      beim(s.value);
-      sichern();
-      neuerEntwurf();
-      neuAufbauen();
-    });
-    return s;
-  };
 
   const stufen = modell.pfade;
   const wegOptionen = (): [string, string][] =>
@@ -353,27 +360,6 @@ export function training(wurzel: HTMLElement, modus: Modus): () => void {
       )
       .map((p) => [p.id, `${pfadName(p.id)} · ${p.folge.join("→")}`] as [string, string]);
 
-  let sWeg = auswahl("Aufbauweise", wegOptionen(), rahmen.pfadId, (w) => (rahmen.pfadId = w));
-  const sAlter = auswahl(
-    "Altersstufe",
-    [8, 10, 12, 14, 16, 18].map((u) => [String(u), `U${u}`] as [string, string]),
-    String(rahmen.altersstufe),
-    (w) => {
-      rahmen.altersstufe = Number(w);
-      const moeglich = wegOptionen();
-      if (!moeglich.some(([id]) => id === rahmen.pfadId)) rahmen.pfadId = moeglich[0]![0];
-      const neu = auswahl("Aufbauweise", moeglich, rahmen.pfadId, (x) => (rahmen.pfadId = x));
-      sWeg.replaceWith(neu);
-      sWeg = neu;
-    },
-  );
-  const sDauer = auswahl(
-    "Dauer",
-    modell.referenzdauern.map((d) => [String(d), `${d} min`] as [string, string]),
-    String(rahmen.dauer),
-    (w) => (rahmen.dauer = Number(w)),
-  );
-
   const wuerfeln = el("button", { class: "haupttaste", type: "button" }, ["Neu würfeln"]);
   wuerfeln.addEventListener("click", () => {
     if (beschaeftigt) return;
@@ -383,7 +369,15 @@ export function training(wurzel: HTMLElement, modus: Modus): () => void {
   });
 
   if (modus === "automatik") {
-    zeile.append(sAlter, sDauer, sWeg, wuerfeln, hinweis);
+    const anpassen = el("button", { type: "button", class: "textknopf" }, ["Rahmen ändern"]);
+    anpassen.addEventListener("click", () => {
+      umfangSchluessel = "";
+      alterAuswahl = rahmen.altersstufe;
+      artAuswahl = rahmen.pfadId;
+      dauerAuswahl = rahmen.dauer;
+      void schrittWechsel(() => { phase = "art"; }, true);
+    });
+    zeile.append(anpassen, wuerfeln, hinweis);
   }
 
   /* ---- Inhalt ---- */
@@ -393,9 +387,44 @@ export function training(wurzel: HTMLElement, modus: Modus): () => void {
   let detailAusloeser: HTMLElement | null = null;
   dialog.addEventListener("close", () => detailAusloeser?.focus());
 
+  async function schrittWechsel(aktion: () => void, zurueck = false): Promise<void> {
+    if (beschaeftigt || beendet) return;
+    const vorherPhase = phase;
+    beschaeftigt = true;
+    bereich.inert = true;
+    verwaltung.inert = true;
+    const lauf = async (element: HTMLElement | null, hinein: boolean) => {
+      if (!element || ruhig() || beendet) return;
+      const x = (zurueck ? -1 : 1) * (hinein ? 36 : -36);
+      const frames = hinein
+        ? [{ transform: `translateX(${x}px)`, opacity: 0 }, { transform: "translateX(0)", opacity: 1 }]
+        : [{ transform: "translateX(0)", opacity: 1 }, { transform: `translateX(${x}px)`, opacity: 0 }];
+      const animation = element.animate(frames, { duration: hinein ? 260 : 170, easing: FEDER, fill: "forwards" });
+      schrittAnimationen.add(animation);
+      await animation.finished.catch(() => undefined);
+      schrittAnimationen.delete(animation);
+      animation.cancel();
+    };
+    await lauf(bereich.querySelector<HTMLElement>(".wahlbild, .auswahlbereich, .abschluss"), false);
+    if (beendet) return;
+    aktion();
+    zeichnen();
+    const naechste = bereich.querySelector<HTMLElement>(".wahlbild, .auswahlbereich, .abschluss");
+    if (vorherPhase !== phase) bereich.scrollIntoView({ block: "start", behavior: "instant" });
+    await lauf(naechste, true);
+    if (beendet) return;
+    beschaeftigt = false;
+    bereich.inert = false;
+    verwaltung.inert = false;
+    zeile.inert = false;
+    bereich.querySelector<HTMLElement>(".plan-spalten")?.removeAttribute("inert");
+    bereich.setAttribute("aria-busy", "false");
+    naechste?.querySelector<HTMLElement>("h2")?.focus({ preventScroll: true });
+  }
+
   function vorschau(d: Drill, taste: HTMLElement): void {
     detailAusloeser = taste;
-    dialog.setAttribute("aria-label", drillName(d));
+    setAttribut(dialog, "aria-label", drillName(d));
     const zu = el("button", { class: "schliessen", type: "button", "aria-label": "Schließen" }, ["✕"]);
     zu.addEventListener("click", () => dialog.close());
     dialog.replaceChildren(el("div", { class: "blatt" }, [
@@ -426,6 +455,7 @@ export function training(wurzel: HTMLElement, modus: Modus): () => void {
     const alterPlatz = bewegungsZiel(b.code);
     const rueckStart = alt && alterPlatz ? bewegung.merken(alterPlatz) : null;
     rueckgabe = alt;
+    if (!alt) karte.style.visibility = "hidden";
     beschaeftigt = true;
     ankunft = b.code;
     b.gewaehlt = d;
@@ -439,19 +469,40 @@ export function training(wurzel: HTMLElement, modus: Modus): () => void {
     ]);
     if (beendet) return;
     beschaeftigt = false;
-    verteilen = false;
-    austausch = null;
-    ankunft = null;
-    rueckgabe = null;
-    schritt = plan.findIndex(x => !x.gewaehlt);
-    if (schritt < 0) schritt = plan.length;
-    zeichnen();
-    meldung.textContent = `${drillName(d)} → ${baustein(b.code).kurz}${alt ? ` · ersetzt ${drillName(alt)}` : ""}`;
+    await schrittWechsel(() => {
+      verteilen = false;
+      austausch = null;
+      ankunft = null;
+      rueckgabe = null;
+      schritt = plan.findIndex(x => !x.gewaehlt);
+      if (schritt < 0) schritt = plan.length;
+    });
+    if (beendet) return;
+    setText(meldung, `${drillName(d)} → ${baustein(b.code).kurz}${alt ? ` · ersetzt ${drillName(alt)}` : ""}`);
     bereich.querySelector<HTMLElement>(".auswahlbereich h2, .abschluss h2")?.focus({ preventScroll: true });
   }
 
   async function automatischEinsetzen(neu: Block[]): Promise<void> {
     if (beschaeftigt || beendet) return;
+    if (!ruhig() && plan.some(b => b.gewaehlt)) {
+      beschaeftigt = true;
+      einsammeln = true;
+      eingesammelt.clear();
+      zeichnen();
+      for (const b of plan) {
+        if (beendet) return;
+        if (!b.gewaehlt) continue;
+        const karte = bereich.querySelector<HTMLElement>(`.planzeile[data-block="${b.code}"] .plan-einsatz`);
+        const start = karte ? bewegung.merken(karte) : null;
+        eingesammelt.add(b.code);
+        zeichnen();
+        const stapel = bereich.querySelector<HTMLElement>(".stapelplatz .stapelruecken");
+        if (start && stapel) await bewegung.fliegen(start, stapel);
+      }
+      if (beendet) return;
+    }
+    einsammeln = false;
+    eingesammelt.clear();
     plan = neu;
     verteilen = !ruhig();
     austausch = null;
@@ -478,33 +529,24 @@ export function training(wurzel: HTMLElement, modus: Modus): () => void {
     schritt = plan.findIndex(b => !b.gewaehlt);
     if (schritt < 0) schritt = plan.length;
     zeichnen();
-    meldung.textContent = schritt === plan.length ? "Dein Training steht. Alle Karten sind eingesetzt." : "Vorschläge eingesetzt. Offene Blöcke kannst du selbst füllen.";
-  }
-
-  function minutenText(folge: string[]): number[] {
-    return minutenVerteilen(folge, rahmen.dauer, rahmen.altersstufe);
-  }
-
-  function neuAufbauen(): void {
-    if (modus === "automatik") { void automatischEinsetzen(neuWuerfeln(rahmen, null)); return; }
-    plan = bloecke(rahmen);
-    schritt = 0;
-    zeichnen();
+    setText(meldung, schritt === plan.length ? "Dein Training steht. Alle Karten sind eingesetzt." : "Vorschläge eingesetzt. Offene Blöcke kannst du selbst füllen.");
   }
 
   function schrittleiste(): HTMLElement {
     const leiste = el("nav", { class: "schritte", "aria-label": "Ablauf" });
     const stufen: [Phase, string, string | null][] = [
       ["alter", "Altersgruppe", phase === "alter" ? null : `U${rahmen.altersstufe}`],
-      ["art", "Trainingsart", phase === "bloecke" ? pfadName(rahmen.pfadId) : null],
+      ["art", "Trainingsweise", phase === "umfang" ? pfadName(artAuswahl ?? rahmen.pfadId) : phase === "bloecke" ? pfadName(rahmen.pfadId) : null],
+      ...(modus === "automatik" ? [["umfang", "Umfang", phase === "bloecke" ? `${plan.length} Übungen · ${rahmen.dauer} min` : null] as [Phase, string, string | null]] : []),
       ["bloecke", "Übungen", null],
     ];
+    leiste.style.setProperty("--schrittzahl", String(stufen.length));
     stufen.forEach(([p, name, wert], i) => {
-      const erledigt =
-        (p === "alter" && phase !== "alter") || (p === "art" && phase === "bloecke");
+      const erledigt = i < stufen.findIndex(s => s[0] === phase);
       const knopf = el("button", {
         class: `schritt${phase === p ? " jetzt" : ""}${erledigt ? " fertig" : ""}`,
         type: "button",
+        ...(phase === p ? { "aria-current": "step" } : {}),
         ...(erledigt ? {} : { disabled: "" }),
       });
       knopf.append(
@@ -513,8 +555,16 @@ export function training(wurzel: HTMLElement, modus: Modus): () => void {
       );
       if (wert) knopf.append(el("span", { class: "schrittwert" }, [wert]));
       knopf.addEventListener("click", () => {
-        phase = p;
-        zeichnen();
+        void schrittWechsel(() => {
+          if (phase === "bloecke") {
+            alterAuswahl = rahmen.altersstufe;
+            artAuswahl = rahmen.pfadId;
+            dauerAuswahl = rahmen.dauer;
+            umfangSchluessel = "";
+          }
+          if (p === "umfang") umfangVorbereiten();
+          phase = p;
+        }, true);
       });
       leiste.append(knopf);
     });
@@ -522,114 +572,275 @@ export function training(wurzel: HTMLElement, modus: Modus): () => void {
   }
 
   function alterWaehlen(): HTMLElement {
-    const box = el("section", { class: "wahlbild" });
-    box.append(
-      el("h2", {}, ["Für welche Altersgruppe?"]),
-      el("p", { class: "blockfunktion" }, [
-        "Die Altersstufe steuert, welche Trainingsarten zur Wahl stehen und wie die Zeit auf die Blöcke verteilt wird.",
-      ]),
-    );
+    const box = el("section", { class: "wahlbild" }, [
+      el("span", { class: "studio-augenbraue" }, [`Schritt 1 von ${modus === "automatik" ? 4 : 3}`]),
+      el("h2", { tabindex: "-1" }, ["Wer trainiert?"]),
+      el("p", { class: "blockfunktion" }, ["Wähle zuerst die Altersgruppe deines Teams."]),
+    ]);
     const raster = el("div", { class: "grossewahl" });
     for (const u of [8, 10, 12, 14, 16, 18]) {
-      const wege = modell.pfade.filter(
-        (p) => (p.alter_von ?? 8) <= u && u <= (p.alter_bis ?? 18),
-      ).length;
-      const knopf = el("button", {
-        class: `grosskarte${rahmen.altersstufe === u ? " gewaehlt" : ""}`,
-        type: "button",
+      const k = el("button", {
+        class: `grosskarte${alterAuswahl === u ? " gewaehlt" : ""}`, type: "button",
+        "aria-pressed": String(alterAuswahl === u), "data-alter": String(u),
+      }, [el("span", { class: "grossziffer" }, [`U${u}`]), el("span", { class: "grossnote" }, [alterAuswahl === u ? "Ausgewählt ✓" : "Altersgruppe wählen"])]);
+      k.addEventListener("click", () => {
+        alterAuswahl = u;
+        zeichnen();
+        bereich.querySelector<HTMLElement>(`[data-alter="${u}"]`)?.focus({ preventScroll: true });
       });
-      knopf.append(
-        el("span", { class: "grossziffer" }, [`U${u}`]),
-        el("span", { class: "grossnote" }, [`${wege} Trainingsarten`]),
-      );
-      knopf.addEventListener("click", () => {
-        if (rahmen.altersstufe !== u) {
-          neuerEntwurf();
-          plan = [];
+      raster.append(k);
+    }
+    const weiter = el("button", { type: "button", class: "schritt-weiter", ...(alterAuswahl === null ? { disabled: "" } : {}) }, ["Weiter zur Trainingsweise →"]);
+    weiter.addEventListener("click", () => {
+      if (alterAuswahl === null) return;
+      void schrittWechsel(() => {
+        if (rahmen.altersstufe !== alterAuswahl) {
+          neuerEntwurf(); plan = []; artAuswahl = null;
+          umfangSchluessel = "";
+          dauerAuswahl = rahmen.dauer;
+          delete rahmen.folge; delete rahmen.minuten;
         }
-        rahmen.altersstufe = u;
+        rahmen.altersstufe = alterAuswahl!;
         const moeglich = wegOptionen();
         if (!moeglich.some(([id]) => id === rahmen.pfadId)) rahmen.pfadId = moeglich[0]![0];
         sichern();
         phase = "art";
-        zeichnen();
       });
-      raster.append(knopf);
-    }
-    box.append(raster);
+    });
+    box.append(raster, el("div", { class: "schritt-abschluss" }, [
+      el("span", { class: "auswahl-bestaetigung" }, [alterAuswahl ? `Dein Team: U${alterAuswahl}` : "Noch keine Altersgruppe gewählt"]), weiter,
+    ]));
     return box;
   }
 
   function artWaehlen(): HTMLElement {
-    const box = el("section", { class: "wahlbild" });
-    box.append(
-      el("h2", {}, [`Welche Trainingsart für U${rahmen.altersstufe}?`]),
-      el("p", { class: "blockfunktion" }, [
-        "Die Trainingsart legt die Blockfolge fest. Referenzpfade stammen aus dem Katalog, abgeleitete Wege sind gekennzeichnet.",
-      ]),
-    );
-
-    const dauerzeile = el("div", { class: "dauerwahl" });
-    dauerzeile.append(el("span", { class: "dauerlabel" }, ["Dauer"]));
-    const segmente = el("div", { class: "segmente" });
+    const box = el("section", { class: "wahlbild" }, [
+      el("span", { class: "studio-augenbraue" }, [`Schritt 2 von ${modus === "automatik" ? 4 : 3} · U${rahmen.altersstufe}`]),
+      el("h2", { tabindex: "-1" }, ["Was möchtest du trainieren?"]),
+      el("p", { class: "blockfunktion" }, [modus === "automatik" ? "Wähle den Schwerpunkt. Den Umfang legst du danach fest." : "Wähle den Schwerpunkt. Module und Minuten kannst du im Plan anpassen."]),
+    ]);
+    const dauerzeile = el("div", { class: "dauerwahl" }, [el("span", { class: "dauerlabel" }, ["Trainingsdauer"])]);
+    const segmente = el("div", { class: "segmente", role: "group", "aria-label": "Trainingsdauer" });
     for (const d of modell.referenzdauern) {
-      const k = el("button", {
-        type: "button",
-        "aria-selected": String(rahmen.dauer === d),
-      }, [`${d} min`]);
+      const k = el("button", { type: "button", "aria-pressed": String(dauerAuswahl === d), "aria-selected": String(dauerAuswahl === d), "data-dauer": String(d) }, [`${d} min`]);
       k.addEventListener("click", () => {
-        if (rahmen.dauer !== d) {
-          neuerEntwurf();
-          plan = [];
-        }
-        rahmen.dauer = d;
-        sichern();
+        dauerAuswahl = d;
         zeichnen();
+        bereich.querySelector<HTMLElement>(`[data-dauer="${d}"]`)?.focus({ preventScroll: true });
       });
       segmente.append(k);
     }
     dauerzeile.append(segmente);
-    box.append(dauerzeile);
-
     const raster = el("div", { class: "grossewahl breit" });
-    for (const p of modell.pfade.filter(
-      (x) => (x.alter_von ?? 8) <= rahmen.altersstufe && rahmen.altersstufe <= (x.alter_bis ?? 18),
-    )) {
-      const minuten = minutenText(p.folge);
-      const knopf = el("button", {
-        class: `grosskarte artkarte${rahmen.pfadId === p.id ? " gewaehlt" : ""}`,
-        type: "button",
-      });
-      const kopfEl = el("span", { class: "artkopf" });
-      kopfEl.append(el("span", { class: "artname" }, [pfadName(p.id)]));
-      kopfEl.append(
-        el("span", { class: p.herkunft === "abgeleitet" ? "pille schwach" : "pille" }, [
-          p.herkunft === "abgeleitet" ? "abgeleitet" : p.id,
-        ]),
-      );
-      knopf.append(kopfEl);
+    for (const p of modell.pfade.filter(x => (x.alter_von ?? 8) <= rahmen.altersstufe && rahmen.altersstufe <= (x.alter_bis ?? 18))) {
+      const minuten = minutenVerteilen(p.folge, dauerAuswahl, rahmen.altersstufe);
+      const k = el("button", {
+        class: `grosskarte artkarte${artAuswahl === p.id ? " gewaehlt" : ""}`, type: "button",
+        "aria-pressed": String(artAuswahl === p.id), "data-art": p.id,
+      }, [el("span", { class: "artname" }, [pfadName(p.id)])]);
       const folge = el("span", { class: "artfolge" });
-      p.folge.forEach((c, i) => {
-        folge.append(el("span", { class: "blockcode" }, [c]));
-        folge.append(el("span", { class: "folgezeit" }, [`${minuten[i]}′`]));
+      p.folge.forEach((c, i) => folge.append(el("span", { class: "art-baustein" }, [`${baustein(c).kurz} ${minuten[i]}′`])));
+      k.append(folge, el("span", { class: "grossnote" }, [artAuswahl === p.id ? "Ausgewählt ✓" : `${p.folge.length} Trainingsblöcke`]));
+      k.addEventListener("click", () => {
+        artAuswahl = p.id;
+        zeichnen();
+        bereich.querySelector<HTMLElement>(`[data-art="${p.id}"]`)?.focus({ preventScroll: true });
       });
-      knopf.append(folge);
-      if (p.individualisierung) {
-        knopf.append(el("span", { class: "artnote" }, [p.individualisierung]));
-      }
-      knopf.addEventListener("click", () => {
-        const behalten = rahmen.pfadId === p.id && plan.length > 0;
+      raster.append(k);
+    }
+    const zurueck = el("button", { type: "button", class: "tauschen-taste" }, ["← Altersgruppe"]);
+    zurueck.addEventListener("click", () => { void schrittWechsel(() => { alterAuswahl = rahmen.altersstufe; phase = "alter"; }, true); });
+    const weiter = el("button", { type: "button", class: "schritt-weiter", ...(artAuswahl === null ? { disabled: "" } : {}) }, [modus === "automatik" ? "Weiter zum Umfang →" : "Weiter zu den Übungen →"]);
+    weiter.addEventListener("click", () => {
+      if (!artAuswahl) return;
+      void schrittWechsel(() => {
+        if (modus === "automatik") { umfangVorbereiten(); phase = "umfang"; return; }
+        const behalten = plan.length > 0 && rahmen.pfadId === artAuswahl && rahmen.dauer === dauerAuswahl;
         if (!behalten) neuerEntwurf();
-        rahmen.pfadId = p.id;
+        if (rahmen.pfadId !== artAuswahl) { delete rahmen.folge; delete rahmen.minuten; }
+        else if (rahmen.dauer !== dauerAuswahl) delete rahmen.minuten;
+        rahmen.pfadId = artAuswahl!;
+        rahmen.dauer = dauerAuswahl;
         sichern();
         phase = "bloecke";
-        if (behalten) zeichnen();
-        else neuAufbauen();
+        if (!behalten) { plan = bloecke(rahmen); schritt = 0; }
       });
-      raster.append(knopf);
-    }
-    box.append(raster);
+    });
+    box.append(...(modus === "fuehrung" ? [dauerzeile] : []), raster, el("div", { class: "schritt-abschluss" }, [zurueck, weiter]));
     return box;
+  }
+  function neuZeichnen(fokus: string): void {
+    zeichnen();
+    bereich.querySelector<HTMLInputElement>(`[data-zahl="${fokus}"]`)?.focus({ preventScroll: true });
+  }
+
+  function zahlsteuerung(name: string, wert: number, min: number, max: number, schrittweite: number,
+    beiAenderung: (wert: number) => void, kennung: string, einheit = "min"): HTMLElement {
+    const box = el("div", { class: "zahlfeld" });
+    const input = el("input", { type: "number", min: String(min), max: String(max), step: "1",
+      value: String(wert), "aria-label": name, "data-zahl": kennung, inputmode: "numeric" });
+    const setzen = (n: number) => {
+      if (beschaeftigt || !box.isConnected || n === wert) return;
+      if (!Number.isInteger(n) || n < min || n > max) { input.value = String(wert); return; }
+      beiAenderung(n);
+      neuZeichnen(kennung);
+    };
+    input.addEventListener("change", () => setzen(input.valueAsNumber));
+    input.addEventListener("blur", () => setzen(input.valueAsNumber));
+    input.addEventListener("keydown", event => {
+      if (event.key === "Enter") { event.preventDefault(); setzen(input.valueAsNumber); }
+    });
+    const minus = el("button", { type: "button", "aria-label": `${name} verringern`, ...(wert <= min ? { disabled: "" } : {}) }, ["−"]);
+    const plus = el("button", { type: "button", "aria-label": `${name} erhöhen`, ...(wert >= max ? { disabled: "" } : {}) }, ["+"]);
+    minus.addEventListener("click", () => setzen(Math.max(min, wert - schrittweite)));
+    plus.addEventListener("click", () => setzen(Math.min(max, wert + schrittweite)));
+    box.append(el("span", { class: "zahl-label" }, [name]), el("div", { class: "zahlsteuerung" }, [
+      minus, input, el("span", { class: "zahl-einheit", "aria-hidden": "true" }, [einheit]), plus,
+    ]));
+    return box;
+  }
+
+  function umfangVorbereiten(): void {
+    const pfadId = artAuswahl ?? rahmen.pfadId;
+    const schluessel = `${rahmen.altersstufe}:${pfadId}`;
+    if (umfangSchluessel === schluessel && umfangFolge.length) return;
+    umfangSchluessel = schluessel;
+    const behalten = plan.length > 0 && rahmen.pfadId === pfadId;
+    umfangFolge = behalten ? plan.map(b => b.code) : [...aktiveFolge({ pfadId, dauer: dauerAuswahl, altersstufe: rahmen.altersstufe })];
+    umfangMinuten = behalten ? plan.map(b => b.minuten) : minutenVerteilen(umfangFolge, dauerAuswahl, rahmen.altersstufe);
+    zeitverteilung = behalten && rahmen.minuten ? "eigen" : "schwerpunkt";
+    if (!behalten) umfangVerteilen();
+  }
+
+  function umfangVerteilen(): void {
+    umfangMinuten = zeitverteilung === "gleich"
+      ? umfangFolge.map(() => Math.max(1, Math.floor((dauerAuswahl - Math.round(dauerAuswahl * modell.regeln.organisationsanteil)) / umfangFolge.length)))
+      : minutenVerteilen(umfangFolge, dauerAuswahl, rahmen.altersstufe);
+    // Der neue Assistent arbeitet minutengenau: Rundung auf fünf Minuten darf
+    // die gewählte Gesamtzeit einschließlich Organisation nicht überschreiten.
+    const budget = dauerAuswahl - Math.round(dauerAuswahl * modell.regeln.organisationsanteil);
+    while (umfangMinuten.reduce((a, b) => a + b, 0) > budget) {
+      const index = umfangMinuten.indexOf(Math.max(...umfangMinuten));
+      if (index < 0 || umfangMinuten[index]! <= 1) break;
+      umfangMinuten[index]!--;
+    }
+    if (zeitverteilung === "eigen") zeitverteilung = "schwerpunkt";
+  }
+
+  function zeitsumme(minuten: number[], dauer: number): HTMLElement {
+    const uebungszeit = minuten.reduce((a, b) => a + b, 0);
+    const organisation = Math.round(dauer * modell.regeln.organisationsanteil);
+    const gesamt = uebungszeit + organisation;
+    const differenz = dauer - gesamt;
+    return el("div", { class: `zeitbilanz${differenz < 0 ? " ueberzeit" : ""}`, role: "status", "aria-live": "polite" }, [
+      el("div", { class: "zeitsumme" }, [el("strong", {}, [`${gesamt} min`]), el("span", {}, [` / ${dauer} min geplant`])]),
+      el("span", { class: "zeitaufteilung" }, [`${uebungszeit} min Übungen + ${organisation} min Wechsel & Pausen`]),
+      el("span", { class: "zeitsaldo" }, [differenz === 0 ? "Passt genau" : differenz > 0 ? `${differenz} min frei` : `${-differenz} min über deiner Gesamtdauer`]),
+    ]);
+  }
+
+  function umfangWaehlen(): HTMLElement {
+    const box = el("section", { class: "wahlbild umfangbild" }, [
+      el("span", { class: "studio-augenbraue" }, [`Schritt 3 von 4 · U${rahmen.altersstufe}`]),
+      el("h2", { tabindex: "-1" }, ["Wie viel Zeit habt ihr?"]),
+      el("p", { class: "blockfunktion" }, [pfadName(artAuswahl ?? rahmen.pfadId)]),
+    ]);
+    const regler = el("div", { class: "umfang-regler" }, [
+      zahlsteuerung("Gesamtdauer", dauerAuswahl, 30, 240, 5, n => { dauerAuswahl = n; if (zeitverteilung !== "eigen") umfangVerteilen(); }, "umfang-dauer"),
+      zahlsteuerung("Übungsanzahl", umfangFolge.length, 3, 7, 1, n => {
+        const bisher = new Map(umfangFolge.map((code, i) => [code, umfangMinuten[i]!]));
+        umfangFolge = folgeFuerAnzahl(artAuswahl ?? rahmen.pfadId, n);
+        if (zeitverteilung === "eigen") umfangMinuten = umfangFolge.map(code => bisher.get(code) ?? 10);
+        else umfangVerteilen();
+      }, "umfang-anzahl", "Übungen"),
+    ]);
+    const verteilung = el("div", { class: "zeitverteilung" }, [el("span", { class: "zahl-label" }, ["Übungsdauer"])]);
+    for (const [wert, name] of [["schwerpunkt", "Nach Schwerpunkt"], ["gleich", "Gleich lang"]] as const) {
+      const taste = el("button", { type: "button", "aria-pressed": String(zeitverteilung === wert), class: "zeitmodus" }, [name]);
+      taste.addEventListener("click", () => { zeitverteilung = wert; umfangVerteilen(); zeichnen(); });
+      verteilung.append(taste);
+    }
+    if (zeitverteilung === "eigen") verteilung.append(el("span", { class: "zeitaufteilung" }, ["Minuten individuell angepasst"]));
+    const vorschau = el("div", { class: "umfang-vorschau", "aria-label": "Module und Übungsdauer" });
+    umfangFolge.forEach((code, i) => vorschau.append(el("div", { class: "modul-vorschau" }, [
+      el("span", { class: "modul-nummer" }, [String(i + 1).padStart(2, "0")]),
+      el("strong", {}, [baustein(code).kurz]),
+      zahlsteuerung(`${baustein(code).kurz}: Minuten`, umfangMinuten[i]!, 1, 120, 1,
+        n => { umfangMinuten[i] = n; zeitverteilung = "eigen"; }, `vorschau-${code}`),
+    ])));
+    const summe = umfangMinuten.reduce((a, b) => a + b, 0);
+    const zuLang = summe + Math.round(dauerAuswahl * modell.regeln.organisationsanteil) > dauerAuswahl;
+    const zurueck = el("button", { type: "button", class: "tauschen-taste" }, ["← Trainingsweise"]);
+    zurueck.addEventListener("click", () => { void schrittWechsel(() => { phase = "art"; }, true); });
+    const erstellen = el("button", { type: "button", class: "schritt-weiter", ...(zuLang ? { disabled: "" } : {}) }, ["Training erstellen →"]);
+    erstellen.addEventListener("click", async () => {
+      if (beschaeftigt || zuLang) return;
+      let automatisch: Block[] = [];
+      await schrittWechsel(() => {
+        neuerEntwurf();
+        rahmen.pfadId = artAuswahl ?? rahmen.pfadId;
+        rahmen.dauer = dauerAuswahl;
+        rahmen.folge = [...umfangFolge];
+        rahmen.minuten = [...umfangMinuten];
+        automatisch = neuWuerfeln(rahmen, null);
+        plan = automatisch.map(b => ({ ...b, gewaehlt: null }));
+        verteilen = true;
+        phase = "bloecke";
+      });
+      if (!beendet) await automatischEinsetzen(automatisch);
+    });
+    box.append(regler, verteilung, el("p", { class: "zeitaufteilung" }, ["Eine Übung pro Modul. Jede Minutenzahl ist direkt anpassbar."]), vorschau, zeitsumme(umfangMinuten, dauerAuswahl));
+    if (zuLang) {
+      const passend = Math.ceil(summe / (1 - modell.regeln.organisationsanteil) / 5) * 5;
+      if (passend <= 240) {
+        const erweitern = el("button", { type: "button", class: "tauschen-taste" }, [`Gesamtdauer auf ${passend} min setzen`]);
+        erweitern.addEventListener("click", () => { dauerAuswahl = passend; zeichnen(); });
+        box.append(erweitern);
+      } else box.append(el("p", { class: "duenn" }, ["Kürze die Übungen, bis sie in die Gesamtdauer passen."]));
+    }
+    box.append(el("div", { class: "schritt-abschluss" }, [zurueck, erstellen]));
+    return box;
+  }
+
+  function planRahmenAnpassen(): void {
+    rahmen.folge = plan.map(b => b.code);
+    rahmen.minuten = plan.map(b => b.minuten);
+  }
+
+  function moduleAnpassen(): HTMLElement {
+    const details = el("details", { class: "modulverwaltung", ...(moduleOffen ? { open: "" } : {}) }, [
+      el("summary", {}, [`Module anpassen · ${plan.length} Übungen`]),
+    ]);
+    details.addEventListener("toggle", () => { if (details.isConnected) moduleOffen = details.open; });
+    details.append(el("p", { class: "zeitaufteilung" }, ["3–7 Module · eine Übung je Modul"]));
+    const auswahl = el("div", { class: "modulauswahl" });
+    for (const bs of modell.bausteine) {
+      const enthalten = plan.some(b => b.code === bs.code);
+      const taste = el("button", { type: "button", class: "modulschalter", "aria-pressed": String(enthalten), "data-modul": bs.code,
+        ...(enthalten && plan.length <= 3 ? { disabled: "" } : {}) }, [`${enthalten ? "✓" : "+"} ${bs.kurz}`]);
+      taste.addEventListener("click", () => {
+        if (beschaeftigt) return;
+        if (enthalten) {
+          entfernteModule.set(bs.code, plan.find(b => b.code === bs.code)!);
+          plan = plan.filter(b => b.code !== bs.code);
+          if (austausch === bs.code) austausch = null;
+          offen.delete(bs.code);
+        } else {
+          const vorher = entfernteModule.get(bs.code);
+          const gewaehlt = vorher?.gewaehlt && !plan.some(b => b.gewaehlt?.id === vorher.gewaehlt?.id) ? vorher.gewaehlt : null;
+          plan.push({ code: bs.code, minuten: vorher?.minuten ?? 10, gewaehlt, kandidaten: kandidaten(bs.code, rahmen.altersstufe) });
+          plan.sort((a, b) => a.code.localeCompare(b.code));
+        }
+        planRahmenAnpassen();
+        zeichnen();
+        bereich.querySelector<HTMLElement>(`[data-modul="${bs.code}"]`)?.focus({ preventScroll: true });
+        setText(meldung, `${bs.kurz} ${enthalten ? "entfernt" : "hinzugefügt"} · ${plan.length} Übungen`);
+      });
+      auswahl.append(taste);
+    }
+    details.append(auswahl, zahlsteuerung("Geplante Gesamtdauer", rahmen.dauer, 30, 240, 5,
+      n => { rahmen.dauer = n; planRahmenAnpassen(); }, "plan-gesamt"));
+    return details;
   }
 
   function aktiverBlock(): Block | undefined {
@@ -641,7 +852,7 @@ export function training(wurzel: HTMLElement, modus: Modus): () => void {
     const aktiv = aktiverBlock();
     plan.forEach((b, i) => {
       const bs = baustein(b.code);
-      const d = ausstehend.has(b.code) ? null : b.gewaehlt;
+      const d = ausstehend.has(b.code) || eingesammelt.has(b.code) ? null : b.gewaehlt;
       const zeileEl = el("li", {
         class: `planzeile${aktiv === b ? " aktiv" : ""}${d ? " voll" : ""}`,
         "data-block": b.code,
@@ -649,7 +860,11 @@ export function training(wurzel: HTMLElement, modus: Modus): () => void {
       zeileEl.append(el("div", { class: "planzeile-kopf" }, [
         el("span", { class: "blockcode" }, [String(i + 1).padStart(2, "0")]),
         el("span", { class: "blockname" }, [bs.kurz]),
-        el("span", { class: "blockzeit" }, [`${b.minuten} min`]),
+        modus === "fuehrung"
+          ? zahlsteuerung(`${bs.kurz}: Minuten`, b.minuten, 1, 120, 1,
+            n => { b.minuten = n; planRahmenAnpassen(); }, `plan-${b.code}`)
+          : el("span", { class: "blockzeit" }, [`${b.minuten} min`]),
+        ...(modus === "fuehrung" ? [el("span", { class: "druck-minuten" }, [`${b.minuten} min`])] : []),
       ]));
       const einsatz = el("div", { class: "plan-einsatz" });
       if (d) {
@@ -722,7 +937,7 @@ export function training(wurzel: HTMLElement, modus: Modus): () => void {
     const [, max] = modell.regeln.karten_je_schritt as [number, number];
     const gezeigt = b.kandidaten.filter(d => !plan.some(x => x.gewaehlt?.id === d.id)).slice(0, max);
     box.append(
-      el("span", { class: "studio-augenbraue" }, ["Aus der Übungsauswahl"]),
+      el("span", { class: "studio-augenbraue" }, [modus === "fuehrung" ? `Schritt 3 · Übung ${plan.indexOf(b) + 1} von ${plan.length}` : "Aus der Übungsauswahl"]),
       el("h2", { tabindex: "-1" }, [b.gewaehlt ? `Alternative für ${bs.kurz}` : `Wähle für ${bs.kurz}`]),
       el("p", { class: "blockfunktion" }, [`U${rahmen.altersstufe} · ${b.minuten} Minuten im Plan`]),
     );
@@ -748,24 +963,22 @@ export function training(wurzel: HTMLElement, modus: Modus): () => void {
   }
 
   function vorschlagsStapel(): HTMLElement {
+    const rest = plan.filter(b => ausstehend.has(b.code) && b.gewaehlt);
     const box = el("section", { class: "auswahlbereich verteilstapel", "aria-label": "Automatische Vorschläge" }, [
-      el("span", { class: "studio-augenbraue" }, ["Aus der Übungsauswahl"]),
-      el("h2", { tabindex: "-1" }, ["Dein Training entsteht"]),
-      el("p", { class: "blockfunktion" }, ["Passende Karten wandern in ihre Trainingsblöcke."]),
+      el("span", { class: "studio-augenbraue" }, ["Dein Kartenstapel"]),
+      el("h2", { tabindex: "-1" }, [einsammeln ? "Einsammeln. Neu austeilen." : "Karte für Karte in deinen Plan."]),
+      el("p", { class: "blockfunktion" }, [einsammeln ? "Die bisherigen Karten gehen zurück in den Stapel." : rest.length ? `${rest.length} Karten werden noch ausgeteilt` : "Dein Stapel wird vorbereitet."]),
     ]);
-    const raster = el("div", { class: "kartenwahl" });
-    for (const b of plan) {
-      if (!b.gewaehlt || !ausstehend.has(b.code)) continue;
-      raster.append(el("article", { class: "vorschlagskarte automatisch-karte", "data-vorschlag": b.code }, [
-        drillZeile(b.gewaehlt, rahmen.altersstufe),
-        el("span", { class: "karten-route" }, [`→ ${baustein(b.code).kurz} · ${b.minuten} min`]),
-      ]));
-    }
-    if (!raster.childElementCount) raster.append(el("p", { class: "blockfunktion" }, ["Die letzte Karte wird eingesetzt …"]));
-    box.append(raster);
+    const stapel = el("div", { class: "stapelplatz" });
+    stapel.append(el("div", { class: "stapelruecken", "aria-hidden": "true" }, [el("span", {}, ["CourtFlow"]), el("strong", {}, [einsammeln ? "⇄" : "✓"])]));
+    const b = rest[0];
+    if (!einsammeln && b?.gewaehlt) stapel.append(el("article", { class: "vorschlagskarte automatisch-karte stapel-oben", "data-vorschlag": b.code }, [
+      drillZeile(b.gewaehlt, rahmen.altersstufe),
+      el("span", { class: "karten-route" }, [`→ ${baustein(b.code).kurz} · ${b.minuten} min`]),
+    ]));
+    box.append(stapel);
     return box;
   }
-
   function mobilesZiel(): HTMLElement {
     const b = aktiverBlock() ?? plan[plan.length - 1];
     const box = el("aside", { class: "mobiles-ziel", "aria-label": "Ziel im Trainingsplan" });
@@ -798,10 +1011,11 @@ export function training(wurzel: HTMLElement, modus: Modus): () => void {
 
   function zeichnen(): void {
     if (beendet) return;
-    planSichern();
+    if (!einsammeln) planSichern();
     ablageZeichnen();
     const pfad = modell.pfade.find(p => p.id === rahmen.pfadId)!;
-    hinweis.textContent = `${plan.length} Blöcke`;
+    setText(hinweis, `${plan.length} Blöcke`);
+    zeile.hidden = phase !== "bloecke";
     verwaltung.inert = beschaeftigt;
     zeile.inert = beschaeftigt;
     bereich.inert = beschaeftigt;
@@ -813,44 +1027,50 @@ export function training(wurzel: HTMLElement, modus: Modus): () => void {
       ]),
       ...(phase === "bloecke" ? [el("span", { class: "studio-rahmen" }, [`U${rahmen.altersstufe} · ${rahmen.dauer} min`])] : []),
     ]);
-    if (modus === "fuehrung" && phase !== "bloecke") {
-      bereich.replaceChildren(intro, schrittleiste(), phase === "alter" ? alterWaehlen() : artWaehlen());
+    if (phase !== "bloecke") {
+      bereich.replaceChildren(intro, schrittleiste(), phase === "alter" ? alterWaehlen() : phase === "art" ? artWaehlen() : umfangWaehlen());
       return;
     }
 
     const vorherScroll = bereich.querySelector<HTMLElement>(".plan-scroll")?.scrollTop ?? 0;
+    const vorherAuswahl = bereich.querySelector<HTMLElement>(".auswahlbereich");
     const spalten = el("div", { class: "plan-spalten" });
     const zielbereich = el("section", { class: "plan-links", "aria-label": "Dein Trainingsplan" });
     const anzahl = plan.filter(b => b.gewaehlt && !ausstehend.has(b.code)).length;
     zielbereich.append(
-      el("p", { class: "druck-planname" }, [planName.trim() || standardName()]),
+      el("p", { class: "druck-planname", translate: "no" }, [planName.trim() || standardName()]),
       el("div", { class: "plan-kopf" }, [
         el("div", {}, [el("span", { class: "studio-augenbraue" }, ["In deinen Trainingsplan"]), el("h2", { class: "plan-ziel" }, ["Dein Training"])]),
         el("span", { class: "plan-zaehler" }, [`${anzahl} / ${plan.length}`]),
       ]),
       el("progress", { class: "plan-fortschritt", value: String(anzahl), max: String(plan.length || 1), "aria-label": "Eingesetzte Übungen" }),
       el("p", { class: "plan-art" }, [pfadName(rahmen.pfadId)]),
+      zeitsumme(plan.map(b => b.minuten), rahmen.dauer),
     );
+    if (modus === "fuehrung") zielbereich.append(moduleAnpassen());
     const liste = el("div", { class: "plan-scroll" }, [planZeilen()]);
     zielbereich.append(liste);
     zielbereich.append(el("details", { class: "modellinfo" }, [
       el("summary", {}, ["Zum Trainingsaufbau"]),
       el("p", { class: "blockfunktion" }, [pfad.ziel]),
       el("p", { class: "blockfunktion" }, [pfad.herkunft === "abgeleitet" ? "Redaktionell abgeleitete Aufbauweise" : `Katalogpfad ${pfad.id}`]),
+      ...(plan.map(b => b.code).join() !== pfad.folge.join() ? [el("p", { class: "blockfunktion" }, ["Modulfolge individuell angepasst."])] : []),
       ...(pfad.individualisierung ? [el("p", { class: "blockfunktion" }, [pfad.individualisierung])] : []),
     ]));
     for (const text of ladeHinweise) zielbereich.append(el("p", { class: "duenn" }, [text]));
     const aktiv = aktiverBlock();
-    const quelle = verteilen ? vorschlagsStapel() : aktiv ? auswahlKarten(aktiv) : abschluss();
+    const quelle = verteilen || einsammeln ? vorschlagsStapel()
+      : ankunft && !rueckgabe && vorherAuswahl ? vorherAuswahl
+      : aktiv ? auswahlKarten(aktiv) : abschluss();
     spalten.append(quelle, zielbereich);
     spalten.inert = beschaeftigt;
-    bereich.replaceChildren(intro, ...(modus === "fuehrung" ? [schrittleiste()] : []), mobilesZiel(), spalten);
+    bereich.replaceChildren(intro, schrittleiste(), mobilesZiel(), spalten);
     liste.scrollTop = vorherScroll;
-    if (beschaeftigt && ankunft) meldung.textContent = `Karte → ${baustein(ankunft).kurz}`;
+    if (beschaeftigt && ankunft) setText(meldung, `Karte → ${baustein(ankunft).kurz}`);
   }
   const fuss = el("footer", { class: "fuss" });
   fuss.append(
-    `Bausteine A–G und Referenzpfade aus dem Kompetenzkatalog v${modell.katalogversion}, Forschungsblock XIII · Zeitverteilung und Kartenzuordnung sind redaktionelle Ableitung · `,
+    sprachText(`Bausteine A–G und Referenzpfade aus dem Kompetenzkatalog v${modell.katalogversion}, Forschungsblock XIII · Zeitverteilung und Kartenzuordnung sind redaktionelle Ableitung · `),
   );
   fuss.append(
     el("a", { href: `${REPO}/blob/main/docs/trainingsmodell.md`, target: "_blank", rel: "noreferrer noopener" }, [
@@ -859,11 +1079,12 @@ export function training(wurzel: HTMLElement, modus: Modus): () => void {
   );
 
   wurzel.append(kopf, verwaltung, ...(modus === "automatik" ? [zeile] : []), bereich, meldung, dialog, fuss);
-  if (modus === "automatik" && !fortsetzen) neuAufbauen();
-  else zeichnen();
+  zeichnen();
 
   return () => {
     beendet = true;
+    for (const animation of schrittAnimationen) animation.cancel();
+    schrittAnimationen.clear();
     bewegung.abbrechen();
     for (const k of [kopf, verwaltung, zeile, bereich, meldung, dialog, fuss]) k.remove();
   };

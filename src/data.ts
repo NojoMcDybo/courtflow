@@ -1,6 +1,7 @@
 import drillsRoh from "../data/drills.json";
 import taxonomieRoh from "../data/taxonomy.json";
 import type { Drill, Filter, Taxonomie } from "./types";
+import { english } from "./i18n";
 
 export const taxonomie = taxonomieRoh as unknown as Taxonomie;
 
@@ -48,6 +49,7 @@ const suchtext = (d: Drill): string =>
   [d.id, d.titel, d.originaltitel, d.lernziel, d.ablauf, d.evidenz, d.kompetenz.roh,
    d.quelle.name, d.methodik]
     .filter(Boolean)
+    .flatMap(text => [text, english(text!)])
     .join(" ")
     .toLowerCase();
 

@@ -1,4 +1,5 @@
 import { el } from "../dom";
+import { sprachwahl } from "../sprachwahl";
 import { markenIcon } from "../marke";
 import { alleDrills, kennzahlen, taxonomie } from "../data";
 
@@ -51,6 +52,7 @@ export function startseite(wurzel: HTMLElement): () => void {
         z.gesamt - z.mitQuelle
       } offen`,
     ]),
+    sprachwahl(),
   );
   seite.append(kopf);
 

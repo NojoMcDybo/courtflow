@@ -1,4 +1,4 @@
-import { modell } from "../src/plan";
+import { aktiveFolge, modell } from "../src/plan";
 import { lesen, speichern, validiereRahmen, wiederherstellen } from "../src/speicher";
 import type { GespeicherterPlan } from "../src/speicher";
 
@@ -26,14 +26,41 @@ const plan = (id: string, aktualisiert: string, modus: "fuehrung" | "automatik" 
 });
 
 pruefe(validiereRahmen(rahmen)?.pfadId === "TR-05", "gültiger Rahmen");
-pruefe(validiereRahmen({ ...rahmen, dauer: 91 }) === null, "nicht erlaubte Dauer");
+pruefe(validiereRahmen({ ...rahmen, dauer: 91 })?.dauer === 91, "freie Dauer im erlaubten Bereich");
+pruefe(validiereRahmen({ ...rahmen, dauer: 29 }) === null && validiereRahmen({ ...rahmen, dauer: 241 }) === null,
+  "Dauergrenzen werden eingehalten");
 pruefe(validiereRahmen({ ...rahmen, altersstufe: 13 }) === null, "unpassendes Alter");
 pruefe(validiereRahmen({ ...rahmen, pfadId: "AW-Technik", altersstufe: 9 }) === null, "nur Katalogaltersstufen zulässig");
 pruefe(validiereRahmen({ ...rahmen, pfadId: "kein-pfad" }) === null, "unbekannter Pfad");
+const eigenerRahmen = { ...rahmen, folge: ["B", "D", "F"], minuten: [7, 13, 19] };
+pruefe(validiereRahmen(eigenerRahmen)?.folge?.join(",") === "B,D,F" && aktiveFolge(eigenerRahmen).length === 3,
+  "eigener Ablauf mit Minuten ist gültig");
+pruefe(validiereRahmen({ ...eigenerRahmen, folge: ["B", "D"] }) === null &&
+  validiereRahmen({ ...eigenerRahmen, folge: ["A", "B", "C", "D", "E", "F", "G", "G"] }) === null,
+  "Umfang bleibt zwischen drei und sieben Modulen");
+pruefe(validiereRahmen({ ...eigenerRahmen, folge: ["B", "B", "F"] }) === null, "doppelte Ablaufcodes abgelehnt");
+pruefe(validiereRahmen({ ...eigenerRahmen, folge: ["B", "X", "F"] }) === null, "unbekannte Ablaufcodes abgelehnt");
+pruefe(validiereRahmen({ ...eigenerRahmen, minuten: [7, 13] }) === null &&
+  validiereRahmen({ ...eigenerRahmen, minuten: [7, 13, 0] }) === null &&
+  validiereRahmen({ ...eigenerRahmen, minuten: [7, 13, 121] }) === null &&
+  validiereRahmen({ ...eigenerRahmen, minuten: [7, 13, 19.5] }) === null, "ungültige eigene Minuten abgelehnt");
 
 const speicher = new Speicher();
 const erste = plan("eins", "2026-09-10T10:00:00.000Z");
 const zweite = plan("zwei", "2026-09-10T11:00:00.000Z", "automatik");
+const eigenerPlan: GespeicherterPlan = {
+  ...plan("eigen", "2026-09-10T10:30:00.000Z"), rahmen: eigenerRahmen,
+  bloecke: eigenerRahmen.folge.map((code, i) => ({ code, minuten: [11, 17, 23][i]!, drillId: ["EX-037", "EX-077", "EX-134"][i]! })),
+};
+const eigenerSpeicher = new Speicher();
+pruefe(speichern(eigenerSpeicher, eigenerPlan).fehler === null, "eigener Plan speicherbar");
+const eigenerAusArchiv = lesen(eigenerSpeicher).plaene[0]!;
+pruefe(JSON.stringify(eigenerAusArchiv) === JSON.stringify(eigenerPlan), "eigener Rahmen läuft verlustfrei durchs Archiv");
+pruefe(wiederherstellen(eigenerAusArchiv).bloecke.map((b) => b.minuten).join(",") === "11,17,23",
+  "gespeicherte Blockminuten bleiben gegenüber Startminuten maßgeblich");
+pruefe(speichern(new Speicher(), { ...eigenerPlan,
+  bloecke: eigenerPlan.bloecke.map((block, i) => ({ ...block, code: i === 0 ? "D" : block.code })) }).fehler !== null,
+"eigene Blöcke müssen der aktiven Reihenfolge entsprechen");
 pruefe(speichern(speicher, erste).fehler === null, "erster Plan speicherbar");
 pruefe(speichern(speicher, zweite).plaene[0]?.id === "zwei", "neuester Plan zuerst");
 const geladen = lesen(speicher);
