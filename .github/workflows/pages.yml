@@ -20,6 +20,10 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
       - uses: actions/setup-node@v4
         with:
           node-version: 22
@@ -31,7 +35,7 @@ jobs:
       # Die Datenbefunde (32 Karten ohne Quelle) sind bekannt und blockieren
       # den Build absichtlich nicht -- sie stehen in PROJEKT.md.
       - name: Prüfregeln selbst prüfen
-        run: python3 tools/validate.py --nur-selbsttest
+        run: python tools/validate.py --nur-selbsttest
 
       # Das Trainingsmodell muss auf dem Bestand tragen. Der bekannte dünne
       # Block (F bei U18) darf den Build nicht stoppen, der Lauf aber schon,
@@ -41,6 +45,14 @@ jobs:
 
       - name: Planablage prüfen
         run: npm run pruefen:speicher
+
+      # Die Umwandlung der Rohsätze hat eigene Testfälle; ohne sie ist jede
+      # Aussage über data/drills.json ungedeckt.
+      - name: Umwandlung der Übungsdaten prüfen
+        run: python tools/test_normalize.py
+
+      - name: Sprachfassungen prüfen
+        run: npm run pruefen:sprache
 
       - run: npm run build
 
