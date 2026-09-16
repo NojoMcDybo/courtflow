@@ -1,14 +1,47 @@
-import drillsEnglish from "./locales/drills.en.json";
-import { interfaceEnglish, interfacePattern } from "./locales/interface.en";
-import { trainingEnglish, trainingPattern } from "./locales/training.en";
-
 export type Sprache = "de" | "en";
 const SCHLUESSEL = "courtflow.sprache";
 let aktuell: Sprache = "de";
-const englisch: Record<string, string> = { ...drillsEnglish, ...trainingEnglish, ...interfaceEnglish };
+
+type Muster = (text: string, translate: (text: string) => string) => string | null;
+
+// Die englische Fassung ist ein eigenes Bündel und wird erst geholt, wenn sie
+// gebraucht wird: beim Umschalten auf EN und beim ersten Griff ins Suchfeld.
+// Solange sie fehlt, gibt english() den deutschen Text zurück.
+let englisch: Record<string, string> | null = null;
+let interfacePattern: Muster = () => null;
+let trainingPattern: Muster = () => null;
+let ladevorgang: Promise<void> | null = null;
+
+function englischLaden(): Promise<void> {
+  ladevorgang ??= (async () => {
+    const [drills, oberflaeche, training] = await Promise.all([
+      import("./locales/drills.en.json"),
+      import("./locales/interface.en"),
+      import("./locales/training.en"),
+    ]);
+    interfacePattern = oberflaeche.interfacePattern;
+    trainingPattern = training.trainingPattern;
+    englisch = {
+      ...(drills.default as Record<string, string>),
+      ...training.trainingEnglish,
+      ...oberflaeche.interfaceEnglish,
+    };
+  })();
+  return ladevorgang;
+}
+
+/** Holt die englische Fassung im Hintergrund; danach findet die Suche auch englische Begriffe. */
+export function englischVorladen(): void {
+  if (englisch !== null) return;
+  void englischLaden().then(() => document.dispatchEvent(new Event("courtflow:sprache")));
+}
+
+/** Für Prüfstände: wartet, bis die englische Fassung geladen ist. */
+export const englischBereit = (): Promise<void> => englischLaden();
 
 /** Translate display text only. Data, IDs, URLs and saved plans keep their original values. */
 export function english(text: string): string {
+  if (englisch === null) return text;
   if (Object.hasOwn(englisch, text)) return englisch[text]!;
   const muster = interfacePattern(text, english) ?? trainingPattern(text, english);
   if (muster !== null) return muster;
@@ -66,15 +99,23 @@ function anwenden(): void {
   }
 }
 
+function uebernehmen(): void {
+  anwenden();
+  document.dispatchEvent(new Event("courtflow:sprache"));
+}
+
 export function spracheSetzen(neu: Sprache): void {
   if (neu === aktuell) return;
   aktuell = neu;
   try { localStorage.setItem(SCHLUESSEL, neu); } catch { /* Session choice still works. */ }
-  anwenden();
-  document.dispatchEvent(new Event("courtflow:sprache"));
+  // Zweimal anwenden: sofort für Schalterzustand und lang-Attribut, noch einmal,
+  // wenn die nachgeladenen Texte da sind.
+  uebernehmen();
+  if (neu === "en" && englisch === null) void englischLaden().then(uebernehmen);
 }
 
 export function spracheInitialisieren(): void {
   try { aktuell = localStorage.getItem(SCHLUESSEL) === "en" ? "en" : "de"; } catch { aktuell = "de"; }
   anwenden();
+  if (aktuell === "en") void englischLaden().then(uebernehmen);
 }

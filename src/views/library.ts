@@ -1,5 +1,5 @@
 import { el } from "../dom";
-import { setText, setAttribut, sprachText, t, sprache } from "../i18n";
+import { setText, setAttribut, sprachText, t, sprache, englischVorladen } from "../i18n";
 import { sprachwahl } from "../sprachwahl";
 import { markenIcon } from "../marke";
 import { themaIstDunkel, themaUmschalten } from "../thema";
@@ -110,7 +110,10 @@ export function seite(wurzel: HTMLElement): () => void {
 
   const bereich = el("main", { class: "bibliothek" });
   const suche = el("input", { type: "search", class: "suchfeld", placeholder: "Übung suchen …", "aria-label": "Übungen durchsuchen" });
-  suche.addEventListener("input", () => { filter.suche = suche.value; zeichnen(); });
+  // Die englische Fassung wird beim ersten Griff ins Suchfeld nachgeladen, damit
+  // auch englische Begriffe treffen. Bis dahin sucht das Feld deutsch.
+  suche.addEventListener("focus", englischVorladen, { once: true });
+  suche.addEventListener("input", () => { englischVorladen(); filter.suche = suche.value; zeichnen(); });
   const reset = el("button", { type: "button", class: "bibliothek-reset" }, ["Alles anzeigen"]);
   const extras = el("details", { class: "bibliothek-extras" });
   const extrasTitel = el("summary", {}, ["Weitere Filter"]);

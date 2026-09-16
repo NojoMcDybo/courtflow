@@ -1,7 +1,10 @@
 import assert from "node:assert/strict";
-import { english } from "../src/i18n";
+import { english, englischBereit } from "../src/i18n";
 import { alleDrills, filtern } from "../src/data";
 import drillEnglish from "../src/locales/drills.en.json";
+
+// Die englische Fassung wird in der Seite nachgeladen; hier wird sie erzwungen.
+await englischBereit();
 
 for (const [de, en] of [
   ["Übungen entdecken", "Discover drills"],
