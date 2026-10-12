@@ -6,6 +6,7 @@ import { themaIstDunkel, themaUmschalten } from "../thema";
 import { TIEFE_LABEL, aliaseVon, alleDrills, filtern, kompetenzName, taxonomie } from "../data";
 import type { Drill, Filter } from "../types";
 import { matrix } from "./abdeckung";
+import { bildUrl, uebungsbildFuer } from "../uebungsbilder";
 
 const SKALEN_LABEL: Record<string, string> = {
   entscheidung: "Entscheidung",
@@ -32,6 +33,26 @@ function blattInhalt(d: Drill, schliessen: () => void): HTMLElement {
   zu.addEventListener("click", schliessen);
   kopf.append(titel, zu);
   inhalt.append(kopf);
+
+  const bild = uebungsbildFuer(d);
+  if (bild) {
+    inhalt.append(el("img", {
+      class: "drill-detailbild",
+      src: bildUrl(bild.detail),
+      alt: sprache() === "en" ? bild.alt_en : bild.alt,
+      width: String(bild.width),
+      height: String(bild.height),
+    }));
+    if (bild.art === "Kompetenzmotiv") {
+      inhalt.append(el("p", { class: "drill-bildhinweis" }, [
+        "Illustration der Fertigkeit, nicht des genauen Übungsablaufs.",
+      ]));
+    }
+    inhalt.append(el("a", {
+      href: bildUrl(bild.detail), target: "_blank", rel: "noopener",
+      class: "drill-bildlink",
+    }, ["Bild vergrößern ↗"]));
+  }
 
   for (const [label, text] of [
     ["Lernziel", d.lernziel],
@@ -167,11 +188,22 @@ export function seite(wurzel: HTMLElement): () => void {
     ? d.originaltitel ?? "Übung ohne Kurztitel" : d.titel;
 
   function karte(d: Drill): HTMLElement {
-    const knopf = el("button", { type: "button", class: "drill-karte", "aria-haspopup": "dialog" }, [
+    const bild = uebungsbildFuer(d);
+    const inhalt: (HTMLElement | string)[] = [
       el("span", { class: "drill-alter" }, [altersname(d)]),
       el("span", { class: "drill-name" }, [kurzname(d)]),
       el("span", { class: "drill-oeffnen", "aria-hidden": "true" }, ["Ansehen", el("span", {}, ["↗"])]),
-    ]);
+    ];
+    if (bild) inhalt.unshift(el("img", {
+      class: "drill-vorschaubild",
+      src: bildUrl(bild.vorschau),
+      alt: sprache() === "en" ? bild.alt_en : bild.alt,
+      width: String(bild.width),
+      height: String(bild.height),
+      loading: "lazy",
+      decoding: "async",
+    }));
+    const knopf = el("button", { type: "button", class: "drill-karte", "aria-haspopup": "dialog" }, inhalt);
     knopf.addEventListener("click", () => {
       ausloeser = knopf;
       setAttribut(dialog, "aria-label", d.titel);

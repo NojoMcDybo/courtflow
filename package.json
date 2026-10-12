@@ -12,7 +12,8 @@
     "modell": "python tools/trainingsmodell.py",
     "pruefen:plan": "esbuild tools/pruefe-plan.ts --bundle --platform=node --format=esm --loader:.json=json --outfile=node_modules/.cache/pruefe-plan.mjs --log-level=error && node node_modules/.cache/pruefe-plan.mjs",
     "pruefen:speicher": "esbuild tools/pruefe-speicher.ts --bundle --platform=node --format=esm --loader:.json=json --outfile=node_modules/.cache/pruefe-speicher.mjs --log-level=error && node node_modules/.cache/pruefe-speicher.mjs",
-    "pruefen:sprache": "esbuild tools/pruefe-sprache.ts --bundle --platform=node --format=esm --loader:.json=json --outfile=node_modules/.cache/pruefe-sprache.mjs --log-level=error && node node_modules/.cache/pruefe-sprache.mjs"
+    "pruefen:sprache": "esbuild tools/pruefe-sprache.ts --bundle --platform=node --format=esm --loader:.json=json --outfile=node_modules/.cache/pruefe-sprache.mjs --log-level=error && node node_modules/.cache/pruefe-sprache.mjs",
+    "pruefen:bilder": "node tools/pruefe-bilder.mjs"
   },
   "devDependencies": {
     "typescript": "^5.7.2",
