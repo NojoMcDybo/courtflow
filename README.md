@@ -21,16 +21,16 @@ deutsche und englische Begriffe. Eigene Plannamen und Originalquellen bleiben er
 
 Drei Flächen:
 
-1. **Drill-Bibliothek** — die Abdeckungsmatrix navigiert durch Thema und Alter.
+1. **Drill-Bibliothek** — drei aufklappbare Themenbereiche und die Abdeckungsmatrix navigieren durch Thema und Alter. Beides lässt sich kombinieren; die Kartenansicht zeigt wahlweise zwei, drei oder vier Karten pro Reihe.
    146 Übungskarten zeigen Name und Altersfenster; Beschreibung, Kompetenz,
    Quelle und Belegtiefe stehen im geöffneten Detail. Suche und weitere Filter
    grenzen den Bestand ein.
-2. **Trainingsaufbau** — Altersgruppe wählen und bestätigen, dann Trainingsart
-   und Dauer, anschließend Block für Block passende Übungen einsetzen.
-   Minuten direkt an der Karte ändern und unter „Module anpassen“ 3–7 Module wählen.
-3. **Automatischer Plan** — fragt Altersgruppe, Trainingsweise und Umfang ab:
-   Gesamtdauer, Übungsanzahl und Minuten je Modul. Die Zeitbilanz zeigt Übungen,
-   Wechsel und Pausen vor dem Erstellen. Auf Wunsch wird eine neue Auswahl gewürfelt.
+2. **Trainingsaufbau** — zuerst 3–7 Module und ihre Minuten festlegen, dann
+   Altersgruppe und Thema antippen. Danach passende Übungen einsetzen, tauschen
+   oder weitere Übungen ergänzen.
+3. **Automatischer Plan** — dieselbe Struktur und Auswahl, danach stellt CourtFlow
+   die Übungen zusammen. Auf Wunsch wird eine neue Auswahl gewürfelt.
+   Der kompakte PDF-Druck zeigt die Reihenfolge und die Übungsanleitungen.
 
 Die Karten behalten während der Bewegung ihre Form. Beim Neu-Würfeln sammelt
 der Generator sie zu einem Stapel und teilt die neue Auswahl einzeln aus.

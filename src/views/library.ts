@@ -270,8 +270,8 @@ export function seite(wurzel: HTMLElement): () => void {
       ? { code: fokus.dataset.code, age: fokus.dataset.age, family: fokus.closest("details")?.getAttribute("aria-label") } : null;
     const offeneFamilien = [...matrixPlatz.querySelectorAll<HTMLDetailsElement>(".coverage-family[open]")].map(d => d.getAttribute("aria-label"));
     matrixPlatz.replaceChildren(matrix(filter, (code, alter) => {
-      if (code !== undefined) filter.kompetenz = filter.kompetenz === code ? null : code;
-      if (alter !== undefined) filter.altersstufe = filter.altersstufe === alter ? null : alter;
+      if (code !== undefined) filter.kompetenz = alter !== undefined ? code : filter.kompetenz === code ? null : code;
+      if (alter !== undefined) filter.altersstufe = code !== undefined ? alter : filter.altersstufe === alter ? null : alter;
       // A new matrix choice must not be blocked by an old family filter.
       filter.familie = null; familie.value = "";
       zeichnen();

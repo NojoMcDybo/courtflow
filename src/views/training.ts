@@ -206,6 +206,13 @@ export function training(wurzel: HTMLElement, modus: Modus): () => void {
     planId = p.id;
     planName = p.name;
     plan = geladen.bloecke;
+    dauerAuswahl = rahmen.dauer;
+    alterAuswahl = rahmen.altersstufe;
+    artAuswahl = rahmen.pfadId;
+    umfangFolge = plan.map(b => b.code);
+    umfangMinuten = plan.map(b => b.minuten);
+    umfangSchluessel = `${rahmen.altersstufe}:${rahmen.pfadId}`;
+    zeitverteilung = "eigen";
     ladeHinweise = geladen.hinweise;
     schritt = plan.findIndex((b) => !b.gewaehlt);
     if (schritt < 0) schritt = plan.length;
@@ -515,6 +522,7 @@ export function training(wurzel: HTMLElement, modus: Modus): () => void {
     plan = neu;
     verteilen = !ruhig();
     austausch = null;
+    ergaenzen = null;
     ausstehend.clear();
     if (!ruhig()) for (const b of plan) if (b.gewaehlt) ausstehend.add(b.code);
     beschaeftigt = ausstehend.size > 0;
@@ -570,6 +578,7 @@ export function training(wurzel: HTMLElement, modus: Modus): () => void {
             artAuswahl = rahmen.pfadId;
             dauerAuswahl = rahmen.dauer;
             umfangSchluessel = "";
+            umfangVorbereiten();
           }
           if (p === "umfang") umfangVorbereiten();
           phase = p;
@@ -625,9 +634,9 @@ export function training(wurzel: HTMLElement, modus: Modus): () => void {
       k.addEventListener("click", () => {
         if (beschaeftigt || generiert) return;
         artAuswahl = p.id;
+        const behalten = plan.length > 0 && rahmen.pfadId === p.id && plan.length === umfangFolge.length &&
+          plan.every((b, i) => b.minuten === umfangMinuten[i]);
         const erstellen = () => {
-          const behalten = plan.length > 0 && rahmen.pfadId === p.id && plan.length === umfangFolge.length &&
-            plan.every((b, i) => b.minuten === umfangMinuten[i]);
           if (!behalten) neuerEntwurf();
           rahmen.pfadId = p.id;
           rahmen.dauer = dauerAuswahl;
@@ -638,7 +647,7 @@ export function training(wurzel: HTMLElement, modus: Modus): () => void {
           phase = "bloecke";
           if (!behalten) { plan = bloecke(rahmen); schritt = 0; }
         };
-        if (modus === "automatik") {
+        if (modus === "automatik" && !behalten) {
           void (async () => {
             await generierungsPause();
             if (beendet) return;
@@ -797,8 +806,15 @@ export function training(wurzel: HTMLElement, modus: Modus): () => void {
           offen.delete(bs.code);
         } else {
           const vorher = entfernteModule.get(bs.code);
-          const gewaehlt = vorher?.gewaehlt && !plan.some(b => b.gewaehlt?.id === vorher.gewaehlt?.id) ? vorher.gewaehlt : null;
-          plan.push({ code: bs.code, minuten: vorher?.minuten ?? 10, gewaehlt, kandidaten: kandidaten(bs.code, rahmen.altersstufe) });
+          const belegt = new Set(plan.flatMap(b => [b.gewaehlt?.id, ...(b.zusatz ?? []).map(d => d.id)].filter((id): id is string => Boolean(id))));
+          const gewaehlt = vorher?.gewaehlt && !belegt.has(vorher.gewaehlt.id) ? vorher.gewaehlt : null;
+          if (gewaehlt) belegt.add(gewaehlt.id);
+          const zusatz = (vorher?.zusatz ?? []).filter(d => {
+            if (belegt.has(d.id)) return false;
+            belegt.add(d.id);
+            return true;
+          });
+          plan.push({ code: bs.code, minuten: vorher?.minuten ?? 10, gewaehlt, zusatz, kandidaten: kandidaten(bs.code, rahmen.altersstufe) });
           plan.sort((a, b) => a.code.localeCompare(b.code));
         }
         planRahmenAnpassen();
@@ -861,6 +877,7 @@ export function training(wurzel: HTMLElement, modus: Modus): () => void {
         tauschen.addEventListener("click", () => {
           if (beschaeftigt) return;
           austausch = b.code;
+          ergaenzen = null;
           schritt = i;
           offen.delete(b.code);
           zeichnen();
@@ -881,6 +898,7 @@ export function training(wurzel: HTMLElement, modus: Modus): () => void {
         ]);
         waehlen.addEventListener("click", () => {
           austausch = b.code;
+          ergaenzen = null;
           schritt = i;
           zeichnen();
           bereich.querySelector<HTMLElement>(".auswahlbereich")?.scrollIntoView({ block: "start", behavior: "instant" });
@@ -1018,6 +1036,7 @@ export function training(wurzel: HTMLElement, modus: Modus): () => void {
 
   function zeichnen(): void {
     if (beendet) return;
+    document.documentElement.classList.toggle("druckbereit", phase === "bloecke" && plan.length > 0);
     if (!einsammeln) planSichern();
     ablageZeichnen();
     const pfad = modell.pfade.find(p => p.id === rahmen.pfadId)!;
@@ -1093,6 +1112,7 @@ export function training(wurzel: HTMLElement, modus: Modus): () => void {
 
   return () => {
     beendet = true;
+    document.documentElement.classList.remove("druckbereit");
     for (const animation of schrittAnimationen) animation.cancel();
     schrittAnimationen.clear();
     bewegung.abbrechen();

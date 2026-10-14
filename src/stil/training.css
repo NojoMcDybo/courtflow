@@ -269,8 +269,8 @@
 }
 @media (prefers-reduced-motion: reduce) { .plan-generierung::before { animation: none; } }
 @media print {
-  body > *:not(.druckskript) { display: none !important; }
-  body > .druckskript { display: block !important; color: #000; background: #fff; font: 11pt/1.35 Arial, sans-serif; }
+  :root.druckbereit body > *:not(.druckskript) { display: none !important; }
+  :root.druckbereit body > .druckskript { display: block !important; color: #000; background: #fff; font: 11pt/1.35 Arial, sans-serif; }
   .druckskript h1 { margin: 0 0 4mm; font-size: 20pt; }
   .druck-rahmen, .druck-hinweis { margin: 0 0 4mm; }
   .druckfolge { padding-left: 8mm; }
