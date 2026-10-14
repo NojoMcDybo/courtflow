@@ -17,10 +17,10 @@ type Infokarte = {
 export function startseite(wurzel: HTMLElement): () => void {
   const zahlen = kennzahlen(alleDrills);
   const karten: Infokarte[] = [
-    { wert: String(zahlen.gesamt), titel: "Übungen", text: "Nach Alter und Thema filtern.", ziel: "#/bibliothek", farbe: "violett" },
-    { wert: String(anzahlUebungsvideos), titel: "Übungsvideos", text: "Bei ausgewählten Karten öffnen.", ziel: "#/bibliothek", farbe: "magenta" },
-    { wert: "U8–U18", titel: "Altersstufen", text: "Passende Übungen fürs Team finden.", ziel: "#/bibliothek", farbe: "blau" },
-    { wert: String(modell.bausteine.length), titel: "Bausteine", text: "Dein Training Schritt für Schritt bauen.", ziel: "#/aufbau", farbe: "orange" },
+    { wert: String(zahlen.gesamt), titel: "Übungen", text: "Bibliothek", ziel: "#/bibliothek", farbe: "violett" },
+    { wert: String(anzahlUebungsvideos), titel: "Videos", text: "Anleitungen", ziel: "#/bibliothek", farbe: "magenta" },
+    { wert: "U8–U18", titel: "Alter", text: "Altersstufen", ziel: "#/bibliothek", farbe: "blau" },
+    { wert: String(modell.bausteine.length), titel: "Module", text: "Aufbau", ziel: "#/aufbau", farbe: "orange" },
   ];
 
   const seite = el("div", { class: "poster" });
@@ -30,9 +30,8 @@ export function startseite(wurzel: HTMLElement): () => void {
   ]);
   const inhalt = el("main", { class: "poster-inhalt" }, [
     el("section", { class: "poster-intro" }, [
-      el("p", { class: "mikro" }, ["Saison 26/27 · Jugendbasketball"]),
-      el("h1", {}, ["Für dein nächstes Training."]),
-      el("p", { class: "poster-lead" }, ["Entdecke Übungen, baue deine Einheit oder lass dir einen Plan erstellen."]),
+      el("p", { class: "mikro" }, ["Jugendbasketball"]),
+      el("h1", {}, ["Training"]),
     ]),
   ]);
 
@@ -45,18 +44,16 @@ export function startseite(wurzel: HTMLElement): () => void {
       fetchpriority: "high",
     }),
     el("span", { class: "start-feature-inhalt" }, [
-      el("span", { class: "start-feature-kicker" }, ["AUTOMATISCHER PLAN"]),
-      el("span", { class: "start-feature-titel" }, ["Aus Alter und Zeit wird eine Einheit."]),
-      el("span", { class: "start-feature-text" }, ["Wähle den Rahmen. CourtFlow stellt die Übungen zusammen."]),
-      el("span", { class: "start-feature-taste" }, ["Plan erstellen", el("span", { "aria-hidden": "true" }, ["→"])]),
+      el("span", { class: "start-feature-kicker" }, ["AUTOMATISCH"]),
+      el("span", { class: "start-feature-titel" }, ["Trainingsplan"]),
+      el("span", { class: "start-feature-taste" }, ["Erstellen", el("span", { "aria-hidden": "true" }, ["→"])]),
     ]),
   ]);
   inhalt.append(feature);
 
   const ueberblick = el("section", { class: "start-ueberblick", "aria-label": "Auf einen Blick" }, [
     el("div", { class: "start-ueberblick-kopf" }, [
-      el("h2", {}, ["Auf einen Blick"]),
-      el("span", { class: "start-ueberblick-hinweis" }, ["Deine Möglichkeiten"]),
+      el("h2", {}, ["Übersicht"]),
     ]),
   ]);
   const raster = el("div", { class: "start-karten" });
@@ -74,7 +71,7 @@ export function startseite(wurzel: HTMLElement): () => void {
   inhalt.append(ueberblick);
 
   const fuss = el("footer", { class: "poster-fuss" }, [
-    el("p", {}, [`Grundlage: Kompetenzkatalog v${taxonomie.katalogversion} · Beschreibungen mit Link auf die Originalquelle`]),
+    el("p", {}, [`Kompetenzkatalog v${taxonomie.katalogversion}`]),
   ]);
   seite.append(kopf, inhalt, fuss);
   wurzel.append(seite);

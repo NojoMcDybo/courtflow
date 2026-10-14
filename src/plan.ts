@@ -55,6 +55,7 @@ export interface Block {
   minuten: number;
   kandidaten: Drill[];
   gewaehlt: Drill | null;
+  zusatz?: Drill[];
 }
 
 export interface Rahmen {

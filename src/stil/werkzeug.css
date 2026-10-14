@@ -171,7 +171,9 @@
 .bibliothek-navigation > summary { width: fit-content; cursor: pointer; font-weight: 600; margin-bottom: 8px; min-height: 28px; }
 .coverage { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px 16px; }
 .coverage-family { min-width: 0; padding: 16px 12px 12px; border: 1px solid var(--haarlinie); border-radius: var(--r-gross); background: var(--erhoben); }
-.coverage-family h2 { margin: 0 0 12px 4px; font-size: 15px; letter-spacing: -.015em; }
+.coverage-family summary { cursor: pointer; font-size: 15px; font-weight: 650; letter-spacing: -.015em; min-height: 38px; display: flex; align-items: center; }
+.coverage-family[open] { grid-column: 1 / -1; }
+.coverage-family[open] .coverage-table { max-width: 740px; }
 .coverage-table { width: 100%; table-layout: fixed; border-spacing: 3px; }
 .coverage-table caption { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
 .coverage-table thead th:first-child { text-align: left; padding-left: 4px; font-weight: 400; font-size: 10.5px; color: var(--tinte-2); }
@@ -199,19 +201,25 @@
 .bibliothek select { max-width: 100%; min-height: 34px; padding: 6px 8px; border: 1px solid var(--haarlinie); border-radius: var(--r-klein); background: var(--erhoben); color: var(--tinte); font: inherit; cursor: pointer; }
 .bibliothek .haken { height: 34px; }
 .ergebnis-kopf { display: flex; align-items: center; gap: 16px; justify-content: space-between; }
+.ergebnis-optionen { display: flex; align-items: center; gap: 8px; }
+.bibliothek-dichte { display: flex; gap: 2px; padding: 2px; background: var(--fuellung); border-radius: var(--r-klein); }
+.bibliothek-dichte button { min-width: 31px; min-height: 31px; border: 0; border-radius: 5px; background: transparent; color: var(--tinte-2); font: 600 12px var(--sf); cursor: pointer; }
+.bibliothek-dichte button[aria-pressed="true"] { background: var(--erhoben); color: var(--indigo); }
 .ergebnis-titel { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; }
 .ergebnis-titel h2 { font-size: 21px; letter-spacing: -.025em; margin: 0; font-weight: 620; }
 .ergebnis-anzahl { font-size: 12px; color: var(--tinte-2); white-space: nowrap; }
 .bibliothek-auswahl { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 12px; }
 .bibliothek-auswahl:empty { display: none; }
 .bibliothek-auswahl button { min-height: 32px; padding: 4px 10px; border: 1px solid var(--haarlinie); border-radius: var(--pille); background: var(--dichte-1); color: var(--tinte); font: inherit; cursor: pointer; }
-.drill-karten { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 14px; margin-top: 18px; }
-.drill-karte { display: flex; flex-direction: column; align-items: flex-start; min-height: 172px; padding: 20px; text-align: left; background: var(--erhoben); color: var(--tinte); border: 1px solid var(--haarlinie); border-radius: var(--r-gross); font: inherit; cursor: pointer; transition: border-color .15s var(--feder), box-shadow .15s var(--feder); }
+.drill-karten { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin-top: 14px; }
+.drill-karten.dichte-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.drill-karten.dichte-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.drill-karte { display: flex; flex-direction: column; align-items: flex-start; min-width: 0; min-height: 130px; padding: 12px; text-align: left; background: var(--erhoben); color: var(--tinte); border: 1px solid var(--haarlinie); border-radius: var(--r-gross); font: inherit; cursor: pointer; transition: border-color .15s var(--feder), box-shadow .15s var(--feder); }
 .drill-karte:hover { border-color: var(--indigo); box-shadow: var(--schatten-2); }
-.drill-vorschaubild { display: block; width: 100%; height: auto; aspect-ratio: 4 / 3; margin: -8px 0 13px; object-fit: contain; border-radius: var(--r-klein); background: var(--fuellung); }
+.drill-vorschaubild { display: block; width: 100%; height: auto; aspect-ratio: 4 / 2; margin: 0 0 8px; object-fit: contain; border-radius: var(--r-klein); background: var(--fuellung); }
 .drill-alter { border-radius: var(--pille); background: var(--fuellung); color: var(--tinte-2); padding: 3px 8px; font-size: 11px; font-weight: 550; }
 .drill-ablauf-offen { margin-top: 6px; border-radius: var(--pille); background: color-mix(in srgb, var(--orange) 14%, transparent); color: var(--orange); padding: 3px 8px; font-size: 11px; font-weight: 600; }
-.drill-name { display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; font-size: 16px; font-weight: 600; letter-spacing: -.015em; line-height: 1.35; margin: 13px 0 20px; overflow-wrap: anywhere; }
+.drill-name { display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; font-size: 14px; font-weight: 600; letter-spacing: -.015em; line-height: 1.25; margin: 8px 0 10px; overflow-wrap: anywhere; }
 .drill-oeffnen { display: flex; width: 100%; justify-content: space-between; align-items: center; margin-top: auto; font-size: 11px; color: var(--tinte-2); }
 .drill-oeffnen > span { color: var(--indigo); font-size: 18px; line-height: 1; }
 .bibliothek-leer { grid-column: 1 / -1; padding: 34px 20px; border: 1px dashed var(--haarlinie); border-radius: var(--r-gross); }
@@ -229,18 +237,14 @@
 .drill-detailbild { display: block; width: 100%; height: auto; max-height: min(440px, 54vh); margin: 16px 0 0; object-fit: contain; border-radius: var(--r-klein); background: var(--fuellung); }
 .drill-bildhinweis { margin: 8px 0 0; color: var(--tinte-2); font-size: 12px; }
 .drill-bildlink { display: inline-flex; align-items: center; min-height: 44px; font-size: 13px; }
-@media (max-width: 1179px) and (min-width: 701px) {
-  .coverage { grid-template-columns: 1fr; }
-  .coverage-family { padding: 12px; }
-  .coverage-table thead th:first-child { width: 34%; }
-  .coverage-topic { font-size: 13px !important; }
-}
+@media (max-width: 1179px) and (min-width: 701px) { .coverage-family { padding: 12px; } }
 @media (max-width: 700px) {
   .bibliothek { padding-top: 22px; }
   .bibliothek-kopf { flex-direction: column; align-items: stretch; gap: 16px; }
   .bibliothek .suchfeld { flex: auto; width: 100%; max-width: none; }
-  .coverage { grid-template-columns: 1fr; gap: 12px; }
-  .coverage-family { padding: 12px 6px; }
+  .coverage { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px; }
+  .coverage-family { padding: 8px; }
+  .coverage-family summary { font-size: 11px; line-height: 1.2; overflow-wrap: anywhere; }
   .coverage-table thead th:first-child { width: 36%; }
   .coverage-cell { min-height: 40px; }
   .coverage-age { min-height: 40px; }
@@ -248,8 +252,13 @@
   .ergebnis-kopf { align-items: flex-start; }
   .ergebnis-titel { gap: 4px; flex-direction: column; }
   .ergebnis-kopf select { font-size: 11px; flex-shrink: 0; }
-  .drill-karten { grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 10px; }
-  .drill-karte { min-height: 155px; padding: 16px; }
+  .drill-karten { gap: 6px; }
+  .drill-karte { min-height: 100px; padding: 8px; border-radius: var(--r-klein); }
+  .drill-name { font-size: 12px; }
+  .drill-alter { font-size: 10px; padding: 2px 5px; }
+  .drill-vorschaubild { aspect-ratio: 4 / 2.3; }
+  .bibliothek-dichte button { min-width: 28px; }
+  .ergebnis-optionen { gap: 4px; }
   .bibliothek-navigation > summary { font-size: 12px; }
 }
 @media (prefers-reduced-motion: reduce) { .drill-karte { transition: none; } }

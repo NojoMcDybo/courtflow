@@ -1,6 +1,12 @@
 /** English copy for the training studio.  This module deliberately has no DOM
  * dependencies so the active language can be changed without rebuilding state. */
 export const trainingEnglish: Record<string, string> = {
+  "← Home": "← Home", "Struktur": "Structure", "Trainingsstruktur": "Practice structure", "Thema": "Topic",
+  "Plan": "Plan", "Gewichtet": "Weighted", "Weiter →": "Continue →", "← Struktur": "← Structure",
+  "Plan entsteht": "Creating plan", "＋ Übung": "＋ Drill", "Hinzufügen": "Add", "↗ PDF": "↗ PDF",
+  "Trainingsskript als PDF drucken": "Print practice script as PDF", "Trainingsskript": "Practice script",
+  "Ziel: ": "Goal: ", "Ablauf: ": "Instructions: ", "Coaching: ": "Coaching: ",
+  "Übung noch nicht ausgewählt.": "Drill not selected yet.",
   "Entscheidung": "Decision-making", "Gegnerdruck": "Opponent pressure", "Technik": "Technique",
   "Spielnähe": "Game realism", "Zeitdruck": "Time pressure", "Raumdruck": "Space pressure",
   "Wahrnehmung": "Perception", "Kooperation": "Cooperation",
@@ -75,7 +81,11 @@ export function trainingPattern(text: string, translate: (text: string) => strin
     ?? fixed(/^U(\d+) · (.+)$/, (age, path) => `U${age} · ${translate(path)}`)
     ?? fixed(/^(.+) · (\d+) min · (\d{2}\.\d{2})( · Entwurf)?$/, (name, minutes, date, draft) => `${name} · ${minutes} min · ${date}${draft ? " · Draft" : ""}`)
     ?? fixed(/^Schritt (\d+) von (\d+)( · U\d+)?$/, (step, total, age) => `Step ${step} of ${total}${age ?? ""}`)
-    ?? fixed(/^Schritt 3 · Übung (\d+) von (\d+)$/, (step, total) => `Step 3 · drill ${step} of ${total}`)
+    ?? fixed(/^Schritt 4 · Modul (\d+) von (\d+)$/, (step, total) => `Step 4 · module ${step} of ${total}`)
+    ?? fixed(/^Modul (\d+)(: Minuten)?$/, (number, minutes) => `Module ${number}${minutes ? ": minutes" : ""}`)
+    ?? fixed(/^(\d+) · (\d+) min$/, (modules, minutes) => `${modules} modules · ${minutes} min`)
+    ?? fixed(/^Ergänzen: (.+)$/, block => `Add to: ${translate(block)}`)
+    ?? fixed(/^(.+): weitere Übung hinzufügen$/, block => `${translate(block)}: add another drill`)
     ?? fixed(/^Dein Team: U(\d+)$/, age => `Your team: U${age}`)
     ?? fixed(/^(\d+) Trainingsblöcke$/, amount => `${amount} practice blocks`)
     ?? fixed(/^(\d+) Übungen · (\d+) min$/, (drills, minutes) => `${drills} drills · ${minutes} min`)

@@ -1,4 +1,8 @@
 export const interfaceEnglish: Record<string, string> = {
+  "Jugendbasketball": "Youth basketball", "Training": "Practice", "AUTOMATISCH": "AUTOMATIC",
+  "Trainingsplan": "Practice plan", "Erstellen": "Create", "Übersicht": "Overview",
+  "Videos": "Videos", "Anleitungen": "Instructions",
+  "Module": "Modules", "Thema und Alter": "Topic and age", "Karten pro Reihe": "Cards per row",
   "Bild vergrößern ↗": "Enlarge image ↗",
   "CourtFlow — Übungsbibliothek Jugendbasketball": "CourtFlow — Youth basketball drill library",
   "Sprache": "Language", "Deutsch": "German", "Englisch": "English",

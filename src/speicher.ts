@@ -13,7 +13,7 @@ export type GespeicherterPlan = {
   name: string;
   modus: "fuehrung" | "automatik";
   rahmen: Rahmen;
-  bloecke: { code: string; minuten: number; drillId: string | null }[];
+  bloecke: { code: string; minuten: number; drillId: string | null; zusatzIds?: string[] }[];
   aktualisiert: string;
 };
 
@@ -71,13 +71,20 @@ function validierePlan(wert: unknown): GespeicherterPlan | null {
     if (!istObjekt(block) || typeof block.code !== "string" || typeof block.minuten !== "number" ||
       block.code !== folge[i] || !Number.isInteger(block.minuten) ||
       block.minuten <= 0 || (block.drillId !== null && !istText(block.drillId, 100)) ||
-      !hatNur(block, ["code", "minuten", "drillId"])) return null;
+      !hatNur(block, ["code", "minuten", "drillId", "zusatzIds"]) ||
+      (block.zusatzIds !== undefined && (!Array.isArray(block.zusatzIds) || block.zusatzIds.length > 12 ||
+        !block.zusatzIds.every((id) => istText(id, 100))))) return null;
     if (block.drillId !== null) {
       const kanonisch = taxonomie.aliase[block.drillId] ?? block.drillId;
       if (ids.has(kanonisch)) return null;
       ids.add(kanonisch);
     }
-    bloecke.push({ code: block.code, minuten: block.minuten, drillId: block.drillId });
+    for (const id of block.zusatzIds ?? []) {
+      const kanonisch = taxonomie.aliase[id] ?? id;
+      if (ids.has(kanonisch)) return null;
+      ids.add(kanonisch);
+    }
+    bloecke.push({ code: block.code, minuten: block.minuten, drillId: block.drillId, ...(block.zusatzIds ? { zusatzIds: [...block.zusatzIds] } : {}) });
   }
   return {
     version: 1, id: wert.id, name: wert.name.trim(), modus: wert.modus as GespeicherterPlan["modus"],
@@ -139,7 +146,13 @@ export function wiederherstellen(plan: GespeicherterPlan): { bloecke: Block[]; h
     // nicht mehr in der Kandidatenliste auftaucht.
     const vollstaendigeKandidaten = gewaehlt && !kandidatenListe.some((d) => d.id === gewaehlt.id)
       ? [gewaehlt, ...kandidatenListe] : kandidatenListe;
-    return { code: gespeichert.code, minuten: gespeichert.minuten, kandidaten: vollstaendigeKandidaten, gewaehlt };
+    const zusatz = (gespeichert.zusatzIds ?? []).map((id) => {
+      const gefunden = drillNachId.get(taxonomie.aliase[id] ?? id);
+      if (!gefunden) hinweise.push(`Die Übung ${id} ist nicht mehr im Katalog verfügbar.`);
+      return gefunden;
+    }).filter((d): d is NonNullable<typeof d> => Boolean(d));
+    zusatz.forEach((d) => belegt.add(d.id));
+    return { code: gespeichert.code, minuten: gespeichert.minuten, kandidaten: vollstaendigeKandidaten, gewaehlt, zusatz };
   });
   return { bloecke, hinweise };
 }

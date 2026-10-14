@@ -188,3 +188,94 @@
   .druck-minuten { display: inline; margin-left: auto; }
   .zeitbilanz { break-inside: avoid; }
 }
+
+/* Der Planungsweg nutzt den verfügbaren Bildschirm statt einer globalen Kopfzeile. */
+.studio-navigation { min-height: 48px; display: flex; align-items: center; gap: 12px; padding: 0 var(--rand); border-bottom: 1px solid var(--haarlinie); background: var(--fenster); }
+.studio-navigation a { display: inline-flex; align-items: center; min-height: 40px; color: var(--indigo); text-decoration: none; font-weight: 650; }
+.studio-navigation span { margin-left: auto; color: var(--tinte-2); font-size: 12px; }
+.studio-navigation.automatik { border-bottom-color: var(--neon-magenta); }
+.studio-navigation.fuehrung { border-bottom-color: var(--neon-blau); }
+.trainingsstudio { padding-top: 12px; }
+.trainingsstudio .studio-kopf { margin-bottom: 10px; }
+.trainingsstudio .studio-kopf h1 { font-size: 22px; }
+.trainingsstudio .schritte { margin-bottom: 12px; gap: 6px; }
+.trainingsstudio .schritt { min-height: 44px; padding: 7px; }
+.trainingsstudio .wahlbild { padding: 16px; }
+.trainingsstudio .wahlbild h2 { margin: 3px 0; font-size: 21px; }
+.trainingsstudio .grossewahl { margin-top: 12px; gap: 8px; }
+.trainingsstudio .grosskarte { min-height: 70px; padding: 12px; border-radius: var(--r); }
+.trainingsstudio .artkarte { min-height: 78px; }
+.trainingsstudio .artkarte .grossnote { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; font-size: 11px; }
+.trainingsstudio .grossziffer { font-size: 27px; margin: 0; }
+.schritt-abschluss { padding-top: 8px; margin-top: 8px; gap: 8px; }
+.umfang-regler { margin: 10px 0; gap: 10px; }
+.umfang-vorschau { gap: 6px; margin: 10px 0; }
+.modul-vorschau { padding: 8px; gap: 6px; border-radius: var(--r); }
+.modul-vorschau strong { font-size: 12px; }
+.zeitbilanz { padding: 8px 10px; margin: 8px 0; }
+.zeitsumme strong { font-size: 18px; }
+.plan-miniatur { float: left; width: 56px; height: 42px; margin: 0 8px 3px 0; object-fit: cover; border-radius: 5px; background: var(--fuellung); }
+.plan-aktionen { display: flex; gap: 14px; }
+.plan-zusatz { display: flex; align-items: center; gap: 4px; padding: 5px 0; border-top: 1px solid var(--haarlinie); font-size: 12px; }
+.plan-zusatz .karte-zeile { flex: 1; }
+.zusatz-entfernen { min-width: 32px; min-height: 32px; border: 0; border-radius: 50%; background: var(--fuellung); color: var(--tinte); font-size: 20px; cursor: pointer; }
+.trainingsstudio .planzeile { padding: 9px; margin-bottom: 6px; }
+.trainingsstudio .planzeile .plan-einsatz { margin-top: 6px; }
+.trainingsstudio .planzeile .karte-titel { margin-top: 3px; }
+.trainingsstudio .plan-links { padding: 12px; }
+.trainingsstudio .plan-ziel { font-size: 18px; }
+.trainingsstudio .plan-fortschritt { margin: 8px 6px 6px; }
+.trainingsstudio .abschluss { padding: 14px; }
+.trainingsstudio .abschluss::before { display: none; }
+.trainingsstudio .abschluss .drucktaste { width: auto; padding: 0 10px; }
+.plan-generierung { position: fixed; inset: 0; z-index: 100; display: grid; place-items: center; background: color-mix(in srgb, var(--fenster) 94%, transparent); color: var(--tinte); font: 650 23px var(--sf); }
+.plan-generierung::before { content: ""; position: absolute; inset: 3px; border: 3px solid transparent; border-radius: 10px; background: linear-gradient(var(--fenster), var(--fenster)) padding-box, conic-gradient(from var(--winkel), var(--neon-violett), var(--neon-magenta), var(--neon-blau), var(--neon-orange), var(--neon-violett)) border-box; animation: planrand 1.2s linear infinite; }
+.plan-generierung span { position: relative; }
+@property --winkel { syntax: "<angle>"; initial-value: 0deg; inherits: false; }
+@keyframes planrand { to { --winkel: 360deg; } }
+.druckskript { display: none; }
+@media (max-width: 540px) {
+  .trainingsstudio { padding: 8px var(--rand) 12px; }
+  .trainingsstudio .studio-kopf { display: none; }
+  .planverwaltung { padding-top: 2px; padding-bottom: 2px; }
+  .trainingsstudio .schritte, .trainingsstudio .schritte:has(> :nth-child(4)) { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .trainingsstudio .schritt { display: flex; flex-direction: column; min-height: 40px; padding: 5px 3px; gap: 2px; }
+  .trainingsstudio .schrittname { font-size: 10px; }
+  .trainingsstudio .wahlbild { padding: 11px; }
+  .trainingsstudio .grossewahl { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .trainingsstudio .grossewahl.breit { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .trainingsstudio .grosskarte { min-height: 64px; padding: 8px; }
+  .trainingsstudio .artkarte { min-height: 72px; }
+  .trainingsstudio .grossziffer { font-size: 23px; }
+  .umfang-regler { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px; }
+  .umfang-vorschau { grid-template-columns: 1fr; gap: 3px; }
+  .modul-vorschau { display: grid; grid-template-columns: 25px 1fr auto; align-items: center; padding: 3px 7px; }
+  .modul-vorschau .zahlfeld { grid-column: 3; }
+  .zahl-label { margin-bottom: 3px; }
+  .zahlsteuerung button { width: 30px; min-height: 32px; }
+  .zahlsteuerung input { width: 38px; height: 32px; font-size: 15px; }
+  .zahl-einheit { padding-right: 4px; }
+  .zeitverteilung { gap: 4px; }
+  .zeitmodus { min-height: 32px; padding: 4px 8px; }
+  .zeitbilanz { gap: 1px; }
+  .schritt-abschluss { flex-direction: row; }
+  .schritt-weiter { width: auto; min-height: 40px; margin-left: auto; }
+  .trainingsstudio .kartenwahl { gap: 6px; margin-top: 8px; }
+  .vorschlagskarte { min-height: 138px; }
+  .vorschau-taste { padding: 8px; }
+  .vorschlagskarte .karte-titel { font-size: 12px; margin-top: 5px; }
+  .einsetzen-taste { padding: 7px 8px; }
+  .mobiles-ziel { position: static; margin-bottom: 8px; padding: 6px; }
+}
+@media (prefers-reduced-motion: reduce) { .plan-generierung::before { animation: none; } }
+@media print {
+  body > *:not(.druckskript) { display: none !important; }
+  body > .druckskript { display: block !important; color: #000; background: #fff; font: 11pt/1.35 Arial, sans-serif; }
+  .druckskript h1 { margin: 0 0 4mm; font-size: 20pt; }
+  .druck-rahmen, .druck-hinweis { margin: 0 0 4mm; }
+  .druckfolge { padding-left: 8mm; }
+  .druckfolge li { break-inside: avoid; padding: 3mm 0; border-top: 1px solid #bbb; }
+  .druckfolge h2 { margin: 0 0 2mm; font-size: 14pt; }
+  .druckfolge h3 { margin: 2mm 0 1mm; font-size: 11pt; }
+  .druckfolge p { margin: 1mm 0; }
+}

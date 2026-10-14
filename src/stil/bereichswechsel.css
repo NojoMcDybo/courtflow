@@ -1,5 +1,7 @@
 /* Beständiger Wechsel zwischen den drei Arbeitsbereichen. */
 :root:not([data-ansicht="start"]) #app { padding-bottom: calc(106px + env(safe-area-inset-bottom)); }
+:root[data-ansicht="aufbau"] #app, :root[data-ansicht="generator"] #app { padding-bottom: 0; }
+:root[data-ansicht="aufbau"] .bereichswechsel, :root[data-ansicht="generator"] .bereichswechsel { display: none; }
 .bereichswechsel {
   position: fixed;
   z-index: 60;

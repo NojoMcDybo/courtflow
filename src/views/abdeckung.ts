@@ -14,7 +14,7 @@ const vollstaendigerName = (kompetenz: Kompetenz): string =>
 
 export function matrix(
   filter: Filter,
-  waehlen: (code: string | null, stufe: number | null) => void,
+  waehlen: (code?: string | null, stufe?: number | null) => void,
 ): HTMLElement {
   // Kompetenz und Alter sind Ziele der Matrix, keine Einschränkungen ihres Bestands.
   const matrixFilter: Filter = { ...filter, kompetenz: null, altersstufe: null, familie: null };
@@ -36,8 +36,8 @@ export function matrix(
 
   for (const [familie, kompetenzen] of familien) {
     const id = `coverage-${kompetenzen[0]!.code}`;
-    const abschnitt = el("section", { class: "coverage-family", "aria-label": familie, "aria-labelledby": id });
-    abschnitt.append(el("h2", { id }, [familie]));
+    const abschnitt = el("details", { class: "coverage-family", "aria-label": familie });
+    abschnitt.append(el("summary", { id }, [familie]));
     const tabelle = el("table", { class: "coverage-table" });
     tabelle.append(el("caption", {}, [`Übungsabdeckung: ${familie}`]));
     const kopf = el("tr", {}, [el("th", { scope: "col" }, ["Thema"])]);
@@ -46,7 +46,7 @@ export function matrix(
         class: "coverage-age", type: "button", "data-code": "", "data-age": String(stufe),
         "aria-label": `U${stufe} auswählen`, "aria-pressed": String(filter.altersstufe === stufe),
       }, [`U${stufe}`]);
-      knopf.addEventListener("click", () => waehlen(null, stufe));
+      knopf.addEventListener("click", () => waehlen(undefined, stufe));
       kopf.append(el("th", { scope: "col" }, [knopf]));
     }
     tabelle.append(el("thead", {}, [kopf]));
@@ -58,7 +58,7 @@ export function matrix(
         class: "coverage-topic", type: "button", "data-code": kompetenz.code, "data-age": "",
         "aria-label": `${vollstaendigerName(kompetenz)} auswählen`, "aria-pressed": String(aktiv),
       }, [nameVon(kompetenz)]);
-      thema.addEventListener("click", () => waehlen(kompetenz.code, null));
+      thema.addEventListener("click", () => waehlen(kompetenz.code));
       const zeile = el("tr", {}, [el("th", { scope: "row" }, [thema])]);
       for (const stufe of STUFEN) {
         const anzahl = zaehlen(kompetenz.code, stufe);

@@ -58,6 +58,17 @@ const eigenerAusArchiv = lesen(eigenerSpeicher).plaene[0]!;
 pruefe(JSON.stringify(eigenerAusArchiv) === JSON.stringify(eigenerPlan), "eigener Rahmen läuft verlustfrei durchs Archiv");
 pruefe(wiederherstellen(eigenerAusArchiv).bloecke.map((b) => b.minuten).join(",") === "11,17,23",
   "gespeicherte Blockminuten bleiben gegenüber Startminuten maßgeblich");
+const mitZusatz: GespeicherterPlan = {
+  ...eigenerPlan,
+  bloecke: eigenerPlan.bloecke.map((b, i) => i === 0 ? { ...b, zusatzIds: ["EX-075"] } : b),
+};
+const zusatzSpeicher = new Speicher();
+pruefe(speichern(zusatzSpeicher, mitZusatz).fehler === null, "zusätzliche Übung speicherbar");
+pruefe(wiederherstellen(lesen(zusatzSpeicher).plaene[0]!).bloecke[0]?.zusatz?.[0]?.id === "EX-075",
+  "zusätzliche Übung wird wiederhergestellt");
+pruefe(speichern(new Speicher(), { ...mitZusatz, bloecke: mitZusatz.bloecke.map((b, i) =>
+  i === 0 ? { ...b, zusatzIds: [b.drillId!] } : b) }).fehler !== null,
+  "doppelte Zusatzübung abgelehnt");
 pruefe(speichern(new Speicher(), { ...eigenerPlan,
   bloecke: eigenerPlan.bloecke.map((block, i) => ({ ...block, code: i === 0 ? "D" : block.code })) }).fehler !== null,
 "eigene Blöcke müssen der aktiven Reihenfolge entsprechen");

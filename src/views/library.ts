@@ -146,6 +146,7 @@ function blattInhalt(d: Drill, schliessen: () => void): HTMLElement {
 export function seite(wurzel: HTMLElement): () => void {
   const filter: Filter = { suche: "", altersstufe: null, familie: null, kompetenz: null, tiefe: null, nurMitQuelle: false, nurTestbilder: false };
   let sortierung = "titel";
+  let kartendichte: 2 | 3 | 4 = 2;
   let ausloeser: HTMLButtonElement | null = null;
   const dialog = el("dialog", { "aria-label": "Übungsdetails", class: "drill-dialog" });
   dialog.addEventListener("close", () => {
@@ -202,21 +203,27 @@ export function seite(wurzel: HTMLElement): () => void {
   });
 
   const intro = el("div", { class: "bibliothek-kopf" }, [
-    el("div", {}, [el("h1", {}, ["Übungen entdecken"]), el("p", {}, ["Thema und Alter wählen. Passende Übungen öffnen."])]),
+    el("div", {}, [el("h1", {}, ["Übungen"])]),
     suche,
   ]);
   const navigation = el("details", { class: "bibliothek-navigation", open: "" });
-  const navTitel = el("summary", {}, ["Abdeckung"]);
+  const navTitel = el("summary", {}, ["Thema und Alter"]);
   const matrixPlatz = el("div");
   navigation.append(navTitel, matrixPlatz);
   const ergebnisse = el("section", { class: "bibliothek-ergebnisse", "aria-labelledby": "ergebnis-titel" });
   const titel = el("h2", { id: "ergebnis-titel" });
   const anzahl = el("span", { class: "ergebnis-anzahl", role: "status", "aria-live": "polite", "aria-atomic": "true" });
   const sort = select("Sortierung", [["titel", "Name A–Z"], ["alter", "Alter aufsteigend"]], w => sortierung = w);
+  const dichte = el("div", { class: "bibliothek-dichte", role: "group", "aria-label": "Karten pro Reihe" });
+  for (const wert of [2, 3, 4] as const) {
+    const taste = el("button", { type: "button", "aria-label": `${wert} Karten pro Reihe`, "aria-pressed": String(kartendichte === wert) }, [String(wert)]);
+    taste.addEventListener("click", () => { kartendichte = wert; zeichnen(); });
+    dichte.append(taste);
+  }
   const auswahl = el("div", { class: "bibliothek-auswahl" });
   const karten = el("div", { class: "drill-karten" });
   ergebnisse.append(
-    el("div", { class: "ergebnis-kopf" }, [el("div", { class: "ergebnis-titel" }, [titel, anzahl]), sort]),
+    el("div", { class: "ergebnis-kopf" }, [el("div", { class: "ergebnis-titel" }, [titel, anzahl]), el("div", { class: "ergebnis-optionen" }, [dichte, sort])]),
     auswahl, karten,
   );
   bereich.append(intro, navigation, el("div", { class: "bibliothek-werkzeuge" }, [reset, extras]), ergebnisse);
@@ -260,28 +267,29 @@ export function seite(wurzel: HTMLElement): () => void {
     // Preserve keyboard position when the matrix is replaced after a selection.
     const fokus = document.activeElement;
     const matrixFokus = fokus instanceof HTMLButtonElement && matrixPlatz.contains(fokus)
-      ? { code: fokus.dataset.code, age: fokus.dataset.age, family: fokus.closest("section")?.getAttribute("aria-label") } : null;
+      ? { code: fokus.dataset.code, age: fokus.dataset.age, family: fokus.closest("details")?.getAttribute("aria-label") } : null;
+    const offeneFamilien = [...matrixPlatz.querySelectorAll<HTMLDetailsElement>(".coverage-family[open]")].map(d => d.getAttribute("aria-label"));
     matrixPlatz.replaceChildren(matrix(filter, (code, alter) => {
-      filter.kompetenz = code; filter.altersstufe = alter;
+      if (code !== undefined) filter.kompetenz = filter.kompetenz === code ? null : code;
+      if (alter !== undefined) filter.altersstufe = filter.altersstufe === alter ? null : alter;
       // A new matrix choice must not be blocked by an old family filter.
       filter.familie = null; familie.value = "";
       zeichnen();
-      if (window.matchMedia("(max-width: 1179px)").matches) {
-        navigation.open = false;
-        navTitel.focus();
-      }
     }));
+    for (const details of matrixPlatz.querySelectorAll<HTMLDetailsElement>(".coverage-family")) {
+      if (offeneFamilien.includes(details.getAttribute("aria-label"))) details.open = true;
+    }
     if (matrixFokus) {
       const knoepfe = [...matrixPlatz.querySelectorAll<HTMLButtonElement>("button[data-code][data-age]")];
       knoepfe.find(b => b.dataset.code === matrixFokus.code && b.dataset.age === matrixFokus.age &&
-        b.closest("section")?.getAttribute("aria-label") === matrixFokus.family)?.focus({ preventScroll: true });
+        b.closest("details")?.getAttribute("aria-label") === matrixFokus.family)?.focus({ preventScroll: true });
     }
     const treffer = [...filtern(alleDrills, filter)].sort((a, b) =>
       (sortierung === "alter" ? (a.alter.von ?? 99) - (b.alter.von ?? 99) : 0) || t(a.titel).localeCompare(t(b.titel), sprache()) || a.id.localeCompare(b.id));
     const themaName = taxonomie.kompetenzen.find(k => k.code === filter.kompetenz)?.name;
     setText(titel, themaName ?? filter.familie ?? "Alle Übungen");
     setText(anzahl, `${treffer.length} ${treffer.length === 1 ? "Übung" : "Übungen"}`);
-    setText(navTitel, `Abdeckung${themaName ? ` · ${themaName}` : ""}${filter.altersstufe ? ` · U${filter.altersstufe}` : ""}`);
+    setText(navTitel, `Thema und Alter${themaName ? ` · ${themaName}` : ""}${filter.altersstufe ? ` · U${filter.altersstufe}` : ""}`);
     auswahl.replaceChildren();
     const chip = (text: string, entfernen: () => void) => {
       const b = el("button", { type: "button", "aria-label": `${text} entfernen` }, [text, el("span", { "aria-hidden": "true" }, [" ×"])]);
@@ -295,6 +303,8 @@ export function seite(wurzel: HTMLElement): () => void {
     if (filter.nurMitQuelle) chip("Mit Quelle", () => { filter.nurMitQuelle = false; quelle.checked = false; });
     if (filter.nurTestbilder) chip("Testbilder", () => { filter.nurTestbilder = false; testbilder.checked = false; });
     setText(extrasTitel, `Weitere Filter${filter.familie || filter.tiefe || filter.nurMitQuelle || filter.nurTestbilder ? " · aktiv" : ""}`);
+    karten.className = `drill-karten dichte-${kartendichte}`;
+    for (const taste of dichte.querySelectorAll("button")) taste.setAttribute("aria-pressed", String(taste.textContent === String(kartendichte)));
     karten.replaceChildren(...treffer.map(karte));
     if (!treffer.length) karten.append(el("div", { class: "bibliothek-leer" }, [
       el("h3", {}, ["Hier gibt es noch keine passende Übung."]),

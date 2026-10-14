@@ -1,0 +1,5 @@
+- [x] Startseite vereinfachen und mobile Abstände korrigieren
+- [x] Bibliothek: unabhängige Filter, drei Akkordeons, Kartendichte
+- [x] Beide Planungswege: Struktur zuerst, kompakte mobile Schritte und Navigation
+- [x] Planbearbeitung, Bilder, Druckskript und Generierungsanimation
+- [ ] Prüfungen, Browser, Review und Übergabe
