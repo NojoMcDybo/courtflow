@@ -1,0 +1,180 @@
+{
+  "version": 1,
+  "stand": "2026-10-06",
+  "karten": [
+    {
+      "id": "EX-041",
+      "titel": "Tracing the Ball",
+      "beleg_id": "NBA-ROOKIE-8-EX041",
+      "quelle_vorher": {"name": "Jr. NBA · Rookie Practice 8 · Tracing the Ball Breakdown Drill", "url": "https://jr.nba.com/basketball-practice-plans/rookie/page/8/", "video_status": null},
+      "felder": {
+        "ablauf": {
+          "vorher": "Zwei Spieler stehen sich etwas weiter als Zonenbreite gegenüber, einer mit Ball. Der dritte läuft aus der Mitte zum Ball. Drei Sekunden folgt seine ballnahe Hand den Ballbewegungen; dann wird zum Gegenüber gepasst. Wer passt, folgt dem Pass und übernimmt das nächste Closeout mit Ballverfolgung.",
+          "de": "Dreiergruppen mit einem Ball bilden. Zwei Kinder stehen sich etwas weiter als Zonenbreite gegenüber; das dritte beginnt dazwischen. Es läuft zum ballführenden Kind, bleibt tief in Abwehrstellung, ruft „Ball!“ und folgt den Ballbewegungen drei Sekunden lang mit der ballnahen Hand. Danach passt das ballführende Kind zum Gegenüber, folgt seinem Pass und übernimmt dort das nächste Closeout. Diesen Wechsel fortlaufend wiederholen; zwei Durchgänge zu je einer Minute.",
+          "en": "Form groups of three with one ball. Two players face each other a little farther apart than the lane is wide; the third starts between them. That player closes out to the ball, stays low in a defensive stance, calls 'ball' and traces the ball with the ball-side hand for three seconds. The ball handler then passes across, follows the pass and performs the next closeout. Keep rotating this way for two one-minute rounds."
+        },
+        "raum": {"vorher": null, "de": "Freie Fläche etwas breiter als die Zone pro Dreiergruppe", "en": "An area a little wider than the lane per group of three"}
+      }
+    },
+    {
+      "id": "EX-042",
+      "titel": "Lay-Up High Five Drill",
+      "beleg_id": "NBA-ROOKIE-4-EX042",
+      "quelle_vorher": {"name": "Jr. NBA Rookie Practice Plans", "url": "https://jr.nba.com/video/layup-hi-five-drill/", "video_status": "https://jr.nba.com/video/layup-hi-five-drill/"},
+      "felder": {
+        "ablauf": {
+          "vorher": "Ohne Ball in einer Reihe; Trainer gibt Hand-/Richtungssignal; Spieler führt 1–2-Schritt-Fußfolge und simuliert Abschluss, danach andere Seite.",
+          "de": "Alle Kinder stehen ohne Ball in einer Reihe. Der Coach zeigt zuerst den rechten Korbleger: rechter Schritt, linker Schritt, Absprung vom linken Fuß, rechten Arm zum gedachten Wurf strecken. Danach läuft jedes Kind einzeln los, zählt laut „eins, zwei“ und klatscht beim Absprung mit der rechten Hand die hochgehaltene Hand des Coaches ab. Die Reihe bleibt in Bewegung. Nach drei Minuten die Seite wechseln: linker Arm, Absprung rechts und umgekehrte Schrittfolge; weitere drei Minuten üben.",
+          "en": "Line up without a ball. The coach first demonstrates a right-handed lay-up: right step, left step, take off from the left foot and extend the right arm to simulate the shot. Each player then moves through one at a time, says 'one, two' aloud and high-fives the coach's raised hand with the right hand while jumping. Keep the line moving. After three minutes switch sides: left arm, take off from the right foot and reverse the footwork; practise for another three minutes."
+        },
+        "raum": {"vorher": null, "de": "Freie Laufbahn für eine Reihe; kein Korb erforderlich", "en": "Open lane for a line of players; no basket required"},
+        "material": {"vorher": "Korb/Trainer als Ziel, optional Ball", "de": "Kein Ball; Coach als High-Five-Ziel", "en": "No ball; coach as the high-five target"}
+      }
+    },
+    {
+      "id": "EX-043",
+      "titel": "Lay-Up Skips Drill",
+      "beleg_id": "NBA-ROOKIE-4-EX043",
+      "quelle_vorher": {"name": "Jr. NBA Rookie Practice Plans", "url": null, "video_status": "Videoanzeige auf Originalseite; URL der Practice Page gesichert."},
+      "felder": {
+        "ablauf": {
+          "vorher": "Spieler bewegen sich gemeinsam; auf Trainerkommando 1–2 Schritte und Absprung mit korrespondierender Hand; Hin- und Rückweg seitenverkehrt.",
+          "de": "Alle Kinder stellen sich ohne Ball an der Grundlinie auf. Der Coach legt den Startfuß fest und gibt den Rhythmus „eins, zwei, Sprung“ vor. Die Kinder bewegen sich nur auf dieses Kommando gemeinsam über das Feld. Beim Absprung von links strecken sie gleichzeitig die rechte Hand hoch; beim Absprung von rechts die linke. Am anderen Feldende umdrehen und den Rückweg mit umgekehrter Fuß- und Handfolge wiederholen. Zweimal hin und zurück.",
+          "en": "Line up without a ball on the baseline. The coach selects the first foot and calls the rhythm 'one, two, jump'. Players move across the court together only on the coach's cue. When jumping from the left foot they raise the right hand; when jumping from the right they raise the left. Turn at the far end and come back using the opposite foot and hand. Go down and back twice."
+        },
+        "raum": {"vorher": null, "de": "Basketballfeld von Grundlinie zu Grundlinie", "en": "Basketball court from baseline to baseline"},
+        "material": {"vorher": "Bälle optional, Hallenfläche", "de": "Kein Ball", "en": "No ball"}
+      }
+    },
+    {
+      "id": "EX-059",
+      "titel": "Defense, I Love It Drill",
+      "beleg_id": "NBA-STARTER-1-EX059",
+      "quelle_vorher": {"name": "Jr. NBA Starter P1", "url": "https://jr.nba.com/basketball-practice-plans/starter/", "video_status": null},
+      "felder": {
+        "ablauf": {
+          "vorher": "Auf Trainerkommando defensive Grundstellung einnehmen; auf Zeigegeste links/rechts sliden; auf Wurf-Fake Hand zum Contest.",
+          "de": "Die Kinder verteilen sich mit Blick zum Coach auf dem Feld. Bei „Defense!“ berühren sie kurz den Boden, gehen in eine tiefe Abwehrstellung und rufen „I love it!“. In dieser Stellung fünfmal auf den Zuruf reagieren. Danach zeigt der Coach nach links oder rechts: Die Kinder verschieben sich mit Gleitschritten in diese Richtung. Täuscht der Coach einen Wurf an, strecken sie eine Hand zum Contest hoch. Die Folge zweimal mit je fünf Grundstellungsreaktionen durchführen; optional in Dreier- oder Vierergruppen mit wechselndem anleitendem Kind.",
+          "en": "Spread out facing the coach. On 'Defense!' players briefly slap the floor, drop into a low defensive stance and call 'I love it!'. Repeat the call and response five times while staying in stance. Then the coach points left or right and players slide in that direction. On a shot fake they raise one hand to contest. Run two sets of five stance calls; optionally work in groups of three or four and rotate the player giving cues."
+        }
+      }
+    },
+    {
+      "id": "EX-085",
+      "titel": "Defense, I Love It Drill",
+      "beleg_id": "NBA-STARTER-1-EX085",
+      "quelle_vorher": {"name": "Jr. NBA Starter Practice Plan 6 – Defense, I Love It Drill", "url": "https://jr.nba.com/basketball-practice-plans/starter/page/6/", "video_status": "Quellenseite weist die Übung als Video-Übung aus."},
+      "felder": {
+        "ablauf": {
+          "vorher": "Spieler stehen verteilt. Auf „Defense!“ gehen sie in Grundposition. Danach folgen Kommandos; bei links/rechts wird lateral geslidet, bei einem Wurf-Fake wird eine Hand zum Contest gehoben. Die soziale Variation nutzt Gruppenleiter als „Coach“.",
+          "de": "Die Kinder verteilen sich mit Blick zum Coach auf dem Feld. Bei „Defense!“ berühren sie kurz den Boden, gehen in eine tiefe Abwehrstellung und rufen „I love it!“. In dieser Stellung fünfmal auf den Zuruf reagieren. Danach zeigt der Coach nach links oder rechts: Die Kinder verschieben sich mit Gleitschritten in diese Richtung. Täuscht der Coach einen Wurf an, strecken sie eine Hand zum Contest hoch. Die Folge zweimal mit je fünf Grundstellungsreaktionen durchführen; optional in Dreier- oder Vierergruppen mit wechselndem anleitendem Kind.",
+          "en": "Spread out facing the coach. On 'Defense!' players briefly slap the floor, drop into a low defensive stance and call 'I love it!'. Repeat the call and response five times while staying in stance. Then the coach points left or right and players slide in that direction. On a shot fake they raise one hand to contest. Run two sets of five stance calls; optionally work in groups of three or four and rotate the player giving cues."
+        }
+      }
+    },
+    {
+      "id": "EX-098",
+      "titel": "Ich mach’ es wie Du",
+      "beleg_id": "DBB-EASY-22-EX098",
+      "quelle_vorher": {"name": "DBB Easybasket", "url": null, "video_status": null},
+      "felder": {
+        "ablauf": {
+          "vorher": "DBB Easybasket – zwei Kinder passen sich zu; das Kind mit der Power startet jederzeit zum Korb, das andere reagiert und folgt. Als Variation werden unterschiedliche Passarten und unterschiedliche Abstände ausdrücklich genannt.",
+          "de": "Die Kinder bilden Paare an der Seitenlinie; das erste Kind jedes Paars hat einen Ball. In der Feldmitte stehen verschiedenfarbige Hütchen. Der Coach zeigt zum Start eine Zahl. Kind eins berührt genau so viele Hütchen, ohne dieselbe Farbe direkt nacheinander zu wählen, dribbelt danach zum Korb und hat einen Wurfversuch. Ein Treffer zählt drei Punkte, eine Ringberührung einen. Anschließend erhält Kind zwei den Ball, berührt dieselbe Hütchenfolge und wirft einmal. Die Punkte des Paars werden über mehrere Runden weitergezählt; danach kann eine neue Zahl oder Farbfolge vorgegeben werden.",
+          "en": "Form pairs on the sideline; the first child in each pair has a ball. Put cones of different colours in the middle of the court. To start, the coach shows a number. Player one touches exactly that many cones without touching the same colour twice in a row, dribbles to the basket and takes one shot. A make scores three points and touching the rim scores one. Player two then takes the ball, touches the same sequence of cones and takes one shot. Keep a running score for each pair across rounds; then call a new number or colour sequence."
+        },
+        "spielerzahl": {"vorher": null, "de": "2 pro Paar", "en": "Two per pair"},
+        "raum": {"vorher": null, "de": "Seitenlinie, Feldmitte und Korb", "en": "Sideline, centre of court and basket"},
+        "material": {"vorher": null, "de": "1 Basketball pro Paar, verschiedenfarbige Hütchen und Korb", "en": "One basketball per pair, different-coloured cones and a basket"}
+      }
+    },
+    {
+      "id": "EX-099",
+      "titel": "Passen am Reifen",
+      "beleg_id": "DBB-EASY-37-EX099",
+      "quelle_vorher": {"name": "DBB Easybasket", "url": null, "video_status": null},
+      "felder": {
+        "ablauf": {
+          "vorher": "DBB Easybasket – ein Kind dirigiert einen freien Platz, dort wird ein Reifen gedreht und während der Drehung passen sich beide Kinder den Ball zu; anschließend Rollenwechsel.",
+          "de": "Paare bewegen sich über das Feld: Das vordere Kind dribbelt einen Ball, das hintere trägt einen Reifen und dirigiert den Weg zu einem freien Platz. Dort dreht das hintere Kind den Reifen auf dem Boden. Solange er sich dreht, passen sich beide den Ball zu. Sobald der Reifen stillsteht, tauschen die Kinder die Rollen, nehmen Ball und Reifen auf und bewegen sich weiter. Als Variation den Reifen zwischen beiden drehen und ihn vor dem Umfallen jeweils vom Kind ohne Ball auffangen lassen.",
+          "en": "Pairs move around the court: the child in front dribbles one ball; the child behind carries a hoop and directs the way to an open spot. There, the second child spins the hoop on the floor. The pair pass the ball while it spins. When the hoop stops, they swap roles, pick up ball and hoop and keep moving. As a variation, spin the hoop between them and have the child without the ball catch it before it falls."
+        },
+        "spielerzahl": {"vorher": null, "de": "2 pro Paar", "en": "Two per pair"},
+        "raum": {"vorher": null, "de": "Freie Bewegungsfläche im Basketballfeld", "en": "Open movement space on the basketball court"},
+        "material": {"vorher": null, "de": "1 Basketball und 1 Reifen pro Paar", "en": "One basketball and one hoop per pair"}
+      }
+    },
+    {
+      "id": "EX-100",
+      "titel": "Trio mit Ball in der Mitte",
+      "beleg_id": "DBB-EASY-59-EX100",
+      "quelle_vorher": {"name": "DBB Easybasket", "url": null, "video_status": null},
+      "felder": {
+        "ablauf": {
+          "vorher": "DBB Easybasket – Dreiergruppen bewegen sich mit einem dribbelnden Kind in der Mitte; Signale lösen Richtungswechsel, Stopps oder Passfolgen aus.",
+          "de": "Alle Kinder bewegen sich zunächst frei über das Spielfeld; jedes dritte Kind hat einen Ball und dribbelt. Auf „zusammen“ bilden sie Dreiergruppen: Das dribbelnde Kind geht in die Mitte, ein Kind ohne Ball führt, das andere folgt. Auf „frei“ lösen sich die Gruppen und bewegen sich wieder einzeln. In der freien Phase darf ein Kind ohne Ball den Ball mit offenen Fanghänden anfordern; das dribbelnde Kind passt zu ihm. Als Variation sagt das mittlere Kind „Wechsel“ für Richtungswechsel oder „Stopp“: Dann stellt sich das Trio im Dreieck auf und passt sich den Ball zu.",
+          "en": "All children move freely around the court; every third child has a ball and dribbles. On 'together', form groups of three: the dribbler takes the middle position, one child without a ball leads and the other follows. On 'free', separate and move individually again. During this phase a child without a ball may request the ball with open catching hands; the dribbler passes it. As a variation, the middle child calls 'switch' to reverse direction or 'stop' to form a triangle and pass the ball."
+        },
+        "spielerzahl": {"vorher": null, "de": "3 pro Gruppe", "en": "3 per group"},
+        "raum": {"vorher": null, "de": "Freie Bewegungsfläche im Basketballfeld", "en": "Open movement space on the basketball court"},
+        "material": {"vorher": null, "de": "1 Basketball pro Dreiergruppe", "en": "One basketball per group of three"}
+      }
+    },
+    {
+      "id": "EX-103",
+      "titel": "Verteidigung von nah und fern",
+      "beleg_id": "DBB-EASY-60-EX103",
+      "quelle_vorher": {"name": "DBB Easybasket", "url": null, "video_status": null},
+      "felder": {
+        "ablauf": {
+          "vorher": "DBB Easybasket – Kinder ohne Ball nähern sich einem dribbelnden Kind, verfolgen es mit Blickkontakt und können in einer Variation ohne Foul versuchen, den Ball zu klauen.",
+          "de": "Alle Kinder bewegen sich frei über das Feld; die Hälfte dribbelt je einen Ball. Auf ein Signal wählt jedes Kind ohne Ball ein dribbelndes Kind, nähert sich und folgt ihm drei bis fünf Sekunden dicht, ohne Berührung. Danach vergrößert es den Abstand, hält Blickkontakt und winkt aus der Ferne. Nach weiteren drei bis fünf Sekunden nähert es sich erneut. Auf „Wechsel“ tauschen beide die Rollen und bewegen sich wieder einzeln. Varianten: hinter dem Ballkind bleiben, ihm frontal gegenüber bleiben oder auf „Defense“ den Ball ohne Foul zu erobern versuchen.",
+          "en": "Everyone moves freely around the court; half the children each dribble a ball. On a cue, each child without a ball selects a dribbler, moves close and follows for three to five seconds without contact. Then they increase the distance, keep eye contact and wave from afar. After another three to five seconds they close the distance again. On 'switch', the players exchange roles and move freely again. Variations: stay behind the dribbler, stay in front, or try to steal the ball without fouling on 'defense'."
+        },
+        "spielerzahl": {"vorher": null, "de": "Paare; die Hälfte der Gruppe mit Ball", "en": "Pairs; half the group with a ball"},
+        "raum": {"vorher": null, "de": "Freie Bewegungsfläche im Basketballfeld", "en": "Open movement space on the basketball court"},
+        "material": {"vorher": null, "de": "1 Basketball pro Paar", "en": "One basketball per pair"}
+      }
+    },
+    {
+      "id": "EX-108",
+      "titel": "„Tauscht die „Power““",
+      "beleg_id": "DBB-EASY-23-EX108",
+      "quelle_vorher": {
+        "name": "DBB Easybasket-Handbuch, S",
+        "url": "https://www.basketball-bund.de/wp-content/uploads/sites/2/2024/03/DBB_Jugend_Easybasket-Handbuch.pdf",
+        "video_status": null
+      },
+      "felder": {
+        "ablauf": {
+          "vorher": "Das DBB-Easybasket-Handbuch beschreibt zwei Kinder mit Ball, die sich aus ca. 3 m Abstand zupassen. Eines darf jederzeit zum Korb starten; das andere reagiert und folgt. Als Variationen nennt der DBB unterschiedliche Passarten sowie das Variieren der Passabstände. Dadurch ist die Anpassung der Ausführung an Distanz unmittelbar in der Originalbeschreibung enthalten.",
+          "de": "Zwei Teams bilden Paare. Pro Paar stehen zwei Kinder mit je einem Ball etwa drei Meter voneinander entfernt außerhalb der Dreipunktlinie und passen sich die Bälle zu. Ein Team hat die „Power“: Dessen Kind darf jederzeit zum Korb starten und werfen. Das andere Kind reagiert, folgt und versucht ebenfalls zu punkten. Wer zuerst drei Punkte erzielt, gewinnt die „Power“ für sein Team in der nächsten Runde. Passarten und Abstand können variiert werden.",
+          "en": "Split into two teams and form pairs. In each pair, two children each have a ball and stand about three metres apart outside the three-point line, passing the balls to each other. One team has the 'power': its player may attack the basket and shoot at any time. The other reacts, follows and also tries to score. The first to score three points wins the power for their team in the next round. Vary the pass type and distance."
+        },
+        "spielerzahl": {"vorher": null, "de": "2 pro Paar; 2 Teams", "en": "Two per pair; two teams"},
+        "raum": {"vorher": null, "de": "Außerhalb der Dreipunktlinie und ein Korb", "en": "Outside the three-point line and one basket"},
+        "material": {"vorher": null, "de": "2 Basketbälle pro Paar, 1 Korb", "en": "Two basketballs per pair and one basket"}
+      }
+    },
+    {
+      "id": "EX-111",
+      "titel": "„Fühl den Rhythmus“",
+      "beleg_id": "DBB-GSW-EX111",
+      "quelle_vorher": {
+        "name": "DBB, Grundschulwoche – Stationsschilder „Fühl den Rhythmus“",
+        "url": "https://www.basketball-bund.de/wp-content/uploads/sites/2/2024/09/DBB_Grundschulwoche_Stationsschilder.pdf",
+        "video_status": null
+      },
+      "felder": {
+        "ablauf": {
+          "vorher": "Zunächst den Absprungrhythmus des Korblegers üben. Anschließend einen Ball annehmen, den Rhythmus der letzten beiden Schritte beibehalten und abschließen. Hindernisse und unterschiedliche Laufbahnen verbinden die Bewegung mit der Ballannahme.",
+          "de": "Auf einer oder beiden Seiten des Korbs Bahnen mit Hindernissen wie Seilen oder niedrigen Bänken aufbauen; auf jeder Bahn können zwei bis vier Kinder gleichzeitig laufen. Zuerst den Zweier-Rhythmus ohne Ball üben: einbeinig vor dem Hindernis abspringen, auf dem anderen Fuß landen und beim nächsten Schritt wieder abspringen. Auf der Innenbahn am Korb nach dem letzten Hindernis einen Ball annehmen, im Rhythmus bleiben, beim letzten Schritt hoch zum Brett abspringen und werfen. Den Ball holen und außen wieder anstellen. Nach jeder Runde rückt ein anderes Kind beziehungsweise die Gruppe eine Bahn näher zum Korb; bei zwei Bahnen die Ballausgabe links und rechts abwechseln.",
+          "en": "Set up obstacle lanes with ropes or low benches on one or both sides of the basket; two to four children can run in each lane at once. First practise the two-step rhythm without a ball: take off from one foot before an obstacle, land on the other and jump again on the next step. In the inner lane by the basket, receive a ball after the last obstacle, keep the rhythm, jump high towards the backboard on the last step and shoot. Collect the ball and rejoin the line from outside. After each round, another child or group moves one lane closer to the basket; with two lanes, alternate ball delivery between left and right."
+        },
+        "spielerzahl": {"vorher": null, "de": "2–4 Kinder gleichzeitig pro Bahn", "en": "Two to four children at once per lane"},
+        "raum": {"vorher": null, "de": "Ein Korb mit einer oder zwei Hindernisbahnen", "en": "One basket with one or two obstacle lanes"},
+        "material": {"vorher": null, "de": "Basketball, Korb und Hindernisse (z. B. Seile oder niedrige Bänke)", "en": "Basketball, basket and obstacles (such as ropes or low benches)"}
+      }
+    }
+  ]
+}

@@ -1,0 +1,164 @@
+{
+  "version": 1,
+  "stand": "2026-10-02",
+  "karten": [
+    {
+      "id": "EX-013",
+      "titel": "Hot Ball (Taps)",
+      "beleg_id": "JRN-ROOKIE-1-EX-013",
+      "quelle_vorher": {
+        "name": "Q5/Q7",
+        "url": null,
+        "video_status": null
+      },
+      "felder": {
+        "lernziel": {
+          "vorher": null,
+          "de": "Ballgefühl und Kontrolle mit den Fingerspitzen entwickeln.",
+          "en": "Develop ball feel and fingertip control."
+        },
+        "ablauf": {
+          "vorher": null,
+          "de": "Den Ball vor der Hüfte mit ausgestreckten Armen schnell zwischen den Händen tippen. Dabei über den Kopf, vor das Gesicht und zurück zur Hüfte führen.",
+          "en": "With arms extended at waist height, tap the ball rapidly between the hands. Move it overhead, in front of the face and back to the waist."
+        },
+        "coachingpunkte": {
+          "vorher": null,
+          "de": "Mit den Fingerspitzen tippen, den Ball nicht festhalten.",
+          "en": "Use the fingertips to tap rather than hold the ball."
+        },
+        "progression": {
+          "vorher": null,
+          "de": "Eine Person gibt die Höhe vor, alle folgen. Führung wechseln.",
+          "en": "One player leads the height changes; everyone follows. Change leaders."
+        },
+        "raum": {
+          "vorher": null,
+          "de": "Festgelegter Übungsbereich",
+          "en": "Designated practice area"
+        },
+        "material": {
+          "vorher": null,
+          "de": "Ein Basketball pro Person; Teilen ist möglich.",
+          "en": "One basketball per player; sharing is possible."
+        },
+        "dauer_min": {
+          "vorher": null,
+          "de": "2 × 30 s",
+          "en": "2 × 30 seconds"
+        }
+      }
+    },
+    {
+      "id": "EX-014",
+      "titel": "Stationary Dribble – Low / Middle / High",
+      "beleg_id": "JRN-ROOKIE-5-EX-014",
+      "quelle_vorher": {
+        "name": "Q5/Q7",
+        "url": null,
+        "video_status": null
+      },
+      "felder": {
+        "lernziel": {
+          "vorher": null,
+          "de": "Dribbelhöhe und Ballkontrolle mit beiden Händen üben.",
+          "en": "Practise dribble height and ball control with both hands."
+        },
+        "ablauf": {
+          "vorher": null,
+          "de": "An der Seitenlinie im Stand dribbeln: tief, mittelhoch, dann etwa schulterhoch; je Höhe 20 Sekunden rechts und links. Die freie Hand schützt den Ball. Fingerzahlen des Coaches erkennen und laut nennen. Zwei Durchgänge.",
+          "en": "Dribble in place on the sideline: low, medium, then around shoulder height; 20 seconds per hand at each height. Protect the ball with the free hand. Call out the coach’s finger signals. Complete two rounds."
+        },
+        "coachingpunkte": {
+          "vorher": null,
+          "de": "Tief stehen, Oberkörper aufrichten, Blick heben; Fingerspitzen einsetzen.",
+          "en": "Stay low with chest and eyes up; use the fingertips."
+        },
+        "raum": {
+          "vorher": null,
+          "de": "Seitenlinie",
+          "en": "Sideline"
+        },
+        "material": {
+          "vorher": null,
+          "de": "Ein Basketball pro Person; Teilen ist möglich.",
+          "en": "One basketball per player; sharing is possible."
+        },
+        "dauer_min": {
+          "vorher": null,
+          "de": "4 min Arbeitszeit; zwei Durchgänge mit drei Höhen und beiden Händen, jeweils 20 s",
+          "en": "4 minutes of work; two rounds at three heights with both hands, 20 seconds each"
+        }
+      }
+    },
+    {
+      "id": "EX-015",
+      "titel": "Stationary Crossover",
+      "beleg_id": "JRN-ROOKIE-3-EX-015",
+      "quelle_vorher": {
+        "name": "Q5/Q7",
+        "url": null,
+        "video_status": null
+      },
+      "felder": {
+        "lernziel": {
+          "vorher": null,
+          "de": "Schnelle Handwechsel und kontrolliertes Dribbeln koordinieren.",
+          "en": "Coordinate quick hand changes and controlled dribbling."
+        },
+        "ablauf": {
+          "vorher": null,
+          "de": "An der Seitenlinie die Knie beugen und den Ball vor dem Körper zwischen rechts und links wechseln: 20 Sekunden unterhalb der Knie, danach je 20 Sekunden auf Kniehöhe und höher. Die Serienzahl bleibt in der Quelle uneindeutig.",
+          "en": "On the sideline, bend the knees and cross the ball in front between hands: 20 seconds below the knees, then 20 seconds at knee height and 20 seconds higher. The source leaves the number of sets unclear."
+        },
+        "coachingpunkte": {
+          "vorher": null,
+          "de": "Oberkörper und Blick heben; mit den Fingerspitzen schnell seitlich dribbeln.",
+          "en": "Keep chest and eyes up; use fingertips for quick sideways dribbles."
+        },
+        "progression": {
+          "vorher": null,
+          "de": "Zu zweit die Höhe des Partners spiegeln; Führung wechseln.",
+          "en": "In pairs, mirror the partner’s crossover height; change leaders."
+        },
+        "raum": {
+          "vorher": null,
+          "de": "Seitenlinie",
+          "en": "Sideline"
+        },
+        "material": {
+          "vorher": null,
+          "de": "Ein Basketball pro Person; Teilen ist möglich.",
+          "en": "One basketball per player; sharing is possible."
+        }
+      }
+    },
+    {
+      "id": "EX-038",
+      "titel": "Defensive Stance",
+      "beleg_id": "JRN-ROOKIE-4-EX-038",
+      "quelle_vorher": {
+        "name": "Q5/Q7",
+        "url": null,
+        "video_status": null
+      },
+      "felder": {
+        "lernziel": {
+          "vorher": null,
+          "de": "Aus der Verteidigungsstellung in jede Richtung bewegungsbereit sein.",
+          "en": "Be ready to move in any direction from a defensive stance."
+        },
+        "ablauf": {
+          "vorher": null,
+          "de": "Füße etwas breiter als schulterbreit aufstellen und Knie beugen. Zehen und Knie zeigen nach vorn. Blick heben und die Hände ausgestreckt aktiv halten. Die Quelle beschreibt die Grundstellung, keine zeitlich festgelegte Übungsserie.",
+          "en": "Place the feet slightly wider than shoulder width and bend the knees. Point toes and knees forward. Keep eyes up and hands extended and active. The source describes the stance without prescribing a timed drill."
+        },
+        "coachingpunkte": {
+          "vorher": null,
+          "de": "Auf ausgerichtete Knie und Zehen, gehobenen Blick und aktive Hände achten.",
+          "en": "Check forward alignment of knees and toes, eyes up and active hands."
+        }
+      }
+    }
+  ]
+}

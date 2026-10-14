@@ -1,22 +1,70 @@
 """Normalisiert die Rohdatensätze auf ein Zielschema.
 
 Vier Erfassungsgenerationen liegen im Katalog nebeneinander. Sie werden auf
-ein gemeinsames Schema abgebildet, ohne Lücken zu füllen: was nicht
-dokumentiert ist, bleibt null und wird über `dokumentationstiefe` sichtbar.
+ein gemeinsames Schema abgebildet. Belegte redaktionelle Ergänzungen folgen
+als eigene Schritte; Unbelegtes bleibt null. `dokumentationstiefe` beschreibt
+weiterhin die ursprüngliche Erfassung im Katalog.
 """
 import json
 import re
+from copy import deepcopy
 from pathlib import Path
+from urllib.parse import urlparse
 
 ROOT = Path(__file__).resolve().parent.parent
 RAW = ROOT / "docs" / "quellen" / "records-raw.json"
 TABLES = ROOT / "docs" / "quellen" / "catalog-tables.json"
 EXTRACTED = ROOT / "docs" / "quellen" / "catalog-extracted.txt"
 OUT = ROOT / "data" / "drills.json"
+REDAKTION = ROOT / "docs" / "redaktion" / "karten-runde-01.json"
+RECHERCHE = ROOT / "docs" / "redaktion" / "karten-runde-02.json"
+RECHERCHE_BELEGE = ROOT / "docs" / "quellen" / "karten-recherche-2026-10-02.json"
+RECHERCHE_03 = ROOT / "docs" / "redaktion" / "karten-runde-03.json"
+RECHERCHE_BELEGE_03 = ROOT / "docs" / "quellen" / "karten-recherche-runde-03.json"
+RECHERCHE_04 = ROOT / "docs" / "redaktion" / "karten-runde-04.json"
+RECHERCHE_BELEGE_04 = ROOT / "docs" / "quellen" / "karten-recherche-runde-04.json"
+RECHERCHE_05 = ROOT / "docs" / "redaktion" / "karten-runde-05.json"
+RECHERCHE_BELEGE_05 = ROOT / "docs" / "quellen" / "karten-recherche-runde-05.json"
+RECHERCHE_06 = ROOT / "docs" / "redaktion" / "karten-runde-06.json"
+RECHERCHE_BELEGE_06 = ROOT / "docs" / "quellen" / "karten-recherche-runde-06.json"
+RECHERCHE_07 = ROOT / "docs" / "redaktion" / "karten-runde-07.json"
+RECHERCHE_BELEGE_07 = ROOT / "docs" / "quellen" / "karten-recherche-runde-07.json"
+RECHERCHE_08 = ROOT / "docs" / "redaktion" / "karten-runde-08.json"
+RECHERCHE_09 = ROOT / "docs" / "redaktion" / "karten-runde-09.json"
+RECHERCHE_10 = ROOT / "docs" / "redaktion" / "karten-runde-10.json"
+RECHERCHE_BELEGE_08 = ROOT / "docs" / "quellen" / "karten-recherche-runde-08.json"
+RECHERCHE_BELEGE_09 = ROOT / "docs" / "quellen" / "karten-recherche-runde-09.json"
+RECHERCHE_BELEGE_10 = ROOT / "docs" / "quellen" / "karten-recherche-runde-10.json"
+RECHERCHE_11 = ROOT / "docs" / "redaktion" / "karten-runde-11.json"
+RECHERCHE_BELEGE_11 = ROOT / "docs" / "quellen" / "karten-recherche-runde-11.json"
+RECHERCHE_12 = ROOT / "docs" / "redaktion" / "karten-runde-12.json"
+RECHERCHE_13 = ROOT / "docs" / "redaktion" / "karten-runde-13.json"
+RECHERCHE_14 = ROOT / "docs" / "redaktion" / "karten-runde-14.json"
+RECHERCHE_BELEGE_14 = ROOT / "docs" / "quellen" / "karten-recherche-runde-14.json"
+RECHERCHE_15 = ROOT / "docs" / "redaktion" / "karten-runde-15.json"
+RECHERCHE_BELEGE_15 = ROOT / "docs" / "quellen" / "karten-recherche-runde-15.json"
+RECHERCHE_16 = ROOT / "docs" / "redaktion" / "karten-runde-16.json"
+RECHERCHE_BELEGE_16 = ROOT / "docs" / "quellen" / "karten-recherche-runde-16.json"
+RECHERCHE_17 = ROOT / "docs" / "redaktion" / "karten-runde-17.json"
+RECHERCHE_BELEGE_17 = ROOT / "docs" / "quellen" / "karten-recherche-runde-17.json"
+RECHERCHE_18 = ROOT / "docs" / "redaktion" / "karten-runde-18.json"
+RECHERCHE_BELEGE_18 = ROOT / "docs" / "quellen" / "karten-recherche-runde-18.json"
+RECHERCHE_19 = ROOT / "docs" / "redaktion" / "karten-runde-19.json"
+RECHERCHE_BELEGE_19 = ROOT / "docs" / "quellen" / "karten-recherche-runde-19.json"
+RECHERCHE_20 = ROOT / "docs" / "redaktion" / "karten-runde-20.json"
+RECHERCHE_BELEGE_20 = ROOT / "docs" / "quellen" / "karten-recherche-runde-20.json"
+RECHERCHE_21 = ROOT / "docs" / "redaktion" / "karten-runde-21.json"
+RECHERCHE_BELEGE_21 = ROOT / "docs" / "quellen" / "karten-recherche-runde-21.json"
+RECHERCHE_22 = ROOT / "docs" / "redaktion" / "karten-runde-22.json"
+RECHERCHE_BELEGE_22 = ROOT / "docs" / "quellen" / "karten-recherche-runde-22.json"
+RECHERCHE_BELEGE_12 = ROOT / "docs" / "quellen" / "karten-recherche-runde-12.json"
+RECHERCHE_BELEGE_13 = ROOT / "docs" / "quellen" / "karten-recherche-runde-13.json"
+ABLAUFPLATZHALTER = ROOT / "docs" / "redaktion" / "karten-ablaufplatzhalter-2026-10-04.json"
+UNBELEGTE_ABLAEUFE = ROOT / "docs" / "redaktion" / "karten-unbelegte-ablaeufe-2026-10-05.json"
+METADATENKORREKTUR = ROOT / "docs" / "redaktion" / "karten-metadatenkorrektur-2026-10-06.json"
 
 CODE = re.compile(r"\b([TKS])([1-7])\b")
 AGE = re.compile(r"U(\d{1,2})")
-NUM = re.compile(r"(\d+(?:[.,]\d+)?)")
 
 
 def txt(value):
@@ -41,23 +89,90 @@ def codes(*values):
 def age_window(value):
     if not value:
         return {"von": None, "bis": None, "roh": None}
-    nums = [int(n) for n in AGE.findall(value)]
+    # Eine ausdrücklich nur denkbare Vorstufe erweitert das typische Alter
+    # nicht automatisch auf die jüngere Stufe (EX-106).
+    primary = re.split(r";\s*U\d{1,2}\s+als\s+Vorstufe\s+denkbar", value, maxsplit=1)[0]
+    nums = [int(n) for n in AGE.findall(primary)]
     if not nums:
         return {"von": None, "bis": None, "roh": value.strip()}
     return {"von": min(nums), "bis": max(nums), "roh": value.strip()}
 
 
-def span(value, unit_hint=None):
-    """'6–8 min' -> {min:6, max:8, roh:...}; nicht auflösbar -> nur roh."""
+def _number(value):
+    number = float(value.replace(",", "."))
+    return int(number) if number.is_integer() else number
+
+
+def duration_span(value):
+    """Zeitangaben in Minuten; Umfang ohne Zeiteinheit bleibt ausschließlich roh."""
     if not value:
         return {"min": None, "max": None, "roh": None}
-    nums = [float(n.replace(",", ".")) for n in NUM.findall(value)]
-    lo = hi = None
-    if nums:
-        lo, hi = min(nums), max(nums)
-        lo = int(lo) if lo.is_integer() else lo
-        hi = int(hi) if hi.is_integer() else hi
-    return {"min": lo, "max": hi, "roh": value.strip()}
+    raw = value.strip()
+    # Nach dem Semikolon stehen im Katalog eigenständige Varianten. Deren Zeit
+    # darf nicht mit der Dauer der Grundform zu einer künstlichen Spanne werden.
+    primary = raw.split(";", 1)[0]
+    unit = r"(?P<unit>min(?:uten?)?|s(?:ek(?:unden?)?)?)\.?"
+    number = r"\d+(?:[.,]\d+)?"
+
+    # Ein vorangestellter Gesamtwert gilt auch dann, wenn die Klammer eine
+    # kleinere Teilserie mit eigener Zeiteinheit erklärt.
+    total = re.match(rf"(?P<total>{number})\s*{unit}\b", primary, re.I)
+    if total:
+        minutes = _number(total.group("total"))
+        if total.group("unit").lower().startswith("s"):
+            minutes = _number(str(minutes / 60))
+        return {"min": minutes, "max": minutes, "roh": raw}
+
+    series = re.search(
+        rf"(?P<count>{number})\s*[x×]\s*(?P<lo>{number})"
+        rf"(?:\s*[–-]\s*(?P<hi>{number}))?\s*{unit}\b",
+        primary, re.I)
+    if series:
+        factor = _number(series.group("count"))
+        lo = factor * _number(series.group("lo"))
+        hi = factor * _number(series.group("hi") or series.group("lo"))
+        unit_name = series.group("unit").lower()
+        if unit_name.startswith("s"):
+            lo, hi = lo / 60, hi / 60
+        lo, hi = _number(str(lo)), _number(str(hi))
+        return {"min": lo, "max": hi, "roh": raw}
+
+    simple = re.search(
+        rf"(?P<lo>{number})(?:\s*[–-]\s*(?P<hi>{number}))?\s*{unit}\b",
+        primary, re.I)
+    if simple:
+        lo = _number(simple.group("lo"))
+        hi = _number(simple.group("hi") or simple.group("lo"))
+        unit_name = simple.group("unit").lower()
+        if unit_name.startswith("s"):
+            lo, hi = lo / 60, hi / 60
+        lo, hi = _number(str(lo)), _number(str(hi))
+        return {"min": lo, "max": hi, "roh": raw}
+    return {"min": None, "max": None, "roh": raw}
+
+
+def player_span(value):
+    """Nur ausdrücklich angegebene Spieler- oder Gruppengrößen numerisch lesen."""
+    if not value:
+        return {"min": None, "max": None, "roh": None}
+    raw = value.strip()
+    match = re.fullmatch(r"(\d+)\s*[–-]\s*(\d+)(?:\s+pro\s+(?:Gruppe|Rotation|Diamond|Ball))?", raw, re.I)
+    if match:
+        return {"min": int(match.group(1)), "max": int(match.group(2)), "roh": raw}
+    match = re.fullmatch(r"(\d+)\+", raw)
+    if match:
+        return {"min": int(match.group(1)), "max": None, "roh": raw}
+    match = re.match(r"^(\d+)(\+)?\s+pro\s+(?:Gruppe|Rotation|Diamond|Ball)\b", raw, re.I)
+    if match:
+        amount = int(match.group(1))
+        return {"min": amount, "max": None if match.group(2) else amount, "roh": raw}
+    match = re.match(r"^(\d+)er-(?:Gruppen|Paare)\b", raw, re.I)
+    if match:
+        amount = int(match.group(1))
+        return {"min": amount, "max": amount, "roh": raw}
+    if re.fullmatch(r"Paare", raw, re.I):
+        return {"min": 2, "max": 2, "roh": raw}
+    return {"min": None, "max": None, "roh": raw}
 
 
 def scale(value):
@@ -406,9 +521,9 @@ def normalize(rec, aliases, befunde_index, quellen_index):
         ),
         "empfohlene_stufe": age_window(g("Empfohlene Stufe"))["roh"],
         "erfahrung": g("Erfahrungsniveau"),
-        "spielerzahl": span(g("Spielerzahl", "Spieler")),
+        "spielerzahl": player_span(g("Spielerzahl", "Spieler")),
         "raum": g("Raum", "Feld") if g("Raum", "Feld") != "Inhalt" else g("Raum"),
-        "dauer_min": span(g("Dauer/Umfang", "Dauer / Umfang", "Dauer")),
+        "dauer_min": duration_span(g("Dauer/Umfang", "Dauer / Umfang", "Dauer")),
         "material": g("Material"),
         "regression": g("Regression"),
         "progression": g("Progression"),
@@ -454,6 +569,239 @@ def normalize(rec, aliases, befunde_index, quellen_index):
 TITEL_KEYS = ("übung", "übung / format", "format", "karte", "übung/format")
 
 
+def beleg_passt_zur_karte(text, eid, titel):
+    """Beleg muss die ID am Anfang oder den exakten Übungstitel zuordnen."""
+    prefix = re.match(r"^EX-(\d{3})(?:\s*/\s*(?:EX-)?(\d{3}))?\s*[–:]", text)
+    if prefix:
+        return eid in {f"EX-{number}" for number in prefix.groups() if number}
+    # Ein früher Katalogabsatz nennt statt einer ID die Quelle und den
+    # wörtlichen Titel. Eine beliebige Titelerwähnung im Fließtext genügt nicht.
+    exact_title = re.match(
+        r'^(.*?)\s+dokumentiert\s+(?:das|die|den)\s+[„"]'
+        + re.escape(titel) + r'[“"]\s*:', text)
+    return bool(exact_title and SOURCE_LABEL.match(exact_title.group(1)))
+
+
+def redaktionsfelder_anwenden(d, felder):
+    """Nur Inhaltsfelder mit unverändertem Ausgangswert und zwei Sprachfassungen."""
+    erlaubt = {"ablauf", "lernziel", "coachingpunkte", "typische_fehler",
+               "regression", "progression", "material", "raum",
+               "dauer_min", "spielerzahl"}
+    eid = d["id"]
+    if not felder or not set(felder) <= erlaubt:
+        raise ValueError(f"{eid}: nicht erlaubte oder leere Feldauswahl")
+    for feld, text in felder.items():
+        vorher = d[feld]["roh"] if feld in {"dauer_min", "spielerzahl"} else d[feld]
+        if vorher != text["vorher"]:
+            raise ValueError(f"{eid}/{feld}: Quelldaten geändert; Redaktion erneut prüfen")
+        if not text["de"].strip() or not text["en"].strip():
+            raise ValueError(f"{eid}/{feld}: deutscher oder englischer Text fehlt")
+        if feld == "dauer_min":
+            d[feld] = duration_span(text["de"])
+        elif feld == "spielerzahl":
+            d[feld] = player_span(text["de"])
+        else:
+            d[feld] = text["de"]
+
+
+def redaktion_anwenden(drills, redaktion, quelltext):
+    """Belegte Eigenformulierungen nach dem Import reproduzierbar einspielen.
+
+    Titel, vorheriger Feldwert und exakter Katalogbeleg sichern jede Änderung
+    gegen veraltete Zuordnungen ab. Alter, Quellen und QA sind keine editierbaren
+    Felder dieses Schritts. Die ursprüngliche Evidenz bleibt erhalten.
+    """
+    if redaktion.get("version") != 1:
+        raise ValueError("Unbekanntes Redaktionsformat")
+    result = deepcopy(drills)
+    by_id = {d["id"]: d for d in result}
+    gesehen = set()
+    for entry in redaktion["karten"]:
+        eid = entry["id"]
+        d = by_id.get(eid)
+        if eid in gesehen or d is None or d["ist_alias"] or d["titel"] != entry["titel"]:
+            raise ValueError(f"{eid}: ungültige oder veraltete Kartenzuordnung")
+        gesehen.add(eid)
+        beleg = entry["beleg"]
+        if (beleg["datei"] != "docs/quellen/catalog-extracted.txt"
+                or not beleg["text"].strip() or beleg["text"] not in quelltext):
+            raise ValueError(f"{eid}: Katalogbeleg nicht wiedergefunden")
+        if not beleg_passt_zur_karte(beleg["text"], eid, d["titel"]):
+            raise ValueError(f"{eid}: Katalogbeleg gehört nicht zu dieser Karte")
+        redaktionsfelder_anwenden(d, entry["felder"])
+        d["belege"].append({
+            "redaktion": "docs/redaktion/karten-runde-01.json",
+            "stand": redaktion["stand"],
+            "felder": ", ".join(entry["felder"]),
+            "katalogbeleg": beleg["text"],
+        })
+    return result
+
+
+def recherche_anwenden(drills, redaktion, belege, *, redaktion_pfad=RECHERCHE,
+                      belege_pfad=RECHERCHE_BELEGE):
+    """Manuell geprüfte Primärquellen ergänzen; keine automatische QA-Aufwertung.
+
+    Das separate Rechercheprotokoll bindet jede Quelle an Karten-ID, Titel und
+    belegte Felder. Es dokumentiert die Prüfung, ersetzt sie aber nicht.
+    """
+    if redaktion.get("version") != 1 or belege.get("version") != 1:
+        raise ValueError("Unbekanntes Rechercheformat")
+    result = deepcopy(drills)
+    by_id = {d["id"]: d for d in result}
+    sources = {b["id"]: b for b in belege["belege"]}
+    if len(sources) != len(belege["belege"]):
+        raise ValueError("Doppelte Recherchebeleg-ID")
+    gesehen = set()
+    for entry in redaktion["karten"]:
+        eid = entry["id"]
+        d = by_id.get(eid)
+        if eid in gesehen or d is None or d["ist_alias"] or d["titel"] != entry["titel"]:
+            raise ValueError(f"{eid}: ungültige oder veraltete Kartenzuordnung")
+        gesehen.add(eid)
+        beleg = sources.get(entry["beleg_id"])
+        if (not beleg or beleg["karten_id"] != eid or beleg["karten_titel"] != d["titel"]
+                or not set(entry["felder"]) <= set(beleg["felder"])):
+            raise ValueError(f"{eid}: Recherchebeleg gehört nicht zu Karte oder Feldern")
+        url = urlparse(beleg["url"])
+        offizielle_praxis = (url.netloc == "jr.nba.com" and re.fullmatch(
+            r"/basketball-practice-plans/(?:rookie|starter|all-star|mvp)/(?:page/(?:[1-9]|1[0-2])/)?",
+            url.path))
+        fiba_handbuch = (url.netloc == "assets.fiba.basketball" and url.path ==
+            "/image/upload/documents-corporate-wabc-coaching-manual-mini-basketball-eng.pdf")
+        fiba_level_1 = (url.netloc == "assets.fiba.basketball" and url.path ==
+            "/image/upload/documents-corporate-wabc-coaching-level-manuals-level-1-eng.pdf")
+        fiba_activities = (url.netloc == "assets.fiba.basketball" and url.path ==
+            "/image/upload/documents-corporate-wabc-start-coaching-eng-activities-book.pdf")
+        fiba_facilitator = (url.netloc == "assets.fiba.basketball" and url.path ==
+            "/image/upload/documents-corporate-wabc-start-coaching-eng-facilitator-handbook.pdf")
+        fiba_3x3 = (url.netloc == "fiba3x3.com" and url.path ==
+            "/docs/wabc-3x3-players-guide.pdf")
+        dbb_videokatalog = (url.netloc == "www.basketball-bund.de" and url.path ==
+            "/wp-content/uploads/sites/2/2022/02/Videokatalog-Minibasketball.pdf")
+        dbb_stundenbilder = (url.netloc == "www.basketball-bund.de" and url.path ==
+            "/wp-content/uploads/sites/2/2021/09/3x3-Stundenbilder_web_19.pdf")
+        dbb_easybasket = (url.netloc == "www.basketball-bund.de" and url.path ==
+            "/wp-content/uploads/sites/2/2024/03/DBB_Jugend_Easybasket-Handbuch.pdf")
+        dbb_stationsschilder = (url.netloc == "www.basketball-bund.de" and url.path ==
+            "/wp-content/uploads/sites/2/2024/09/DBB_Grundschulwoche_Stationsschilder.pdf")
+        dbb_minileitfaden = (url.netloc == "www.basketball-bund.de" and url.path ==
+            "/wp-content/uploads/sites/2/2022/07/DBB_Jugend_Minileitfaden.pdf")
+        if (url.scheme != "https" or not (offizielle_praxis or fiba_handbuch or fiba_level_1 or fiba_activities or fiba_facilitator or fiba_3x3 or dbb_videokatalog or dbb_stundenbilder or dbb_easybasket or dbb_stationsschilder or dbb_minileitfaden)
+                or url.query or url.fragment
+                or not all(beleg[k].strip() for k in ("name", "abschnitt", "abgerufen"))):
+            raise ValueError(f"{eid}: ungültige Primärquellenangabe")
+        if d["quelle"] != entry["quelle_vorher"]:
+            raise ValueError(f"{eid}: Quellenzuordnung geändert; Recherche erneut prüfen")
+        redaktionsfelder_anwenden(d, entry["felder"])
+        d["quelle"] = {**d["quelle"], "name": beleg["name"], "url": beleg["url"]}
+        d["belege"].append({
+            "redaktion": redaktion_pfad.relative_to(ROOT).as_posix(),
+            "recherche": belege_pfad.relative_to(ROOT).as_posix(),
+            "beleg_id": beleg["id"], "stand": beleg["abgerufen"],
+            "felder": ", ".join(entry["felder"]),
+            "quelle": beleg["name"], "url": beleg["url"], "abschnitt": beleg["abschnitt"],
+        })
+    return result
+
+
+def recherchen_anwenden(drills):
+    """Geprüfte Rechercherunden chronologisch mit ihrer eigenen Herkunft laden."""
+    for redaktion_pfad, belege_pfad in (
+            (RECHERCHE, RECHERCHE_BELEGE), (RECHERCHE_03, RECHERCHE_BELEGE_03),
+            (RECHERCHE_04, RECHERCHE_BELEGE_04),
+            (RECHERCHE_05, RECHERCHE_BELEGE_05),
+            (RECHERCHE_06, RECHERCHE_BELEGE_06),
+            (RECHERCHE_07, RECHERCHE_BELEGE_07),
+            (RECHERCHE_08, RECHERCHE_BELEGE_08),
+            (RECHERCHE_09, RECHERCHE_BELEGE_09),
+            (RECHERCHE_10, RECHERCHE_BELEGE_10),
+            (RECHERCHE_11, RECHERCHE_BELEGE_11)):
+        drills = recherche_anwenden(
+            drills, json.loads(redaktion_pfad.read_text(encoding="utf-8")),
+            json.loads(belege_pfad.read_text(encoding="utf-8")),
+            redaktion_pfad=redaktion_pfad, belege_pfad=belege_pfad)
+    return drills
+
+
+def ablaufplatzhalter_entfernen(drills, korrektur):
+    """Reine Prüfhinweise aus dem Ablauffeld nehmen, ohne den Rohbeleg zu verlieren."""
+    if korrektur.get("version") != 1:
+        raise ValueError("Unbekanntes Korrekturformat")
+    result = deepcopy(drills)
+    by_id = {d["id"]: d for d in result}
+    ids = [entry["id"] for entry in korrektur["karten"]]
+    if len(ids) != len(set(ids)) or set(ids) != {f"EX-{n:03}" for n in range(62, 69)}:
+        raise ValueError("Ungültige Ablaufplatzhalter-Zuordnung")
+    for entry in korrektur["karten"]:
+        d = by_id[entry["id"]]
+        if (d["ist_alias"] or d["titel"] != entry["titel"]
+                or d["ablauf"] != entry["ablauf_vorher"]
+                or not d["evidenz"]):
+            raise ValueError(f"{entry['id']}: Ablaufplatzhalter geändert; erneut prüfen")
+        d["ablauf"] = None
+        d["belege"].append({
+            "redaktion": ABLAUFPLATZHALTER.relative_to(ROOT).as_posix(),
+            "stand": korrektur["stand"],
+            "befund": entry["grund"],
+            "vorheriger_pruefhinweis": entry["ablauf_vorher"],
+        })
+    return result
+
+
+def unbelegte_ablaeufe_kennzeichnen(drills, korrektur):
+    """Nicht belegte Ablaufschilderungen entfernen und den Prüfstand anzeigen."""
+    if korrektur.get("version") != 1:
+        raise ValueError("Unbekanntes Korrekturformat")
+    result = deepcopy(drills)
+    by_id = {d["id"]: d for d in result}
+    ids = [entry["id"] for entry in korrektur["karten"]]
+    if len(ids) != len(set(ids)) or set(ids) != {
+            "EX-016", "EX-022", "EX-023", "EX-028", "EX-040",
+            "EX-062", "EX-064", "EX-066", "EX-068", "EX-075"}:
+        raise ValueError("Ungültige Zuordnung unbelegter Abläufe")
+    for entry in korrektur["karten"]:
+        d = by_id[entry["id"]]
+        if (d["ist_alias"] or d["titel"] != entry["titel"]
+                or d["ablauf"] != entry["ablauf_vorher"]
+                or d["evidenz"] != entry["evidenz_vorher"]
+                or d["quelle"] != entry["quelle_vorher"]):
+            raise ValueError(f"{entry['id']}: Kartentext geändert; erneut prüfen")
+        d["ablauf"] = None
+        d["evidenz"] = entry["pruefhinweis_de"]
+        d["quelle"]["name"] = entry.get("quellen_name", d["quelle"]["name"])
+        d["quelle"]["url"] = entry["quellen_url"]
+        d["belege"].append({
+            "redaktion": UNBELEGTE_ABLAEUFE.relative_to(ROOT).as_posix(),
+            "stand": korrektur["stand"],
+            "befund": entry["grund"],
+            "vorheriger_ablauf": entry["ablauf_vorher"],
+            "url": entry["quellen_url"],
+        })
+    return result
+
+
+def metadatenkorrektur_anwenden(drills, korrektur):
+    """Nach einer inhaltlichen Korrektur veraltete Kompetenzzuordnungen berichtigen."""
+    if korrektur.get("version") != 1:
+        raise ValueError("Unbekanntes Metadatenkorrekturformat")
+    result = deepcopy(drills)
+    by_id = {d["id"]: d for d in result}
+    for entry in korrektur["karten"]:
+        d = by_id[entry["id"]]
+        if (d["titel"] != entry["titel"] or d["ist_alias"]
+                or d["kompetenz"] != entry["kompetenz_vorher"]
+                or not d["ablauf"].startswith(entry["ablauf_beginnt_mit"])):
+            raise ValueError(f"{entry['id']}: Kompetenzkorrektur erneut prüfen")
+        d["kompetenz"] = entry["kompetenz_neu"]
+        d["belege"].append({
+            "redaktion": METADATENKORREKTUR.relative_to(ROOT).as_posix(),
+            "stand": korrektur["stand"], "befund": entry["grund"],
+            "url": entry["quelle"],
+        })
+    return result
+
+
 def nur_tabellenkarten(befunde_index, vorhandene):
     """IDs, die nur in Review-Tabellen auftauchen, aber keinen eigenen Abschnitt haben.
 
@@ -480,6 +828,61 @@ def main():
     quellen_index = quellenbelege()
     raw += nur_tabellenkarten(befunde_index, {r["id"] for r in raw})
     drills = [normalize(r, aliases, befunde_index, quellen_index) for r in raw]
+    drills = redaktion_anwenden(
+        drills, json.loads(REDAKTION.read_text(encoding="utf-8")),
+        EXTRACTED.read_text(encoding="utf-8"))
+    drills = recherchen_anwenden(drills)
+    drills = ablaufplatzhalter_entfernen(
+        drills, json.loads(ABLAUFPLATZHALTER.read_text(encoding="utf-8")))
+    # Runde 12 ergänzt eine der zuvor bereinigten Karten erst nach der Korrektur.
+    drills = recherche_anwenden(
+        drills, json.loads(RECHERCHE_12.read_text(encoding="utf-8")),
+        json.loads(RECHERCHE_BELEGE_12.read_text(encoding="utf-8")),
+        redaktion_pfad=RECHERCHE_12, belege_pfad=RECHERCHE_BELEGE_12)
+    drills = unbelegte_ablaeufe_kennzeichnen(
+        drills, json.loads(UNBELEGTE_ABLAEUFE.read_text(encoding="utf-8")))
+    drills = recherche_anwenden(
+        drills, json.loads(RECHERCHE_13.read_text(encoding="utf-8")),
+        json.loads(RECHERCHE_BELEGE_13.read_text(encoding="utf-8")),
+        redaktion_pfad=RECHERCHE_13, belege_pfad=RECHERCHE_BELEGE_13)
+    drills = recherche_anwenden(
+        drills, json.loads(RECHERCHE_14.read_text(encoding="utf-8")),
+        json.loads(RECHERCHE_BELEGE_14.read_text(encoding="utf-8")),
+        redaktion_pfad=RECHERCHE_14, belege_pfad=RECHERCHE_BELEGE_14)
+    drills = recherche_anwenden(
+        drills, json.loads(RECHERCHE_15.read_text(encoding="utf-8")),
+        json.loads(RECHERCHE_BELEGE_15.read_text(encoding="utf-8")),
+        redaktion_pfad=RECHERCHE_15, belege_pfad=RECHERCHE_BELEGE_15)
+    drills = recherche_anwenden(
+        drills, json.loads(RECHERCHE_16.read_text(encoding="utf-8")),
+        json.loads(RECHERCHE_BELEGE_16.read_text(encoding="utf-8")),
+        redaktion_pfad=RECHERCHE_16, belege_pfad=RECHERCHE_BELEGE_16)
+    drills = recherche_anwenden(
+        drills, json.loads(RECHERCHE_17.read_text(encoding="utf-8")),
+        json.loads(RECHERCHE_BELEGE_17.read_text(encoding="utf-8")),
+        redaktion_pfad=RECHERCHE_17, belege_pfad=RECHERCHE_BELEGE_17)
+    drills = recherche_anwenden(
+        drills, json.loads(RECHERCHE_18.read_text(encoding="utf-8")),
+        json.loads(RECHERCHE_BELEGE_18.read_text(encoding="utf-8")),
+        redaktion_pfad=RECHERCHE_18, belege_pfad=RECHERCHE_BELEGE_18)
+    drills = recherche_anwenden(
+        drills, json.loads(RECHERCHE_19.read_text(encoding="utf-8")),
+        json.loads(RECHERCHE_BELEGE_19.read_text(encoding="utf-8")),
+        redaktion_pfad=RECHERCHE_19, belege_pfad=RECHERCHE_BELEGE_19)
+    drills = recherche_anwenden(
+        drills, json.loads(RECHERCHE_20.read_text(encoding="utf-8")),
+        json.loads(RECHERCHE_BELEGE_20.read_text(encoding="utf-8")),
+        redaktion_pfad=RECHERCHE_20, belege_pfad=RECHERCHE_BELEGE_20)
+    drills = recherche_anwenden(
+        drills, json.loads(RECHERCHE_21.read_text(encoding="utf-8")),
+        json.loads(RECHERCHE_BELEGE_21.read_text(encoding="utf-8")),
+        redaktion_pfad=RECHERCHE_21, belege_pfad=RECHERCHE_BELEGE_21)
+    drills = metadatenkorrektur_anwenden(
+        drills, json.loads(METADATENKORREKTUR.read_text(encoding="utf-8")))
+    drills = recherche_anwenden(
+        drills, json.loads(RECHERCHE_22.read_text(encoding="utf-8")),
+        json.loads(RECHERCHE_BELEGE_22.read_text(encoding="utf-8")),
+        redaktion_pfad=RECHERCHE_22, belege_pfad=RECHERCHE_BELEGE_22)
     drills.sort(key=lambda d: d["id"])
     OUT.parent.mkdir(parents=True, exist_ok=True)
     OUT.write_text(json.dumps(drills, ensure_ascii=False, indent=1), encoding="utf-8")

@@ -1,0 +1,136 @@
+{
+  "version": 1,
+  "stand": "2026-10-06",
+  "karten": [
+    {
+      "id": "EX-054",
+      "titel": "Diamond Passing",
+      "beleg_id": "NBA-STARTER-01-EX054",
+      "quelle_vorher": {
+        "name": "Jr. NBA Starter P1",
+        "url": "https://jr.nba.com/basketball-practice-plans/starter/",
+        "video_status": null
+      },
+      "felder": {
+        "ablauf": {
+          "vorher": "Vier Stationen als Diamond mit zentralem Hütchen. Ballführer dribbelt zum Zentrum, Jump Stop, Forward Pivot und Overhead Pass zur nächsten Reihe.",
+          "de": "Auf dem Halbfeld mit vier äußeren Hütchen eine Raute und ein Hütchen in der Mitte aufbauen. An jedem äußeren Hütchen eine Reihe bilden; in der ersten Reihe stehen mindestens zwei Kinder und ein Ball. Das erste Kind dribbelt zum mittleren Hütchen, stoppt beidbeinig, dreht mit einem Vorwärtspivot zur nächsten Reihe und spielt einen Überkopfpass. Es läuft dem Pass nach und stellt sich hinten an dieser Reihe an. Das fangende Kind dribbelt zur Mitte und setzt die Folge fort. Viermal eine Minute spielen; nach jeder Minute die Pivotvariante wechseln: vorwärts links, vorwärts rechts, rückwärts links, rückwärts rechts.",
+          "en": "Use four outside cones to make a diamond in a half-court, plus one cone in the center. Form a line at each outside cone; the first line has at least two players and one ball. The first player dribbles to the center, makes a two-foot jump stop, forward pivots to face the next line and throws an overhead pass. They follow the pass and join the back of that line. The receiver dribbles to the center and repeats. Play four one-minute rounds, changing pivots after each: forward left, forward right, reverse left, reverse right."
+        },
+        "material": {
+          "vorher": null,
+          "de": "5 Hütchen und 1 Basketball pro Raute",
+          "en": "Five cones and one basketball per diamond"
+        },
+        "spielerzahl": {
+          "vorher": "4+ pro Diamond",
+          "de": "Mindestens 5 pro Raute",
+          "en": "At least five per diamond"
+        }
+      }
+    },
+    {
+      "id": "EX-056",
+      "titel": "Form Shooting – 1 Hand",
+      "beleg_id": "NBA-STARTER-01-EX056",
+      "quelle_vorher": {
+        "name": "Jr. NBA Starter P1",
+        "url": "https://jr.nba.com/basketball-practice-plans/starter/",
+        "video_status": null
+      },
+      "felder": {
+        "ablauf": {
+          "vorher": "Partnerarbeit. Innerhalb weniger Fuß vom Korb: Ball in dominanter Hand; Knie und Arm strecken; Follow-through halten.",
+          "de": "Je zwei Kinder mit einem Ball an einen Korb stellen, nur wenige Schritte vom Korb entfernt. Das werfende Kind hält den Ball in der dominanten Hand vor dem Körper; der Ellbogen liegt unter dem Ball, die Handfläche zeigt nach oben. Aus gebeugten Knien gleichzeitig Beine und Wurfarm strecken, das Handgelenk abklappen und die Wurfhand bis zum Treffer oder Fehlwurf oben halten. Das zweite Kind sichert den Ball und gibt ihn für den nächsten Versuch zurück. Nach einer Serie Rollen tauschen; insgesamt zwei Serien mit je zehn Würfen spielen.",
+          "en": "Pair up with one ball at a basket, standing only a few feet away. The shooter holds the ball in the dominant hand in front of the body, elbow under the ball and palm facing up. Extend knees and shooting arm together, snap the wrist and hold the follow-through until the ball goes in or misses. The partner retrieves and returns the ball for the next attempt. Switch roles after a series; complete two sets of ten shots."
+        },
+        "material": {
+          "vorher": null,
+          "de": "1 Basketball und 1 Korb pro Paar",
+          "en": "One basketball and one basket per pair"
+        }
+      }
+    },
+    {
+      "id": "EX-057",
+      "titel": "Decision 1 on 1",
+      "beleg_id": "NBA-STARTER-01-EX057",
+      "quelle_vorher": {
+        "name": "Jr. NBA Starter P1",
+        "url": "https://jr.nba.com/basketball-practice-plans/starter/",
+        "video_status": null
+      },
+      "felder": {
+        "ablauf": {
+          "vorher": "Angreifer startet nach Signal hinter/gegen den Verteidiger. Coach verändert seine Position; Angreifer liest, ob er zum Korb zieht oder für einen Wurf stoppt.",
+          "de": "Paare mit je einem Ball an verschiedenen Stellen des Dreipunktbogens aufstellen und jedem Paar eine Nummer geben. Die verteidigende Person steht knapp innerhalb der Linie mit Blick zum Korb; der Angreifer steht mit Ball dahinter und berührt ihren Rücken mit dem Ball. Der Coach steht in der Zone und ruft eine Paarnummer. Der Angreifer nimmt den Ball vom Rücken und greift an; die Verteidigung muss zuerst mit beiden Händen den Boden berühren. Bleibt der Coach aus dem Weg, zieht der Angreifer zum Korbleger; tritt er ihm entgegen, stoppt der Angreifer zum Wurf. Nach jedem Angriff wechseln Angriff und Verteidigung unabhängig vom Treffer. Bis drei Punkte spielen.",
+          "en": "Set pairs with one ball at different spots around the three-point arc and number each pair. The defender stands just inside the arc facing the basket. The attacker stands behind, touching the defender's back with the ball. The coach stands in the lane and calls a pair's number. The attacker takes the ball off the defender's back and attacks; the defender must touch the floor with both hands before defending. If the coach stays out of the way, drive for a layup; if the coach steps forward, stop for a shot. Swap offense and defense after every possession, made or missed. Play to three points."
+        },
+        "raum": {
+          "vorher": "Außerhalb der 3-Punkt-Linie",
+          "de": "Ein Korb mit mehreren Startpunkten am Dreipunktbogen; Coach in der Zone",
+          "en": "One basket with several starting spots on the arc; coach in the lane"
+        },
+        "material": {
+          "vorher": null,
+          "de": "1 Basketball pro Paar und 1 Korb",
+          "en": "One basketball per pair and one basket"
+        }
+      }
+    },
+    {
+      "id": "EX-058",
+      "titel": "Shoot and Follow",
+      "beleg_id": "NBA-STARTER-01-EX058",
+      "quelle_vorher": {
+        "name": "Jr. NBA Starter P1",
+        "url": "https://jr.nba.com/basketball-practice-plans/starter/",
+        "video_status": null
+      },
+      "felder": {
+        "ablauf": {
+          "vorher": "Zwei Schützen nacheinander; jeder folgt dem Wurf zum Rebound, passt zum freien Spieler und verlagert sich zu einem neuen Spot.",
+          "de": "Dreiergruppen mit je zwei Bällen auf Körbe verteilen und Wurfposition sowie Wurfart festlegen. Auf das Startsignal wirft das erste Kind; kurz darauf wirft das zweite. Beide folgen dem eigenen Wurf, holen den Rebound und passen zum jeweils freien Mitspieler. Wer gepasst hat, wechselt an eine neue freie Wurfposition und macht sich für den nächsten Pass bereit. Nach zwei Minuten Korb, Wurfart oder Korbseite wechseln; insgesamt drei Durchgänge zu je zwei Minuten spielen.",
+          "en": "Split into groups of three with two balls at each basket and choose the shooting spots and shot type. On the signal, the first player shoots, followed shortly by the second. Both follow their own shot, rebound and pass to the open teammate. After passing, move to a new open shooting spot and be ready for the next pass. Change basket, shot type or side of the basket after two minutes; play three two-minute rounds."
+        },
+        "material": {
+          "vorher": null,
+          "de": "2 Basketbälle und 1 Korb pro Dreiergruppe",
+          "en": "Two basketballs and one basket per group of three"
+        }
+      }
+    },
+    {
+      "id": "EX-060",
+      "titel": "Dribble Relay",
+      "beleg_id": "NBA-STARTER-01-EX060",
+      "quelle_vorher": {
+        "name": "Jr. NBA Starter P1",
+        "url": "https://jr.nba.com/basketball-practice-plans/starter/",
+        "video_status": null
+      },
+      "felder": {
+        "ablauf": {
+          "vorher": "Dribbling zu Ziel-Linie, Jump Stop, Ball aufnehmen, Rückweg rückwärts, High Five und Übergabe; anschließend mit anderer Hand.",
+          "de": "Mehrere möglichst gleich große Teams an der Grundlinie in Reihen aufstellen. Das erste Kind jeder Reihe hat einen Ball. Eine Ziellinie festlegen, etwa Mittellinie oder gegenüberliegende Grundlinie. Auf das Signal dribbeln die ersten Kinder zur Ziellinie, machen einen beidbeinigen Stopp, nehmen den Ball auf und laufen rückwärts zur eigenen Reihe. Dort geben sie dem nächsten Kind ein High Five und übergeben den Ball; dieses startet sofort. Wenn jedes Kind dreimal an der Reihe war, ist der erste Durchgang beendet. Den zweiten Durchgang mit der anderen Dribbelhand spielen.",
+          "en": "Make several roughly even teams in lines on the baseline, with a ball for the first player in each line. Choose a finish line, such as half-court or the far baseline. On the signal, the first players dribble to it, make a two-foot jump stop, pick up the ball and backpedal to their line. They high-five the next player and hand over the ball so that player starts. The first round ends when everyone has gone three times. Play a second round with the other dribbling hand."
+        },
+        "spielerzahl": {
+          "vorher": "4+ Teams",
+          "de": "Mehrere möglichst gleich große Teams",
+          "en": "Several roughly even teams"
+        },
+        "raum": {
+          "vorher": "Linien nach Platzangebot",
+          "de": "Grundlinie und festgelegte Ziellinie; eine Bahn pro Team",
+          "en": "Baseline and chosen finish line; one lane per team"
+        },
+        "material": {
+          "vorher": null,
+          "de": "1 Basketball pro Team",
+          "en": "One basketball per team"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "version": 1,
+  "stand": "2026-10-04",
+  "regel": "Ein Text, der lediglich einen Kompetenzanker oder einen ausstehenden Quellencheck beschreibt, ist kein Übungsablauf. Der Katalogtext bleibt im Rohbestand und in der Prüfnotiz erhalten; das normalisierte Ablauffeld wird geleert.",
+  "karten": [
+    {
+      "id": "EX-062",
+      "titel": "Advanced Stationary Control Series",
+      "ablauf_vorher": "Kompetenzanker aus der offiziellen Starter-Skills-Checkliste; konkrete Untervarianten müssen aus dem zugehörigen Drill/Video separat validiert werden.",
+      "grund": "Platzhalter für eine noch nicht verifizierte Originaldurchführung"
+    },
+    {
+      "id": "EX-063",
+      "titel": "Running Pass",
+      "ablauf_vorher": "Kompetenzanker: Running Pass. Der Katalog fordert die konkrete Drillbeschreibung und das Video vor Freigabe noch separat zu sichern.",
+      "grund": "Platzhalter für eine noch nicht verifizierte Originaldurchführung"
+    },
+    {
+      "id": "EX-064",
+      "titel": "Closeout to Slide",
+      "ablauf_vorher": "Kompetenzanker der offiziellen Starter-Skills-Checkliste. Der konkrete Ablauf wird in einem späteren Quellencheck mit Originalmaterial validiert.",
+      "grund": "Platzhalter für eine noch nicht verifizierte Originaldurchführung"
+    },
+    {
+      "id": "EX-065",
+      "titel": "Boxing Out",
+      "ablauf_vorher": "Kompetenzanker: Boxing Out. Für die endgültige Datenaufnahme wird der konkrete Originaldrill zusätzlich aus dem Practice-Plan/Video erschlossen.",
+      "grund": "Platzhalter für eine noch nicht verifizierte Originaldurchführung"
+    },
+    {
+      "id": "EX-066",
+      "titel": "Pursuing the Ball",
+      "ablauf_vorher": "Kompetenzanker der Rebound-Skills: Pursuing the Ball. Konkreter Ablauf wird separat verifiziert.",
+      "grund": "Platzhalter für eine noch nicht verifizierte Originaldurchführung"
+    },
+    {
+      "id": "EX-067",
+      "titel": "Pass, Cut and Replace",
+      "ablauf_vorher": "Kompetenzanker der Starter-Offense. Die Aufgabe soll nach dem dokumentierten Prinzip Pass → Cut → Ersatzbewegung aufgebaut werden; Originaldurchführung wird vor endgültiger Freigabe separat geprüft.",
+      "grund": "Platzhalter für eine noch nicht verifizierte Originaldurchführung"
+    },
+    {
+      "id": "EX-068",
+      "titel": "Fill the Corner",
+      "ablauf_vorher": "Kompetenzanker der Starter-Offense. Schwerpunkt ist das Besetzen des Ecks als Teil des Spacing-Konzepts; konkrete Originalaufgabe wird noch separat erschlossen.",
+      "grund": "Platzhalter für eine noch nicht verifizierte Originaldurchführung"
+    }
+  ]
+}

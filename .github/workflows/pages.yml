@@ -30,6 +30,13 @@ jobs:
           cache: npm
 
       - run: npm ci
+      - run: python -m pip install -r requirements.txt
+
+      - name: Übungsdaten aus der Primärquelle erzeugen
+        run: |
+          python tools/extract.py
+          python tools/normalize.py
+          git diff --exit-code -- data/drills.json
 
       # Echtes Gatter: bricht ab, wenn eine Prüfregel selbst kaputt ist.
       # Die Datenbefunde (32 Karten ohne Quelle) sind bekannt und blockieren
@@ -50,6 +57,9 @@ jobs:
       # Aussage über data/drills.json ungedeckt.
       - name: Umwandlung der Übungsdaten prüfen
         run: python tools/test_normalize.py
+
+      - name: Beleggebundene Kartenredaktion prüfen
+        run: python tools/test_redaktion.py
 
       - name: Sprachfassungen prüfen
         run: npm run pruefen:sprache

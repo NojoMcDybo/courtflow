@@ -1,0 +1,76 @@
+{
+  "version": 1,
+  "methode": "Manueller Abgleich der genannten Abschnitte auf offiziellen HTML-Trainingsplänen; Eigenformulierungen in der Redaktion. Keine Video- oder vollständige QA-Prüfung.",
+  "belege": [
+    {
+      "id": "JRN-ROOKIE-1-EX-013",
+      "karten_id": "EX-013",
+      "karten_titel": "Hot Ball (Taps)",
+      "name": "Jr. NBA · Rookie Practice 1 · Hot Ball (Taps)",
+      "url": "https://jr.nba.com/basketball-practice-plans/rookie/",
+      "abschnitt": "Hot Ball (Taps)",
+      "abgerufen": "2026-10-02",
+      "felder": [
+        "lernziel",
+        "ablauf",
+        "coachingpunkte",
+        "progression",
+        "raum",
+        "material",
+        "dauer_min"
+      ],
+      "pruefnotiz": "Eigenständige Anleitung im Trainingsplan geprüft; Video nicht geprüft."
+    },
+    {
+      "id": "JRN-ROOKIE-5-EX-014",
+      "karten_id": "EX-014",
+      "karten_titel": "Stationary Dribble – Low / Middle / High",
+      "name": "Jr. NBA · Rookie Practice 5 · Low, Middle, High Dribble",
+      "url": "https://jr.nba.com/basketball-practice-plans/rookie/page/5/",
+      "abschnitt": "Low, Middle, High Dribble",
+      "abgerufen": "2026-10-02",
+      "felder": [
+        "lernziel",
+        "ablauf",
+        "coachingpunkte",
+        "raum",
+        "material",
+        "dauer_min"
+      ],
+      "pruefnotiz": "Zuordnung über gleichnamigen Checklistenpunkt. Arbeitszeit berechnet: 2 × 20 Sekunden × 3 Höhen × 2 Hände; Pausen offen. Video nicht geprüft."
+    },
+    {
+      "id": "JRN-ROOKIE-3-EX-015",
+      "karten_id": "EX-015",
+      "karten_titel": "Stationary Crossover",
+      "name": "Jr. NBA · Rookie Practice 3 · Stationary Crossover Low, Middle, High",
+      "url": "https://jr.nba.com/basketball-practice-plans/rookie/page/3/",
+      "abschnitt": "Stationary Crossover Low, Middle, High",
+      "abgerufen": "2026-10-02",
+      "felder": [
+        "lernziel",
+        "ablauf",
+        "coachingpunkte",
+        "progression",
+        "raum",
+        "material"
+      ],
+      "pruefnotiz": "Zeitkonflikt: Überschrift lässt Serienzahl offen, Ablauf beschreibt drei 20-Sekunden-Abschnitte; Katalog nennt dagegen drei Serien je Höhe. Keine Gesamtdauer festgelegt. Video nicht geprüft."
+    },
+    {
+      "id": "JRN-ROOKIE-4-EX-038",
+      "karten_id": "EX-038",
+      "karten_titel": "Defensive Stance",
+      "name": "Jr. NBA · Rookie Practice 4 · Defensive Stance",
+      "url": "https://jr.nba.com/basketball-practice-plans/rookie/page/4/",
+      "abschnitt": "Defensive Stance",
+      "abgerufen": "2026-10-02",
+      "felder": [
+        "lernziel",
+        "ablauf",
+        "coachingpunkte"
+      ],
+      "pruefnotiz": "Technikbeschreibung geprüft. Keine Zeit, Gruppengröße oder Übungsserie angegeben; keine Übernahme aus benachbarten Drills."
+    }
+  ]
+}

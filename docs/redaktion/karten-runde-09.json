@@ -1,0 +1,96 @@
+{
+  "version": 1,
+  "stand": "2026-10-03",
+  "karten": [
+    {
+      "id": "EX-105", "titel": "Coach Assisted 2 on 2 Small-Sided Game", "beleg_id": "JRN-R5-EX105",
+      "quelle_vorher": {"name": "Jr. NBA Rookie Practice 5", "url": null, "video_status": null},
+      "felder": {
+        "ablauf": {"vorher": null, "de": "Das Halbfeld in zwei Seiten teilen. Je Seite beginnen zwei Angreifer und zwei Verteidiger an Flügel und Ecke, der Coach steht am Ellbogen. Ein Angreifer passt zum Coach und schneidet zum Korb; der Coach spielt ihn oder seinen Mitspieler an. Kommt kein Pass zurück, läuft der Cutter wieder hinter die Dreierlinie. Passen und Schneiden laufen bis zum Treffer oder bis der Coach „Live“ ruft und das 2-gegen-2 freigibt. Nach Treffer oder Stop wechseln die Verteidiger in den Angriff; zwei neue Verteidiger kommen hinein, der Coach startet auf der anderen Seite neu.", "en": "Split the half court into two sides. On each side, two attackers and two defenders start at the wing and corner, with a coach at the elbow. An attacker passes to the coach and cuts to the basket; the coach passes to that player or their teammate. If no pass comes back, the cutter returns beyond the three-point line. Passing and cutting continue until a score or the coach calls 'Live' for 2-on-2. After a score or stop, defenders become attackers, two new defenders enter, and the coach restarts on the other side."},
+        "coachingpunkte": {"vorher": null, "de": "Verteidigerposition lesen und vor dem Cut antäuschen; den Coach als Anspielstation nutzen, wenn der Angriff stockt.", "en": "Read the defender and fake before cutting; use the coach as an outlet if the attack stalls."},
+        "dauer_min": {"vorher": null, "de": "16 × 30 s", "en": "16 × 30 seconds"},
+        "raum": {"vorher": null, "de": "Halbfeld, zwei Seiten", "en": "Half court, split into two sides"},
+        "spielerzahl": {"vorher": null, "de": "4 pro Feldseite plus Coach", "en": "Four per court side plus coach"},
+        "material": {"vorher": null, "de": "Basketball und Korb", "en": "Basketball and basket"}
+      }
+    },
+    {
+      "id": "EX-132", "titel": "Partner Closeout Shooting", "beleg_id": "JRN-AS8-EX132",
+      "quelle_vorher": {"name": "Jr. NBA All-Star", "url": "https://jr.nba.com/basketball-practice-plans/all-star/page/8/", "video_status": null},
+      "felder": {
+        "ablauf": {"vorher": null, "de": "Paare bilden: Eine Person verteidigt mit Ball, passt zum Angreifer und läuft zum Closeout. Der Angreifer wirft bei Abstand sofort oder greift bei engem Closeout mit ein bis zwei Dribblings zum Pull-up oder Korbleger an. Sperrt der Verteidiger den ersten Dribblingweg, wechselt der Angreifer mit Crossover oder anderer Bewegung die Richtung. Nach drei bis vier Aktionen Rollen tauschen.", "en": "Work in pairs. The defender starts with the ball, passes to the attacker and closes out. If there is space, the attacker shoots; against a tight closeout, they attack with one or two dribbles for a pull-up or layup. If the defender cuts off the first drive, the attacker changes direction with a crossover or another move. Swap roles after three or four actions."},
+        "spielerzahl": {"vorher": null, "de": "Paare", "en": "Pairs"},
+        "dauer_min": {"vorher": null, "de": "3–4 min", "en": "3–4 minutes"},
+        "material": {"vorher": null, "de": "Ein Basketball pro Paar und Korb", "en": "One basketball per pair and a basket"},
+        "progression": {"vorher": null, "de": "Den Pass in Bewegung fangen und den Closeout angreifen.", "en": "Catch the pass on the move and attack the closeout."}
+      }
+    },
+    {
+      "id": "EX-133", "titel": "4 on 4 Continuous with Constraints", "beleg_id": "JRN-S3-EX133",
+      "quelle_vorher": {"name": "Jr. NBA Starter", "url": "https://jr.nba.com/basketball-practice-plans/starter/page/3/", "video_status": null},
+      "felder": {
+        "ablauf": {"vorher": null, "de": "Drei Viererteams bilden. Ein Team startet mit Ball an der Mittellinie, die beiden anderen verteidigen an je einem Korb. Erzielt der Angriff einen Korb, nimmt er den Ball und greift sofort den anderen Korb an. Stoppt die Verteidigung den Angriff, übernimmt sie den Ball und greift den anderen Korb an. Gespielt wird bis drei Punkte. Als Originalregeln können ein Korb innerhalb von sieben Sekunden doppelt zählen, drei Stops in Folge gewinnen oder das angreifende Team nach Überqueren der Mittellinie die Korbrichtung wechseln.", "en": "Form three teams of four. One team starts with the ball at midcourt and the other two defend a basket each. If the attackers score, they take the ball and attack the opposite basket. If defenders stop them, those defenders gain possession and attack the opposite basket. Play to three points. Original constraints include double points for a score within seven seconds, a win after three straight defensive stops, or allowing attackers to switch baskets after crossing midcourt."},
+        "spielerzahl": {"vorher": null, "de": "3 Viererteams", "en": "Three teams of four"},
+        "raum": {"vorher": null, "de": "Ganzfeld mit zwei Körben", "en": "Full court with two baskets"},
+        "dauer_min": {"vorher": null, "de": "Spiele bis 3 Punkte", "en": "Games to three points"},
+        "material": {"vorher": null, "de": "Basketball und zwei Körbe", "en": "Basketball and two baskets"}
+      }
+    },
+    {
+      "id": "EX-140", "titel": "3 on 3 No Dribble Game", "beleg_id": "JRN-AS1-EX140",
+      "quelle_vorher": {"name": "Jr. NBA All-Star", "url": "https://jr.nba.com/basketball-practice-plans/all-star/", "video_status": null},
+      "felder": {
+        "ablauf": {"vorher": null, "de": "Dreierteams an möglichst vielen Körben bilden. Ein Team greift vom Bereich um die Dreierlinie an, eines verteidigt. Live 3-gegen-3 ohne Dribbling spielen. Nach Treffer oder Ballverlust von außerhalb einwerfen; für den Angriff gilt eine 30-Sekunden-Uhr. Zwei Treffer gewinnen eine Runde, danach wechseln neue Teams hinein. Die Verteidigung darf bei Off-Ball-Screens nicht wechseln; ein Wechsel bringt dem Angriff einen Punkt.", "en": "Make teams of three at as many baskets as possible. One team attacks from around the arc and one defends. Play live 3-on-3 without dribbling. Inbound after a basket or turnover and use a 30-second shot clock. Two scores win a round, then new teams rotate in. Defenders may not switch off-ball screens; a switch gives the offense one point."},
+        "spielerzahl": {"vorher": null, "de": "Dreierteams", "en": "Teams of three"},
+        "dauer_min": {"vorher": null, "de": "4 Spiele bis 2 Treffer", "en": "Four games to two scores"},
+        "material": {"vorher": null, "de": "Basketball, Korb und 30-Sekunden-Uhr", "en": "Basketball, basket and 30-second shot clock"},
+        "progression": {"vorher": null, "de": "Für einen defensiven Stop einen Punkt vergeben.", "en": "Award one point for a defensive stop."}
+      }
+    },
+    {
+      "id": "EX-141", "titel": "3 on 3 Continuous", "beleg_id": "JRN-AS1-EX141",
+      "quelle_vorher": {"name": "Jr. NBA All-Star", "url": "https://jr.nba.com/basketball-practice-plans/all-star/", "video_status": null},
+      "felder": {
+        "ablauf": {"vorher": null, "de": "Dreierteams bilden. Ein Team startet mit Ball an der Mittellinie, je ein weiteres verteidigt einen der beiden Körbe. Das Team mit Ball greift einen Korb an. Trifft es, erhält es einen Punkt, bekommt den Ball zurück und greift den anderen Korb an. Bei einem Stop übernimmt das verteidigende Team den Ball und greift in Gegenrichtung an. Wartende Teams an den Grundlinien ersetzen nach einem Treffer das Team, gegen das getroffen wurde. Gespielt wird bis drei Treffer.", "en": "Form teams of three. One starts with the ball at midcourt and another defends at each basket. The team with the ball attacks one basket. If it scores, it gets a point and the ball back to attack the other basket. After a stop, the defending team takes possession and attacks in the opposite direction. Waiting teams on the baselines replace the team scored against. Play to three made baskets."},
+        "spielerzahl": {"vorher": null, "de": "Dreierteams", "en": "Teams of three"},
+        "raum": {"vorher": null, "de": "Ganzfeld mit zwei Körben", "en": "Full court with two baskets"},
+        "dauer_min": {"vorher": null, "de": "Spiele bis 3 Treffer", "en": "Games to three makes"},
+        "material": {"vorher": null, "de": "Basketball und zwei Körbe", "en": "Basketball and two baskets"}
+      }
+    },
+    {
+      "id": "EX-146", "titel": "Decision 1 on 1", "beleg_id": "JRN-S1-EX146",
+      "quelle_vorher": {"name": "Jr. NBA Starter", "url": "https://jr.nba.com/basketball-practice-plans/starter/", "video_status": null},
+      "felder": {
+        "ablauf": {"vorher": null, "de": "Paare mit Ball an verschiedenen Positionen um die Dreierlinie aufstellen und nummerieren. Der Verteidiger steht in Haltung knapp innerhalb der Linie mit Blick zum Korb, der Angreifer dahinter berührt dessen Rücken mit dem Ball. Ruft der Coach die Paarnummer, nimmt der Angreifer den Ball weg und greift an; der Verteidiger berührt zuerst mit beiden Händen den Boden. Bleibt der Coach aus dem Weg, zieht der Angreifer zum Korbleger. Tritt der Coach vor, stoppt er für einen Wurf. Nach jedem Angriff Ballbesitz tauschen und bis drei Punkte spielen.", "en": "Number pairs with a ball at different points around the three-point line. The defender stands just inside the line facing the basket; the attacker stands behind and touches the ball to the defender's back. On their number, the attacker takes the ball and drives while the defender first touches the floor with both hands. If the coach stays away, the attacker goes for a layup; if the coach steps forward, they pull up for a shot. Alternate possessions and play to three points."},
+        "spielerzahl": {"vorher": null, "de": "Paare", "en": "Pairs"},
+        "dauer_min": {"vorher": null, "de": "Spiele bis 3 Punkte", "en": "Games to three points"},
+        "raum": {"vorher": null, "de": "Um die Dreierlinie und ein Korb", "en": "Around the three-point line and one basket"},
+        "material": {"vorher": null, "de": "Ein Basketball pro Paar und Korb", "en": "One basketball per pair and a basket"}
+      }
+    },
+    {
+      "id": "EX-147", "titel": "3 on 2 Advantage", "beleg_id": "JRN-S1-EX147",
+      "quelle_vorher": {"name": "Jr. NBA Starter", "url": "https://jr.nba.com/basketball-practice-plans/starter/", "video_status": null},
+      "felder": {
+        "ablauf": {"vorher": null, "de": "Drei Angreifer stehen außerhalb der Dreierlinie, zwei Verteidiger in der Zone. Ein Verteidiger eröffnet mit einem Pass zu einem Angreifer. Danach spielen sie live 3-gegen-2 auf einen Korb. Die Angreifer dürfen zunächst nicht schneiden, sondern suchen per Pass einen guten Wurf. Nach Treffer oder Stop wechseln die zwei Verteidiger mit einer weiteren Person in den Angriff; zwei neue Verteidiger kommen hinein.", "en": "Start three attackers outside the arc and two defenders in the key. One defender passes to an attacker to begin live 3-on-2 at one basket. Attackers initially may not cut; they move the ball by passing to find a good shot. After a score or stop, the two defenders join another player on offense and two new defenders enter."},
+        "spielerzahl": {"vorher": null, "de": "5 pro Durchgang", "en": "Five per round"},
+        "dauer_min": {"vorher": null, "de": "6 min", "en": "6 minutes"},
+        "raum": {"vorher": null, "de": "Halbfeld mit Korb", "en": "Half court with basket"},
+        "material": {"vorher": null, "de": "Basketball und Korb", "en": "Basketball and basket"},
+        "progression": {"vorher": null, "de": "Einem Angreifer einen Cut mit Rückkehr hinter die Dreierlinie erlauben oder die Ballhaltezeit auf eine Sekunde begrenzen.", "en": "Allow one attacker to cut and return beyond the arc, or limit ball holding time to one second."}
+      }
+    },
+    {
+      "id": "EX-148", "titel": "3 on 3 No Dribble", "beleg_id": "JRN-AS1-EX148",
+      "quelle_vorher": {"name": "Jr. NBA All-Star", "url": "https://jr.nba.com/basketball-practice-plans/all-star/", "video_status": null},
+      "felder": {
+        "ablauf": {"vorher": null, "de": "Dreierteams an mehreren Körben bilden und live 3-gegen-3 ohne Dribbling spielen. Nach Treffer oder Ballverlust von außerhalb einwerfen. Der Angriff hat 30 Sekunden für einen Abschluss. Zwei Treffer gewinnen die Runde, dann wechseln neue Teams hinein. Die Verteidigung darf bei Off-Ball-Screens nicht wechseln; tut sie es doch, erhält der Angriff einen Punkt.", "en": "Create teams of three at several baskets and play live 3-on-3 without dribbling. Inbound after a score or turnover. The offense has 30 seconds to shoot. Two scores win the round, then new teams rotate in. Defenders may not switch off-ball screens; if they do, the offense gets one point."},
+        "spielerzahl": {"vorher": null, "de": "Dreierteams", "en": "Teams of three"},
+        "dauer_min": {"vorher": null, "de": "4 Spiele bis 2 Treffer", "en": "Four games to two scores"},
+        "material": {"vorher": null, "de": "Basketball, Korb und 30-Sekunden-Uhr", "en": "Basketball, basket and 30-second shot clock"},
+        "progression": {"vorher": null, "de": "Für einen defensiven Stop einen Punkt vergeben.", "en": "Award one point for a defensive stop."}
+      }
+    }
+  ]
+}

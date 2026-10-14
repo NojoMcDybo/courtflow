@@ -1,0 +1,50 @@
+{
+  "version": 1,
+  "methode": "Manueller Abgleich mit dem offiziellen FIBA/WABC Mini-Basketball Coaches Manual, Abschnitt 4.5, PDF-Seite 30. Die Kartentitel sind redaktionelle Kurzbezeichnungen; Zeitangaben stehen dort nicht. Videos und QA nicht geprüft.",
+  "belege": [
+    {
+      "id": "FIBA-MINI-45-1-EX-049",
+      "karten_id": "EX-049",
+      "karten_titel": "Free Dribble + Whistle Pass",
+      "name": "FIBA/WABC · Mini-Basketball Coaches Manual · 4.5, Activity 1",
+      "url": "https://assets.fiba.basketball/image/upload/documents-corporate-wabc-coaching-manual-mini-basketball-eng.pdf",
+      "abschnitt": "4.5 Dribbling, passing and shooting, Activity 1, PDF-Seite 30",
+      "abgerufen": "2026-10-03",
+      "felder": ["lernziel", "ablauf", "raum", "material"],
+      "pruefnotiz": "Freies Dribbling in begrenztem Raum, Pass nach Pfiff. Keine feste Anzahl, Dauer oder Ballquote."
+    },
+    {
+      "id": "FIBA-MINI-45-2-EX-050",
+      "karten_id": "EX-050",
+      "karten_titel": "Dribble Under Arms + Pivot & Pass",
+      "name": "FIBA/WABC · Mini-Basketball Coaches Manual · 4.5, Activity 2",
+      "url": "https://assets.fiba.basketball/image/upload/documents-corporate-wabc-coaching-manual-mini-basketball-eng.pdf",
+      "abschnitt": "4.5 Dribbling, passing and shooting, Activity 2, PDF-Seite 30",
+      "abgerufen": "2026-10-03",
+      "felder": ["lernziel", "ablauf", "spielerzahl", "raum", "material"],
+      "pruefnotiz": "Originalaktivität mit 3–4 m Partnerabstand, Hin- und Rückweg, beiden Pivotrichtungen und Rollenwechsel."
+    },
+    {
+      "id": "FIBA-MINI-45-3-EX-051",
+      "karten_id": "EX-051",
+      "karten_titel": "Hand-Off from Jump Stop",
+      "name": "FIBA/WABC · Mini-Basketball Coaches Manual · 4.5, Activity 3",
+      "url": "https://assets.fiba.basketball/image/upload/documents-corporate-wabc-coaching-manual-mini-basketball-eng.pdf",
+      "abschnitt": "4.5 Dribbling, passing and shooting, Activity 3, PDF-Seite 30",
+      "abgerufen": "2026-10-03",
+      "felder": ["lernziel", "ablauf", "coachingpunkte", "spielerzahl", "raum", "material"],
+      "pruefnotiz": "Originalaktivität mit Jump Stop und Hand-off; Handposition sowie Rückwärtsgehen ausdrücklich genannt."
+    },
+    {
+      "id": "FIBA-MINI-45-4-EX-052",
+      "karten_id": "EX-052",
+      "karten_titel": "Double-Ball Dribble → Pass",
+      "name": "FIBA/WABC · Mini-Basketball Coaches Manual · 4.5, Activity 4",
+      "url": "https://assets.fiba.basketball/image/upload/documents-corporate-wabc-coaching-manual-mini-basketball-eng.pdf",
+      "abschnitt": "4.5 Dribbling, passing and shooting, Activity 4, PDF-Seite 30",
+      "abgerufen": "2026-10-03",
+      "felder": ["lernziel", "ablauf", "spielerzahl", "material", "progression"],
+      "pruefnotiz": "Zwei Bälle pro Paar; Gehen und Laufen sind Originalvarianten, keine Zeitvorgaben."
+    }
+  ]
+}

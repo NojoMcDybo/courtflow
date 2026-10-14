@@ -1,0 +1,23 @@
+{
+  "version": 1,
+  "stand": "2026-10-03",
+  "karten": [
+    {
+      "id": "EX-109", "titel": "Zielwürfe mit unterschiedlichen Bällen, Höhen und Distanzen", "beleg_id": "FIBA-MINI-42-1-EX109",
+      "quelle_vorher": {"name": "FIBA/WABC Mini-Basketball Coaches Manual, S", "url": "https://assets.fiba.basketball/image/upload/documents-corporate-wabc-coaching-manual-mini-basketball-eng.pdf", "video_status": null},
+      "felder": {
+        "ablauf": {"vorher": null, "de": "Bälle verschiedener Größen und Gewichte auf Ziele aus unterschiedlichen Höhen und Entfernungen werfen: zum Beispiel Tennis-, Mini-Basket-, Volley- oder Fußbälle in Behälter, auf markierte Kreise oder auf Körbe. Die Zielhöhe und Entfernung für weitere Durchgänge verändern.", "en": "Throw balls of different sizes and weights at targets from different heights and distances, such as tennis balls, mini basketballs, volleyballs or soccer balls into containers, marked circles or baskets. Change target height and distance for further rounds."},
+        "material": {"vorher": null, "de": "Bälle verschiedener Größen und Gewichte; Behälter, Kreise oder Körbe als Ziele", "en": "Balls of different sizes and weights; containers, circles or baskets as targets"},
+        "progression": {"vorher": null, "de": "Entfernung und Zielhöhe verändern; mit höherem Ziel den Wurf nach oben anregen.", "en": "Vary distance and target height; use a higher target to encourage an upward throw."}
+      }
+    },
+    {
+      "id": "EX-110", "titel": "Throw High / Far – variabler Zielwurf", "beleg_id": "FIBA-MINI-32-11-EX110",
+      "quelle_vorher": {"name": "FIBA/WABC Mini-Basketball Coaches Manual, S", "url": null, "video_status": null},
+      "felder": {
+        "ablauf": {"vorher": null, "de": "Den Ball zunächst so hoch wie möglich werfen. Danach den Ball so weit wie möglich werfen. Beide Aufgaben als freie Wurf- und Koordinationsversuche wiederholen; die Quelle gibt keine feste Anzahl oder Zeit vor.", "en": "First throw the ball as high as possible, then as far as possible. Repeat both as open throwing and coordination challenges; the source gives no fixed repetition count or time."},
+        "material": {"vorher": null, "de": "Ball", "en": "Ball"}
+      }
+    }
+  ]
+}

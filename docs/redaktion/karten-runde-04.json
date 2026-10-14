@@ -1,0 +1,164 @@
+{
+  "version": 1,
+  "stand": "2026-10-02",
+  "karten": [
+    {
+      "id": "EX-010",
+      "titel": "Partner Shooting / Form Shooting",
+      "beleg_id": "JRN-ROOKIE-1-EX-010",
+      "quelle_vorher": {
+        "name": "Jr. NBA Rookie",
+        "url": null,
+        "video_status": null
+      },
+      "felder": {
+        "ablauf": {
+          "vorher": null,
+          "de": "Paare suchen eine freie Stelle und werfen sich einen Ball mit sauberer Wurftechnik gegenseitig zu.",
+          "en": "Pairs find space and shoot one ball back and forth using sound shooting form."
+        },
+        "spielerzahl": {
+          "vorher": null,
+          "de": "Paare",
+          "en": "Pairs"
+        },
+        "material": {
+          "vorher": null,
+          "de": "Ein Basketball pro Paar",
+          "en": "One basketball per pair"
+        },
+        "dauer_min": {
+          "vorher": null,
+          "de": "2 × 5 Würfe pro Person",
+          "en": "2 × 5 shots per player"
+        },
+        "progression": {
+          "vorher": null,
+          "de": "Auf einer Linie hochwerfen; der Ball soll davor auf derselben Linie landen. Der Partner fängt und wirft zurück.",
+          "en": "Shoot upward along a floor line so the ball lands ahead on that line; the partner catches and shoots back."
+        }
+      }
+    },
+    {
+      "id": "EX-025",
+      "titel": "Stationary Form Shooting",
+      "beleg_id": "JRN-ROOKIE-1-EX-025",
+      "quelle_vorher": {
+        "name": "Q5/Q7",
+        "url": null,
+        "video_status": null
+      },
+      "felder": {
+        "lernziel": {
+          "vorher": null,
+          "de": "Eine ausbalancierte Wurfbewegung entwickeln.",
+          "en": "Develop a balanced shooting motion."
+        },
+        "ablauf": {
+          "vorher": null,
+          "de": "Aus gebeugter Haltung Beine und Wurfarm strecken. Der Ellbogen liegt unter dem Ball, die andere Hand stützt seitlich. Beim Abwurf das Handgelenk abklappen und nachhalten.",
+          "en": "Extend the legs and shooting arm from a bent stance. Keep the elbow under the ball and the other hand at its side. Snap the wrist on release and hold the follow-through."
+        },
+        "coachingpunkte": {
+          "vorher": null,
+          "de": "Zum Korb ausrichten und ausbalanciert bleiben.",
+          "en": "Face the basket and stay balanced."
+        },
+        "material": {
+          "vorher": null,
+          "de": "Basketball und Korb",
+          "en": "Basketball and basket"
+        }
+      }
+    },
+    {
+      "id": "EX-026",
+      "titel": "Using the Backboard",
+      "beleg_id": "JRN-ROOKIE-6-EX-026",
+      "quelle_vorher": {
+        "name": "Q5/Q7",
+        "url": null,
+        "video_status": null
+      },
+      "felder": {
+        "lernziel": {
+          "vorher": null,
+          "de": "Mit Brett gezielt abschließen.",
+          "en": "Finish accurately using the backboard."
+        },
+        "ablauf": {
+          "vorher": null,
+          "de": "Zu zweit an einen Korb gehen. Eine Person wirft von einer unteren Zonenecke und läuft sofort zur anderen. Der Partner unterstützt beim Rebound und Zuspiel. Nach jedem Wurf die Seite wechseln; nach 30 Sekunden tauschen beide ihre Rollen.",
+          "en": "Work in pairs at a basket. One player shoots from a low block and immediately moves to the other. The partner helps rebound and pass. Change sides after every shot; swap roles after 30 seconds."
+        },
+        "coachingpunkte": {
+          "vorher": null,
+          "de": "Das Zielrechteck am Brett anvisieren; Treffer zählen.",
+          "en": "Aim for the backboard square; count makes."
+        },
+        "spielerzahl": {
+          "vorher": null,
+          "de": "Paare",
+          "en": "Pairs"
+        },
+        "material": {
+          "vorher": null,
+          "de": "Ein Basketball pro Paar und ein Korb",
+          "en": "One basketball per pair and a basket"
+        },
+        "dauer_min": {
+          "vorher": null,
+          "de": "2 × 30 Sekunden; Rollenwechsel nach 30 Sekunden",
+          "en": "2 × 30 seconds; swap roles after 30 seconds"
+        },
+        "progression": {
+          "vorher": null,
+          "de": "Abstand und Wurfwinkel durch veränderte Positionen anpassen.",
+          "en": "Vary shooting positions to change distance and angle."
+        }
+      }
+    },
+    {
+      "id": "EX-048",
+      "titel": "Pass & Cut Decision Game",
+      "beleg_id": "JRN-STARTER-11-EX-048",
+      "quelle_vorher": {
+        "name": "Q5/Q7",
+        "url": null,
+        "video_status": null
+      },
+      "felder": {
+        "lernziel": {
+          "vorher": null,
+          "de": "Nach dem Pass die Verteidigung lesen.",
+          "en": "Read the defense after passing."
+        },
+        "ablauf": {
+          "vorher": null,
+          "de": "Zwei Reihen: Flügel mit Ball und Freiwurflinienecke. Der Coach verteidigt am Flügel. Zum Mitspieler passen und reagieren: Versperrt der Coach den Rückpass, hinter ihm zum Korb schneiden und den Pass zum Korbleger erhalten. Gibt er Raum, eine Dribbelübergabe am Ellenbogen nutzen und abschließen. Danach Reihen wechseln.",
+          "en": "Form lines at the wing with a ball and at the elbow. A coach defends the wing. Pass and read: if the coach denies the return pass, back-cut for a lay-up pass. If the coach drops back, take a dribble handoff at the elbow and finish. Switch lines afterwards."
+        },
+        "spielerzahl": {
+          "vorher": null,
+          "de": "2+ pro Rotation; zusätzlich ein Coach",
+          "en": "2+ players in the rotation; plus a coach"
+        },
+        "dauer_min": {
+          "vorher": null,
+          "de": "5 min",
+          "en": "5 minutes"
+        },
+        "material": {
+          "vorher": null,
+          "de": "Basketball und Korb",
+          "en": "Basketball and basket"
+        },
+        "progression": {
+          "vorher": null,
+          "de": "Der Coach übernimmt das Zuspiel am Ellenbogen; ein Mitspieler verteidigt im Eins-gegen-eins.",
+          "en": "The coach supplies passes at the elbow; a teammate defends in one-on-one play."
+        }
+      }
+    }
+  ]
+}

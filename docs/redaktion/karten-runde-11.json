@@ -1,0 +1,38 @@
+{
+  "version": 1,
+  "stand": "2026-10-04",
+  "karten": [
+    {
+      "id": "EX-135",
+      "titel": "Two Halves Scrimmage",
+      "beleg_id": "FIBA-L1-218-EX135",
+      "quelle_vorher": {
+        "name": "FIBA/WABC Level 1",
+        "url": "https://assets.fiba.basketball/image/upload/documents-corporate-wabc-coaching-level-manuals-level-1-eng.pdf",
+        "video_status": null
+      },
+      "felder": {
+        "ablauf": {
+          "vorher": null,
+          "de": "Zwei Teams mit je 3, 4 oder 5 Spielenden bestreiten zwei Halbzeiten. Ein Team greift auf einem Halbfeld gegen Verteidigung an. Nach Ballgewinn, Defensivrebound oder Korb des Angriffs geht die Verteidigung zum anderen Korb und wirft dort ohne Gegnerdruck so lange, bis sie trifft. Danach gibt sie den Ball an den Angriff zurück; dieser spielt erneut umkämpft auf dem Halbfeld. Zur Halbzeit tauschen die Teams Angriff und Verteidigung. Der Coach kann die Regeln gezielt verändern, etwa ohne Dribbling spielen lassen, vor einem Außenwurf einen Pass zum Post verlangen oder nur Off-Ball-Screens erlauben.",
+          "en": "Two teams of three, four or five players play two halves. One team attacks against defense in the half court. After a steal, defensive rebound or offensive score, the defenders go to the opposite basket and shoot without opposition until they score. They then return the ball to the attacking team for another contested half-court possession. At halftime, the teams swap offense and defense. The coach can vary the rules, for example by disallowing dribbling, requiring a pass to the post before an outside shot, or allowing only off-ball screens."
+        },
+        "spielerzahl": {
+          "vorher": null,
+          "de": "Zwei Teams mit je 3, 4 oder 5 Spielenden",
+          "en": "Two teams of three, four or five players"
+        },
+        "raum": {
+          "vorher": null,
+          "de": "Umkämpfter Angriff auf einem Halbfeld; freier Abschluss am anderen Korb",
+          "en": "Contested play in one half court; unguarded scoring at the opposite basket"
+        },
+        "material": {
+          "vorher": null,
+          "de": "Basketball und zwei Körbe",
+          "en": "Basketball and two baskets"
+        }
+      }
+    }
+  ]
+}

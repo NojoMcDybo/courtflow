@@ -1,0 +1,37 @@
+{
+  "version": 1,
+  "methode": "Die vollständigen Organisations- und Ablaufangaben der offiziellen DBB-Handbücher wurden den konkreten Karten zugeordnet. Es wurden keine festen Übungsdauern oder Video-IDs aus dem Titel erschlossen.",
+  "belege": [
+    {"id": "NBA-ROOKIE-8-EX041", "karten_id": "EX-041", "karten_titel": "Tracing the Ball", "name": "Jr. NBA · Rookie Practice 8 · Tracing the Ball Breakdown Drill", "url": "https://jr.nba.com/basketball-practice-plans/rookie/page/8/", "abschnitt": "Team Concepts: Tracing the Ball Breakdown Drill", "abgerufen": "2026-10-06", "felder": ["ablauf", "raum"], "pruefnotiz": "Original beschreibt Dreiergruppen, ein Ball, Closeout, Ball-Ruf, Drei-Sekunden-Tracing, Passfolge und zwei Durchgänge. Videoeinbettung der Originalseite zeigt YouTube-ID Xh1abiF-eeM."},
+    {"id": "NBA-ROOKIE-4-EX042", "karten_id": "EX-042", "karten_titel": "Lay-Up High Five Drill", "name": "Jr. NBA · Rookie Practice 4 · Lay-Up High Five Drill", "url": "https://jr.nba.com/basketball-practice-plans/rookie/page/4/", "abschnitt": "Shooting: Lay-Up High Five Drill", "abgerufen": "2026-10-06", "felder": ["ablauf", "raum", "material"], "pruefnotiz": "Original beschreibt die High-Five-Hand des Coaches, Schrittfolge, Seitenwechsel und drei Minuten je Seite. Videoeinbettung zeigt YouTube-ID hI0aUdwBAqw."},
+    {"id": "NBA-ROOKIE-4-EX043", "karten_id": "EX-043", "karten_titel": "Lay-Up Skips Drill", "name": "Jr. NBA · Rookie Practice 4 · Lay-Up Skips Drill", "url": "https://jr.nba.com/basketball-practice-plans/rookie/page/4/", "abschnitt": "Shooting: Lay-Up Skips Drill", "abgerufen": "2026-10-06", "felder": ["ablauf", "raum", "material"], "pruefnotiz": "Original beschreibt Grundlinie, Trainerkommando, gegenüberliegende Hand, Hin- und Rückweg. Videoeinbettung zeigt YouTube-ID 9z6NtAuiB4U."},
+    {"id": "NBA-STARTER-1-EX059", "karten_id": "EX-059", "karten_titel": "Defense, I Love It Drill", "name": "Jr. NBA · Starter Practice 1 · Defense, I Love It Drill", "url": "https://jr.nba.com/basketball-practice-plans/starter/", "abschnitt": "Team Concepts: Defense, I Love It Drill", "abgerufen": "2026-10-06", "felder": ["ablauf"], "pruefnotiz": "Original beschreibt den zunächst fehlenden Defense/I-love-it-Auftakt, Gleitschritte, Wurf-Contest und zwei Sätze. Videoeinbettung zeigt YouTube-ID dYmeloQdxLs."},
+    {"id": "NBA-STARTER-1-EX085", "karten_id": "EX-085", "karten_titel": "Defense, I Love It Drill", "name": "Jr. NBA · Starter Practice 1 · Defense, I Love It Drill", "url": "https://jr.nba.com/basketball-practice-plans/starter/", "abschnitt": "Team Concepts: Defense, I Love It Drill", "abgerufen": "2026-10-06", "felder": ["ablauf"], "pruefnotiz": "Die bisherige Quellenangabe Practice 6 enthielt diesen Drill nicht. Die identische Übung steht in Practice 1 und bettet YouTube-ID dYmeloQdxLs ein. EX-059 erfasst dieselbe Übung bereits; Dublettenprüfung bleibt offen."},
+    {"id": "DBB-EASY-22-EX098", "karten_id": "EX-098", "karten_titel": "Ich mach’ es wie Du", "name": "DBB · Easybasket-Handbuch · Ich mach’ es wie Du", "url": "https://www.basketball-bund.de/wp-content/uploads/sites/2/2024/03/DBB_Jugend_Easybasket-Handbuch.pdf", "abschnitt": "Ich mach’ es wie Du, gedruckte Seite 22", "abgerufen": "2026-10-06", "felder": ["ablauf", "spielerzahl", "raum", "material"], "pruefnotiz": "Der bisherige Ablauf gehörte zu 'Tauscht die Power' auf Seite 23. Die eigene Übung nutzt farbige Hütchen, eine angesagte Anzahl, Paarwertung und einen Wurf pro Kind. Kein YouTube-Einzelvideo belegt."},
+    {"id": "DBB-EASY-37-EX099", "karten_id": "EX-099", "karten_titel": "Passen am Reifen", "name": "DBB · Easybasket-Handbuch · Passen am Reifen", "url": "https://www.basketball-bund.de/wp-content/uploads/sites/2/2024/03/DBB_Jugend_Easybasket-Handbuch.pdf", "abschnitt": "Passen am Reifen, gedruckte Seite 37", "abgerufen": "2026-10-06", "felder": ["ablauf", "spielerzahl", "raum", "material"], "pruefnotiz": "Original nennt vorderes dribbelndes Kind, hinteres mit Reifen, freien Platz, Pässe während des Drehens und Rollenwechsel nach dem Stillstand. Kein YouTube-Einzelvideo belegt."},
+    {"id": "DBB-EASY-59-EX100", "karten_id": "EX-100", "karten_titel": "Trio mit Ball in der Mitte", "name": "DBB · Easybasket-Handbuch · Trio mit Ball in der Mitte", "url": "https://www.basketball-bund.de/wp-content/uploads/sites/2/2024/03/DBB_Jugend_Easybasket-Handbuch.pdf", "abschnitt": "Trio mit Ball in der Mitte, gedruckte Seite 59", "abgerufen": "2026-10-06", "felder": ["ablauf", "spielerzahl", "raum", "material"], "pruefnotiz": "Original nennt Signal 'zusammen' und 'frei', die Positionen im Trio, Ballanforderung per Handzeichen und Varianten 'Wechsel' und 'Stopp'. Kein YouTube-Einzelvideo belegt."},
+    {"id": "DBB-EASY-60-EX103", "karten_id": "EX-103", "karten_titel": "Verteidigung von nah und fern", "name": "DBB · Easybasket-Handbuch · Verteidigung von nah und fern", "url": "https://www.basketball-bund.de/wp-content/uploads/sites/2/2024/03/DBB_Jugend_Easybasket-Handbuch.pdf", "abschnitt": "Verteidigung von nah und fern, gedruckte Seite 60", "abgerufen": "2026-10-06", "felder": ["ablauf", "spielerzahl", "raum", "material"], "pruefnotiz": "Original nennt freie Bewegung, hälftige Ballverteilung, Signale, 3–5 Sekunden Nähe und Distanz sowie Rollenwechsel. Kein YouTube-Einzelvideo belegt."},
+    {
+      "id": "DBB-EASY-23-EX108",
+      "karten_id": "EX-108",
+      "karten_titel": "„Tauscht die „Power““",
+      "name": "DBB · Easybasket-Handbuch · Tauscht die Power",
+      "url": "https://www.basketball-bund.de/wp-content/uploads/sites/2/2024/03/DBB_Jugend_Easybasket-Handbuch.pdf",
+      "abschnitt": "Tauscht die „Power“ [Mittelteil], gedruckte Seite 23",
+      "abgerufen": "2026-10-06",
+      "felder": ["ablauf", "spielerzahl", "raum", "material"],
+      "pruefnotiz": "Die Originalanleitung nennt zwei Teams, zwei Kinder mit Ball, Abstand und Position außerhalb der Dreipunktlinie, spontanen Start durch das Kind mit Power und die Wertung bis drei Punkte. Kein YouTube-Einzelvideo belegt."
+    },
+    {
+      "id": "DBB-GSW-EX111",
+      "karten_id": "EX-111",
+      "karten_titel": "„Fühl den Rhythmus“",
+      "name": "DBB · Grundschulwoche · Stationsschild Fühl den Rhythmus",
+      "url": "https://www.basketball-bund.de/wp-content/uploads/sites/2/2024/09/DBB_Grundschulwoche_Stationsschilder.pdf",
+      "abschnitt": "Stationsschild „Fühl den Rhythmus!“, mit Aufbau, Ballannahme, Wiederanstellen und Bahnwechsel",
+      "abgerufen": "2026-10-06",
+      "felder": ["ablauf", "spielerzahl", "raum", "material"],
+      "pruefnotiz": "Die Originalanleitung benennt Hindernisbahnen, zwei bis vier Kinder pro Bahn, Schrittfolge, Ballübergabe, Wurf, Wiedereinstieg und Rotation. Kein YouTube-Einzelvideo belegt."
+    }
+  ]
+}

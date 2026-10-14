@@ -1,0 +1,326 @@
+{
+  "version": 1,
+  "stand": "2026-10-06",
+  "karten": [
+    {
+      "id": "EX-061",
+      "titel": "3 on 3 Numbers Game",
+      "beleg_id": "NBA-STARTER-12-EX061",
+      "quelle_vorher": {
+        "name": "Jr. NBA Starter P1",
+        "url": "https://jr.nba.com/basketball-practice-plans/starter/",
+        "video_status": null
+      },
+      "felder": {
+        "ablauf": {
+          "vorher": "Spieler werden Nummernteams zugeordnet. Coach wirft Ball ein und ruft zwei Zahlen; die entsprechenden Dreier spielen eine Possession 3v3.",
+          "de": "Dreiergruppen bilden und jeder Gruppe eine Nummer geben. Alle warten an der Grundlinie. Der Coach wirft einen Ball ins Feld und ruft zwei Nummern: Die sechs betreffenden Kinder sprinten zum Ball. Das Trio, das den Ball sichert, greift an; das andere verteidigt. Ein Ballbesitz endet nach einem Wurf. Der Coach ruft über die Runden die Nummern möglichst gleich häufig. Gespielt wird bis fünf Punkte.",
+          "en": "Assign a number to each team of three and line everyone up on the baseline. The coach throws one ball onto the court and calls two numbers. Those six players sprint for it. The team that secures the ball attacks; the other defends. Each possession ends after one shot. Call the numbers evenly across rounds and play to five points."
+        },
+        "material": {
+          "vorher": null,
+          "de": "1 Basketball und 1 Korb",
+          "en": "One basketball and one basket"
+        }
+      }
+    },
+    {
+      "id": "EX-120",
+      "titel": "3 on 2, 2 on 1",
+      "beleg_id": "NBA-ALLSTAR-11-EX120",
+      "quelle_vorher": {
+        "name": "Jr. NBA All-Star Practice 11",
+        "url": null,
+        "video_status": null
+      },
+      "felder": {
+        "ablauf": {
+          "vorher": "Einen Schnellangriff im 3 gegen 2 spielen. Unmittelbar danach folgt ein Gegenangriff im 2 gegen 1 in die andere Richtung.",
+          "de": "Drei Reihen an einer Grundlinie aufstellen: eine mittig mit Bällen, zwei auf den Flügeln. Am gegenüberliegenden Korb beginnen zwei Verteidigende. Je das erste Kind aus den drei Reihen startet einen Schnellangriff im 3 gegen 2; für den Angriff ist nur ein Wurf erlaubt. Wer wirft oder den Ball verliert, läuft als einzelner Verteidiger zum Ausgangskorb zurück. Die beiden anderen Angreifenden bleiben am Zielkorb und verteidigen dort den nächsten Angriff. Die zwei bisherigen Verteidigenden greifen mit dem Ball im 2 gegen 1 zum Ausgangskorb an. Danach beginnen die nächsten drei Kinder aus den Reihen; die übrigen stellen sich hinten an. Vier Minuten wiederholen.",
+          "en": "Set up three lines on one baseline: the middle line has balls and the other two are on the wings. Two defenders start at the far basket. The first player in each line attacks three-on-two, with only one shot allowed. Whoever shoots or turns the ball over runs back alone to defend the starting basket. The other two attackers stay at the far basket as the next defenders. The original two defenders take the ball back for a two-on-one attack. Then the next three players start and the others join the backs of the lines. Continue for four minutes."
+        },
+        "spielerzahl": {
+          "vorher": null,
+          "de": "Mindestens 5 gleichzeitig; weitere Kinder in drei Reihen",
+          "en": "At least five active; others in three lines"
+        },
+        "raum": {
+          "vorher": null,
+          "de": "Ganzfeld mit zwei Körben und drei Startreihen",
+          "en": "Full court with two baskets and three starting lines"
+        },
+        "material": {
+          "vorher": null,
+          "de": "Basketbälle in der mittleren Startreihe, 2 Körbe",
+          "en": "Basketballs in the middle starting line and two baskets"
+        },
+        "dauer_min": {
+          "vorher": null,
+          "de": "4 Minuten",
+          "en": "Four minutes"
+        }
+      }
+    },
+    {
+      "id": "EX-129",
+      "titel": "3 on 3 Dictated – Elbow Pass",
+      "beleg_id": "NBA-MVP-11-EX129",
+      "quelle_vorher": {
+        "name": "Jr. NBA MVP Practice 11",
+        "url": null,
+        "video_status": null
+      },
+      "felder": {
+        "ablauf": {
+          "vorher": "Das Spiel beginnt mit einem Elbow-Pass und einer vorgegebenen Schnitt-/Screenstruktur; anschließend wird 3v3 live.",
+          "de": "Zwei Dreierteams spielen an einem Korb; ab vier Teams beide Körbe nutzen. Ein Guard mit Ball beginnt an der Spitze des Dreipunktbogens und passt zum Mitspieler am Ellenbogen der Freiwurflinie. Der dritte Angreifer steht am Flügel derselben Seite. Von dort können die beiden Guards mit Schnitten und Blocks zusammenspielen; nach dem Anfangspass wird drei gegen drei frei gespielt. Nach jedem Ballbesitzwechsel muss der Ball erst zurück an die Spitze. Nach einem Treffer behält das angreifende Team den Ball. Ohne Check weiterspielen; das Spiel endet bei drei Treffern.",
+          "en": "Two teams of three play at one basket; use both baskets if there are four or more teams. A guard with the ball starts at the top of the arc and passes to a teammate at the elbow. The third attacker is on the same-side wing. The two guards may then work together through cuts and screens, and play becomes live three-on-three after the opening pass. After each change of possession, bring the ball back to the top. The offense keeps the ball after a basket. Continue without a check ball and play to three made baskets."
+        },
+        "spielerzahl": {
+          "vorher": null,
+          "de": "6 pro Spiel; zwei Dreierteams",
+          "en": "Six per game; two teams of three"
+        },
+        "raum": {
+          "vorher": null,
+          "de": "Halbfeld mit Flügel, Freiwurflinien-Ellenbogen und Korb",
+          "en": "Half-court with wing, elbow and basket"
+        },
+        "material": {
+          "vorher": null,
+          "de": "1 Basketball und 1 Korb pro Spiel",
+          "en": "One basketball and one basket per game"
+        }
+      }
+    },
+    {
+      "id": "EX-130",
+      "titel": "2 on 1 Bunch Spacing – No Dribble",
+      "beleg_id": "NBA-ALLSTAR-11-EX130",
+      "quelle_vorher": {
+        "name": "Jr. NBA All-Star",
+        "url": "https://jr.nba.com/basketball-practice-plans/all-star/page/11/",
+        "video_status": null
+      },
+      "felder": {
+        "ablauf": {
+          "vorher": "Zwei Angreifer starten gegen einen Verteidiger mit ungünstiger Raumaufteilung. Dribbling ist nicht erlaubt. Durch Pässe und Bewegung stellen die Angreifer Platz her.",
+          "de": "Zwei Angreifende und ein Verteidiger stehen zunächst eng beieinander; alle berühren denselben Ball mit einer Hand. Sobald eines der angreifenden Kinder den Ball an sich nimmt, wird gespielt. Die Angreifenden dürfen nicht dribbeln. Sie lösen die enge Aufstellung sofort durch Freilaufen auf, passen und schneiden in offene Räume, bis ein freier Wurf möglich wird. Nach drei bis vier aufeinanderfolgenden Angriffen die Rollen tauschen. Für eine schwerere Variante den verfügbaren Raum auf eine Feldseite begrenzen.",
+          "en": "Two attackers and one defender begin in a tight group, each with one hand on the same ball. Play starts when one attacker takes the ball. The offense may not dribble: the two attackers immediately spread out, pass and cut into open space to create a shot. Switch roles after three or four consecutive possessions. For a harder version, restrict play to one side of the court."
+        },
+        "spielerzahl": {
+          "vorher": null,
+          "de": "3 pro Gruppe; 2 Angreifende, 1 Verteidiger",
+          "en": "Three per group: two attackers and one defender"
+        },
+        "raum": {
+          "vorher": null,
+          "de": "Ein Korb mit freiem Halbfeld; optional auf eine Seite begrenzt",
+          "en": "One basket and open half-court; optionally limited to one side"
+        },
+        "material": {
+          "vorher": null,
+          "de": "1 Basketball und 1 Korb pro Gruppe",
+          "en": "One basketball and one basket per group"
+        }
+      }
+    },
+    {
+      "id": "EX-138",
+      "titel": "3 on 3 Dictated – Down Screen",
+      "beleg_id": "NBA-MVP-11-EX138",
+      "quelle_vorher": {
+        "name": "Jr. NBA MVP",
+        "url": "https://jr.nba.com/basketball-practice-plans/mvp/page/11/",
+        "video_status": null
+      },
+      "felder": {
+        "ablauf": {
+          "vorher": "Im 3 gegen 3 mit einem vorgegebenen Down Screen beginnen. Danach wird frei weitergespielt.",
+          "de": "Zwei Dreierteams beginnen an einem Korb; bei vier oder mehr Teams beide Körbe nutzen. Jeder Angriff muss mit einem Down Screen beginnen: Ein Angreifer stellt abseits des Balls einen Block für einen Mitspieler. Danach wird drei gegen drei frei gespielt. Wechselt der Ballbesitz, muss der Ball vor dem nächsten Angriff zurück an die Spitze des Dreipunktbogens. Nach einem Treffer behält der Angriff den Ball. Ohne Check weiterspielen; das Spiel endet bei drei Treffern.",
+          "en": "Two teams of three start at one basket; use both baskets with four or more teams. Every offensive possession must begin with a down screen: an off-ball attacker screens for a teammate. Then play live three-on-three. On a change of possession, take the ball back to the top of the arc before attacking again. After a basket, the offense keeps the ball. Continue without a check ball and play to three made baskets."
+        },
+        "spielerzahl": {
+          "vorher": null,
+          "de": "6 pro Spiel; zwei Dreierteams",
+          "en": "Six per game; two teams of three"
+        },
+        "raum": {
+          "vorher": null,
+          "de": "Halbfeld mit Dreipunktbogen und Korb",
+          "en": "Half-court with arc and basket"
+        },
+        "material": {
+          "vorher": null,
+          "de": "1 Basketball und 1 Korb pro Spiel",
+          "en": "One basketball and one basket per game"
+        }
+      }
+    },
+    {
+      "id": "EX-139",
+      "titel": "3 on 3 Dictated – Pick & Roll",
+      "beleg_id": "NBA-MVP-11-EX139",
+      "quelle_vorher": {
+        "name": "Jr. NBA MVP",
+        "url": "https://jr.nba.com/basketball-practice-plans/mvp/page/11/",
+        "video_status": null
+      },
+      "felder": {
+        "ablauf": {
+          "vorher": "Im 3 gegen 3 mit einem vorgegebenen Pick-and-Roll beginnen. Danach wird frei weitergespielt.",
+          "de": "Zwei Dreierteams beginnen an einem Korb; bei vier oder mehr Teams beide Körbe nutzen. Jeder Angriff muss mit einem Pick-and-Roll starten: Ein Angreifer stellt am Ball einen Block und löst sich danach zum Korb. Anschließend wird drei gegen drei frei gespielt. Nach jedem Ballbesitzwechsel muss der Ball vor dem nächsten Angriff zurück an die Spitze des Dreipunktbogens. Nach einem Treffer behält der Angriff den Ball. Ohne Check weiterspielen; das Spiel endet bei drei Treffern.",
+          "en": "Two teams of three start at one basket; use both baskets with four or more teams. Every offensive possession begins with a pick-and-roll: an attacker sets an on-ball screen and then moves towards the basket. Play live three-on-three after that action. After a change of possession, take the ball back to the top of the arc before attacking again. The offense keeps the ball after a basket. Continue without a check ball and play to three made baskets."
+        },
+        "spielerzahl": {
+          "vorher": null,
+          "de": "6 pro Spiel; zwei Dreierteams",
+          "en": "Six per game; two teams of three"
+        },
+        "raum": {
+          "vorher": null,
+          "de": "Halbfeld mit Dreipunktbogen und Korb",
+          "en": "Half-court with arc and basket"
+        },
+        "material": {
+          "vorher": null,
+          "de": "1 Basketball und 1 Korb pro Spiel",
+          "en": "One basketball and one basket per game"
+        }
+      }
+    },
+    {
+      "id": "EX-142",
+      "titel": "3-Person Pass, Cut and Replace",
+      "beleg_id": "NBA-STARTER-4-EX142",
+      "quelle_vorher": {
+        "name": "Jr. NBA All-Star",
+        "url": "https://jr.nba.com/basketball-practice-plans/all-star/",
+        "video_status": null
+      },
+      "felder": {
+        "ablauf": {
+          "vorher": "Zu dritt Pass, Cut und Nachbesetzen verbinden. Die vorgegebene Folge geht anschließend in freies Spiel über. Der genaue Übergang ist im vorliegenden Beleg noch nicht beschrieben.",
+          "de": "An jedem Flügel eine Reihe bilden; ein Kind steht mit Ball an der Spitze des Dreipunktbogens. Dieses passt zu einem Flügel und schneidet zum Korb, wobei es mit erhobener Hand einen möglichen Rückpass fordert. Das Kind am Flügel ohne Ball rückt an die Spitze nach. Das schneidende Kind verlässt die Übung und stellt sich hinten an der Reihe des nachgerückten Flügels an. Der ballführende Flügel passt zur neuen Spitze. Von dort geht der Ball zum anderen Flügel; das Kind an der Spitze schneidet zum Korb und die Folge beginnt erneut. Nur Kinder an der Spitze schneiden. Zwei Minuten üben.",
+          "en": "Make a line on each wing, with one player holding the ball at the top of the arc. That player passes to a wing and cuts to the basket, raising a hand for a possible return pass. The player on the wing without the ball fills the top. The cutter leaves the drill and joins the back of the line on the wing that just filled the top. The ball-side wing passes to the new player at the top, who reverses the ball to the other wing and cuts. Repeat this sequence; only players at the top cut. Practise for two minutes."
+        },
+        "spielerzahl": {
+          "vorher": null,
+          "de": "Mindestens 3; zwei Flügelreihen und eine Person an der Spitze",
+          "en": "At least three: two wing lines and one player at the top"
+        },
+        "raum": {
+          "vorher": null,
+          "de": "Halbfeld mit beiden Flügeln, Dreipunktbogenspitze und Korb",
+          "en": "Half-court with both wings, top of arc and basket"
+        },
+        "material": {
+          "vorher": null,
+          "de": "1 Basketball und 1 Korb",
+          "en": "One basketball and one basket"
+        },
+        "dauer_min": {
+          "vorher": null,
+          "de": "2 Minuten",
+          "en": "Two minutes"
+        }
+      }
+    },
+    {
+      "id": "EX-153",
+      "titel": "5 on 5 Controlled",
+      "beleg_id": "NBA-ALLSTAR-1-EX153",
+      "quelle_vorher": {
+        "name": "Jr. NBA",
+        "url": "https://jr.nba.com/basketball-practice-plans/all-star/",
+        "video_status": null
+      },
+      "felder": {
+        "ablauf": {
+          "vorher": "Im 5 gegen 5 auf dem ganzen Feld spielen. Jedes Spiel dauert vier Minuten; die kurze Spielzeit soll die Intensität hoch halten.",
+          "de": "Zwei Fünferteams spielen fünf gegen fünf über das ganze Feld. Ein Spiel dauert vier Minuten; anschließend kann das nächste Spiel mit denselben oder neu zusammengestellten Teams beginnen. Sobald ein konkreter Coachingpunkt sichtbar wird, stoppt der Coach das laufende Spiel kurz, erklärt die Situation und lässt anschließend weiterspielen.",
+          "en": "Two teams of five play full-court five-on-five. Each game lasts four minutes; then another game can start with the same or reshuffled teams. When a specific coaching point arises, the coach briefly stops play, explains the situation and resumes the game."
+        },
+        "spielerzahl": {
+          "vorher": null,
+          "de": "10 gleichzeitig; zwei Fünferteams",
+          "en": "Ten at once; two teams of five"
+        },
+        "material": {
+          "vorher": null,
+          "de": "1 Basketball und 2 Körbe",
+          "en": "One basketball and two baskets"
+        }
+      }
+    },
+    {
+      "id": "EX-155",
+      "titel": "3 on 3 – Defense Wins",
+      "beleg_id": "NBA-ALLSTAR-4-EX155",
+      "quelle_vorher": {
+        "name": "Jr. NBA",
+        "url": "https://jr.nba.com/basketball-practice-plans/all-star/page/4/",
+        "video_status": null
+      },
+      "felder": {
+        "ablauf": {
+          "vorher": "Im 3 gegen 3 frei spielen. Ein Defensivstopp zählt einen Punkt. Das erfolgreiche Team darf in der Verteidigung bleiben.",
+          "de": "Dreierteams bilden. Zwei Teams beginnen im Halbfeld frei drei gegen drei; ab vier Teams können beide Körbe genutzt werden. Nach jedem Ballbesitzwechsel muss der Ball vor dem nächsten Angriff an die Spitze des Dreipunktbogens. Erzielt der Angriff einen Korb, wechselt dieses Team in die Verteidigung und ein neues Team kommt in den Angriff. Erzielt die Verteidigung einen Stopp, erhält sie einen Punkt, bleibt verteidigend auf dem Feld und ein neues Angriffsteam rückt nach. Ohne Check weiterspielen, bis ein Team vier Punkte erreicht.",
+          "en": "Form teams of three. Two teams start playing live three-on-three in the half-court; use both baskets if there are four or more teams. After every change of possession, return the ball to the top of the arc before attacking. If the offense scores, that team becomes the defense and a new offensive team enters. If the defense gets a stop, it earns one point and stays on defense while a new offense enters. Continue without a check ball until a team reaches four points."
+        },
+        "spielerzahl": {
+          "vorher": null,
+          "de": "6 gleichzeitig; weitere Dreierteams zum Wechseln",
+          "en": "Six active; additional teams of three rotate in"
+        },
+        "raum": {
+          "vorher": null,
+          "de": "Halbfeld mit Dreipunktbogen und Korb; bei vier Teams zwei Körbe",
+          "en": "Half-court with arc and basket; use two baskets with four teams"
+        },
+        "material": {
+          "vorher": null,
+          "de": "1 Basketball und 1 Korb pro Spiel",
+          "en": "One basketball and one basket per game"
+        }
+      }
+    },
+    {
+      "id": "EX-157",
+      "titel": "Using a Screen 2 on 1 Game / Tactical Load 2v2",
+      "beleg_id": "NBA-STARTER-5-EX157",
+      "quelle_vorher": {
+        "name": "Jr. NBA",
+        "url": "https://jr.nba.com/basketball-practice-plans/starter/page/5/",
+        "video_status": null
+      },
+      "felder": {
+        "ablauf": {
+          "vorher": "Einen Block abseits des Balls zunächst im 2 gegen 1 spielen. Danach die Aufgabe auf 2 gegen 2 erweitern.",
+          "de": "An möglichst vielen Körben je ein angreifendes und ein verteidigendes Kind am Flügel aufstellen. Am gegenüberliegenden Flügel steht ein Zuspieler mit Ball; ein weiteres angreifendes Kind beginnt an der Spitze des Dreipunktbogens als Blocksteller. Dieses stellt einen Block abseits des Balls für das Kind am Flügel. Der Blocksteller darf weder angespielt werden noch selbst werfen. Das angreifende Flügelkind hat fünf Sekunden, um den Block zu nutzen; danach wird eins gegen eins frei gespielt. Nach jedem Angriff geht das angreifende Kind in die Verteidigung, ein neues Kind übernimmt den Angriff und der Blocksteller stellt sich hinten an. Fünf Minuten üben. Wertung: freier Wurf ein Punkt, Treffer zwei, wirksamer Block mit anschließendem Wurf ein Punkt. Als Steigerung wird der Blocksteller mitverteidigt und zwei gegen zwei gespielt; die Verteidigung darf nicht wechseln.",
+          "en": "At as many baskets as possible, place one attacker and one defender on a wing. A passer with the ball stands on the opposite wing and a second attacker starts at the top of the arc as the screener. The screener sets an off-ball screen for the wing attacker but may not receive the ball or shoot. The wing attacker has five seconds to use the screen, after which play becomes live one-on-one. After each attack, the attacker becomes the defender, a new player comes in on offense and the screener joins the line. Practise for five minutes. Award one point for an open shot, two for a made basket and one for a successful screen leading to a shot. For a progression, defend the screener too and play two-on-two; defenders may not switch."
+        },
+        "spielerzahl": {
+          "vorher": null,
+          "de": "4 aktiv pro Korb: Angreifer, Verteidiger, Blocksteller, Zuspieler",
+          "en": "Four active per basket: attacker, defender, screener and passer"
+        },
+        "raum": {
+          "vorher": null,
+          "de": "Halbfeld mit beiden Flügeln, Dreipunktbogenspitze und Korb",
+          "en": "Half-court with both wings, top of arc and basket"
+        },
+        "material": {
+          "vorher": null,
+          "de": "1 Basketball und 1 Korb pro Gruppe",
+          "en": "One basketball and one basket per group"
+        },
+        "dauer_min": {
+          "vorher": null,
+          "de": "5 Minuten",
+          "en": "Five minutes"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,65 @@
+{
+  "version": 1,
+  "stand": "2026-10-11",
+  "belege": [
+    {
+      "id": "FIBA-MINI-3-2-EX020",
+      "karten_id": "EX-020",
+      "karten_titel": "Stationary Partner Pass: Bounce & Chest",
+      "name": "FIBA/WABC Mini-Basketball Coaches Manual",
+      "url": "https://assets.fiba.basketball/image/upload/documents-corporate-wabc-coaching-manual-mini-basketball-eng.pdf",
+      "abschnitt": "3.2 Balance and coordination, activities 15 and 17",
+      "abgerufen": "2026-10-11",
+      "felder": [
+        "ablauf",
+        "raum"
+      ],
+      "pruefnotiz": "Die Passarten sind belegt; der Wechsel der Passart nach jedem Rückpass ist eine redaktionelle Durchführungsfolge."
+    },
+    {
+      "id": "FIBA-MINI-3-1-EX069",
+      "karten_id": "EX-069",
+      "karten_titel": "Game-drill Exploring the Court / Pac Man",
+      "name": "FIBA/WABC Mini-Basketball Coaches Manual",
+      "url": "https://assets.fiba.basketball/image/upload/documents-corporate-wabc-coaching-manual-mini-basketball-eng.pdf",
+      "abschnitt": "3.1 General movement and ball control, game-drill exploring basketball court",
+      "abgerufen": "2026-10-11",
+      "felder": [
+        "ablauf",
+        "material"
+      ],
+      "pruefnotiz": "Die Quelle gibt Linienwege und Pac-Man-Fangform vor, aber keine Dauer oder Zahl der Fänger; die bestehende Zeitangabe ist eine redaktionelle Orientierung."
+    },
+    {
+      "id": "FIBA-MINI-3-2-EX070",
+      "karten_id": "EX-070",
+      "karten_titel": "Visual / Verbal Direction Change",
+      "name": "FIBA/WABC Mini-Basketball Coaches Manual",
+      "url": "https://assets.fiba.basketball/image/upload/documents-corporate-wabc-coaching-manual-mini-basketball-eng.pdf",
+      "abschnitt": "3.2 Balance and coordination, activity 14",
+      "abgerufen": "2026-10-11",
+      "felder": [
+        "ablauf",
+        "spielerzahl",
+        "progression",
+        "material"
+      ],
+      "pruefnotiz": "Die Quelle nennt Paare mit je einem Ball, Gegenbewegung und wechselnde verbale/visuelle Signale; ein Rollenwechsel nach jeder Bahn ist redaktionelle Organisation."
+    },
+    {
+      "id": "FIBA-START-4-3-EX071",
+      "karten_id": "EX-071",
+      "karten_titel": "Partner Mirror Dribbling",
+      "name": "FIBA/WABC Start Coaching Activities Book",
+      "url": "https://assets.fiba.basketball/image/upload/documents-corporate-wabc-start-coaching-eng-activities-book.pdf",
+      "abschnitt": "4.3 Activities to Teach Dribbling, Dribble Mirror",
+      "abgerufen": "2026-10-11",
+      "felder": [
+        "ablauf",
+        "spielerzahl",
+        "material"
+      ],
+      "pruefnotiz": "Ausführliche Spiegelübung mit Abstand, Blickkontakt und Beispielen; Rollenwechsel nach einer Folge ist redaktionelle Organisation."
+    }
+  ]
+}

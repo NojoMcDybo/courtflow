@@ -1,0 +1,64 @@
+{
+  "version": 1,
+  "stand": "2026-10-03",
+  "karten": [
+    {
+      "id": "EX-018",
+      "titel": "Catching & Receiving",
+      "beleg_id": "JRN-ROOKIE-3-EX-018",
+      "quelle_vorher": {"name": "Q5/Q7", "url": null, "video_status": null},
+      "felder": {
+        "lernziel": {"vorher": null, "de": "Den Passfang mit Blickkontakt und klar gezeigten Händen vorbereiten.", "en": "Prepare to receive a pass with eye contact and clearly presented hands."},
+        "ablauf": {"vorher": null, "de": "Vier oder fünf Personen bilden eine Gruppe. Bis auf eine dribbeln alle mit Ball auf der Stelle. Die Person ohne Ball zeigt einem Mitspieler die Hände, ruft einen Namen und erhält einen Boden- oder Brustpass. Sie passt zurück und geht zur nächsten Person; auf Signal wechselt die fangende Rolle.", "en": "Work in groups of four or five. Everyone except one player dribbles a ball on the spot. The player without a ball shows their hands, calls a teammate's name and receives a bounce or chest pass. They pass back and move to the next player; change the receiving role on the coach's cue."},
+        "coachingpunkte": {"vorher": null, "de": "Vor dem Pass Blickkontakt aufnehmen und die Hände als Fangziel zeigen.", "en": "Make eye contact before the pass and show hands as a catching target."},
+        "spielerzahl": {"vorher": null, "de": "4–5 pro Gruppe", "en": "4–5 per group"},
+        "dauer_min": {"vorher": null, "de": "3 min", "en": "3 minutes"},
+        "material": {"vorher": null, "de": "Für alle außer der fangenden Person je ein Basketball", "en": "One basketball for everyone except the receiver"}
+      }
+    },
+    {
+      "id": "EX-019",
+      "titel": "Hitting the Target",
+      "beleg_id": "JRN-ROOKIE-2-EX-019",
+      "quelle_vorher": {"name": "Q5/Q7", "url": null, "video_status": null},
+      "felder": {
+        "lernziel": {"vorher": null, "de": "Boden- und Brustpässe gezielt durch ein markiertes Tor spielen.", "en": "Aim bounce and chest passes through a marked gate."},
+        "ablauf": {"vorher": null, "de": "Paare starten mit je einem Ball an der Grundlinie. Auf einem Halb- oder Ganzfeld mehrere Kegeltore aufstellen, mindestens eines pro Paar. Die Paare dribbeln zu einem Tor und passen den Ball als Boden- oder Brustpass hindurch. Innerhalb einer Minute möglichst viele verschiedene Tore treffen; danach eine zweite Runde spielen.", "en": "Pairs start on the baseline with one ball each. Set up several cone gates on a half or full court, at least one gate per pair. Pairs dribble to a gate and pass the ball through it with a bounce or chest pass. Hit as many different gates as possible in one minute, then play a second round."},
+        "coachingpunkte": {"vorher": null, "de": "Vor dem Pass Blickkontakt aufnehmen; der Empfänger zeigt die Hände als Ziel.", "en": "Make eye contact before passing; the receiver shows hands as a target."},
+        "spielerzahl": {"vorher": null, "de": "Paare", "en": "Pairs"},
+        "raum": {"vorher": null, "de": "Halb- oder Ganzfeld mit mindestens einem Kegeltor pro Paar", "en": "Half or full court with at least one cone gate per pair"},
+        "dauer_min": {"vorher": null, "de": "2 × 1 min", "en": "2 × 1 minute"},
+        "material": {"vorher": null, "de": "Ein Basketball pro Paar und Kegel für die Tore", "en": "One basketball per pair and cones for gates"}
+      }
+    },
+    {
+      "id": "EX-020",
+      "titel": "Stationary Partner Pass: Bounce & Chest",
+      "beleg_id": "FIBA-MINI-32-17-EX-020",
+      "quelle_vorher": {"name": "Q5/Q7", "url": null, "video_status": null},
+      "felder": {
+        "lernziel": {"vorher": null, "de": "Brust- und Bodenpässe im Paar kontrolliert ausführen und fangen.", "en": "Pass and receive chest and bounce passes with a partner under control."},
+        "ablauf": {"vorher": null, "de": "Zu zweit gegenüberstehen und sich den Ball abwechselnd als beidhändigen Brustpass und als Bodenpass zuspielen. Den Rückpass jeweils fangen und die Passart wechseln.", "en": "Face a partner and pass the ball back and forth, alternating two-handed chest passes and bounce passes. Catch each return pass and change the pass type."},
+        "spielerzahl": {"vorher": null, "de": "Paare", "en": "Pairs"},
+        "material": {"vorher": null, "de": "Basketball pro Paar", "en": "Basketball per pair"},
+        "progression": {"vorher": null, "de": "Seitliche, seitlich aufsetzende und beidhändige Überkopfpässe ergänzen.", "en": "Add side passes, side bounce passes and two-handed overhead passes."}
+      }
+    },
+    {
+      "id": "EX-039",
+      "titel": "Defensive Slide",
+      "beleg_id": "JRN-ROOKIE-4-EX-039",
+      "quelle_vorher": {"name": "Q5/Q7", "url": null, "video_status": null},
+      "felder": {
+        "lernziel": {"vorher": null, "de": "Seitlich in Verteidigungshaltung verschieben und den Durchgang schließen.", "en": "Slide laterally in a defensive stance to close the passing lane."},
+        "ablauf": {"vorher": null, "de": "Paare stellen zwei Kegel mit 6–8 ft Abstand als Tor auf. Eine Person verteidigt dazwischen in tiefer Haltung; die andere rollt den Ball durch das Tor. Der Verteidiger verschiebt die Füße seitlich und versucht den Ball abzuwehren. Nach ein bis zwei Minuten Rollen wechseln.", "en": "Pairs place two cones 6–8 ft apart as a gate. One player defends between them in a low stance; the other rolls a ball through the gate. The defender slides laterally to stop it. Swap roles after one or two minutes."},
+        "coachingpunkte": {"vorher": null, "de": "Brust und Blick oben halten, zügig die Richtung wechseln und sich mit dem hinteren Fuß abdrücken.", "en": "Keep chest and eyes up, change direction quickly and push off the back foot."},
+        "spielerzahl": {"vorher": null, "de": "Paare", "en": "Pairs"},
+        "raum": {"vorher": null, "de": "Kegeltor mit 6–8 ft Abstand", "en": "Cone gate 6–8 ft wide"},
+        "dauer_min": {"vorher": null, "de": "4 min; Rollenwechsel nach 1–2 min", "en": "4 minutes; swap roles after 1–2 minutes"},
+        "material": {"vorher": null, "de": "Ein Basketball und zwei Kegel pro Paar", "en": "One basketball and two cones per pair"},
+        "progression": {"vorher": null, "de": "Statt des gerollten Balls dribbelt der Angreifer durch das Tor; der Verteidiger stellt den Weg seitlich zu.", "en": "Instead of rolling the ball, the attacker dribbles through the gate; the defender slides to cut off the drive."}
+      }
+    }
+  ]
+}

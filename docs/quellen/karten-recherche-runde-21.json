@@ -1,0 +1,216 @@
+{
+  "version": 1,
+  "stand": "2026-10-11",
+  "belege": [
+    {
+      "id": "RUN21-EX-016",
+      "karten_id": "EX-016",
+      "karten_titel": "Change of Direction Dribble",
+      "name": "FIBA/WABC · Dribble lines (redaktionell organisiert)",
+      "url": "https://assets.fiba.basketball/image/upload/documents-corporate-wabc-coaching-manual-mini-basketball-eng.pdf",
+      "abschnitt": "4.5 Dribbling, activity 7 Dribble lines",
+      "abgerufen": "2026-10-11",
+      "felder": [
+        "ablauf",
+        "spielerzahl",
+        "raum",
+        "material"
+      ],
+      "pruefnotiz": "FIBA nennt Dribbeln auf Feldlinien und Richtungs-/Handwechsel beim Treffen; Ballzahl, Startabstand und Rundenwechsel sind redaktionell organisiert."
+    },
+    {
+      "id": "RUN21-EX-022",
+      "karten_id": "EX-022",
+      "karten_titel": "Pass to a Moving Player",
+      "name": "FIBA/WABC · Passing on the Move (redaktionell organisiert)",
+      "url": "https://assets.fiba.basketball/image/upload/documents-corporate-wabc-start-coaching-eng-facilitator-handbook.pdf",
+      "abschnitt": "14.5 Passing on the Move, first practice pattern",
+      "abgerufen": "2026-10-11",
+      "felder": [
+        "ablauf",
+        "raum",
+        "material"
+      ],
+      "pruefnotiz": "FIBA belegt Pass zum laufenden Empfänger, Fangen in Bewegung, Sprungstopp und Wechsel zur Gegenreihe; Wiederholung/Material sind redaktionell organisiert."
+    },
+    {
+      "id": "RUN21-EX-023",
+      "karten_id": "EX-023",
+      "karten_titel": "Slide & Pass",
+      "name": "Jr. NBA Rookie · redaktionelle Übungsform zu Slide & Pass",
+      "url": "https://jr.nba.com/basketball-practice-plans/rookie/",
+      "abschnitt": "Rookie Skills Checklist, Passing: Slide & Pass",
+      "abgerufen": "2026-10-11",
+      "felder": [
+        "ablauf",
+        "spielerzahl",
+        "raum",
+        "material"
+      ],
+      "pruefnotiz": "Die Quelle nennt nur die Fertigkeit Slide & Pass. Seitliche Strecke, Passfolge und Rollenwechsel sind eine ausdrücklich redaktionelle Übungsform."
+    },
+    {
+      "id": "RUN21-EX-028",
+      "karten_id": "EX-028",
+      "karten_titel": "1-2 Step Shooting",
+      "name": "Jr. NBA · Partner Step-In Shooting Drill",
+      "url": "https://jr.nba.com/basketball-practice-plans/starter/page/8/",
+      "abschnitt": "Starter Practice Plan 8, Partner Step-In Shooting Drill",
+      "abgerufen": "2026-10-11",
+      "felder": [
+        "ablauf",
+        "spielerzahl",
+        "raum",
+        "material",
+        "dauer_min"
+      ],
+      "pruefnotiz": "Gleichnamiger Technikinhalt als vollständig beschriebene Partnerübung mit 10 Treffern und Rollenwechsel. Die Karte stammt aus der Rookie-Checkliste; der Ablauf aus Starter Practice 8."
+    },
+    {
+      "id": "RUN21-EX-040",
+      "karten_id": "EX-040",
+      "karten_titel": "Stay Between Man and Basket",
+      "name": "Jr. NBA · redaktionelle Übungsform nach Closeout 1 on 1",
+      "url": "https://jr.nba.com/basketball-practice-plans/starter/page/4/",
+      "abschnitt": "Starter Practice Plan 4, Closeout 1 on 1 Drill",
+      "abgerufen": "2026-10-11",
+      "felder": [
+        "ablauf",
+        "spielerzahl",
+        "raum",
+        "dauer_min",
+        "material"
+      ],
+      "pruefnotiz": "Der Stay-Between-Man-and-Basket-Skill ist in der Rookie-Checkliste; die 1-gegen-1-Struktur stammt aus Starter Practice 4 und wird hier auf die Position zwischen Angreifer und Korb fokussiert."
+    },
+    {
+      "id": "RUN21-EX-062",
+      "karten_id": "EX-062",
+      "karten_titel": "Advanced Stationary Control Series",
+      "name": "Jr. NBA · redaktionelle Kontrollserie nach Side to Side Dribble",
+      "url": "https://jr.nba.com/basketball-practice-plans/starter/page/8/",
+      "abschnitt": "Starter Practice Plan 8, Side to Side Dribble Low, Middle, High",
+      "abgerufen": "2026-10-11",
+      "felder": [
+        "ablauf",
+        "raum",
+        "material",
+        "dauer_min"
+      ],
+      "pruefnotiz": "Die Quelle belegt drei Dribbelhöhen je Hand und 15 Sekunden je Höhe; die Zusammenstellung als Advanced Stationary Control Series ist redaktionell."
+    },
+    {
+      "id": "RUN21-EX-064",
+      "karten_id": "EX-064",
+      "karten_titel": "Closeout to Slide",
+      "name": "Jr. NBA · Closeout 1 on 1 als Closeout-to-Slide-Form",
+      "url": "https://jr.nba.com/basketball-practice-plans/starter/page/4/",
+      "abschnitt": "Starter Practice Plan 4, Closeout 1 on 1 Drill",
+      "abgerufen": "2026-10-11",
+      "felder": [
+        "ablauf",
+        "spielerzahl",
+        "material",
+        "dauer_min"
+      ],
+      "pruefnotiz": "Quellübung ist 1 gegen 1 nach Closeout; der anschließende Slide folgt aus dem Verteidigen des Drives, ist im Praxisplan nicht als eigene Schrittfolge beschrieben."
+    },
+    {
+      "id": "RUN21-EX-066",
+      "karten_id": "EX-066",
+      "karten_titel": "Pursuing the Ball",
+      "name": "Jr. NBA · Tag & Pursue Drill",
+      "url": "https://jr.nba.com/basketball-practice-plans/mvp/page/4/",
+      "abschnitt": "MVP Practice Plan 4, Tag & Pursue Drill",
+      "abgerufen": "2026-10-11",
+      "felder": [
+        "ablauf",
+        "spielerzahl",
+        "material",
+        "dauer_min"
+      ],
+      "pruefnotiz": "Quellübung beschreibt Dreiergruppe, zweimaliges Pass-/Hilfe-Verhalten, Wurf und Tag-and-Pursue; der Rollenwechsel nach dem Wurf ist redaktionelle Organisation."
+    },
+    {
+      "id": "RUN21-EX-068",
+      "karten_id": "EX-068",
+      "karten_titel": "Fill the Corner",
+      "name": "Jr. NBA · Filling the Corner Drill",
+      "url": "https://jr.nba.com/basketball-practice-plans/mvp/page/3/",
+      "abschnitt": "MVP Practice Plan 3, Filling the Corner Drill",
+      "abgerufen": "2026-10-11",
+      "felder": [
+        "ablauf",
+        "raum",
+        "material",
+        "dauer_min"
+      ],
+      "pruefnotiz": "Gleichnamige Übung mit Baseline-Drive, Corner-Fill, Pass, Wurf und Reihenwechsel; nach acht Treffern Gegenseite."
+    },
+    {
+      "id": "RUN21-EX-075",
+      "karten_id": "EX-075",
+      "karten_titel": "Closeout to Slide",
+      "name": "Jr. NBA · Closeout, Slide & Backpedal Drill",
+      "url": "https://jr.nba.com/basketball-practice-plans/mvp/page/7/",
+      "abschnitt": "MVP Practice Plan 7, Closeout, Slide & Backpedal Drill",
+      "abgerufen": "2026-10-11",
+      "felder": [
+        "ablauf",
+        "spielerzahl",
+        "raum",
+        "material",
+        "dauer_min"
+      ],
+      "pruefnotiz": "Quellübung nennt Startreihe, Closeout am Ellbogen, Slide zum Gegenellbogen, rückwärtiges Laufen und 2 Minuten je Richtung."
+    },
+    {
+      "id": "RUN21-EX-107",
+      "karten_id": "EX-107",
+      "karten_titel": "FIBA 3x3 Man-to-Man / Jump-to-the-Ball",
+      "name": "FIBA 3x3 Players Guide · redaktionelle Verteidigungsform",
+      "url": "https://fiba3x3.com/docs/wabc-3x3-players-guide.pdf",
+      "abschnitt": "4. Principles of Play, Jump to the Ball, p. 16",
+      "abgerufen": "2026-10-11",
+      "felder": [
+        "ablauf",
+        "spielerzahl",
+        "raum",
+        "material"
+      ],
+      "pruefnotiz": "Der FIBA-Guide belegt Jump-to-the-Ball zwischen direktem Gegenspieler und Ball sowie Druck auf den Passgeber. Drei-Pass-Regel, Abschluss und Rollenwechsel sind redaktionell, kein Originaldrill."
+    },
+    {
+      "id": "RUN21-EX-136",
+      "karten_id": "EX-136",
+      "karten_titel": "On Ball Screen – Dribbler Options",
+      "name": "FIBA/WABC · redaktionelle Form zu On Ball Screen",
+      "url": "https://assets.fiba.basketball/image/upload/documents-corporate-wabc-coaching-level-manuals-level-1-eng.pdf",
+      "abschnitt": "2.2.10 On Ball Screens – Dribbler Options",
+      "abgerufen": "2026-10-11",
+      "felder": [
+        "ablauf",
+        "spielerzahl",
+        "raum",
+        "material"
+      ],
+      "pruefnotiz": "FIBA beschreibt beidseitige Ballblocks, einen Coach als Verteidiger und Optionen des Dribblers; die hier festgelegte Wiederholungs- und Rollenfolge ist redaktionell."
+    },
+    {
+      "id": "RUN21-EX-137",
+      "karten_id": "EX-137",
+      "karten_titel": "Rebounding and Defensive Transition",
+      "name": "FIBA/WABC · redaktionelle Form zu Rebound & Transition",
+      "url": "https://assets.fiba.basketball/image/upload/documents-corporate-wabc-coaching-level-manuals-level-1-eng.pdf",
+      "abschnitt": "2.5.1 Rebounding and Defensive Transition",
+      "abgerufen": "2026-10-11",
+      "felder": [
+        "ablauf",
+        "spielerzahl",
+        "raum",
+        "material"
+      ],
+      "pruefnotiz": "FIBA betont Reboundzuordnung, Rückraumsicherung und Umschalten nach Wurf. Drei-gegen-drei-Aufbau, feste Rollen und Wechselregeln sind redaktionell."
+    }
+  ]
+}

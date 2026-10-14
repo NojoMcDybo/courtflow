@@ -1,0 +1,65 @@
+{
+  "version": 1,
+  "stand": "2026-10-11",
+  "belege": [
+    {
+      "id": "NBA-ROOKIE-12-EX004",
+      "karten_id": "EX-004",
+      "karten_titel": "5-5-5 Creative Dribble Drill",
+      "name": "Jr. NBA · 5-5-5 Creative Dribble",
+      "url": "https://jr.nba.com/basketball-practice-plans/rookie/page/12/",
+      "abschnitt": "5-5-5 Creative Dribble",
+      "abgerufen": "2026-10-11",
+      "felder": [
+        "ablauf",
+        "spielerzahl",
+        "raum"
+      ],
+      "pruefnotiz": "Ablauf und Organisation nach der ausdrücklich betitelten Übung im offiziellen interaktiven Practice Plan."
+    },
+    {
+      "id": "NBA-ROOKIE-01-EX010",
+      "karten_id": "EX-010",
+      "karten_titel": "Partner Shooting / Form Shooting",
+      "name": "Jr. NBA · Partner Shooting Game",
+      "url": "https://jr.nba.com/basketball-practice-plans/rookie/",
+      "abschnitt": "Partner Shooting Game",
+      "abgerufen": "2026-10-11",
+      "felder": [
+        "ablauf",
+        "raum"
+      ],
+      "pruefnotiz": "Ablauf und Organisation nach der ausdrücklich betitelten Übung im offiziellen interaktiven Practice Plan."
+    },
+    {
+      "id": "NBA-ROOKIE-01-EX013",
+      "karten_id": "EX-013",
+      "karten_titel": "Hot Ball (Taps)",
+      "name": "Jr. NBA · Hot Ball (Taps)",
+      "url": "https://jr.nba.com/basketball-practice-plans/rookie/",
+      "abschnitt": "Hot Ball (Taps)",
+      "abgerufen": "2026-10-11",
+      "felder": [
+        "ablauf",
+        "spielerzahl"
+      ],
+      "pruefnotiz": "Ablauf und Organisation nach der ausdrücklich betitelten Übung im offiziellen interaktiven Practice Plan."
+    },
+    {
+      "id": "NBA-ROOKIE-01-EX017",
+      "karten_id": "EX-017",
+      "karten_titel": "Stationary Wall Passing – Chest",
+      "name": "Jr. NBA · Stationary Wall Passing – Chest",
+      "url": "https://jr.nba.com/basketball-practice-plans/rookie/",
+      "abschnitt": "Stationary Wall Passing – Chest",
+      "abgerufen": "2026-10-11",
+      "felder": [
+        "ablauf",
+        "spielerzahl",
+        "raum",
+        "dauer_min"
+      ],
+      "pruefnotiz": "Ablauf und Organisation nach der ausdrücklich betitelten Übung im offiziellen interaktiven Practice Plan."
+    }
+  ]
+}

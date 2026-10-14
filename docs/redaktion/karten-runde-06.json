@@ -1,0 +1,78 @@
+{
+  "version": 1,
+  "stand": "2026-10-03",
+  "karten": [
+    {
+      "id": "EX-002",
+      "titel": "Red Light Game",
+      "beleg_id": "JRN-ROOKIE-2-EX-002",
+      "quelle_vorher": {"name": "Jr. NBA Rookie, Practice 2", "url": "https://jr.nba.com/basketball-practice-plans/rookie/page/2/", "video_status": null},
+      "felder": {
+        "lernziel": {"vorher": null, "de": "Auf Farbsignale reagieren und kontrolliert dribbeln und stoppen.", "en": "React to color cues while dribbling and stopping under control."},
+        "ablauf": {"vorher": null, "de": "Alle starten mit Ball an einer Grundlinie; der Coach steht gegenüber. Bei Grün vorwärts joggen oder laufen und dribbeln, bei Gelb gehend dribbeln, bei Orange rückwärtsgehend dribbeln. Bei Rot beidbeinig stoppen und in der Triple-Threat-Position bleiben. Wer sich nach Rot weiterbewegt oder dribbelt, startet erneut an der Grundlinie.", "en": "Everyone starts with a ball on one baseline; the coach stands opposite. On green, jog or run forward while dribbling; on yellow, walk and dribble; on orange, walk backward while dribbling. On red, jump-stop and hold a triple-threat stance. Anyone who keeps moving or dribbling after red starts again from the baseline."},
+        "coachingpunkte": {"vorher": null, "de": "Beim Laufen kontrolliert dribbeln und beim Rot-Signal sicher anhalten.", "en": "Dribble under control while moving and stop firmly on the red cue."},
+        "raum": {"vorher": null, "de": "Zwischen zwei Grundlinien", "en": "Between the two baselines"},
+        "dauer_min": {"vorher": null, "de": "1–2 Spiele", "en": "1–2 games"},
+        "material": {"vorher": null, "de": "Ein Basketball pro Person", "en": "One basketball per player"},
+        "progression": {"vorher": null, "de": "Die Person, die den Coach zuerst erreicht, gibt in der nächsten Runde die Signale.", "en": "The first player to reach the coach gives the cues in the next round."}
+      }
+    },
+    {
+      "id": "EX-003",
+      "titel": "Jump Stop Game",
+      "beleg_id": "JRN-ROOKIE-1-EX-003",
+      "quelle_vorher": {"name": "Jr. NBA Rookie", "url": "https://jr.nba.com/basketball-practice-plans/rookie/", "video_status": null},
+      "felder": {
+        "lernziel": {"vorher": null, "de": "Auf ein Signal beidbeinig und ausbalanciert stoppen.", "en": "Jump-stop on a signal and stay balanced."},
+        "ablauf": {"vorher": null, "de": "Alle verteilen sich an der Grundlinie in sportlicher Haltung. Der Coach hebt den Arm: vorwärtslaufen. Senkt er ihn, beidbeinig und ausbalanciert stoppen. Wer nicht rechtzeitig oder unsicher stoppt, geht drei Schritte zurück. Nach dem Erreichen der gegenüberliegenden Grundlinie auf die Gruppe warten und den Weg zurück wiederholen.", "en": "Players spread across a baseline in an athletic stance. When the coach raises an arm, move forward. When it drops, jump-stop in balance. Anyone who stops late or off-balance takes three steps back. Wait at the opposite baseline, then repeat on the way back."},
+        "coachingpunkte": {"vorher": null, "de": "Nach jedem Sprungstopp kurz in gebeugter, stabiler Haltung bleiben.", "en": "Hold a bent, stable stance briefly after every jump stop."},
+        "raum": {"vorher": null, "de": "Von Grundlinie zu Grundlinie", "en": "From baseline to baseline"},
+        "dauer_min": {"vorher": null, "de": "2 × hin und zurück", "en": "2 × down and back"},
+        "material": {"vorher": null, "de": "Grundform ohne Ball; Variante mit Basketbällen", "en": "Basic form without a ball; basketballs for the variation"},
+        "progression": {"vorher": null, "de": "Beim Vorwärtslaufen dribbeln und den Ball im Sprungstopp aufnehmen.", "en": "Dribble while moving forward and pick up the ball on the jump stop."}
+      }
+    },
+    {
+      "id": "EX-006",
+      "titel": "Pass & Cut Drill",
+      "beleg_id": "JRN-ROOKIE-11-EX-006",
+      "quelle_vorher": {"name": "Jr. NBA Rookie, Practice 11", "url": "https://jr.nba.com/basketball-practice-plans/rookie/page/11/", "video_status": null},
+      "felder": {
+        "lernziel": {"vorher": null, "de": "Nach dem Pass schneiden und den freien Abschluss erkennen.", "en": "Cut after passing and recognize the open finish."},
+        "ablauf": {"vorher": null, "de": "Eine Reihe an der Freiwurflinie mit Bällen, eine am Flügel. Der Coach verteidigt die Person mit Ball. Diese passt zum Flügel und schneidet zum Korb. Ist der Schnitt frei, passt der Flügelspieler zurück; verteidigt der Coach den Schnitt, dribbelt der Flügelspieler selbst zum Korbleger.", "en": "Form one line with balls at the top of the key and another on the wing. The coach defends the ball carrier. The ball carrier passes to the wing and cuts to the basket. If the cut is open, the wing player passes back; if the coach denies the cut, the wing player drives for a lay-up."},
+        "coachingpunkte": {"vorher": null, "de": "Scharf passen und nach dem Pass sofort zum Korb schneiden; beim Schnitt den Ball suchen.", "en": "Pass sharply and cut to the basket right away; look for the ball on the cut."},
+        "spielerzahl": {"vorher": null, "de": "2+ pro Rotation; zusätzlich ein Coach", "en": "2+ players in the rotation; plus a coach"},
+        "dauer_min": {"vorher": null, "de": "2 × 3 min, je Richtung", "en": "2 × 3 minutes, one for each direction"},
+        "material": {"vorher": null, "de": "Basketbälle und Korb", "en": "Basketballs and a basket"}
+      }
+    },
+    {
+      "id": "EX-008",
+      "titel": "Cone Knockdown / Hit the Cone",
+      "beleg_id": "JRN-ROOKIE-12-EX-008",
+      "quelle_vorher": {"name": "Jr. NBA Rookie, Practice 12", "url": "https://jr.nba.com/basketball-practice-plans/rookie/page/12/", "video_status": null},
+      "felder": {
+        "lernziel": {"vorher": null, "de": "Mit Pässen freie Wege zum Zielkegel schaffen.", "en": "Create open passing lanes to reach the target cone."},
+        "ablauf": {"vorher": null, "de": "Ein rechteckiges Spielfeld oder ein Halbfeld mit je einem Zielkegel an den Enden markieren. Zwei Teams starten in der Mitte, eines mit Ball. Per Pass Richtung eigenem Kegel vorrücken und ihn mit einem Pass umwerfen. Erobert die Verteidigung den Ball oder fängt einen Pass ab, wechselt der Ballbesitz. Der Coach darf als Anspielstation helfen; die Zielkegel dürfen nicht bewacht werden.", "en": "Mark a rectangular area or half court with one target cone at each end. Two teams start in the middle, one with the ball. Advance by passing and knock down your assigned cone with a pass. If defenders steal or deflect a pass, possession changes. The coach may be used as an outlet; defenders may not guard the target cones."},
+        "coachingpunkte": {"vorher": null, "de": "Ohne Ball freilaufen; Passfinten und Pivots für freie Passwege nutzen.", "en": "Move to get open without the ball; use pass fakes and pivots to create passing lanes."},
+        "raum": {"vorher": null, "de": "Rechteckiges Spielfeld oder Halbfeld", "en": "Rectangular playing area or half court"},
+        "dauer_min": {"vorher": null, "de": "1 Spiel bis zur Zielpunktzahl oder Zeitgrenze", "en": "1 game to a target score or time limit"},
+        "material": {"vorher": null, "de": "Basketball, zwei Zielkegel und gegebenenfalls Markierungen", "en": "Basketball, two target cones and optional boundary markers"},
+        "regression": {"vorher": null, "de": "Vor einem Pass zwei bis drei Dribblings erlauben.", "en": "Allow two or three dribbles before a pass."}
+      }
+    },
+    {
+      "id": "EX-077",
+      "titel": "2 on 2 Numbers Game",
+      "beleg_id": "JRN-ROOKIE-7-EX-077",
+      "quelle_vorher": {"name": "Jr. NBA Starter", "url": null, "video_status": null},
+      "felder": {
+        "lernziel": {"vorher": null, "de": "Nach dem Ballgewinn im 2 gegen 2 schnell zwischen Angriff und Verteidigung wechseln.", "en": "Switch quickly between offense and defense after the ball contest in two-on-two play."},
+        "ablauf": {"vorher": "Zwei aufgerufene Spieler versuchen, den Ball zu gewinnen. Das Team mit Ball greift an; die beiden anderen Spieler verteidigen. Die Teams spielen eine Possession im 2 gegen 2.", "de": "Alle stehen paarweise nummeriert an der Grundlinie; gleiche Nummern bilden ein Team. Der Coach wirft den Ball aufs Feld und ruft zwei Nummern. Die vier Aufgerufenen kämpfen um den Ball. Das Team mit Ball greift an, das andere verteidigt für einen Angriff mit einem Wurf. Danach andere Nummern aufrufen.", "en": "Number players in pairs along the baseline; matching numbers are teammates. The coach throws the ball onto the court and calls two numbers. The four called players contest the ball. The team that gains possession attacks while the other defends for one possession and one shot. Then call other numbers."},
+        "spielerzahl": {"vorher": null, "de": "4+ pro Gruppe; vier pro Spielzug", "en": "4+ in the group; four per possession"},
+        "dauer_min": {"vorher": null, "de": "Spiel bis 5 Punkte", "en": "Game to 5 points"},
+        "material": {"vorher": null, "de": "Ein Basketball und ein Korb", "en": "One basketball and one basket"}
+      }
+    }
+  ]
+}

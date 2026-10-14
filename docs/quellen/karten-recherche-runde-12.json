@@ -1,0 +1,72 @@
+{
+  "version": 1,
+  "methode": "Konkrete Abschnitte der offiziellen Jr.-NBA-Trainingspläne am 04.10.2026 mit den Kompetenzankern abgeglichen. Ein Skills-Checklist-Titel allein galt nicht als Ablauf. EX-036 verwendet ausdrücklich eine Starter-Praxisform für den Rookie-Kompetenzanker; Katalogalter und QA bleiben ungeprüft und unverändert.",
+  "belege": [
+    {
+      "id": "JRN-ROOKIE-9-EX024",
+      "karten_id": "EX-024",
+      "karten_titel": "Recognizing Open Teammates",
+      "name": "Jr. NBA · Rookie Practice 9 · Who Is Ready Drill",
+      "url": "https://jr.nba.com/basketball-practice-plans/rookie/page/9/",
+      "abschnitt": "Passing / Who Is Ready Drill",
+      "abgerufen": "2026-10-04",
+      "felder": ["ablauf", "coachingpunkte", "spielerzahl", "raum", "dauer_min", "material"],
+      "pruefnotiz": "Die Praxisform lässt einen Passgeber zwischen zwei anspielbereiten Empfängern entscheiden; die Quellenvariante ergänzt einen Verteidiger und verlangt den Pass zum freien Mitspieler. Der Abschnitt ist eine konkrete Übung zum Kompetenzanker, nicht der Wortlaut eines gleichnamigen Drills."
+    },
+    {
+      "id": "JRN-ROOKIE-6-EX031",
+      "karten_id": "EX-031",
+      "karten_titel": "Body Control",
+      "name": "Jr. NBA · Rookie Practice 6 · Zig-Zag V Jumps",
+      "url": "https://jr.nba.com/basketball-practice-plans/rookie/page/6/",
+      "abschnitt": "Footwork and Conditioning / Zig-Zag V Jumps",
+      "abgerufen": "2026-10-04",
+      "felder": ["lernziel", "ablauf", "coachingpunkte", "raum", "dauer_min", "material", "progression"],
+      "pruefnotiz": "Fünf Hütchen bilden ein V. Spielende springen beidbeinig im Zickzack, reihen sich wieder ein und absolvieren je zwei Durchgänge. Die Quelle nennt Körperkontrolle und Balance als Coachingpunkte; schnelleres Springen ist die Progression."
+    },
+    {
+      "id": "JRN-STARTER-3-EX036",
+      "karten_id": "EX-036",
+      "karten_titel": "Drive and Kick (Pass)",
+      "name": "Jr. NBA · Starter Practice 3 · The Kick Pass Drill",
+      "url": "https://jr.nba.com/basketball-practice-plans/starter/page/3/",
+      "abschnitt": "Passing / The Kick Pass Drill",
+      "abgerufen": "2026-10-04",
+      "felder": ["ablauf", "spielerzahl", "raum", "dauer_min", "material", "progression"],
+      "pruefnotiz": "Explizite Drive-and-Kick-Entscheidung im 2 gegen 2 nach Reaktion des ballfernen Verteidigers. Die Quelle steht auf Starter-Stufe, der Kataloganker auf Rookie; der Quellwechsel begründet keine automatische Alters- oder QA-Aufwertung."
+    },
+    {
+      "id": "JRN-STARTER-8-EX063",
+      "karten_id": "EX-063",
+      "karten_titel": "Running Pass",
+      "name": "Jr. NBA · Starter Practice 8 · Dribble & Pass to Target Drill",
+      "url": "https://jr.nba.com/basketball-practice-plans/starter/page/8/",
+      "abschnitt": "Passing / Dribble & Pass to Target Drill",
+      "abgerufen": "2026-10-04",
+      "felder": ["ablauf", "coachingpunkte", "spielerzahl", "raum", "dauer_min", "material"],
+      "pruefnotiz": "Die konkrete Starter-Übung verlangt nach zwei laufenden Dribblings einen langen Pass aus der Bewegung auf ein Hütchen. Treffer löst Rückpass, Bogenlauf und Korbleger aus; Fehlpass führt zu 1 gegen 1. Sie ist eine belegte Praxisform zum Running-Pass-Kompetenzanker, nicht ein gleichnamiger Originaldrill."
+    },
+    {
+      "id": "JRN-STARTER-3-EX065",
+      "karten_id": "EX-065",
+      "karten_titel": "Boxing Out",
+      "name": "Jr. NBA · Starter Practice 3 · 2 on 2 Box Out Game",
+      "url": "https://jr.nba.com/basketball-practice-plans/starter/page/3/",
+      "abschnitt": "Rebounding / 2 on 2 Box Out Game",
+      "abgerufen": "2026-10-04",
+      "felder": ["ablauf", "spielerzahl", "dauer_min", "material"],
+      "pruefnotiz": "Zwei Zweierteams unter dem Korb; Coach wirft Ball an den Ring, beide Teams boxen aus und kämpfen um den Rebound. Nach Ballgewinn Angriff bis Korb oder Abbruch; zwei neue Teams rotieren ein. Quelle nennt 2–3 Chancen pro Team, keine feste Minutenzahl."
+    },
+    {
+      "id": "JRN-STARTER-4-EX067",
+      "karten_id": "EX-067",
+      "karten_titel": "Pass, Cut and Replace",
+      "name": "Jr. NBA · Starter Practice 4 · Pass, Cut & Replace Drill",
+      "url": "https://jr.nba.com/basketball-practice-plans/starter/page/4/",
+      "abschnitt": "Team Concepts / Pass, Cut & Replace Drill",
+      "abgerufen": "2026-10-04",
+      "felder": ["ablauf", "coachingpunkte", "dauer_min", "material"],
+      "pruefnotiz": "Gleichnamige konkrete Originalübung: Pass vom Top zum Flügel, Cut zum Korb, Auffüllen des Top durch den ballfernen Flügel, Ballumkehr und Wiederholung. Zwei Minuten; nur der Spieler am Top cuttet."
+    }
+  ]
+}

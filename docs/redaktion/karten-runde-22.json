@@ -1,0 +1,75 @@
+{
+  "version": 1,
+  "stand": "2026-10-14",
+  "karten": [
+    {
+      "id": "EX-027",
+      "titel": "Jump Stop Shooting",
+      "beleg_id": "RUN22-EX-027",
+      "quelle_vorher": {
+        "name": "Jr. NBA Rookie Practice Plans",
+        "url": null,
+        "video_status": "Nicht separat verifiziert."
+      },
+      "felder": {
+        "ablauf": {
+          "vorher": "Aus kurzem Lauf anlaufen; Jump Stop ausführen; Balance finden; unmittelbar werfen.",
+          "de": "Bis zu vier Gruppen stellen sich an Wurfpositionen auf den Flügeln und neben der Mitte auf. Hütchen markieren den Stopp-Punkt wenige Schritte vor dem Korb. Die erste Person jeder Reihe hat einen Ball, dribbelt zum Hütchen, landet beidbeinig im Jump Stop und wirft. Sie holt den eigenen Rebound, gibt den Ball an die nächste Person ihrer Reihe und stellt sich hinten an. Die erste Gruppe mit sechs Treffern gewinnt.",
+          "en": "Divide players into up to four lines at wing and slot shooting spots. Cones mark the stopping point a few feet from the basket. The first player in each line has a ball, dribbles to the cones, lands in a two-foot jump stop and shoots. The shooter gets the rebound, gives the ball to the next player in line and joins the back of that line. The first group to make six baskets wins."
+        },
+        "raum": {
+          "vorher": null,
+          "de": "Wurfpositionen an Flügeln und Slots; Hütchen wenige Schritte vor dem Korb",
+          "en": "Wing and slot shooting spots; cones a few feet from the basket"
+        },
+        "material": {
+          "vorher": "Bälle, Korb",
+          "de": "Basketbälle, Korb, Hütchen",
+          "en": "Basketballs, basket, cones"
+        },
+        "coachingpunkte": {
+          "vorher": null,
+          "de": "Beidbeinig stabil landen und aus balancierter Haltung in Spieltempo werfen.",
+          "en": "Land in balance on both feet and shoot from a stable base at game speed."
+        }
+      }
+    },
+    {
+      "id": "EX-112",
+      "titel": "„Korbleger – 2er-Rhythmus“",
+      "beleg_id": "RUN22-EX-112",
+      "quelle_vorher": {
+        "name": "DBB Jugend-Minileitfaden, S",
+        "url": "https://basketball-bund.de/content/uploads/2022/07/DBB_Jugend_Minileitfaden.pdf",
+        "video_status": null
+      },
+      "felder": {
+        "ablauf": {
+          "vorher": "Die Aufgabe verbindet Dribbling, Passannahme, zwei Schritte und Absprung zum Korbleger. Zu Beginn sind sowohl eine Links-Rechts- als auch eine Rechts-Links-Folge erlaubt.",
+          "de": "Der Coach steht am Ende der auf den Kasten führenden Bank. Ein Kind dribbelt zur Bank, passt den Ball zum Coach und läuft die Bank hinauf. Auf dem Kasten übernimmt es den Ball aus der Hand des Coaches, setzt zwei Schritte, springt ab, wirft in der Luft zum Korb und landet auf der Weichbodenmatte. Links–rechts und rechts–links sind zunächst beide erlaubt. Redaktionelle Organisationsregel: Das nächste Kind startet erst, wenn Bank, Kasten und Landematte frei sind.",
+          "en": "The coach stands at the end of the bench leading onto the box. One child dribbles toward the bench, passes to the coach and runs up the bench. On the box, the child takes the ball from the coach's hand, takes two steps, jumps, shoots toward the basket in the air and lands on the thick mat. Either left–right or right–left is initially allowed. Editorial organization rule: The next child starts only when the bench, box and landing mat are clear."
+        },
+        "raum": {
+          "vorher": null,
+          "de": "Großen Kasten längs 3–4 m vor dem Korb aufstellen; Turnbank an die Vorderseite, Weichbodenmatte hinter den Kasten, kleine Matten unter die Bank und ans Mattenende",
+          "en": "Place a large box lengthwise 3–4 m from the basket; set a bench against its front, a thick landing mat behind it and small safety mats under the bench and at the end of the landing mat"
+        },
+        "material": {
+          "vorher": null,
+          "de": "Basketbälle, Turnbank, großer Kasten, Weichbodenmatte, zwei kleine Matten",
+          "en": "Basketballs, bench, large box, thick landing mat, two small mats"
+        },
+        "coachingpunkte": {
+          "vorher": null,
+          "de": "Auf die beiden Schrittkontakte und den Blick zum Korb achten, nicht zur Landematte.",
+          "en": "Focus on the two step contacts and keep the eyes on the basket rather than the landing mat."
+        },
+        "progression": {
+          "vorher": "Ein Dribbling vor den beiden Schrittkontakten ergänzen.",
+          "de": "Später zwei große Kästen in Reihe stellen, damit vor den letzten beiden Schritten ein Dribbling möglich wird.",
+          "en": "Later place two large boxes in a row so the child can add a dribble before the final two steps."
+        }
+      }
+    }
+  ]
+}

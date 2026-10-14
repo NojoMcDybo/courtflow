@@ -1,0 +1,39 @@
+{
+  "version": 1,
+  "stand": "2026-10-06",
+  "karten": [
+    {
+      "id": "EX-117",
+      "titel": "Shell Drill 4 on 4",
+      "beleg_id": "NBA-ALLSTAR-5-EX117",
+      "quelle_vorher": {"name": "Jr. NBA All-Star Practice 5", "url": null, "video_status": null},
+      "felder": {
+        "ablauf": {
+          "vorher": "Im 4 gegen 4 beginnt die Offense mit fünf Pässen. Danach wird frei weitergespielt.",
+          "de": "Zwei Viererteams bilden: eines verteidigt, eines greift an. Die vier Angreifenden stellen sich außerhalb der Zone auf; es gibt zu Beginn kein Kind am tiefen Posten. Sie spielen fünf Pässe, während das andere Team verteidigt. Erst nach dem fünften Pass wird der Ball frei: Die Angreifenden dürfen zum Korb ziehen und einen Abschluss suchen. Nach jedem Ballbesitz tauschen die Teams Angriff und Verteidigung. Sechs Minuten spielen. Als erschwerte Variante zählen nur Treffer nach einem Block oder nach Zug zum Korb mit Pass nach außen.",
+          "en": "Make two teams of four, one on offense and one on defense. All four offensive players start on the perimeter, with no post player. They make five passes while the other team defends. Only after the fifth pass is the ball live and the offense may attack the basket. Switch offense and defense after every possession. Play for six minutes. For harder variations, count only baskets following a screen or a drive and kick-out pass."
+        },
+        "spielerzahl": {"vorher": null, "de": "8; zwei Viererteams", "en": "Eight; two teams of four"},
+        "raum": {"vorher": null, "de": "Ein Halbfeld mit Korb; Angriff zunächst am Außenbereich", "en": "One half-court and basket; offense starts on the perimeter"},
+        "material": {"vorher": null, "de": "1 Basketball und 1 Korb", "en": "One basketball and one basket"},
+        "dauer_min": {"vorher": null, "de": "6 Minuten", "en": "Six minutes"}
+      }
+    },
+    {
+      "id": "EX-128",
+      "titel": "3 on 3 Dictated – Screen the Screener",
+      "beleg_id": "NBA-MVP-11-EX128",
+      "quelle_vorher": {"name": "Jr. NBA MVP Practice 11", "url": null, "video_status": null},
+      "felder": {
+        "ablauf": {
+          "vorher": "Im 3 gegen 3 mit einer vom Coach vorgegebenen Blockfolge beginnen. Anschließend wird frei weitergespielt. Die genaue Blockfolge ist im vorliegenden Beleg noch nicht beschrieben.",
+          "de": "Zwei Dreierteams spielen an einem Korb gegeneinander; bei mindestens vier Teams können beide Körbe genutzt werden. Der Coach startet mit Ball am Flügel. Ein angreifendes Kind vom ballnahen tiefen Block stellt einen Querblock durch die Zone, damit ein Postspieler zur Ballseite kommt. Ein drittes angreifendes Kind aus dem Bereich der Freiwurflinie blockt anschließend für das erste Kind, das nach oben herausläuft. Danach wird frei drei gegen drei gespielt. Nach jedem Ballbesitz muss der Ball vor dem nächsten Angriff erst an die Spitze des Dreipunktbogens. Trifft der Angriff, behält er den Ball. Ohne Check weiterspielen; die Partie endet bei drei Treffern.",
+          "en": "Two teams of three play at one basket; with four or more teams, use both baskets. The coach starts with the ball on the wing. An offensive guard on the ball-side low block sets a cross-screen through the lane for a post player to move to the ball side. A third offensive player near the free-throw line then screens for the first guard to come up to the top. Play live three-on-three after that action. On each change of possession, take the ball back to the top of the arc before attacking again. The offense keeps the ball after a basket. Continue without a check ball and play to three made baskets."
+        },
+        "spielerzahl": {"vorher": null, "de": "6 pro Spiel; zwei Dreierteams und Coach", "en": "Six per game; two teams of three and a coach"},
+        "raum": {"vorher": null, "de": "Halbfeld mit Flügel, Zone, Freiwurflinie und Korb", "en": "Half-court with wing, lane, free-throw line and basket"},
+        "material": {"vorher": null, "de": "1 Basketball und 1 Korb pro Spiel", "en": "One basketball and one basket per game"}
+      }
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "version": 1,
+  "methode": "Die im Katalog ausdrücklich genannten DBB- und FIBA/WABC-Originalquellen am 05.10.2026 mit den beiden Karten abgeglichen. Eine beschriebene 2-gegen-2-Übung wird von einem bloßen Verteidigungsprinzip unterschieden. Altersfenster und QA werden nicht aus der Quellenzuordnung aufgewertet.",
+  "belege": [
+    {
+      "id": "DBB-3X3-17-EX106",
+      "karten_id": "EX-106",
+      "karten_titel": "2 gegen 2 aus der DBB-3x3-Progression",
+      "name": "DBB · Stundenbilder 3x3 Basketball · Unterrichtseinheit 17",
+      "url": "https://www.basketball-bund.de/wp-content/uploads/sites/2/2021/09/3x3-Stundenbilder_web_19.pdf",
+      "abschnitt": "17. Unterrichtseinheit: Freilaufen / 1 gegen 1 +1 und 2 gegen 2, gedruckte Seite 48",
+      "abgerufen": "2026-10-05",
+      "felder": ["ablauf", "spielerzahl", "raum", "material", "regression"],
+      "pruefnotiz": "Die 2-gegen-2-Form ist unmittelbar nach der 1-gegen-1-plus-1-Vorstufe beschrieben: Vierergruppen, Längshälfte, Anspieler an der oberen Dreipunktlinie, Freilaufen durch Zonenschnitt, Verteidiger des Anspielers zunächst teilaktiv. Die Quelle gibt keine feste Übungsdauer oder U8-Freigabe an. Der Katalog nennt U8 nur als denkbare Vorstufe; das strukturierte typische Alter bleibt U10–U12."
+    },
+    {
+      "id": "FIBA-MINI-5-3-EX107",
+      "karten_id": "EX-107",
+      "karten_titel": "FIBA 3x3 Man-to-Man / Jump-to-the-Ball",
+      "name": "FIBA/WABC · Mini-Basketball Coaches Manual · 5.3 Small Sided Games – 3x3",
+      "url": "https://assets.fiba.basketball/image/upload/documents-corporate-wabc-coaching-manual-mini-basketball-eng.pdf",
+      "abschnitt": "Develop understanding of man to man defensive positioning, gedruckte Seite 43",
+      "abgerufen": "2026-10-05",
+      "felder": ["lernziel"],
+      "pruefnotiz": "FIBA/WABC benennt Ballverteidigung, Off-Ball-Positionierung und Anpassung der Verteidigungsposition bei jeder Ballbewegung. Der Abschnitt ist ein Prinzip für 3 gegen 3, keine eigenständig organisierte Originalübung; das Ablauffeld bleibt deshalb leer."
+    }
+  ]
+}

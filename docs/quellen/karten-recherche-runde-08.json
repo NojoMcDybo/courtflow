@@ -1,0 +1,50 @@
+{
+  "version": 1,
+  "methode": "Manueller Abgleich konkreter Originalübungen mit bisher bloßen Jr.-NBA-Skill-Ankern. Verwandte Durchführung wird benannt; aus dem Checklistenpunkt allein wird kein Originaldrill behauptet. Videos und QA nicht geprüft.",
+  "belege": [
+    {
+      "id": "JRN-ROOKIE-3-EX-018",
+      "karten_id": "EX-018",
+      "karten_titel": "Catching & Receiving",
+      "name": "Jr. NBA · Rookie Practice 3 · Make the Connection Game",
+      "url": "https://jr.nba.com/basketball-practice-plans/rookie/page/3/",
+      "abschnitt": "Make the Connection Game, Passfangen als konkrete Form",
+      "abgerufen": "2026-10-03",
+      "felder": ["lernziel", "ablauf", "coachingpunkte", "spielerzahl", "dauer_min", "material"],
+      "pruefnotiz": "Konkrete Gruppenübung zum Skill-Anker; kein namensgleicher Originaldrill."
+    },
+    {
+      "id": "JRN-ROOKIE-2-EX-019",
+      "karten_id": "EX-019",
+      "karten_titel": "Hitting the Target",
+      "name": "Jr. NBA · Rookie Practice 2 · Gates Passing Game",
+      "url": "https://jr.nba.com/basketball-practice-plans/rookie/page/2/",
+      "abschnitt": "Gates Passing Game, Zielgenauigkeit als konkrete Form",
+      "abgerufen": "2026-10-03",
+      "felder": ["lernziel", "ablauf", "coachingpunkte", "spielerzahl", "raum", "dauer_min", "material"],
+      "pruefnotiz": "Passen durch markierte Tore als konkrete Zielaufgabe; zwei Spiele zu je einer Minute."
+    },
+    {
+      "id": "FIBA-MINI-32-17-EX-020",
+      "karten_id": "EX-020",
+      "karten_titel": "Stationary Partner Pass: Bounce & Chest",
+      "name": "FIBA/WABC · Mini-Basketball Coaches Manual · 3.2, Activity 17",
+      "url": "https://assets.fiba.basketball/image/upload/documents-corporate-wabc-coaching-manual-mini-basketball-eng.pdf",
+      "abschnitt": "3.2 Balance and coordination, Activity 17, PDF-Seite 16",
+      "abgerufen": "2026-10-03",
+      "felder": ["lernziel", "ablauf", "spielerzahl", "material", "progression"],
+      "pruefnotiz": "Primärquelle nennt Brust- und Bodenpass im Paar; weitere Passarten als Varianten. Keine Zeit oder Distanz."
+    },
+    {
+      "id": "JRN-ROOKIE-4-EX-039",
+      "karten_id": "EX-039",
+      "karten_titel": "Defensive Slide",
+      "name": "Jr. NBA · Rookie Practice 4 · Windows Defensive Slide Drill",
+      "url": "https://jr.nba.com/basketball-practice-plans/rookie/page/4/",
+      "abschnitt": "Windows Defensive Slide Drill, konkrete Form zum Skill-Anker",
+      "abgerufen": "2026-10-03",
+      "felder": ["lernziel", "ablauf", "coachingpunkte", "spielerzahl", "raum", "dauer_min", "material", "progression"],
+      "pruefnotiz": "Konkrete Übung zum Skill-Anker; im Katalog auch als eigene Windows-Drillkarte geführt. Keine neue Originalübung behauptet."
+    }
+  ]
+}

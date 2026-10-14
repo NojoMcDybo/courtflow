@@ -1,0 +1,121 @@
+{
+  "version": 1,
+  "stand": "2026-10-05",
+  "regel": "Die Skills-Checklist belegt die Kompetenz, aber keinen kartengebundenen Ablauf. Bisherige allgemeine Ablaufskizzen werden nicht als Originalübungen ausgegeben. Katalogwerte und ursprüngliche Formulierungen bleiben im Korrekturbeleg erhalten; die QA wird nicht aufgewertet.",
+  "karten": [
+    {
+      "id": "EX-016",
+      "titel": "Change of Direction Dribble",
+      "ablauf_vorher": null,
+      "evidenz_vorher": null,
+      "quelle_vorher": {"name": "Q5/Q7", "url": null, "video_status": null},
+      "quellen_name": "Jr. NBA Rookie Skills Checklist",
+      "quellen_url": "https://jr.nba.com/basketball-practice-plans/rookie/",
+      "pruefhinweis_de": "Die Jr.-NBA-Rookie-Skills-Checklist nennt „Change of Direction Dribble“ als Kompetenz, aber keine dieser Karte eindeutig zugeordnete Originaldurchführung. Die verwandte Übung „Cone Dribbling“ ist bereits als EX-076 erfasst.",
+      "pruefhinweis_en": "The Jr. NBA Rookie Skills Checklist names 'Change of Direction Dribble' as a skill but does not identify an original drill procedure clearly assigned to this card. The related 'Cone Dribbling' drill is already recorded as EX-076.",
+      "grund": "Kompetenzname ohne kartengebundenen Ablauf; verwandte Übung bereits vorhanden"
+    },
+    {
+      "id": "EX-023",
+      "titel": "Slide & Pass",
+      "ablauf_vorher": null,
+      "evidenz_vorher": null,
+      "quelle_vorher": {"name": "Q5/Q7", "url": null, "video_status": null},
+      "quellen_name": "Jr. NBA Rookie Skills Checklist",
+      "quellen_url": "https://jr.nba.com/basketball-practice-plans/rookie/",
+      "pruefhinweis_de": "Die Jr.-NBA-Rookie-Skills-Checklist nennt „Slide & Pass“ als Kompetenz. Eine dieser Karte eindeutig zugeordnete Originaldurchführung ist bisher nicht verifiziert.",
+      "pruefhinweis_en": "The Jr. NBA Rookie Skills Checklist names 'Slide & Pass' as a skill. An original drill procedure clearly assigned to this card has not yet been verified.",
+      "grund": "Kompetenzname ohne kartengebundenen Ablauf"
+    },
+    {
+      "id": "EX-028",
+      "titel": "1-2 Step Shooting",
+      "ablauf_vorher": null,
+      "evidenz_vorher": null,
+      "quelle_vorher": {"name": "Q5/Q7", "url": null, "video_status": null},
+      "quellen_name": "Jr. NBA Rookie Skills Checklist",
+      "quellen_url": "https://jr.nba.com/basketball-practice-plans/rookie/",
+      "pruefhinweis_de": "Die Jr.-NBA-Rookie-Skills-Checklist nennt „1-2 Step Shooting“ als Kompetenz, aber keine dieser Karte eindeutig zugeordnete Originaldurchführung. Die verwandte Übung „1-2 Step Lay-Ups“ ist bereits als EX-044 erfasst.",
+      "pruefhinweis_en": "The Jr. NBA Rookie Skills Checklist names '1-2 Step Shooting' as a skill but does not identify an original drill procedure clearly assigned to this card. The related '1-2 Step Lay-Ups' drill is already recorded as EX-044.",
+      "grund": "Kompetenzname ohne kartengebundenen Ablauf; verwandte Übung bereits vorhanden"
+    },
+    {
+      "id": "EX-022",
+      "titel": "Pass to a Moving Player",
+      "ablauf_vorher": "Passgeber steht seitlich/gegenüber; Empfänger bewegt sich auf vorher vereinbarter Laufbahn; Pass in den Lauf; Rollen wechseln.",
+      "evidenz_vorher": null,
+      "quelle_vorher": {"name": "Jr. NBA Rookie Practice Plans", "url": null, "video_status": "Nicht separat verifiziert."},
+      "quellen_url": "https://jr.nba.com/basketball-practice-plans/rookie/",
+      "pruefhinweis_de": "Die Jr.-NBA-Rookie-Skills-Checklist nennt „Pass to a Moving Player“ als Kompetenz. Eine dieser Karte eindeutig zugeordnete Originaldurchführung ist bisher nicht verifiziert; die bisherige Ablaufskizze war eine redaktionelle Ableitung.",
+      "pruefhinweis_en": "The Jr. NBA Rookie Skills Checklist names 'Pass to a Moving Player' as a skill. An original drill procedure clearly assigned to this card has not yet been verified; the previous procedure sketch was an editorial inference.",
+      "grund": "Allgemeine Ablaufskizze ohne eindeutig zugeordneten Originalbeleg"
+    },
+    {
+      "id": "EX-040",
+      "titel": "Stay Between Man and Basket",
+      "ablauf_vorher": "Angreifer startet aus definierter Position; Verteidiger hält Abstand, bewegt sich lateral und bleibt zwischen Angreifer und Korb.",
+      "evidenz_vorher": null,
+      "quelle_vorher": {"name": "Jr. NBA Rookie Defense / Skills Checklist", "url": null, "video_status": "Nicht separat verifiziert."},
+      "quellen_url": "https://jr.nba.com/basketball-practice-plans/rookie/",
+      "pruefhinweis_de": "Die Jr.-NBA-Rookie-Skills-Checklist nennt „Stay Between Man and Basket“ als Verteidigungskompetenz. Eine dieser Karte eindeutig zugeordnete Originaldurchführung ist bisher nicht verifiziert; die bisherige Ablaufskizze war eine redaktionelle Ableitung.",
+      "pruefhinweis_en": "The Jr. NBA Rookie Skills Checklist names 'Stay Between Man and Basket' as a defensive skill. An original drill procedure clearly assigned to this card has not yet been verified; the previous procedure sketch was an editorial inference.",
+      "grund": "Allgemeine Ablaufskizze ohne eindeutig zugeordneten Originalbeleg"
+    },
+    {
+      "id": "EX-062",
+      "titel": "Advanced Stationary Control Series",
+      "ablauf_vorher": null,
+      "evidenz_vorher": "Redaktionsstatus: Vollständig strukturiert; bei Skills-Checklist-Einträgen bleibt die konkrete Originaldurchführung als offener Verifikationspunkt markiert.",
+      "quelle_vorher": {"name": "Jr. NBA Starter Skills Checklist", "url": "https://jr.nba.com/basketball-practice-plans/starter/", "video_status": null},
+      "quellen_url": "https://jr.nba.com/basketball-practice-plans/starter/",
+      "pruefhinweis_de": "Die Jr.-NBA-Starter-Skills-Checklist nennt „Advanced Stationary Control Series“ als Kompetenz. Die einzelnen Varianten und ihre Originaldurchführung sind für diese Karte bisher nicht verifiziert.",
+      "pruefhinweis_en": "The Jr. NBA Starter Skills Checklist names 'Advanced Stationary Control Series' as a skill. Its individual variations and original procedure have not yet been verified for this card.",
+      "grund": "Pauschaler Status ‚vollständig strukturiert‘ trotz fehlendem Originalablauf"
+    },
+    {
+      "id": "EX-064",
+      "titel": "Closeout to Slide",
+      "ablauf_vorher": null,
+      "evidenz_vorher": "Redaktionsstatus: Vollständig strukturiert; bei Skills-Checklist-Einträgen bleibt die konkrete Originaldurchführung als offener Verifikationspunkt markiert.",
+      "quelle_vorher": {"name": "Jr. NBA Starter Skills Checklist", "url": "https://jr.nba.com/basketball-practice-plans/starter/", "video_status": null},
+      "quellen_url": "https://jr.nba.com/basketball-practice-plans/starter/",
+      "pruefhinweis_de": "Die Jr.-NBA-Starter-Skills-Checklist nennt „Closeout to Slide“ als Kompetenz. Eine dieser Karte eindeutig zugeordnete Originaldurchführung ist bisher nicht verifiziert.",
+      "pruefhinweis_en": "The Jr. NBA Starter Skills Checklist names 'Closeout to Slide' as a skill. An original drill procedure clearly assigned to this card has not yet been verified.",
+      "grund": "Pauschaler Status ‚vollständig strukturiert‘ trotz fehlendem Originalablauf"
+    },
+    {
+      "id": "EX-066",
+      "titel": "Pursuing the Ball",
+      "ablauf_vorher": null,
+      "evidenz_vorher": "Redaktionsstatus: Vollständig strukturiert; bei Skills-Checklist-Einträgen bleibt die konkrete Originaldurchführung als offener Verifikationspunkt markiert.",
+      "quelle_vorher": {"name": "Jr. NBA Starter Skills Checklist", "url": "https://jr.nba.com/basketball-practice-plans/starter/", "video_status": null},
+      "quellen_url": "https://jr.nba.com/basketball-practice-plans/starter/",
+      "pruefhinweis_de": "Die Jr.-NBA-Starter-Skills-Checklist nennt „Pursuing the Ball“ als Reboundkompetenz. Eine dieser Karte eindeutig zugeordnete Originaldurchführung ist bisher nicht verifiziert.",
+      "pruefhinweis_en": "The Jr. NBA Starter Skills Checklist names 'Pursuing the Ball' as a rebounding skill. An original drill procedure clearly assigned to this card has not yet been verified.",
+      "grund": "Pauschaler Status ‚vollständig strukturiert‘ trotz fehlendem Originalablauf"
+    },
+    {
+      "id": "EX-068",
+      "titel": "Fill the Corner",
+      "ablauf_vorher": null,
+      "evidenz_vorher": "Redaktionsstatus: Vollständig strukturiert; bei Skills-Checklist-Einträgen bleibt die konkrete Originaldurchführung als offener Verifikationspunkt markiert.",
+      "quelle_vorher": {"name": "Jr. NBA Starter Skills Checklist", "url": "https://jr.nba.com/basketball-practice-plans/starter/", "video_status": null},
+      "quellen_url": "https://jr.nba.com/basketball-practice-plans/starter/",
+      "pruefhinweis_de": "Die Jr.-NBA-Starter-Skills-Checklist nennt „Fill the Corner“ als Angriffskompetenz. Eine dieser Karte eindeutig zugeordnete Originaldurchführung ist bisher nicht verifiziert.",
+      "pruefhinweis_en": "The Jr. NBA Starter Skills Checklist names 'Fill the Corner' as an offensive skill. An original drill procedure clearly assigned to this card has not yet been verified.",
+      "grund": "Pauschaler Status ‚vollständig strukturiert‘ trotz fehlendem Originalablauf"
+    },
+    {
+      "id": "EX-075",
+      "titel": "Closeout to Slide",
+      "ablauf_vorher": null,
+      "evidenz_vorher": null,
+      "quelle_vorher": {"name": "Jr. NBA Starter", "url": null, "video_status": null},
+      "quellen_name": "Jr. NBA Starter Skills Checklist",
+      "quellen_url": "https://jr.nba.com/basketball-practice-plans/starter/",
+      "pruefhinweis_de": "Die Jr.-NBA-Starter-Skills-Checklist nennt „Closeout to Slide“ als Kompetenz. Eine dieser Karte eindeutig zugeordnete Originaldurchführung ist bisher nicht verifiziert. Dieselbe Kompetenz ist im Katalog auch unter EX-064 erfasst.",
+      "pruefhinweis_en": "The Jr. NBA Starter Skills Checklist names 'Closeout to Slide' as a skill. An original drill procedure clearly assigned to this card has not yet been verified. The catalog also records the same skill as EX-064.",
+      "grund": "Kompetenzname ohne kartengebundenen Ablauf; doppelte Kompetenzkarte"
+    }
+  ]
+}

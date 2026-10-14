@@ -1,0 +1,29 @@
+{
+  "stand": "2026-10-05",
+  "regel": "Nur eine einer Karte eindeutig zugeordnete Originaldurchführung zählt als Ablauf. Kompetenznamen und methodische Prinzipien bleiben als Prüfhinweis erhalten, ohne daraus einen Drill zu erfinden.",
+  "kanonische_karten": 146,
+  "mit_ablauf": 133,
+  "ohne_ablauf": [
+    {"id": "EX-016", "grund": "Rookie-Kompetenzname; verwandte Übung EX-076 bereits vorhanden, keine separate Originaldurchführung zugeordnet."},
+    {"id": "EX-022", "grund": "Rookie-Kompetenzname; frühere allgemeine Ablaufskizze entfernt, Originaldurchführung offen."},
+    {"id": "EX-023", "grund": "Rookie-Kompetenzname ohne eindeutig zugeordneten Originalablauf."},
+    {"id": "EX-028", "grund": "Rookie-Kompetenzname; verwandte Übung EX-044 bereits vorhanden, keine separate Originaldurchführung zugeordnet."},
+    {"id": "EX-040", "grund": "Rookie-Verteidigungskompetenz; frühere allgemeine Ablaufskizze entfernt, Originaldurchführung offen."},
+    {"id": "EX-062", "grund": "Starter-Kompetenzname; einzelne Varianten der Advanced Stationary Control Series nicht zugeordnet."},
+    {"id": "EX-064", "grund": "Starter-Kompetenzname Closeout to Slide ohne eindeutig zugeordneten Originalablauf."},
+    {"id": "EX-066", "grund": "Starter-Reboundkompetenz Pursuing the Ball ohne eindeutig zugeordneten Originalablauf."},
+    {"id": "EX-068", "grund": "Starter-Angriffskompetenz Fill the Corner ohne eindeutig zugeordneten Originalablauf."},
+    {"id": "EX-075", "grund": "Zweiter Katalogeintrag zu Closeout to Slide, ebenfalls ohne eigene Originaldurchführung."},
+    {"id": "EX-107", "grund": "FIBA/WABC-Quelle verifiziert ein Verteidigungsprinzip, aber keine eigenständige Drillorganisation."},
+    {"id": "EX-136", "grund": "FIBA/WABC beschreibt technische Dribbleroptionen am On-Ball-Screen, keine eindeutig abgegrenzte Übung."},
+    {"id": "EX-137", "grund": "FIBA/WABC beschreibt Rebounding und Defensive Transition als methodische Querschnittsregel, nicht als isolierten Drill."}
+  ],
+  "weitere_pruefung": [
+    {"id": "EX-036", "grund": "Belegte Starter-Praxisform bei Rookie-Kompetenzanker; Alterszuordnung prüfen."},
+    {"id": "EX-106", "grund": "DBB-2-gegen-2-Originalform nun erfasst; U8 bleibt nur als denkbare Vorstufe im Katalogwortlaut, nicht im typischen Altersfenster."}
+  ],
+  "neu_belegt": [
+    {"id": "EX-106", "beleg": "DBB Stundenbilder 3x3 Basketball, Unterrichtseinheit 17, gedruckte Seite 48"},
+    {"id": "EX-107", "beleg": "FIBA/WABC Mini-Basketball Coaches Manual, Kapitel 5.3, gedruckte Seite 43"}
+  ]
+}

@@ -1,0 +1,166 @@
+{
+  "version": 1,
+  "stand": "2026-10-06",
+  "belege": [
+    {
+      "id": "NBA-STARTER-12-EX061",
+      "karten_id": "EX-061",
+      "karten_titel": "3 on 3 Numbers Game",
+      "name": "Jr. NBA · 3 On 3 Numbers Game",
+      "url": "https://jr.nba.com/basketball-practice-plans/starter/page/12/",
+      "abschnitt": "3 On 3 Numbers Game",
+      "abgerufen": "2026-10-06",
+      "felder": [
+        "ablauf",
+        "material"
+      ],
+      "pruefnotiz": "Ablauf und Organisation nach der ausdrücklich betitelten Übung auf der offiziellen interaktiven Practice-Plan-Seite."
+    },
+    {
+      "id": "NBA-ALLSTAR-11-EX120",
+      "karten_id": "EX-120",
+      "karten_titel": "3 on 2, 2 on 1",
+      "name": "Jr. NBA · 3 on 2, 2 on 1",
+      "url": "https://jr.nba.com/basketball-practice-plans/all-star/page/11/",
+      "abschnitt": "3 on 2, 2 on 1",
+      "abgerufen": "2026-10-06",
+      "felder": [
+        "ablauf",
+        "spielerzahl",
+        "raum",
+        "material",
+        "dauer_min"
+      ],
+      "pruefnotiz": "Ablauf und Organisation nach der ausdrücklich betitelten Übung auf der offiziellen interaktiven Practice-Plan-Seite."
+    },
+    {
+      "id": "NBA-MVP-11-EX129",
+      "karten_id": "EX-129",
+      "karten_titel": "3 on 3 Dictated – Elbow Pass",
+      "name": "Jr. NBA · 3 on 3 Dictated – Elbow Pass",
+      "url": "https://jr.nba.com/basketball-practice-plans/mvp/page/11/",
+      "abschnitt": "3 on 3 Dictated – Elbow Pass",
+      "abgerufen": "2026-10-06",
+      "felder": [
+        "ablauf",
+        "spielerzahl",
+        "raum",
+        "material"
+      ],
+      "pruefnotiz": "Ablauf und Organisation nach der ausdrücklich betitelten Übung auf der offiziellen interaktiven Practice-Plan-Seite."
+    },
+    {
+      "id": "NBA-ALLSTAR-11-EX130",
+      "karten_id": "EX-130",
+      "karten_titel": "2 on 1 Bunch Spacing – No Dribble",
+      "name": "Jr. NBA · 2 on 1 Bunch Spacing – No Dribble",
+      "url": "https://jr.nba.com/basketball-practice-plans/all-star/page/11/",
+      "abschnitt": "2 on 1 Bunch Spacing – No Dribble",
+      "abgerufen": "2026-10-06",
+      "felder": [
+        "ablauf",
+        "spielerzahl",
+        "raum",
+        "material"
+      ],
+      "pruefnotiz": "Ablauf und Organisation nach der ausdrücklich betitelten Übung auf der offiziellen interaktiven Practice-Plan-Seite."
+    },
+    {
+      "id": "NBA-MVP-11-EX138",
+      "karten_id": "EX-138",
+      "karten_titel": "3 on 3 Dictated – Down Screen",
+      "name": "Jr. NBA · 3 on 3 Dictated – Down Screen",
+      "url": "https://jr.nba.com/basketball-practice-plans/mvp/page/11/",
+      "abschnitt": "3 on 3 Dictated – Down Screen",
+      "abgerufen": "2026-10-06",
+      "felder": [
+        "ablauf",
+        "spielerzahl",
+        "raum",
+        "material"
+      ],
+      "pruefnotiz": "Ablauf und Organisation nach der ausdrücklich betitelten Übung auf der offiziellen interaktiven Practice-Plan-Seite."
+    },
+    {
+      "id": "NBA-MVP-11-EX139",
+      "karten_id": "EX-139",
+      "karten_titel": "3 on 3 Dictated – Pick & Roll",
+      "name": "Jr. NBA · 3 on 3 Dictated – Pick & Roll",
+      "url": "https://jr.nba.com/basketball-practice-plans/mvp/page/11/",
+      "abschnitt": "3 on 3 Dictated – Pick & Roll",
+      "abgerufen": "2026-10-06",
+      "felder": [
+        "ablauf",
+        "spielerzahl",
+        "raum",
+        "material"
+      ],
+      "pruefnotiz": "Ablauf und Organisation nach der ausdrücklich betitelten Übung auf der offiziellen interaktiven Practice-Plan-Seite."
+    },
+    {
+      "id": "NBA-STARTER-4-EX142",
+      "karten_id": "EX-142",
+      "karten_titel": "3-Person Pass, Cut and Replace",
+      "name": "Jr. NBA · Pass, Cut & Replace Drill",
+      "url": "https://jr.nba.com/basketball-practice-plans/starter/page/4/",
+      "abschnitt": "Pass, Cut & Replace Drill",
+      "abgerufen": "2026-10-06",
+      "felder": [
+        "ablauf",
+        "spielerzahl",
+        "raum",
+        "material",
+        "dauer_min"
+      ],
+      "pruefnotiz": "Ablauf und Organisation nach der ausdrücklich betitelten Übung auf der offiziellen interaktiven Practice-Plan-Seite."
+    },
+    {
+      "id": "NBA-ALLSTAR-1-EX153",
+      "karten_id": "EX-153",
+      "karten_titel": "5 on 5 Controlled",
+      "name": "Jr. NBA · 5 on 5 Controlled",
+      "url": "https://jr.nba.com/basketball-practice-plans/all-star/",
+      "abschnitt": "5 on 5 Controlled",
+      "abgerufen": "2026-10-06",
+      "felder": [
+        "ablauf",
+        "spielerzahl",
+        "material"
+      ],
+      "pruefnotiz": "Ablauf und Organisation nach der ausdrücklich betitelten Übung auf der offiziellen interaktiven Practice-Plan-Seite."
+    },
+    {
+      "id": "NBA-ALLSTAR-4-EX155",
+      "karten_id": "EX-155",
+      "karten_titel": "3 on 3 – Defense Wins",
+      "name": "Jr. NBA · 3 on 3 – Defense Wins",
+      "url": "https://jr.nba.com/basketball-practice-plans/all-star/page/4/",
+      "abschnitt": "3 on 3 – Defense Wins",
+      "abgerufen": "2026-10-06",
+      "felder": [
+        "ablauf",
+        "spielerzahl",
+        "raum",
+        "material"
+      ],
+      "pruefnotiz": "Ablauf und Organisation nach der ausdrücklich betitelten Übung auf der offiziellen interaktiven Practice-Plan-Seite."
+    },
+    {
+      "id": "NBA-STARTER-5-EX157",
+      "karten_id": "EX-157",
+      "karten_titel": "Using a Screen 2 on 1 Game / Tactical Load 2v2",
+      "name": "Jr. NBA · Using a Screen 2 on 1 Game",
+      "url": "https://jr.nba.com/basketball-practice-plans/starter/page/5/",
+      "abschnitt": "Using a Screen 2 on 1 Game",
+      "abgerufen": "2026-10-06",
+      "felder": [
+        "ablauf",
+        "spielerzahl",
+        "raum",
+        "material",
+        "dauer_min"
+      ],
+      "pruefnotiz": "Ablauf und Organisation nach der ausdrücklich betitelten Übung auf der offiziellen interaktiven Practice-Plan-Seite."
+    }
+  ]
+}

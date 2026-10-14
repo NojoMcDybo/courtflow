@@ -1,0 +1,22 @@
+{
+  "version": 1,
+  "methode": "Originalpassage im offiziellen FIBA/WABC-Level-1-Handbuch, Abschnitt 2.1.8, PDF-Seite 327 (gedruckt 325), anhand der gerenderten Seite geprüft. Keine feste Dauer genannt; QA und Altersbewertung unverändert.",
+  "belege": [
+    {
+      "id": "FIBA-L1-218-EX135",
+      "karten_id": "EX-135",
+      "karten_titel": "Two Halves Scrimmage",
+      "name": "FIBA/WABC · Level 1 Coaches Manual · 2.1.8 Two Halves Scrimmage",
+      "url": "https://assets.fiba.basketball/image/upload/documents-corporate-wabc-coaching-level-manuals-level-1-eng.pdf",
+      "abschnitt": "2.1.8 Scrimmage Activity, PDF-Seite 327 / Handbuchseite 325",
+      "abgerufen": "2026-10-04",
+      "felder": [
+        "ablauf",
+        "spielerzahl",
+        "raum",
+        "material"
+      ],
+      "pruefnotiz": "Original nennt 3x3, 4x4 oder 5x5, umkämpften Halbfeldangriff, freien Abschluss der Verteidigung am anderen Korb bis zum Treffer, Rückgabe des Balls und Rollentausch zur Halbzeit. Regelvarianten sind ausdrücklich Beispiele; kein Zeitumfang angegeben."
+    }
+  ]
+}

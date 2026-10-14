@@ -1,0 +1,432 @@
+{
+  "version": 1,
+  "stand": "2026-10-11",
+  "karten": [
+    {
+      "id": "EX-016",
+      "titel": "Change of Direction Dribble",
+      "beleg_id": "RUN21-EX-016",
+      "quelle_vorher": {
+        "name": "Jr. NBA Rookie Skills Checklist",
+        "url": "https://jr.nba.com/basketball-practice-plans/rookie/",
+        "video_status": null
+      },
+      "felder": {
+        "ablauf": {
+          "vorher": null,
+          "de": "Redaktionelle Übungsform nach „Dribble lines“: Jede Person nimmt einen Ball und startet mit Abstand auf einer Feldlinie. Alle dribbeln auf den Linien. Treffen sich zwei, bremsen beide kontrolliert, wechseln die Dribbelhand und kehren auf ihrer Linie in die andere Richtung um. An Kreuzungen schauen sie auf und lassen Platz; nach einer Runde starten sie von einer anderen Linie.",
+          "en": "Editorial practice based on “Dribble lines”: Each player takes a ball and starts spaced out along a court line. Everyone dribbles on the lines. When two players meet, both slow under control, change dribbling hand and reverse along their line. Look up and leave space at intersections; start another round from a different line."
+        },
+        "spielerzahl": {
+          "vorher": null,
+          "de": "Gruppe; je 1 Ball pro Person",
+          "en": "Group; one ball per player"
+        },
+        "raum": {
+          "vorher": null,
+          "de": "Feld mit sichtbaren Linien",
+          "en": "Court with visible lines"
+        },
+        "material": {
+          "vorher": null,
+          "de": "1 Basketball pro Person",
+          "en": "One basketball per player"
+        }
+      }
+    },
+    {
+      "id": "EX-022",
+      "titel": "Pass to a Moving Player",
+      "beleg_id": "RUN21-EX-022",
+      "quelle_vorher": {
+        "name": "Jr. NBA Rookie Practice Plans",
+        "url": "https://jr.nba.com/basketball-practice-plans/rookie/",
+        "video_status": "Nicht separat verifiziert."
+      },
+      "felder": {
+        "ablauf": {
+          "vorher": null,
+          "de": "Zwei Reihen mit Abstand einander gegenüber aufstellen, ein Ball beginnt bei A. Die erste Person aus der Gegenreihe läuft dem Ball entgegen. A passt vor den Laufweg; die laufende Person bewegt sich bis zum Fang weiter und landet danach im beidbeinigen Sprungstopp. A läuft zur Gegenreihe. Die fangende Person passt zur nächsten aus der ersten Reihe, die wieder zum Ball läuft. So wandert der Ball fortlaufend zwischen den Reihen; nach jedem Pass hinten an der anderen Reihe anstellen.",
+          "en": "Set up two facing lines with space between them; A starts with the ball. The first player in the opposite line moves toward the ball. A leads the receiver with a pass; the receiver keeps moving until the catch, then lands in a two-foot jump stop. A moves to the opposite line. The receiver passes to the next player from the first line, who moves toward the ball. Continue alternating between lines; after each pass join the back of the other line."
+        },
+        "raum": {
+          "vorher": null,
+          "de": "Freier Platz für zwei gegenüberstehende Reihen",
+          "en": "Open space for two facing lines"
+        },
+        "material": {
+          "vorher": "Bälle, Hütchen",
+          "de": "1 Basketball für zwei Reihen",
+          "en": "One basketball for two lines"
+        }
+      }
+    },
+    {
+      "id": "EX-023",
+      "titel": "Slide & Pass",
+      "beleg_id": "RUN21-EX-023",
+      "quelle_vorher": {
+        "name": "Jr. NBA Rookie Skills Checklist",
+        "url": "https://jr.nba.com/basketball-practice-plans/rookie/",
+        "video_status": null
+      },
+      "felder": {
+        "ablauf": {
+          "vorher": null,
+          "de": "Redaktionelle Übungsform: Paare stehen sich mit einem Ball in zwei parallelen Bahnen gegenüber. Beide rutschen gleichzeitig seitwärts in Verteidigungshaltung über etwa drei Schritte, ohne die Füße zu kreuzen. A stoppt stabil und passt auf Brusthöhe zu B; B fängt, beide rutschen in die Gegenrichtung und B passt zurück. Nach fünf Pässen wird die Startseite gewechselt. Der Ball bleibt während des seitlichen Gleitens bei der ballführenden Person.",
+          "en": "Editorial practice: Partners face each other in two parallel lanes with one ball. Both slide sideways about three steps in a defensive stance without crossing their feet. A stops in balance and chest-passes to B; B catches, both slide back the other way and B passes back. Switch the starting side after five passes. The ball stays with the ball handler during each slide."
+        },
+        "spielerzahl": {
+          "vorher": null,
+          "de": "Paare; 1 Ball pro Paar",
+          "en": "Pairs; one ball per pair"
+        },
+        "raum": {
+          "vorher": null,
+          "de": "Zwei freie parallele Bahnen pro Paar",
+          "en": "Two clear parallel lanes per pair"
+        },
+        "material": {
+          "vorher": null,
+          "de": "1 Basketball pro Paar",
+          "en": "One basketball per pair"
+        }
+      }
+    },
+    {
+      "id": "EX-028",
+      "titel": "1-2 Step Shooting",
+      "beleg_id": "RUN21-EX-028",
+      "quelle_vorher": {
+        "name": "Jr. NBA Rookie Skills Checklist",
+        "url": "https://jr.nba.com/basketball-practice-plans/rookie/",
+        "video_status": null
+      },
+      "felder": {
+        "ablauf": {
+          "vorher": null,
+          "de": "Zu zweit an einem Korb mit einem Ball arbeiten. Die werfende Person steht innerhalb der Dreipunktlinie zum Korb gewandt und ist fangbereit; die zweite steht mit Ball unter dem Korb. Sie passt zum Werfer. Beim Fangen setzt der Werfer die Füße nacheinander im 1-2-Rhythmus zum Wurf auf und wirft. Der Passgeber holt den Rebound und passt erneut. Nach zehn Treffern wechseln beide die Rollen und wiederholen die Serie.",
+          "en": "Work in pairs at one basket with one ball. The shooter stands inside the three-point line facing the basket and ready to catch; the partner starts under the basket with the ball. The partner passes. On the catch, the shooter plants the feet in a one-two sequence and shoots. The passer rebounds and passes again. After ten makes, swap roles and repeat."
+        },
+        "spielerzahl": {
+          "vorher": null,
+          "de": "Paare; 1 Ball pro Paar",
+          "en": "Pairs; one ball per pair"
+        },
+        "raum": {
+          "vorher": null,
+          "de": "Ein Korb; Wurfposition innerhalb der Dreipunktlinie",
+          "en": "One basket; shooting spot inside the three-point line"
+        },
+        "material": {
+          "vorher": null,
+          "de": "1 Basketball pro Paar; Korb",
+          "en": "One basketball per pair; basket"
+        },
+        "dauer_min": {
+          "vorher": null,
+          "de": "10 Treffer je Person",
+          "en": "10 makes per player"
+        }
+      }
+    },
+    {
+      "id": "EX-040",
+      "titel": "Stay Between Man and Basket",
+      "beleg_id": "RUN21-EX-040",
+      "quelle_vorher": {
+        "name": "Jr. NBA Rookie Defense / Skills Checklist",
+        "url": "https://jr.nba.com/basketball-practice-plans/rookie/",
+        "video_status": "Nicht separat verifiziert."
+      },
+      "felder": {
+        "ablauf": {
+          "vorher": null,
+          "de": "Redaktionelle Übungsform nach „Closeout 1 on 1“: Eine Person steht mit Ball an der Dreipunktbogenspitze, eine greift am Flügel an, die Verteidigung beginnt an der Freiwurflinie. Der Ball geht zum Flügel. Die Verteidigung läuft kontrolliert heraus, verkürzt die Schritte und stellt sich zwischen Angreifer und Korb. Ab Fang darf der Angriff mit höchstens drei Dribblings abschließen. Nach Wurf oder Stopp holt die Gruppe den Ball; Verteidigung wird Passgeber, Passgeber greift am Flügel an, Angreifer stellt sich hinten an und die nächste Person verteidigt.",
+          "en": "Editorial practice based on “Closeout 1 on 1”: A passer starts with the ball at the top of the arc, an attacker stands on the wing and a defender begins at the free-throw line. The passer feeds the wing. The defender closes out under control, shortens the steps and stays between attacker and basket. On the catch, the attacker has at most three dribbles to finish. After a shot or stop, recover the ball; defender becomes passer, passer becomes wing attacker, attacker joins the back and the next player defends."
+        },
+        "spielerzahl": {
+          "vorher": "2–8",
+          "de": "Mindestens 4 Personen; 3 aktiv",
+          "en": "At least 4 players; 3 active"
+        },
+        "raum": {
+          "vorher": null,
+          "de": "Halbfeld mit Korb; Passgeber oben, Angriff am Flügel, Verteidigung an der Freiwurflinie",
+          "en": "Half court with basket; passer at top, attacker on wing, defender at free-throw line"
+        },
+        "dauer_min": {
+          "vorher": "6–10 min",
+          "de": "4 Minuten",
+          "en": "Four minutes"
+        },
+        "material": {
+          "vorher": "Bälle, Hütchen, Korb",
+          "de": "1 Basketball; Korb",
+          "en": "One basketball; basket"
+        }
+      }
+    },
+    {
+      "id": "EX-062",
+      "titel": "Advanced Stationary Control Series",
+      "beleg_id": "RUN21-EX-062",
+      "quelle_vorher": {
+        "name": "Jr. NBA Starter Skills Checklist",
+        "url": "https://jr.nba.com/basketball-practice-plans/starter/",
+        "video_status": null
+      },
+      "felder": {
+        "ablauf": {
+          "vorher": null,
+          "de": "Redaktionelle Kontrollserie: Alle stehen mit je einem Ball und ausreichend Abstand dem Coach gegenüber. Mit der rechten Hand den Ball im Stand 15 Sekunden tief seitlich führen, dann 15 Sekunden auf mittlerer und 15 Sekunden auf höherer Dribbelhöhe. Dieselbe Folge mit links spielen; das ergibt eine Serie. Drei Serien ausführen, zwischen den Serien kurz neu aufstellen. Ball unter Kontrolle halten und den Blick möglichst vom Ball lösen.",
+          "en": "Editorial control series: Everyone stands facing the coach with one ball each and enough space. With the right hand, dribble side to side in place for 15 seconds low, 15 seconds at mid height and 15 seconds higher. Repeat the sequence with the left hand; that makes one set. Complete three sets, briefly resetting between them. Keep the ball controlled and lift the eyes away from it when possible."
+        },
+        "raum": {
+          "vorher": "Stationär",
+          "de": "Freier Standplatz mit Abstand pro Person",
+          "en": "Clear stationary spot with space for each player"
+        },
+        "material": {
+          "vorher": null,
+          "de": "1 Basketball pro Person",
+          "en": "One basketball per player"
+        },
+        "dauer_min": {
+          "vorher": "variabel",
+          "de": "4,5 Minuten (3 Serien je Hand mit je 3 × 15 Sekunden)",
+          "en": "4.5 minutes (3 sets per hand, each with 3 × 15 seconds)"
+        }
+      }
+    },
+    {
+      "id": "EX-064",
+      "titel": "Closeout to Slide",
+      "beleg_id": "RUN21-EX-064",
+      "quelle_vorher": {
+        "name": "Jr. NBA Starter Skills Checklist",
+        "url": "https://jr.nba.com/basketball-practice-plans/starter/",
+        "video_status": null
+      },
+      "felder": {
+        "ablauf": {
+          "vorher": null,
+          "de": "Passgeber an der Dreipunktbogenspitze, Angreifer am Flügel, Verteidiger an der Freiwurflinie aufstellen. Der Pass zum Flügel löst den Closeout aus: Verteidiger sprintet an, verkürzt vor dem Angreifer die Schritte und hebt eine Hand. Sobald der Angriff fängt, spielt er mit höchstens drei Dribblings zum Korb. Verteidiger rutscht seitlich mit und versucht den Weg zum Korb abzuschneiden. Nach Korbversuch oder Stopp wird Verteidiger Passgeber, Passgeber Angreifer, Angreifer stellt sich an; nächste Person verteidigt.",
+          "en": "Set a passer at the top of the arc, attacker on the wing and defender at the free-throw line. The pass to the wing triggers the closeout: the defender runs out, shortens the final steps and raises a hand. Once the attacker catches, they have at most three dribbles to attack the basket. The defender slides laterally to cut off the path. After a shot or stop, defender becomes passer, passer becomes attacker, attacker joins the line and the next player defends."
+        },
+        "spielerzahl": {
+          "vorher": "Paare / 3er",
+          "de": "Mindestens 4 Personen; 3 aktiv",
+          "en": "At least 4 players; 3 active"
+        },
+        "material": {
+          "vorher": null,
+          "de": "1 Basketball; Korb",
+          "en": "One basketball; basket"
+        },
+        "dauer_min": {
+          "vorher": "variabel",
+          "de": "4 Minuten",
+          "en": "Four minutes"
+        }
+      }
+    },
+    {
+      "id": "EX-066",
+      "titel": "Pursuing the Ball",
+      "beleg_id": "RUN21-EX-066",
+      "quelle_vorher": {
+        "name": "Jr. NBA Starter Skills Checklist",
+        "url": "https://jr.nba.com/basketball-practice-plans/starter/",
+        "video_status": null
+      },
+      "felder": {
+        "ablauf": {
+          "vorher": null,
+          "de": "Dreiergruppen mit einem Ball am Korb bilden: zwei Angreifer stehen nahe beieinander, ein Verteidiger bewacht die Person ohne Ball aus der Hilfeposition. A passt zu B; Verteidiger schließt zu B und ruft „Ball“. B passt zu A zurück; Verteidiger springt wieder in die Hilfeposition. A wirft. Beim Wurf sucht der Verteidiger den eigenen Gegenspieler, stellt Körperkontakt her und verfolgt dann den Ball zum Rebound. Danach Ball sichern und die drei Rollen im nächsten Durchgang wechseln.",
+          "en": "Form groups of three with one ball near a basket: two attackers stand near each other, and a defender guards the off-ball player from help position. A passes to B; the defender closes out to B and calls “ball”. B returns the pass to A; the defender jumps back into help. A shoots. On the shot, the defender locates and tags their own player, then pursues the ball for the rebound. Secure the ball and rotate the three roles for the next repetition."
+        },
+        "spielerzahl": {
+          "vorher": "2-4",
+          "de": "Dreiergruppen; 1 Ball pro Gruppe",
+          "en": "Groups of three; one ball per group"
+        },
+        "material": {
+          "vorher": null,
+          "de": "1 Basketball pro Gruppe; Korb",
+          "en": "One basketball per group; basket"
+        },
+        "dauer_min": {
+          "vorher": "variabel",
+          "de": "6 Minuten",
+          "en": "Six minutes"
+        }
+      }
+    },
+    {
+      "id": "EX-068",
+      "titel": "Fill the Corner",
+      "beleg_id": "RUN21-EX-068",
+      "quelle_vorher": {
+        "name": "Jr. NBA Starter Skills Checklist",
+        "url": "https://jr.nba.com/basketball-practice-plans/starter/",
+        "video_status": null
+      },
+      "felder": {
+        "ablauf": {
+          "vorher": null,
+          "de": "Zwei Reihen an gegenüberliegenden Flügeln bilden; der erste Spieler einer Reihe hat den Ball. Er dribbelt entlang der Grundlinie Richtung Korb und greift mit Zug zum Abschluss an. Gleichzeitig rückt der erste Spieler des anderen Flügels in die freie Ecke. Der Dribbler passt kurz vor dem Korb in die Ecke; der Empfänger fängt wurfbereit und wirft. Beide holen den Rebound und wechseln die Flügelreihen. Bis zu acht Treffern wiederholen, danach die Angriffsrichtung tauschen.",
+          "en": "Make two lines on opposite wings; the first player in one line has the ball. They drive along the baseline toward the basket with intent to score. At the same time, the first player on the opposite wing drops into the open corner. Near the basket, the driver passes to the corner; the receiver catches ready to shoot and shoots. Both rebound and switch wing lines. Continue to eight makes, then reverse the attacking side."
+        },
+        "raum": {
+          "vorher": "Halbfeld / Ganzfeld",
+          "de": "Halbfeld mit Korb; je eine Reihe an beiden Flügeln",
+          "en": "Half court with basket; one line on each wing"
+        },
+        "material": {
+          "vorher": null,
+          "de": "Basketball; Korb",
+          "en": "Basketball; basket"
+        },
+        "dauer_min": {
+          "vorher": "variabel",
+          "de": "2 Durchgänge bis je 8 Treffer",
+          "en": "2 rounds to 8 makes each"
+        }
+      }
+    },
+    {
+      "id": "EX-075",
+      "titel": "Closeout to Slide",
+      "beleg_id": "RUN21-EX-075",
+      "quelle_vorher": {
+        "name": "Jr. NBA Starter Skills Checklist",
+        "url": "https://jr.nba.com/basketball-practice-plans/starter/",
+        "video_status": null
+      },
+      "felder": {
+        "ablauf": {
+          "vorher": null,
+          "de": "Alle stehen in einer Reihe an der Grundlinie auf Höhe der Zonenlinie. Die erste Person sprintet zum nahen Freiwurflinien-Ellbogen und bremst in einem kontrollierten Closeout. Von dort gleitet sie in Verteidigungsstellung seitlich durch die Zone bis zum anderen Ellbogen. Anschließend läuft sie rückwärts bis zur Grundlinie und stellt sich hinten an. Sobald die vorausgehende Person den ersten Ellbogen erreicht hat, startet die nächste. Zwei Minuten üben, dann die Bewegungsrichtung spiegeln und weitere zwei Minuten spielen.",
+          "en": "Line up on the baseline where it meets the lane line. The first player sprints to the near free-throw-line elbow and decelerates into a controlled closeout. From there, they slide defensively across the lane to the opposite elbow. Then they backpedal to the baseline and rejoin the back of the line. The next player begins as soon as the previous player reaches the first elbow. Work for two minutes, reverse directions and repeat for two minutes."
+        },
+        "spielerzahl": {
+          "vorher": null,
+          "de": "Gruppe; eine Startreihe",
+          "en": "Group; one starting line"
+        },
+        "raum": {
+          "vorher": null,
+          "de": "Zone eines Halbfelds mit Grundlinie und beiden Freiwurflinien-Ellbogen",
+          "en": "Half-court lane with baseline and both free-throw-line elbows"
+        },
+        "material": {
+          "vorher": null,
+          "de": "Kein Ball erforderlich",
+          "en": "No ball required"
+        },
+        "dauer_min": {
+          "vorher": null,
+          "de": "4 Minuten (2 Minuten je Richtung)",
+          "en": "4 minutes (2 minutes each direction)"
+        }
+      }
+    },
+    {
+      "id": "EX-107",
+      "titel": "FIBA 3x3 Man-to-Man / Jump-to-the-Ball",
+      "beleg_id": "RUN21-EX-107",
+      "quelle_vorher": {
+        "name": "FIBA/WABC · Mini-Basketball Coaches Manual · 5.3 Small Sided Games – 3x3",
+        "url": "https://assets.fiba.basketball/image/upload/documents-corporate-wabc-coaching-manual-mini-basketball-eng.pdf",
+        "video_status": null
+      },
+      "felder": {
+        "ablauf": {
+          "vorher": null,
+          "de": "Redaktionelle Übungsform: Drei Angreifer besetzen die Dreipunktbogenspitze und beide Flügel; drei persönliche Verteidiger ordnen sich zu. Der Ball startet oben mit einem Pass zum Flügel. Bei jedem Pass bewegen sich alle Verteidiger mit dem Ball: Die direkte Verteidigung stoppt den Ball, die beiden abseits des Balls springen in eine Position zwischen eigener Person und Ball und behalten beide im Blick. Nach drei Pässen darf der Angriff zum Korb ziehen oder werfen. Nach Wurf oder Ballgewinn wechseln die Teams Angriff und Verteidigung. Vor dem nächsten Start ordnen sich alle wieder zu.",
+          "en": "Editorial practice: Three attackers occupy the top of the arc and both wings; three matched defenders set up. The ball starts at the top with a pass to a wing. On every pass, all defenders move with the ball: the on-ball defender stops the ball, while the two off-ball defenders jump to a position between their player and the ball and keep both in view. After three passes, offense may drive or shoot. After a shot or turnover, teams swap attack and defense. Match up again before restarting."
+        },
+        "spielerzahl": {
+          "vorher": null,
+          "de": "6 Personen; 3 gegen 3",
+          "en": "6 players; 3 on 3"
+        },
+        "raum": {
+          "vorher": null,
+          "de": "Halbfeld mit einem Korb",
+          "en": "Half court with one basket"
+        },
+        "material": {
+          "vorher": null,
+          "de": "1 Basketball; Korb",
+          "en": "One basketball; basket"
+        }
+      }
+    },
+    {
+      "id": "EX-136",
+      "titel": "On Ball Screen – Dribbler Options",
+      "beleg_id": "RUN21-EX-136",
+      "quelle_vorher": {
+        "name": "FIBA/WABC",
+        "url": "https://assets.fiba.basketball/image/upload/documents-corporate-wabc-coaching-level-manuals-level-1-eng.pdf",
+        "video_status": null
+      },
+      "felder": {
+        "ablauf": {
+          "vorher": null,
+          "de": "Redaktionelle Übungsform: Ballführer am Flügel, Blocksteller neben dem direkten Verteidiger und Coach als Verteidiger des Ballführers aufstellen. Der Blocksteller stellt einen stehenden Block; der Ballführer dribbelt eng daran vorbei und liest die Reaktion des Coaches. Folgt die Verteidigung über den Block, zieht er zum Korb oder nimmt einen kurzen Wurf; geht sie unter dem Block durch, hält er für einen freien Distanzwurf an. Nach dem Abschluss holt das Paar den Ball, tauscht Ball- und Blockrolle und wiederholt die Aktion von der anderen Seite.",
+          "en": "Editorial practice: Set a ball handler on the wing, a screener beside the on-ball defender and the coach as the ball handler’s defender. The screener sets a stationary screen; the handler dribbles tightly past it and reads the coach. If the defender goes over, the handler attacks the basket or takes a short shot; if the defender goes under, the handler stops for an open outside shot. After the finish, the pair retrieves the ball, swaps handler and screener roles and repeats from the other side."
+        },
+        "spielerzahl": {
+          "vorher": null,
+          "de": "2 Spielende und 1 Coach",
+          "en": "2 players and 1 coach"
+        },
+        "raum": {
+          "vorher": null,
+          "de": "Halbfeld mit Korb; Block am Flügel",
+          "en": "Half court with basket; wing ball screen"
+        },
+        "material": {
+          "vorher": null,
+          "de": "1 Basketball; Korb",
+          "en": "One basketball; basket"
+        }
+      }
+    },
+    {
+      "id": "EX-137",
+      "titel": "Rebounding and Defensive Transition",
+      "beleg_id": "RUN21-EX-137",
+      "quelle_vorher": {
+        "name": "FIBA/WABC",
+        "url": "https://assets.fiba.basketball/image/upload/documents-corporate-wabc-coaching-level-manuals-level-1-eng.pdf",
+        "video_status": null
+      },
+      "felder": {
+        "ablauf": {
+          "vorher": null,
+          "de": "Redaktionelle Übungsform: Drei gegen drei auf zwei Körbe. Ein Angriffsteam beginnt im Halbfeld; vor jedem Wurf ist eine Person als Offensivrebounder benannt und eine bleibt als Rückraumsicherung oberhalb der Zone. Nach dem Wurf kämpfen alle um den Ball. Holt der Angriff den Rebound, spielt er am selben Korb weiter. Erobert die Verteidigung den Rebound oder gewinnt sie den Ball, greift sie sofort den Gegenkorb an; das bisherige Angriffsteam stoppt zuerst den Ball und schützt dann den Korb. Nach dem Abschluss am Gegenkorb wird angehalten, Rollen und Reboundaufgaben werden neu verteilt und ein neuer Ballbesitz startet.",
+          "en": "Editorial practice: Play three on three across two baskets. One team starts on offense in the half court; before each shot, one attacker is assigned to pursue the offensive rebound and one stays above the lane as transition safety. After the shot, everyone contests the ball. If offense rebounds, it continues at the same basket. If defense rebounds or wins possession, it immediately attacks the opposite basket; the original attackers first stop the ball and then protect the basket. After the finish at the far basket, stop, reassign roles and rebounding tasks, and start a new possession."
+        },
+        "spielerzahl": {
+          "vorher": null,
+          "de": "6 Personen; 3 gegen 3",
+          "en": "6 players; 3 on 3"
+        },
+        "raum": {
+          "vorher": null,
+          "de": "Ganzfeld mit zwei Körben",
+          "en": "Full court with two baskets"
+        },
+        "material": {
+          "vorher": null,
+          "de": "1 Basketball; 2 Körbe",
+          "en": "One basketball; two baskets"
+        }
+      }
+    }
+  ]
+}

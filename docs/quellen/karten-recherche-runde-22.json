@@ -1,0 +1,28 @@
+{
+  "version": 1,
+  "stand": "2026-10-14",
+  "belege": [
+    {
+      "id": "RUN22-EX-027",
+      "karten_id": "EX-027",
+      "karten_titel": "Jump Stop Shooting",
+      "name": "Jr. NBA · Starter Practice 12 · Jump Stop Shooting Game",
+      "url": "https://jr.nba.com/basketball-practice-plans/starter/page/12/",
+      "abschnitt": "Shooting, Jump Stop Shooting Game",
+      "abgerufen": "2026-10-14",
+      "felder": ["ablauf", "raum", "material", "coachingpunkte"],
+      "pruefnotiz": "Die Jr. NBA nennt bis zu vier Reihen, Hütchen vor dem Korb, Dribbling, Jump Stop, Wurf, eigenen Rebound, Ballübergabe und sechs Treffer als Ziel. Die Quelle bezeichnet das Spiel als Starter-Übung; das bisherige Rookie-Etikett der Karte war zu ungenau."
+    },
+    {
+      "id": "RUN22-EX-112",
+      "karten_id": "EX-112",
+      "karten_titel": "„Korbleger – 2er-Rhythmus“",
+      "name": "DBB · Jugend-Minileitfaden · Korbleger, S. 66",
+      "url": "https://www.basketball-bund.de/wp-content/uploads/sites/2/2022/07/DBB_Jugend_Minileitfaden.pdf",
+      "abschnitt": "S. 66, Technik · Korbleger",
+      "abgerufen": "2026-10-14",
+      "felder": ["ablauf", "raum", "material", "coachingpunkte", "progression"],
+      "pruefnotiz": "Der DBB belegt Aufbau, Matten, Ballübergabe, zwei Schritte, Wurf und Landung. Die Startfreigabe für das nächste Kind ist eine ausdrücklich redaktionelle Organisationsregel; eine genaue Gruppengröße oder Dauer nennt die Quelle nicht."
+    }
+  ]
+}

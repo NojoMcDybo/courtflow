@@ -1,0 +1,91 @@
+{
+  "version": 1,
+  "stand": "2026-10-04",
+  "karten": [
+    {
+      "id": "EX-024",
+      "titel": "Recognizing Open Teammates",
+      "beleg_id": "JRN-ROOKIE-9-EX024",
+      "quelle_vorher": {"name": "Jr. NBA Rookie Skills/Practice Plans", "url": null, "video_status": "Video nicht separat verifiziert."},
+      "felder": {
+        "ablauf": {
+          "vorher": "Mehrere Mitspieler positionieren; Ball bewegt sich; ein Spieler öffnet sich; Ballführer soll freien Empfänger erkennen und passen.",
+          "de": "Drei Spielende bilden mit einem Ball ein Dreieck. Der Passgeber schaut zunächst von den beiden anderen weg. Diese bestimmen, wer Blickkontakt aufnimmt und die Hände als Passziel zeigt. Der Passgeber springt, dreht sich zu beiden und passt zügig zum anspielbereiten Mitspieler. Mit dem neuen Passgeber wiederholen. Als Variante ergänzt ein vierter Spieler die Verteidigung und deckt einen Empfänger; nun geht der Pass zum freien Mitspieler.",
+          "en": "Three players form a triangle with one ball. The passer initially faces away from the other two. They decide who will make eye contact and show their hands as a passing target. The passer jumps, turns to face them and quickly passes to the ready teammate. Repeat with the new passer. For the source variation, add a fourth player as a defender covering one receiver; the pass then goes to the open teammate."
+        },
+        "coachingpunkte": {"vorher": null, "de": "Empfänger zeigen Blickkontakt und Hände; der Passgeber erkennt das freie oder bereite Ziel schnell.", "en": "Receivers show eye contact and their hands; the passer quickly identifies the open or ready target."},
+        "spielerzahl": {"vorher": "4–8", "de": "3–4 pro Gruppe", "en": "Three to four per group"},
+        "raum": {"vorher": null, "de": "Platz für ein Dreieck aus drei Passpositionen", "en": "Space for a triangle of three passing positions"},
+        "dauer_min": {"vorher": "8–12 min", "de": "2 min", "en": "2 minutes"},
+        "material": {"vorher": "Bälle, Markierungen", "de": "1 Basketball pro Gruppe", "en": "One basketball per group"}
+      }
+    },
+    {
+      "id": "EX-031",
+      "titel": "Body Control",
+      "beleg_id": "JRN-ROOKIE-6-EX031",
+      "quelle_vorher": {"name": "Q5/Q7", "url": null, "video_status": null},
+      "felder": {
+        "lernziel": {"vorher": null, "de": "Bei beidbeinigen Richtungswechsel-Sprüngen Körperkontrolle und Balance halten.", "en": "Maintain body control and balance during two-foot zig-zag jumps."},
+        "ablauf": {"vorher": null, "de": "Fünf Hütchen als V aufstellen: eines unten, zwei in der Mitte und zwei oben. Die Spielenden bilden eine Reihe am unteren Hütchen. Nacheinander springen sie beidbeinig von Hütchen zu Hütchen im Zickzack nach vorne bis zum letzten Hütchen und stellen sich hinten wieder an. Jede Person durchläuft die Folge zweimal.", "en": "Set five cones in a V: one at the bottom, two in the middle and two at the top. Players line up at the bottom cone. One at a time, they jump forward on two feet from cone to cone in a zig-zag pattern to the final cone, then rejoin the line. Each player completes the sequence twice."},
+        "coachingpunkte": {"vorher": null, "de": "Beim Springen Gleichgewicht und Körperkontrolle halten.", "en": "Maintain balance and body control while jumping."},
+        "raum": {"vorher": null, "de": "Freie Fläche für einen V-Parcours mit fünf Hütchen", "en": "Open space for a V-shaped course of five cones"},
+        "dauer_min": {"vorher": null, "de": "2 Durchgänge pro Person", "en": "Two runs per player"},
+        "material": {"vorher": null, "de": "5 Hütchen pro Gruppe", "en": "Five cones per group"},
+        "progression": {"vorher": null, "de": "Bei sicherer Balance denselben Parcours schneller springen.", "en": "Once balance is secure, jump through the same course faster."}
+      }
+    },
+    {
+      "id": "EX-036",
+      "titel": "Drive and Kick (Pass)",
+      "beleg_id": "JRN-STARTER-3-EX036",
+      "quelle_vorher": {"name": "Jr. NBA Rookie Offense", "url": null, "video_status": "Nicht separat verifiziert."},
+      "felder": {
+        "ablauf": {"vorher": "Ballführer attackiert den Korb; sobald ein Helfer die Zone schließt, kickt er zu einem offenen Mitspieler.", "de": "Zwei Angreifer starten am Flügel mit Ball und in der ballfernen Ecke; beide haben einen Verteidiger. Der Ballverteidiger beginnt einen Schritt hinter dem Angreifer, der so mit Vorteil zum Korb zieht. Hilft der ballferne Verteidiger aus der Ecke, passt der Dribbler zum freien Mitspieler für einen offenen Wurf. Bleibt der Verteidiger in der Ecke, versucht der Dribbler selbst den Korbleger. Bis zu Korb oder Ballgewinn weiterspielen; danach wechseln die beiden Angreifer in die Verteidigung und zwei neue Angreifer beginnen.", "en": "Two attackers start on the wing with the ball and in the weak-side corner, each with a defender. The on-ball defender begins one step behind the attacker, who drives toward the basket with an advantage. If the weak-side defender leaves the corner to help, the dribbler kicks the ball to the open teammate for a shot. If that defender stays in the corner, the dribbler attempts a layup. Play until a score or defensive possession; then the attackers become defenders and two new attackers begin."},
+        "spielerzahl": {"vorher": "3–8", "de": "4 pro Gruppe; weitere Spielende rotieren", "en": "Four per group; additional players rotate in"},
+        "raum": {"vorher": null, "de": "Halbfeld mit Flügel, ballferner Ecke und Korb", "en": "Half court with wing, weak-side corner and basket"},
+        "dauer_min": {"vorher": "8–12 min", "de": "2 min", "en": "2 minutes"},
+        "material": {"vorher": "Bälle, Korb, Markierungen", "de": "Basketball und Korb", "en": "Basketball and basket"},
+        "progression": {"vorher": "Aktiver Helfer; 2v2/3v3; zusätzlicher Closeout.", "de": "Mit zusätzlichem Angreifer und Verteidiger auf dem ballfernen Flügel als 3 gegen 3 spielen.", "en": "Add an attacker and defender on the weak-side wing and play 3-on-3."}
+      }
+    },
+    {
+      "id": "EX-063",
+      "titel": "Running Pass",
+      "beleg_id": "JRN-STARTER-8-EX063",
+      "quelle_vorher": {"name": "Jr. NBA Starter Skills Checklist", "url": "https://jr.nba.com/basketball-practice-plans/starter/", "video_status": null},
+      "felder": {
+        "ablauf": {"vorher": null, "de": "Eine Gruppe mit je einem Ball startet an der Grundlinie; die andere Gruppe steht mit je einem Ball hinter einem Hütchen am gegenüberliegenden Flügel. Der erste Spieler der Grundliniengruppe nimmt zwei schnelle Dribblings nach vorn und passt aus der Bewegung lang auf das Zielhütchen. Trifft er, erhält er vom Spieler am Hütchen einen Rückpass, läuft im Bogen zu seinem Startkorb zurück und schließt per Korbleger ab; der Zuspieler verfolgt ihn. Verfehlt er das Hütchen, verteidigt er stattdessen gegen den Spieler am Hütchen, der zum Startkorb ins 1 gegen 1 dribbelt. Danach die Reihen wechseln und später die Spielfeldseiten tauschen.", "en": "One group starts on the baseline, each player with a ball; the other group stands behind a cone on the opposite wing, also with a ball each. The first baseline player takes two quick dribbles forward and makes a long pass on the move toward the target cone. On a hit, that player receives a return pass from the player by the cone, curves back toward the starting basket and finishes with a layup while the passer chases. On a miss, the original passer instead defends the player by the cone, who dribbles into a 1-on-1 at the starting basket. Switch lines afterward and later change court sides."},
+        "coachingpunkte": {"vorher": null, "de": "Den langen Pass aus der Bewegung präzise auf das Ziel spielen.", "en": "Make the long pass accurately to the target while moving."},
+        "spielerzahl": {"vorher": "Paare / Dreier", "de": "Zwei gleich große Gruppen; je Spieler ein Ball", "en": "Two equal groups; one ball per player"},
+        "raum": {"vorher": "Halbfeld/Ganzfeld", "de": "Ganzfeld: Grundlinie, Zielhütchen am gegenüberliegenden Flügel und Startkorb", "en": "Full court: baseline, target cone on the opposite wing and starting basket"},
+        "dauer_min": {"vorher": "variabel", "de": "2 min je Seite", "en": "2 minutes per side"},
+        "material": {"vorher": null, "de": "Basketbälle, Zielhütchen und Korb", "en": "Basketballs, target cone and basket"}
+      }
+    },
+    {
+      "id": "EX-065",
+      "titel": "Boxing Out",
+      "beleg_id": "JRN-STARTER-3-EX065",
+      "quelle_vorher": {"name": "Jr. NBA Starter Skills Checklist", "url": "https://jr.nba.com/basketball-practice-plans/starter/", "video_status": null},
+      "felder": {
+        "ablauf": {"vorher": null, "de": "Zwei Zweierteams bewegen sich unter dem Korb im Kreis, zunächst ohne festgelegte Angriffs- und Verteidigungsrolle. Ein Coach oder weiterer Spieler wirft den Ball an den Ring. Beide Teams suchen Körperposition zum Ausboxen und sichern den Rebound. Das Team mit Ballgewinn greift auf diesen Korb an. Holt die nun verteidigende Mannschaft einen Steal oder Defensivrebound, bringt sie den Ball erst hinter die Dreipunktlinie und greift dann an. Bis zu einem Korb oder Stoppzeichen spielen; danach kommen zwei neue Teams. Jedes Team erhält zwei bis drei Durchgänge.", "en": "Two teams of two move in a circle under the basket, initially without assigned offense or defense. A coach or another player tosses the ball onto the rim. Both teams establish box-out position and pursue the rebound. The team securing the ball attacks that basket. If the defending team steals the ball or rebounds a missed shot, it first takes the ball back beyond the three-point line before attacking. Play until a score or the coach stops the possession, then rotate in two new teams. Give each team two or three turns."},
+        "spielerzahl": {"vorher": "Paare / Dreier", "de": "4 pro Gruppe; Coach oder weiterer Spieler wirft ein", "en": "Four per group; a coach or another player tosses the ball in"},
+        "dauer_min": {"vorher": "variabel", "de": "2–3 Durchgänge je Team", "en": "Two to three turns per team"},
+        "material": {"vorher": null, "de": "Basketball und Korb", "en": "Basketball and basket"}
+      }
+    },
+    {
+      "id": "EX-067",
+      "titel": "Pass, Cut and Replace",
+      "beleg_id": "JRN-STARTER-4-EX067",
+      "quelle_vorher": {"name": "Jr. NBA Starter Skills Checklist", "url": "https://jr.nba.com/basketball-practice-plans/starter/", "video_status": null},
+      "felder": {
+        "ablauf": {"vorher": null, "de": "Eine Reihe steht an jedem Flügel, ein Spieler mit Ball oben am Schlüssel. Der Spieler oben passt zu einem Flügel und schneidet mit sichtbarem Passziel zum Korb. Der Spieler am ballfernen Flügel füllt die freie Position oben. Der Cutter stellt sich hinten an dessen Flügelreihe an. Vom ballführenden Flügel geht der Pass nach oben, dann als Ballumkehr zum anderen Flügel. Der neue Spieler oben cuttet, und die Folge beginnt erneut. Nur von der oberen Position wird zum Korb geschnitten.", "en": "Start with a line on each wing and one player with the ball at the top of the key. The top player passes to a wing and cuts to the basket showing a passing target. The player on the weak-side wing fills the vacant top position. The cutter joins the back of that wing line. Pass from the wing with the ball to the top, then reverse it to the other wing. The new top player cuts and the sequence repeats. Cuts to the basket start only from the top."},
+        "coachingpunkte": {"vorher": null, "de": "Hände als Passziel zeigen, in Triple-Threat-Position fangen und kräftig passen; der Cutter schneidet entschlossen mit gehobener Hand zum Korb.", "en": "Show hands as a target, catch in triple threat and pass firmly; the cutter makes a hard basket cut with a hand up."},
+        "dauer_min": {"vorher": "variabel", "de": "2 min", "en": "2 minutes"},
+        "material": {"vorher": null, "de": "1 Basketball", "en": "One basketball"}
+      }
+    }
+  ]
+}

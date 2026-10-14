@@ -1,0 +1,361 @@
+{
+  "version": 1,
+  "stand": "2026-10-02",
+  "karten": [
+    {
+      "id": "EX-004",
+      "titel": "5-5-5 Creative Dribble Drill",
+      "beleg_id": "JRN-ROOKIE-12-EX-004",
+      "quelle_vorher": {
+        "name": "Jr. NBA Rookie, Practice 12",
+        "url": null,
+        "video_status": null
+      },
+      "felder": {
+        "ablauf": {
+          "vorher": null,
+          "de": "Auf freier Fläche jeweils fünf Sekunden rechts, links und frei nach eigenen Ideen dribbeln. Die Folge eine Minute lang wiederholen.",
+          "en": "In open space, dribble for five seconds right-handed, five left-handed and five creatively. Repeat the sequence for one minute."
+        },
+        "material": {
+          "vorher": null,
+          "de": "Ein Basketball pro Person; Teilen ist möglich.",
+          "en": "One basketball per player; sharing is possible."
+        },
+        "dauer_min": {
+          "vorher": null,
+          "de": "1 min",
+          "en": "1 minute"
+        }
+      }
+    },
+    {
+      "id": "EX-005",
+      "titel": "Dribble Knockout",
+      "beleg_id": "JRN-ROOKIE-12-EX-005",
+      "quelle_vorher": {
+        "name": "Jr. NBA Rookie, Practice 12",
+        "url": null,
+        "video_status": null
+      },
+      "felder": {
+        "ablauf": {
+          "vorher": null,
+          "de": "Alle dribbeln und versuchen, fremde Bälle wegzutippen. Ballaufnahme, Doppeldribbling oder Aus bedeuten Ausscheiden. Wer zuletzt dribbelt, gewinnt. Wenn Spieler ausscheiden, das Feld schrittweise verkleinern.",
+          "en": "Everyone dribbles while trying to knock other balls away. Picking up the ball, double dribbling or going out eliminates a player. The last dribbler wins. Shrink the area as players leave."
+        },
+        "coachingpunkte": {
+          "vorher": null,
+          "de": "Blick oben halten.",
+          "en": "Keep eyes up."
+        },
+        "raum": {
+          "vorher": null,
+          "de": "Halbfeld oder Dreipunktebereich",
+          "en": "Half court or three-point area"
+        },
+        "material": {
+          "vorher": null,
+          "de": "Ein Basketball pro Person",
+          "en": "One basketball per player"
+        },
+        "dauer_min": {
+          "vorher": null,
+          "de": "2 Spiele",
+          "en": "2 games"
+        }
+      }
+    },
+    {
+      "id": "EX-030",
+      "titel": "Athletic Stance / Triple Threat",
+      "beleg_id": "JRN-ROOKIE-2-EX-030",
+      "quelle_vorher": {
+        "name": "Q5/Q7",
+        "url": null,
+        "video_status": null
+      },
+      "felder": {
+        "lernziel": {
+          "vorher": null,
+          "de": "Aus einer stabilen Ballhaltung werfen, passen oder dribbeln können.",
+          "en": "Be ready to shoot, pass or dribble from a stable ball-holding stance."
+        },
+        "ablauf": {
+          "vorher": null,
+          "de": "Füße etwas breiter als schulterbreit aufstellen und Knie beugen. Den Ball mit gebeugten Ellbogen leicht auf der Seite der stärkeren Hand halten. Dies beschreibt die Grundstellung; Dauer und Wechselorganisation sind nicht vorgegeben.",
+          "en": "Place the feet slightly wider than shoulder width and bend the knees. Hold the ball with bent elbows slightly towards the dominant-hand side. This describes the stance; duration and rotation are unspecified."
+        },
+        "coachingpunkte": {
+          "vorher": null,
+          "de": "Die Haltung soll alle drei Optionen offenhalten: Wurf, Pass und Dribbling.",
+          "en": "The stance should keep all three options available: shooting, passing and dribbling."
+        },
+        "material": {
+          "vorher": null,
+          "de": "Basketball",
+          "en": "Basketball"
+        }
+      }
+    },
+    {
+      "id": "EX-032",
+      "titel": "Two-Foot Jump Stop",
+      "beleg_id": "JRN-ROOKIE-1-EX-032",
+      "quelle_vorher": {
+        "name": "Q5/Q7",
+        "url": null,
+        "video_status": null
+      },
+      "felder": {
+        "lernziel": {
+          "vorher": null,
+          "de": "Beim beidbeinigen Stopp das Gleichgewicht behalten.",
+          "en": "Maintain balance when stopping on both feet."
+        },
+        "ablauf": {
+          "vorher": null,
+          "de": "Nach Passannahme oder dem letzten Dribbling gleichzeitig auf beiden Füßen landen. Die Knie bleiben gebeugt, Oberkörper und Blick aufgerichtet. Die Quelle beschreibt die Technik, ohne eine Wiederholungszahl festzulegen.",
+          "en": "After receiving a pass or the final dribble, land on both feet together. Keep knees bent, chest and eyes up. The source describes the technique without prescribing repetitions."
+        },
+        "coachingpunkte": {
+          "vorher": null,
+          "de": "Gleichzeitig und ausbalanciert landen.",
+          "en": "Land simultaneously and on balance."
+        }
+      }
+    },
+    {
+      "id": "EX-033",
+      "titel": "Pivoting Basics",
+      "beleg_id": "JRN-ROOKIE-4-EX-033",
+      "quelle_vorher": {
+        "name": "Q5/Q7",
+        "url": null,
+        "video_status": null
+      },
+      "felder": {
+        "lernziel": {
+          "vorher": null,
+          "de": "Beim Pivotieren stabil und im Gleichgewicht bleiben.",
+          "en": "Stay stable and balanced while pivoting."
+        },
+        "ablauf": {
+          "vorher": null,
+          "de": "Grundform Vorwärtspivot: Mit Ball an der Grundlinie stehen. Auf jedes Pivot-Signal eine Vierteldrehung vorwärts um den linken, am Boden bleibenden Fuß machen. Nach vier Drehungen kurz lockern und mit rechts als Standbein wiederholen.",
+          "en": "Forward-pivot basics: stand on the baseline holding a ball. On each pivot cue, turn forward a quarter-circle around the planted left foot. After four turns, relax briefly and repeat with the right pivot foot."
+        },
+        "coachingpunkte": {
+          "vorher": null,
+          "de": "Den gewählten Standfuß während der Drehfolge am Boden lassen; stabile Grundstellung halten.",
+          "en": "Keep the chosen pivot foot planted throughout the turns; maintain a stable stance."
+        },
+        "raum": {
+          "vorher": null,
+          "de": "Grundlinie",
+          "en": "Baseline"
+        },
+        "material": {
+          "vorher": null,
+          "de": "Ein Basketball pro Person",
+          "en": "One basketball per player"
+        },
+        "dauer_min": {
+          "vorher": null,
+          "de": "4 Vierteldrehungen je Standbein",
+          "en": "4 quarter-turns per pivot foot"
+        }
+      }
+    },
+    {
+      "id": "EX-035",
+      "titel": "Ball Reversal",
+      "beleg_id": "JRN-ROOKIE-7-EX-035",
+      "quelle_vorher": {
+        "name": "Q5/Q7",
+        "url": null,
+        "video_status": null
+      },
+      "felder": {
+        "lernziel": {
+          "vorher": null,
+          "de": "Den Ball verlagern und den Abschluss nach Verteidigung wählen.",
+          "en": "Reverse the ball and choose the finish by reading defense."
+        },
+        "ablauf": {
+          "vorher": null,
+          "de": "Besetzt beide Flügel, die Mitte oben und eine Reboundreihe. Auf Signal vom ersten Flügel über die Mitte zum anderen passen. Dort verteidigt der Coach: eng gedeckt zum Korb ziehen, bei Abstand werfen. Danach rotieren: erster Flügel → Mitte → Abschluss → Reboundreihe; Rebound zum Startflügel passen und dort anstellen.",
+          "en": "Fill both wings, the top and a rebounding line. On cue, pass from one wing through the top to the other. Read the coach: drive against tight defense, shoot with space. Rotate starting wing → top → finish → rebounding line; rebounders pass to the starting wing and join its line."
+        },
+        "dauer_min": {
+          "vorher": null,
+          "de": "Bis 8 Treffer",
+          "en": "First to 8 makes"
+        },
+        "raum": {
+          "vorher": null,
+          "de": "Flügel, Mitte oben und Korb",
+          "en": "Wings, top and basket"
+        },
+        "material": {
+          "vorher": null,
+          "de": "Basketball und Korb",
+          "en": "Basketball and basket"
+        }
+      }
+    },
+    {
+      "id": "EX-041",
+      "titel": "Tracing the Ball",
+      "beleg_id": "JRN-ROOKIE-8-EX-041",
+      "quelle_vorher": {
+        "name": "Q5/Q7",
+        "url": null,
+        "video_status": null
+      },
+      "felder": {
+        "lernziel": {
+          "vorher": null,
+          "de": "Closeout und aktive Hand am Ball verbinden.",
+          "en": "Combine a closeout with active ball tracing."
+        },
+        "ablauf": {
+          "vorher": null,
+          "de": "Zwei Spieler stehen sich etwas weiter als Zonenbreite gegenüber, einer mit Ball. Der dritte läuft aus der Mitte zum Ball. Drei Sekunden folgt seine ballnahe Hand den Ballbewegungen; dann wird zum Gegenüber gepasst. Wer passt, folgt dem Pass und übernimmt das nächste Closeout mit Ballverfolgung.",
+          "en": "Two players face each other slightly farther apart than the lane width, one holding the ball. The third closes out from the middle and traces the ball with the ball-side hand for three seconds. After passing across, the passer follows and performs the next closeout and trace."
+        },
+        "coachingpunkte": {
+          "vorher": null,
+          "de": "Tief bleiben, aktive Hand einsetzen und „Ball!“ rufen.",
+          "en": "Stay low, keep the hand active and call “Ball!”"
+        },
+        "spielerzahl": {
+          "vorher": null,
+          "de": "3 pro Gruppe",
+          "en": "3 per group"
+        },
+        "material": {
+          "vorher": null,
+          "de": "Ein Basketball pro Dreiergruppe",
+          "en": "One basketball per group of three"
+        },
+        "dauer_min": {
+          "vorher": null,
+          "de": "2 × 1 min",
+          "en": "2 × 1 minute"
+        }
+      }
+    },
+    {
+      "id": "EX-073",
+      "titel": "Open & Decide Drill",
+      "beleg_id": "JRN-STARTER-8-EX-073",
+      "quelle_vorher": {
+        "name": "Jr. NBA Starter",
+        "url": null,
+        "video_status": null
+      },
+      "felder": {
+        "lernziel": {
+          "vorher": null,
+          "de": "Den freien Mitspieler erkennen und schnell anspielen.",
+          "en": "Identify and quickly pass to the open teammate."
+        },
+        "ablauf": {
+          "vorher": null,
+          "de": "Drei Angreifer: zwei an den unteren Zonenecken, einer mit Ball unter dem Korb; dahinter ein Verteidiger. Auf Signal zur Freiwurflinie dribbeln, Sprungstopp und zum Korb pivotieren. Der Verteidiger deckt eine Passoption; die freie erhält den Ball zum Wurf. Danach: Passgeber → Werferposition, Werfer → Verteidigung, Verteidiger → Warteschlange. Treffer zählen.",
+          "en": "Start with attackers at both low blocks and a ball-handler under the basket, plus a defender behind. On cue, dribble to the foul line, jump-stop and pivot. The defender covers one receiver; pass to the open one for a shot. Rotate passer → shooter’s spot, shooter → defender, defender → queue. Count makes."
+        },
+        "spielerzahl": {
+          "vorher": null,
+          "de": "4+ pro Rotation; 3 Angreifer und 1 Verteidiger aktiv",
+          "en": "4+ in the rotation; 3 attackers and 1 defender active"
+        },
+        "dauer_min": {
+          "vorher": null,
+          "de": "3 min",
+          "en": "3 minutes"
+        },
+        "material": {
+          "vorher": null,
+          "de": "Basketball und Korb",
+          "en": "Basketball and basket"
+        }
+      }
+    },
+    {
+      "id": "EX-074",
+      "titel": "3-Second Box Out Game",
+      "beleg_id": "JRN-STARTER-11-EX-074",
+      "quelle_vorher": {
+        "name": "Jr. NBA Starter",
+        "url": null,
+        "video_status": null
+      },
+      "felder": {
+        "lernziel": {
+          "vorher": null,
+          "de": "Die Innenposition durch Ausboxen behaupten.",
+          "en": "Maintain inside position by boxing out."
+        },
+        "ablauf": {
+          "vorher": null,
+          "de": "Paare legen einen Ball ab und gehen vier Schritte weg. Die Verteidigung steht mit dem Rücken zum Ball vor dem Angreifer. Auf „Wurf!“ Kontakt herstellen und drei Sekunden ausboxen. Ballberührung bringt dem Angriff zwei Punkte, erfolgreiches Abschirmen der Verteidigung einen. Rollen tauschen, wiederholen und Punkte selbst zählen.",
+          "en": "Pairs place a ball on the floor and step four paces away. The defender faces the attacker with their back to the ball. On “Shot!”, make contact and box out for three seconds. Offense earns two points for touching the ball; defense earns one for preventing it. Swap roles, repeat and keep score."
+        },
+        "spielerzahl": {
+          "vorher": null,
+          "de": "Paare",
+          "en": "Pairs"
+        },
+        "material": {
+          "vorher": null,
+          "de": "Ein Basketball pro Paar",
+          "en": "One basketball per pair"
+        },
+        "dauer_min": {
+          "vorher": null,
+          "de": "2 min",
+          "en": "2 minutes"
+        }
+      }
+    },
+    {
+      "id": "EX-076",
+      "titel": "Cone Dribbling",
+      "beleg_id": "JRN-STARTER-1-EX-076",
+      "quelle_vorher": {
+        "name": "Jr. NBA Starter",
+        "url": null,
+        "video_status": null
+      },
+      "felder": {
+        "lernziel": {
+          "vorher": null,
+          "de": "Bei Richtungswechseln den Ball kontrollieren.",
+          "en": "Control the ball while changing direction."
+        },
+        "ablauf": {
+          "vorher": null,
+          "de": "Gleich große Gruppen bilden; je Gruppe fünf Kegel gerade zwischen den Seitenlinien verteilen. Im Zickzack hindurchdribbeln und bei jedem Richtungswechsel die Hand wechseln. Am Ende stoppen. Die nächste Person startet, sobald die vorige die Hälfte passiert hat. Wenn alle durch sind, in Gegenrichtung wiederholen.",
+          "en": "Make equal groups, each with five cones in a straight line between sidelines. Zigzag through them, changing hands with each direction change, then stop. The next player starts when the previous one is halfway through. Once everyone has finished, repeat in the opposite direction."
+        },
+        "coachingpunkte": {
+          "vorher": null,
+          "de": "Tief bleiben; zum Richtungswechsel vom äußeren Fuß abdrücken.",
+          "en": "Stay low; push off the outside foot to change direction."
+        },
+        "material": {
+          "vorher": null,
+          "de": "Fünf Kegel je Gruppe; Basketbälle",
+          "en": "Five cones per group; basketballs"
+        },
+        "dauer_min": {
+          "vorher": null,
+          "de": "3 min einschließlich Varianten",
+          "en": "3 minutes including variations"
+        }
+      }
+    }
+  ]
+}

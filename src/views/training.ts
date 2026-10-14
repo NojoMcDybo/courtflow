@@ -92,8 +92,8 @@ function detailInhalt(d: Drill): HTMLElement {
   box.append(q);
   box.append(
     el("p", { class: "fussnote" }, [
-      `Beleg: ${TIEFE_LABEL[d.dokumentationstiefe]}${
-        d.dokumentationstiefe === "vollstaendig" ? "" : " — leere Felder fehlen in der Quelle"
+      `Katalogerfassung: ${TIEFE_LABEL[d.dokumentationstiefe]}${
+        d.dokumentationstiefe === "vollstaendig" ? "" : " — leere Felder sind bisher nicht dokumentiert"
       }`,
     ]),
   );

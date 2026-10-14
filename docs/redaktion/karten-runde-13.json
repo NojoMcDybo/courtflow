@@ -1,0 +1,36 @@
+{
+  "version": 1,
+  "stand": "2026-10-05",
+  "karten": [
+    {
+      "id": "EX-106",
+      "titel": "2 gegen 2 aus der DBB-3x3-Progression",
+      "beleg_id": "DBB-3X3-17-EX106",
+      "quelle_vorher": {"name": null, "url": null, "video_status": null},
+      "felder": {
+        "ablauf": {
+          "vorher": null,
+          "de": "Vier Spielende bilden an einem Korb eine Gruppe und nutzen die Längshälfte des Basketballfeldes. Der Anspieler dribbelt den Ball an der oberen Dreipunktlinie; ein Angreifer und dessen Verteidiger beginnen am Flügel. Der Angreifer versucht, sich durch einen Schnitt in die Zone für einen Pass freizulaufen. Anders als in der vorangehenden 1-gegen-1-plus-1-Form hat nun auch der Anspieler einen zunächst teilaktiven Verteidiger. Nach fünf Pässen wechseln die Positionen. Der Verteidiger am Flügel hält zunächst die Arme hinter dem Rücken; nach zwei Durchgängen darf er die Arme zur Verteidigung einsetzen.",
+          "en": "Four players form a group at a basket and use the lengthwise half of the court. The passer dribbles at the top of the three-point line; an attacker and their defender start on the wing. The attacker cuts into the key to get open for a pass. Unlike the preceding 1-on-1 plus 1 activity, the passer now also has an initially semi-active defender. Rotate positions after five passes. The wing defender initially keeps their arms behind their back; after two rounds they may use their arms to defend."
+        },
+        "spielerzahl": {"vorher": null, "de": "4 pro Gruppe", "en": "Four per group"},
+        "raum": {"vorher": null, "de": "Längshälfte des Basketballfeldes mit Korb", "en": "Lengthwise half of a basketball court with a basket"},
+        "material": {"vorher": null, "de": "1 Basketball und 1 Korb pro Gruppe", "en": "One basketball and one basket per group"},
+        "regression": {"vorher": null, "de": "Die vorangehende Form 1 gegen 1 plus Anspieler ohne eigenen Verteidiger spielen.", "en": "Use the preceding 1-on-1 plus passer format without a defender on the passer."}
+      }
+    },
+    {
+      "id": "EX-107",
+      "titel": "FIBA 3x3 Man-to-Man / Jump-to-the-Ball",
+      "beleg_id": "FIBA-MINI-5-3-EX107",
+      "quelle_vorher": {"name": null, "url": null, "video_status": null},
+      "felder": {
+        "lernziel": {
+          "vorher": null,
+          "de": "Im 3 gegen 3 den Ballführenden kontrollieren und die eigene Position abseits des Balls bei jeder Ballbewegung anpassen.",
+          "en": "In 3-on-3, contain the ball handler and adjust off-ball defensive position whenever the ball moves."
+        }
+      }
+    }
+  ]
+}

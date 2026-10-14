@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "stand": "2026-10-06",
+  "karten": [
+    {
+      "id": "EX-098",
+      "titel": "Ich mach’ es wie Du",
+      "ablauf_beginnt_mit": "Die Kinder bilden Paare an der Seitenlinie",
+      "kompetenz_vorher": {"haupt": "K5", "alle": ["K5", "K6", "T2", "S1"], "roh": "K5/K6/T2/S1"},
+      "kompetenz_neu": {"haupt": "K2", "alle": ["K2", "K5", "K6", "T1", "T3"], "roh": "K2/K5/K6/T1/T3"},
+      "quelle": "https://www.basketball-bund.de/wp-content/uploads/sites/2/2024/03/DBB_Jugend_Easybasket-Handbuch.pdf",
+      "grund": "Die früheren Codes für Passen/Fangen und 1 gegen 1 gehörten zum falsch zugeordneten Ablauf. Die originale Übung fordert eine farbige Hütchenfolge, Dribbling und einen Wurf; die neuen Codes sind eine redaktionelle Einordnung dieses belegten Ablaufs."
+    }
+  ]
+}

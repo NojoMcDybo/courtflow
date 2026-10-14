@@ -1,0 +1,32 @@
+{
+  "version": 1,
+  "stand": "2026-10-03",
+  "karten": [
+    {
+      "id": "EX-011",
+      "titel": "Passen & Werfen – 5er-Team",
+      "beleg_id": "DBB-MTO-P11-EX-011",
+      "quelle_vorher": {"name": "DBB Minitrainer-Offensive", "url": null, "video_status": null},
+      "felder": {
+        "lernziel": {"vorher": null, "de": "Als Fünferteam ohne Dribbling durch Pässe zum anderen Korb gelangen und treffen.", "en": "Advance to the opposite basket by passing in a team of five without dribbling, then score."},
+        "ablauf": {"vorher": null, "de": "Fünferteams passen den Ball ohne Dribbling bis zum anderen Korb und werfen dort. Als Wettbewerb zählt, welches Team den anderen Korb zuerst ohne Bodenberührung des Balls und mit Treffer erreicht.", "en": "Teams of five pass the ball to the opposite basket without dribbling and take a shot there. In the race, the first team to reach that basket without the ball touching the floor and make a shot wins."},
+        "spielerzahl": {"vorher": null, "de": "5er-Gruppen", "en": "Groups of five"},
+        "raum": {"vorher": null, "de": "Von einem Korb zum anderen", "en": "From one basket to the other"},
+        "material": {"vorher": null, "de": "Basketball pro Team und zwei Körbe", "en": "One basketball per team and two baskets"}
+      }
+    },
+    {
+      "id": "EX-012",
+      "titel": "Reaktionsspiel",
+      "beleg_id": "DBB-MTO-P11-EX-012",
+      "quelle_vorher": {"name": "DBB Minitrainer-Offensive", "url": null, "video_status": null},
+      "felder": {
+        "lernziel": {"vorher": null, "de": "Auf ein Nummernsignal reagieren, zum Korb laufen und abschließen.", "en": "React to a number cue, run to the basket and finish."},
+        "ablauf": {"vorher": null, "de": "Zwei Gruppen sitzen an der Mittellinie, jeweils zu einem anderen Korb ausgerichtet. Jede Person erhält eine Nummer. Ruft der Coach eine Nummer, laufen die entsprechenden Personen beider Gruppen zu ihrem Korb und versuchen zu treffen; mehrere Versuche sind erlaubt. Wer zuerst zurückkehrt, erhält einen Punkt für die Gruppe.", "en": "Two groups sit at midcourt, each facing a different basket. Give every player a number. When the coach calls a number, the matching players from both groups run to their basket and try to score; multiple attempts are allowed. The first player back earns a point for the group."},
+        "raum": {"vorher": null, "de": "Mittellinie und beide Körbe", "en": "Midcourt and both baskets"},
+        "material": {"vorher": null, "de": "Basketbälle und zwei Körbe", "en": "Basketballs and two baskets"},
+        "progression": {"vorher": null, "de": "Mehrere Nummern gleichzeitig rufen; bei „Feuer“ laufen alle.", "en": "Call several numbers at once; on the 'fire' cue, everyone runs."}
+      }
+    }
+  ]
+}

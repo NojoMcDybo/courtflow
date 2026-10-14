@@ -210,6 +210,7 @@
 .drill-karte:hover { border-color: var(--indigo); box-shadow: var(--schatten-2); }
 .drill-vorschaubild { display: block; width: 100%; height: auto; aspect-ratio: 4 / 3; margin: -8px 0 13px; object-fit: contain; border-radius: var(--r-klein); background: var(--fuellung); }
 .drill-alter { border-radius: var(--pille); background: var(--fuellung); color: var(--tinte-2); padding: 3px 8px; font-size: 11px; font-weight: 550; }
+.drill-ablauf-offen { margin-top: 6px; border-radius: var(--pille); background: color-mix(in srgb, var(--orange) 14%, transparent); color: var(--orange); padding: 3px 8px; font-size: 11px; font-weight: 600; }
 .drill-name { display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; font-size: 16px; font-weight: 600; letter-spacing: -.015em; line-height: 1.35; margin: 13px 0 20px; overflow-wrap: anywhere; }
 .drill-oeffnen { display: flex; width: 100%; justify-content: space-between; align-items: center; margin-top: auto; font-size: 11px; color: var(--tinte-2); }
 .drill-oeffnen > span { color: var(--indigo); font-size: 18px; line-height: 1; }
@@ -218,6 +219,13 @@
 .bibliothek-leer p { margin: 0; color: var(--tinte-2); }
 .drill-dialog .schliessen { flex: 0 0 36px; height: 36px; line-height: 36px; }
 .drill-dialog .blatt h4, .drill-dialog .felder b, .drill-dialog .kennung { color: var(--tinte-2); }
+.drill-video { margin: 18px 0; }
+.drill-video h4 { margin-bottom: 6px; }
+.drill-video-start { width: 100%; min-height: 110px; border: 1px solid var(--haarlinie); border-radius: var(--r-klein); background: var(--fuellung); color: var(--tinte); font: inherit; cursor: pointer; }
+.drill-video-start:hover { border-color: var(--indigo); }
+.drill-video iframe { display: block; width: 100%; aspect-ratio: 16 / 9; border: 0; border-radius: var(--r-klein); background: #111; }
+.drill-video-links { margin-top: 8px !important; font-size: 12px !important; }
+.drill-video-hinweis { margin: 4px 0 0; color: var(--tinte-2); font-size: 12px; }
 .drill-detailbild { display: block; width: 100%; height: auto; max-height: min(440px, 54vh); margin: 16px 0 0; object-fit: contain; border-radius: var(--r-klein); background: var(--fuellung); }
 .drill-bildhinweis { margin: 8px 0 0; color: var(--tinte-2); font-size: 12px; }
 .drill-bildlink { display: inline-flex; align-items: center; min-height: 44px; font-size: 13px; }

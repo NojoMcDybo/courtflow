@@ -1,0 +1,109 @@
+{
+  "version": 1,
+  "stand": "2026-10-11",
+  "karten": [
+    {
+      "id": "EX-004",
+      "titel": "5-5-5 Creative Dribble Drill",
+      "beleg_id": "NBA-ROOKIE-12-EX004",
+      "quelle_vorher": {
+        "name": "Jr. NBA · Rookie Practice 12 · 5-5-5 Creative Dribble",
+        "url": "https://jr.nba.com/basketball-practice-plans/rookie/page/12/",
+        "video_status": null
+      },
+      "felder": {
+        "ablauf": {
+          "vorher": "Auf freier Fläche jeweils fünf Sekunden rechts, links und frei nach eigenen Ideen dribbeln. Die Folge eine Minute lang wiederholen.",
+          "de": "Alle aktiven Kinder nehmen je einen Basketball und suchen mit Abstand eine freie Stelle auf dem Feld. Fünf Sekunden mit rechts dribbeln, dann fünf Sekunden mit links. In den nächsten fünf Sekunden dürfen sie frei und kreativ dribbeln. Diese 15-Sekunden-Folge ohne Ortswechsel wiederholen, bis eine Minute erreicht ist.",
+          "en": "Every active player takes a basketball and finds open space on the court with room around them. Dribble with the right hand for five seconds, then the left for five seconds. For the next five seconds, dribble freely and creatively. Repeat this 15-second sequence without changing stations until one minute has passed."
+        },
+        "spielerzahl": {
+          "vorher": null,
+          "de": "Beliebig viele; jede aktive Person mit einem Ball",
+          "en": "Any number; each active player has a ball"
+        },
+        "raum": {
+          "vorher": null,
+          "de": "Freie, verteilte Plätze auf dem Spielfeld",
+          "en": "Open, spaced-out spots on the court"
+        }
+      }
+    },
+    {
+      "id": "EX-010",
+      "titel": "Partner Shooting / Form Shooting",
+      "beleg_id": "NBA-ROOKIE-01-EX010",
+      "quelle_vorher": {
+        "name": "Jr. NBA · Rookie Practice 1 · Partner Shooting Game",
+        "url": "https://jr.nba.com/basketball-practice-plans/rookie/",
+        "video_status": null
+      },
+      "felder": {
+        "ablauf": {
+          "vorher": "Paare suchen eine freie Stelle und werfen sich einen Ball mit sauberer Wurftechnik gegenseitig zu.",
+          "de": "Paare mit je einem Ball suchen eine freie Stelle auf dem Feld und stehen sich gegenüber. Ein Kind wirft den Ball mit Wurfbewegung zum Partner: gebeugte Knie, Wurfarm unter dem Ball, Beine und Arm gemeinsam strecken und mit abgeklapptem Handgelenk nachhalten. Der Partner fängt und wirft auf dieselbe Weise zurück. Zwei Durchgänge zu je fünf Würfen pro Kind spielen. Als Variante stehen beide auf einer Linie und werfen den Ball senkrecht hoch, sodass er vor ihnen wieder auf der Linie landet; der Partner fängt und wiederholt.",
+          "en": "Pairs take one ball and find an open spot on the court, facing each other. One player shoots the ball to the partner using shooting form: bent knees, shooting arm under the ball, extend legs and arm together, then snap the wrist and hold the follow-through. The partner catches and shoots it back in the same way. Play two rounds of five shots per player. As a variation, both stand on a line and shoot the ball straight up so that it lands on the line in front of them; the partner catches and repeats."
+        },
+        "raum": {
+          "vorher": null,
+          "de": "Freie Stelle auf dem Spielfeld, ohne Korb",
+          "en": "Open spot on the court, no basket"
+        }
+      }
+    },
+    {
+      "id": "EX-013",
+      "titel": "Hot Ball (Taps)",
+      "beleg_id": "NBA-ROOKIE-01-EX013",
+      "quelle_vorher": {
+        "name": "Jr. NBA · Rookie Practice 1 · Hot Ball (Taps)",
+        "url": "https://jr.nba.com/basketball-practice-plans/rookie/",
+        "video_status": null
+      },
+      "felder": {
+        "ablauf": {
+          "vorher": "Den Ball vor der Hüfte mit ausgestreckten Armen schnell zwischen den Händen tippen. Dabei über den Kopf, vor das Gesicht und zurück zur Hüfte führen.",
+          "de": "Alle aktiven Kinder verteilen sich mit je einem Ball in einem festgelegten Übungsbereich. Mit ausgestreckten Armen vor der Hüfte den Ball nur mit den Fingerspitzen schnell von Hand zu Hand tippen, als wäre er zu heiß zum Festhalten. Während des Tippens den Ball über den Kopf, vor das Gesicht und wieder zur Hüfte führen. Zwei Durchgänge zu je 30 Sekunden ausführen.",
+          "en": "Each active player takes a ball and spreads out in a designated practice area. With arms extended in front of the waist, tap the ball quickly from hand to hand using only the fingertips, as if it were too hot to hold. Keep tapping while moving the ball above the head, in front of the face and back to the waist. Complete two 30-second rounds."
+        },
+        "spielerzahl": {
+          "vorher": null,
+          "de": "Beliebig viele; jede aktive Person mit einem Ball",
+          "en": "Any number; each active player has a ball"
+        }
+      }
+    },
+    {
+      "id": "EX-017",
+      "titel": "Stationary Wall Passing – Chest",
+      "beleg_id": "NBA-ROOKIE-01-EX017",
+      "quelle_vorher": {
+        "name": "Jr. NBA Rookie Practice Plans / Skills Checklist",
+        "url": null,
+        "video_status": "Kein separates Video im Datensatz verifiziert; Originalseite enthält keine Videoanzeige für diesen Eintrag."
+      },
+      "felder": {
+        "ablauf": {
+          "vorher": "Mit Ball in kurzer Distanz zur Wand stehen; Ziel markieren; Pass mit Schritt zum Ziel ausführen; Ball kontrolliert aufnehmen und wiederholen.",
+          "de": "Mit einem Basketball wenige Schritte vor einer Wand stehen und ein Ziel darauf wählen oder markieren. Bei jedem Brustpass mit dem vorderen Fuß zum Ziel treten, beide Arme zum Ziel strecken und die Daumen nach unten schnappen. Nach dem Auftreffen den Ball einmal aufspringen lassen, kontrolliert fangen und erneut passen. Drei Serien mit je zehn Pässen ausführen.",
+          "en": "Stand a short distance from a wall with a basketball and choose or mark a target on it. On each chest pass, step toward the target with the lead foot, extend both arms and snap the thumbs down. Let the ball bounce once after it hits the wall, catch it under control and pass again. Complete three sets of ten passes."
+        },
+        "spielerzahl": {
+          "vorher": "2–8",
+          "de": "Einzeln an einer freien Wandstelle; Ball kann geteilt werden",
+          "en": "Individually at an open wall space; a ball may be shared"
+        },
+        "raum": {
+          "vorher": null,
+          "de": "Wandfläche mit Zielmarkierung und kurzer Passdistanz",
+          "en": "Wall with a target and a short passing distance"
+        },
+        "dauer_min": {
+          "vorher": "6–8 min",
+          "de": "3 × 10 Pässe",
+          "en": "Three sets of ten passes"
+        }
+      }
+    }
+  ]
+}

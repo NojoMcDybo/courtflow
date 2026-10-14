@@ -264,7 +264,7 @@ export function kandidaten(code: string, altersstufe: number, ausgeschlossen: Se
   // Aktivierung und Ausklang dürfen deshalb aus jüngeren Fenstern kommen.
   const tolerant = modell.regeln.alterstoleranz.includes(code);
   return alleDrills
-    .filter((d) => !ausgeschlossen.has(d.id))
+    .filter((d) => !ausgeschlossen.has(d.id) && Boolean(d.ablauf))
     .map((d) => {
       let p = werten(d);
       if (!passtAlter(d, altersstufe)) {

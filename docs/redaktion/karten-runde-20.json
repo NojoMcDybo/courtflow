@@ -1,0 +1,109 @@
+{
+  "version": 1,
+  "stand": "2026-10-11",
+  "karten": [
+    {
+      "id": "EX-020",
+      "titel": "Stationary Partner Pass: Bounce & Chest",
+      "beleg_id": "FIBA-MINI-3-2-EX020",
+      "quelle_vorher": {
+        "name": "FIBA/WABC · Mini-Basketball Coaches Manual · 3.2, Activity 17",
+        "url": "https://assets.fiba.basketball/image/upload/documents-corporate-wabc-coaching-manual-mini-basketball-eng.pdf",
+        "video_status": null
+      },
+      "felder": {
+        "ablauf": {
+          "vorher": "Zu zweit gegenüberstehen und sich den Ball abwechselnd als beidhändigen Brustpass und als Bodenpass zuspielen. Den Rückpass jeweils fangen und die Passart wechseln.",
+          "de": "Paare bilden; je zwei Kinder stehen sich mit einem Ball gegenüber. A spielt einen Bodenpass zu B, B fängt und spielt einen beidhändigen Brustpass zurück. Nach jedem Rückpass wiederholt das Paar die Folge und tauscht später die Passrollen. Für weitere Durchgänge können beide auch Brust-, Boden-, seitliche oder Überkopfpässe hin und her spielen. Der Ball wird vor jedem Pass kontrolliert gefangen.",
+          "en": "Make pairs facing each other with one ball. A bounce-passes to B; B catches and returns a two-handed chest pass. Repeat after each return and later swap passing roles. In further rounds, both partners may exchange chest, bounce, side or overhead passes. Catch the ball under control before every pass."
+        },
+        "raum": {
+          "vorher": null,
+          "de": "Freier Platz für gegenüberstehende Paare",
+          "en": "Open space for pairs facing each other"
+        }
+      }
+    },
+    {
+      "id": "EX-069",
+      "titel": "Game-drill Exploring the Court / Pac Man",
+      "beleg_id": "FIBA-MINI-3-1-EX069",
+      "quelle_vorher": {
+        "name": "FIBA/WABC Mini-Basketball Manual, Abschnitt 3.2",
+        "url": "https://assets.fiba.basketball/image/upload/documents-corporate-wabc-coaching-manual-mini-basketball-eng.pdf",
+        "video_status": null
+      },
+      "felder": {
+        "ablauf": {
+          "vorher": "Spieler bewegen sich entlang von Seiten-/Endlinien/Kreisen; Progression zu Pac Man: einige Spieler versuchen andere zu fangen, alle bleiben auf den Linien.",
+          "de": "Alle Kinder verteilen sich auf die markierten Feldlinien. Zunächst bewegen sie sich nur entlang von Seitenlinien, Grundlinien und Kreisen: gehen, laufen, springen oder mit Ball dribbeln. Danach einige Kinder als Fänger bestimmen. In der Pac-Man-Form laufen Fänger und übrige Kinder ausschließlich auf den Linien; die Fänger versuchen, andere Kinder zu berühren. Nach einer Runde die Fänger wechseln und die Linienregel erneut spielen.",
+          "en": "Spread all players along the marked court lines. First move only along sidelines, baselines and circles: walk, run, jump or dribble a ball. Then designate some players as taggers. In the Pac-Man variation, both taggers and other players may move only on lines while taggers try to touch them. Change taggers after a round and play again with the line rule."
+        },
+        "material": {
+          "vorher": null,
+          "de": "Basketbälle nur für die Dribbelvariante",
+          "en": "Basketballs only for the dribbling variation"
+        }
+      }
+    },
+    {
+      "id": "EX-070",
+      "titel": "Visual / Verbal Direction Change",
+      "beleg_id": "FIBA-MINI-3-2-EX070",
+      "quelle_vorher": {
+        "name": "FIBA/WABC Mini-Basketball Manual, Abschnitt 3.2/3.3",
+        "url": "https://assets.fiba.basketball/image/upload/documents-corporate-wabc-coaching-manual-mini-basketball-eng.pdf",
+        "video_status": null
+      },
+      "felder": {
+        "ablauf": {
+          "vorher": "FIBA beschreibt Signale verbal oder visuell; Spieler ändern Richtung. Progression: Spieler wählen selbst die Richtung und Partner reagiert entgegengesetzt.",
+          "de": "Paare mit je einem Ball bilden und einander gegenüber auf freiem Halbfeld aufstellen. A dribbelt vorwärts, B dribbelt zugleich rückwärts und hält Abstand. Auf ein abwechselnd gerufenes oder sichtbares Signal des Coaches wechseln beide ihre Bewegungsrichtung. Nach einer Bahn die Führungsrolle tauschen. Als Steigerung wählt A selbst Vorwärts-, Rückwärts- oder Seitwärtsbewegung; B reagiert mit der jeweils entgegengesetzten Bewegung. Beide dribbeln weiter und halten den Blick oben, um das Signal zu sehen.",
+          "en": "Make pairs with one ball each and face each other in open half-court space. A dribbles forward while B dribbles backward, keeping distance. On alternating verbal and visual coach signals, both reverse direction. Swap leader roles after a run. To progress, A chooses forward, backward or sideways movement and B moves in the opposite direction. Both keep dribbling and look up to see the signal."
+        },
+    "spielerzahl": {
+      "vorher": "Paare / Gruppe",
+      "de": "Paare; je 1 Ball pro Kind",
+      "en": "Pairs; one ball per player"
+    },
+    "progression": {
+      "vorher": "Fake-Signale; Ballführung; Partner als beweglicher Reiz.",
+      "de": "A wählt Vorwärts-, Rückwärts- oder Seitwärtsbewegungen selbst; B dribbelt jeweils entgegengesetzt.",
+      "en": "A chooses forward, backward or sideways movement; B dribbles in the opposite direction each time."
+    },
+    "material": {
+          "vorher": null,
+          "de": "1 Basketball pro Kind",
+          "en": "One basketball per player"
+        }
+      }
+    },
+    {
+      "id": "EX-071",
+      "titel": "Partner Mirror Dribbling",
+      "beleg_id": "FIBA-START-4-3-EX071",
+      "quelle_vorher": {
+        "name": "FIBA/WABC Mini-Basketball Manual, Abschnitt 3.2",
+        "url": "https://assets.fiba.basketball/image/upload/documents-corporate-wabc-coaching-manual-eng.pdf",
+        "video_status": null
+      },
+      "felder": {
+        "ablauf": {
+          "vorher": "Ein Spieler führt Dribbling/Bewegung vor, der Partner imitiert. FIBA beschreibt Varianten mit unterschiedlichen Bewegungsmustern und Dribbling.",
+          "de": "Paare bilden; beide haben einen Ball und stehen sich etwa einen Meter entfernt gegenüber. A führt Dribbelbewegungen vor, B spiegelt sie und hält Blickkontakt. Im Stand beispielsweise rechts/links dribbeln, vor dem Körper die Hand wechseln oder zwei hohe und zwei tiefe Dribblings ausführen. Nach einer Bewegungsfolge die Führungsrolle tauschen. Wenn beide die Folge kontrollieren, können sie sich spiegelnd durch freien Raum bewegen, ohne andere Paare zu kreuzen.",
+          "en": "Make pairs; each partner has a ball and faces the other about one metre apart. A leads dribble moves while B mirrors them and maintains eye contact. While stationary, try right- and left-hand dribbles, a crossover in front or two high and two low dribbles. Swap the leader after a sequence. Once both control the pattern, they can mirror each other while moving through open space without crossing other pairs."
+        },
+        "spielerzahl": {
+          "vorher": "Paare, 2 Bälle",
+          "de": "Paare; je 1 Ball pro Kind",
+          "en": "Pairs; one ball per player"
+        },
+        "material": {
+          "vorher": null,
+          "de": "1 Basketball pro Kind",
+          "en": "One basketball per player"
+        }
+      }
+    }
+  ]
+}

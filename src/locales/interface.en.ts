@@ -1,4 +1,5 @@
 export const interfaceEnglish: Record<string, string> = {
+  "Bild vergrößern ↗": "Enlarge image ↗",
   "CourtFlow — Übungsbibliothek Jugendbasketball": "CourtFlow — Youth basketball drill library",
   "Sprache": "Language", "Deutsch": "German", "Englisch": "English",
   "Hell": "Light", "Dunkel": "Dark", "Zur Startseite": "Home",
@@ -9,15 +10,22 @@ export const interfaceEnglish: Record<string, string> = {
   "01 / Bibliothek": "01 / Library", "Bibliothek": "Library", "Training bauen ↗": "Build a session ↗",
   "Übung suchen …": "Search drills …", "Übungen durchsuchen": "Search drills", "Alles anzeigen": "Show all",
   "Weitere Filter": "More filters", "Familie": "Category", "Alle Bereiche": "All categories",
-  "Belegtiefe": "Documentation level", "Alle Belegtiefen": "All documentation levels", "Mit Quelle": "With sources",
+  "Belegtiefe": "Documentation level", "Alle Belegtiefen": "All documentation levels", "Mit Quelle": "With sources", "Testbilder": "Test images",
   "Übungen entdecken": "Discover drills", "Thema und Alter wählen. Passende Übungen öffnen.": "Choose a topic and age group. Explore matching drills.",
   "Abdeckung": "Coverage", "Sortierung": "Sort order", "Name A–Z": "Name A–Z", "Alter aufsteigend": "Age: youngest first",
   "Alter offen": "Age unspecified", "Übung ohne Kurztitel": "Drill without a short title", "Ansehen": "View",
+  "Ablauf offen": "Instructions pending",
   "Alle Übungen": "All drills", "aktiv": "active", "Thema": "Topic",
+  "Illustration der Fertigkeit, nicht des genauen Übungsablaufs.": "Illustration of the skill, not the exact drill setup.",
+  "Übungsvideo": "Drill video", "Video laden und abspielen ▶": "Load and play video ▶",
+  "Auf YouTube öffnen ↗": "Open on YouTube ↗",
+  "Falls der Player das Video nicht abspielt, den YouTube-Link oder die Originalquelle prüfen.": "If the player cannot play the video, check the YouTube link or the original source.",
   "Hier gibt es noch keine passende Übung.": "No matching drills yet.", "Andere Zelle wählen oder Filter zurücksetzen.": "Choose another cell or reset the filters.",
   "Zahlen: Übungen je Altersstufe · – keine Übung": "Numbers: drills per age group · – no drills",
   "Kompetenzkatalog v3.8 · Quellen und Belegangaben in den Übungsdetails.": "Skills catalogue v3.8 · Sources and documentation in the drill details.",
   "Übungsdetails": "Drill details", "Schließen": "Close", "Lernziel": "Learning goal", "Ablauf": "Instructions",
+  "Kein gesicherter Übungsablauf dokumentiert.": "No verified drill instructions documented.",
+  "Quellenhinweis": "Source note",
   "Coachingpunkte": "Coaching points", "Typische Fehler": "Common mistakes", "Regression": "Make it easier", "Progression": "Make it harder",
   "Alter": "Age", "Kompetenz": "Skill", "Dauer": "Duration", "Spieler": "Players", "Raum": "Space",
   "Material": "Equipment", "Methodik": "Method", "Erfahrung": "Experience", "Merkmale": "Characteristics", "Quelle": "Source",
@@ -43,20 +51,22 @@ export const interfaceEnglish: Record<string, string> = {
 
 export function interfacePattern(text: string, translate: (text: string) => string): string | null {
   let m: RegExpMatchArray | null;
-  if ((m = text.match(/^(\d+) Übungen?$/))) return `${m[1]} ${m[1] === "1" ? "drill" : "drills"}`;
+  if ((m = text.match(/^(\d+) Übung(?:en)?$/))) return `${m[1]} ${m[1] === "1" ? "drill" : "drills"}`;
   if ((m = text.match(/^Saison (.+) · Kinder- und Jugendbasketball · (\d+) Übungen · (\d+) mit Quelle · (\d+) offen$/)))
     return `Season ${m[1]} · Youth basketball · ${m[2]} drills · ${m[3]} with sources · ${m[4]} pending`;
   if ((m = text.match(/^Grundlage: Kompetenzkatalog v(.+) · Beschreibungen sind Eigenformulierungen mit Link auf das Original$/)))
     return `Based on skills catalogue v${m[1]} · Descriptions are paraphrased, with links to the originals`;
   if ((m = text.match(/^(\d+) ohne Altersangabe · unter „Alles anzeigen“\.$/))) return `${m[1]} with no age specified · under “Show all”.`;
   if ((m = text.match(/^Übungsabdeckung: (.+)$/))) return `Drill coverage: ${translate(m[1]!)}`;
-  if ((m = text.match(/^(.+), U(\d+): (\d+) Übungen?$/))) return `${translate(m[1]!)}, U${m[2]}: ${m[3]} ${m[3] === "1" ? "drill" : "drills"}`;
+  if ((m = text.match(/^(.+), U(\d+): (\d+) Übung(?:en)?$/))) return `${translate(m[1]!)}, U${m[2]}: ${m[3]} ${m[3] === "1" ? "drill" : "drills"}`;
   if ((m = text.match(/^(.+) auswählen$/))) return `Select ${translate(m[1]!)}`;
   if ((m = text.match(/^(.+) entfernen$/))) return `Remove ${translate(m[1]!)}`;
-  if ((m = text.match(/^Beleg: ([^·]+?)( — leere Felder fehlen in der Quelle)?$/)))
-    return `Documentation: ${translate(m[1]!)}${m[2] ? " — blank fields are missing from the source" : ""}`;
+  if ((m = text.match(/^Katalogerfassung: ([^·]+?)( — leere Felder sind bisher nicht dokumentiert)?$/)))
+    return `Catalog record: ${translate(m[1]!)}${m[2] ? " — blank fields have not yet been documented" : ""}`;
   if ((m = text.match(/^Bewertung (.+)$/))) return `Rating ${translate(m[1]!)}`;
   if ((m = text.match(/^Dublette zu (.+)$/))) return `Duplicate of ${m[1]}`;
+  if ((m = text.match(/^Übungsvideo: (.+)$/))) return `Drill video: ${m[1]}`;
+  if ((m = text.match(/^Videozuordnung: (.+) ↗$/))) return `Video source: ${m[1]} ↗`;
   if ((m = text.match(/^([TKS]\d+) (.+)$/))) return `${m[1]} ${translate(m[2]!)}`;
   return null;
 }

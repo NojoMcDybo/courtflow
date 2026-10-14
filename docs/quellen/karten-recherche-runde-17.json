@@ -1,0 +1,80 @@
+{
+  "version": 1,
+  "stand": "2026-10-06",
+  "belege": [
+    {
+      "id": "NBA-STARTER-01-EX054",
+      "karten_id": "EX-054",
+      "karten_titel": "Diamond Passing",
+      "name": "Jr. NBA · Diamond Passing",
+      "url": "https://jr.nba.com/basketball-practice-plans/starter/",
+      "abschnitt": "Diamond Passing",
+      "abgerufen": "2026-10-06",
+      "felder": [
+        "ablauf",
+        "material",
+        "spielerzahl"
+      ],
+      "pruefnotiz": "Ablauf und Organisation nach der ausdrücklich betitelten Übung auf der offiziellen interaktiven Practice-Plan-Seite."
+    },
+    {
+      "id": "NBA-STARTER-01-EX056",
+      "karten_id": "EX-056",
+      "karten_titel": "Form Shooting – 1 Hand",
+      "name": "Jr. NBA · Form Shooting – 1 Hand",
+      "url": "https://jr.nba.com/basketball-practice-plans/starter/",
+      "abschnitt": "Form Shooting – 1 Hand",
+      "abgerufen": "2026-10-06",
+      "felder": [
+        "ablauf",
+        "material"
+      ],
+      "pruefnotiz": "Ablauf und Organisation nach der ausdrücklich betitelten Übung auf der offiziellen interaktiven Practice-Plan-Seite."
+    },
+    {
+      "id": "NBA-STARTER-01-EX057",
+      "karten_id": "EX-057",
+      "karten_titel": "Decision 1 on 1",
+      "name": "Jr. NBA · Decision 1 on 1",
+      "url": "https://jr.nba.com/basketball-practice-plans/starter/",
+      "abschnitt": "Decision 1 on 1",
+      "abgerufen": "2026-10-06",
+      "felder": [
+        "ablauf",
+        "raum",
+        "material"
+      ],
+      "pruefnotiz": "Ablauf und Organisation nach der ausdrücklich betitelten Übung auf der offiziellen interaktiven Practice-Plan-Seite."
+    },
+    {
+      "id": "NBA-STARTER-01-EX058",
+      "karten_id": "EX-058",
+      "karten_titel": "Shoot and Follow",
+      "name": "Jr. NBA · Shoot and Follow",
+      "url": "https://jr.nba.com/basketball-practice-plans/starter/",
+      "abschnitt": "Shoot and Follow",
+      "abgerufen": "2026-10-06",
+      "felder": [
+        "ablauf",
+        "material"
+      ],
+      "pruefnotiz": "Ablauf und Organisation nach der ausdrücklich betitelten Übung auf der offiziellen interaktiven Practice-Plan-Seite."
+    },
+    {
+      "id": "NBA-STARTER-01-EX060",
+      "karten_id": "EX-060",
+      "karten_titel": "Dribble Relay",
+      "name": "Jr. NBA · Dribble Relay",
+      "url": "https://jr.nba.com/basketball-practice-plans/starter/",
+      "abschnitt": "Dribble Relay",
+      "abgerufen": "2026-10-06",
+      "felder": [
+        "ablauf",
+        "spielerzahl",
+        "raum",
+        "material"
+      ],
+      "pruefnotiz": "Ablauf und Organisation nach der ausdrücklich betitelten Übung auf der offiziellen interaktiven Practice-Plan-Seite."
+    }
+  ]
+}

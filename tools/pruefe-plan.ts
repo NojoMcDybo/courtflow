@@ -31,6 +31,16 @@ pruefe(knapp.length === 7 && knapp.every((b) => b.minuten >= 5), "knapper Sieben
 // Diese Information muss auch ohne „Game“ im Titel für U18 nutzbar sein.
 // Eine reine 2v2-Screenübung wird dadurch nicht zum Wettbewerbsformat.
 const wettbewerbU18 = new Set(kandidaten("F", 18).map(d => d.id));
+for (const code of modell.bausteine.map(b => b.code)) {
+  for (const alter of [8, 10, 12, 14, 16, 18]) {
+    pruefe(kandidaten(code, alter).every(d => Boolean(d.ablauf)),
+      `${code}/U${alter}: Trainingskandidat ohne durchführbaren Ablauf`);
+  }
+  pruefe(!kandidaten(code, 8).some(d => d.id === "EX-106"),
+    `${code}/U8: DBB-2-gegen-2-Form ist nur als denkbare Vorstufe erwähnt`);
+}
+pruefe(kandidaten("D", 10).some(d => d.id === "EX-106"),
+  "D/U10: belegte DBB-2-gegen-2-Form fehlt");
 if (!wettbewerbU18.has("EX-127")) {
   console.error("EX-127: belegte Wettbewerbsform fehlt bei U18.");
   fehler++;

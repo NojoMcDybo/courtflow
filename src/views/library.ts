@@ -5,8 +5,9 @@ import { markenIcon } from "../marke";
 import { themaIstDunkel, themaUmschalten } from "../thema";
 import { TIEFE_LABEL, aliaseVon, alleDrills, filtern, kompetenzName, taxonomie } from "../data";
 import type { Drill, Filter } from "../types";
-import { matrix } from "./abdeckung";
 import { bildUrl, uebungsbildFuer } from "../uebungsbilder";
+import { uebungsvideoFuer } from "../uebungsvideos";
+import { matrix } from "./abdeckung";
 
 const SKALEN_LABEL: Record<string, string> = {
   entscheidung: "Entscheidung",
@@ -54,9 +55,40 @@ function blattInhalt(d: Drill, schliessen: () => void): HTMLElement {
     }, ["Bild vergrößern ↗"]));
   }
 
+  const video = uebungsvideoFuer(d.id);
+  if (video) {
+    const videoBereich = el("section", { class: "drill-video" }, [
+      el("h4", {}, ["Übungsvideo"]),
+      el("p", {}, [video.titel]),
+    ]);
+    const abspielen = el("button", { type: "button", class: "drill-video-start" }, ["Video laden und abspielen ▶"]);
+    abspielen.addEventListener("click", () => {
+      const rahmen = el("iframe", {
+        title: `Übungsvideo: ${video.titel}`,
+        src: `https://www.youtube-nocookie.com/embed/${video.youtubeId}`,
+        allow: "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share",
+        allowfullscreen: "",
+        loading: "lazy",
+        referrerpolicy: "strict-origin-when-cross-origin",
+      });
+      abspielen.replaceWith(rahmen);
+    }, { once: true });
+    videoBereich.append(
+      abspielen,
+      el("p", { class: "drill-video-links" }, [
+        el("a", { href: `https://www.youtube.com/watch?v=${video.youtubeId}`, target: "_blank", rel: "noopener noreferrer" }, ["Auf YouTube öffnen ↗"]),
+        " · ",
+        el("a", { href: video.belegUrl, target: "_blank", rel: "noopener noreferrer" }, [`Videozuordnung: ${video.quelle} ↗`]),
+      ]),
+      el("p", { class: "drill-video-hinweis" }, ["Falls der Player das Video nicht abspielt, den YouTube-Link oder die Originalquelle prüfen."]),
+    );
+    inhalt.append(videoBereich);
+  }
+
   for (const [label, text] of [
     ["Lernziel", d.lernziel],
-    ["Ablauf", d.ablauf ?? d.evidenz],
+    ["Ablauf", d.ablauf ?? "Kein gesicherter Übungsablauf dokumentiert."],
+    ["Quellenhinweis", d.ablauf ? null : d.evidenz],
     ["Coachingpunkte", d.coachingpunkte],
     ["Typische Fehler", d.typische_fehler],
     ["Regression", d.regression],
@@ -98,8 +130,8 @@ function blattInhalt(d: Drill, schliessen: () => void): HTMLElement {
   inhalt.append(q);
 
   const notizen = [
-    `Beleg: ${TIEFE_LABEL[d.dokumentationstiefe]}${
-      d.dokumentationstiefe === "vollstaendig" ? "" : " — leere Felder fehlen in der Quelle"
+    `Katalogerfassung: ${TIEFE_LABEL[d.dokumentationstiefe]}${
+      d.dokumentationstiefe === "vollstaendig" ? "" : " — leere Felder sind bisher nicht dokumentiert"
     }`,
     d.qa.stufe && `Status ${d.qa.stufe}`,
     d.qa.note && `QA ${d.qa.note}`,
@@ -112,11 +144,14 @@ function blattInhalt(d: Drill, schliessen: () => void): HTMLElement {
 }
 
 export function seite(wurzel: HTMLElement): () => void {
-  const filter: Filter = { suche: "", altersstufe: null, familie: null, kompetenz: null, tiefe: null, nurMitQuelle: false };
+  const filter: Filter = { suche: "", altersstufe: null, familie: null, kompetenz: null, tiefe: null, nurMitQuelle: false, nurTestbilder: false };
   let sortierung = "titel";
   let ausloeser: HTMLButtonElement | null = null;
   const dialog = el("dialog", { "aria-label": "Übungsdetails", class: "drill-dialog" });
-  dialog.addEventListener("close", () => ausloeser?.focus());
+  dialog.addEventListener("close", () => {
+    dialog.querySelector(".drill-video iframe")?.remove();
+    ausloeser?.focus();
+  });
 
   const leiste = el("header", { class: "leiste bibliothek-leiste" });
   const thema = el("button", { type: "button" });
@@ -151,11 +186,18 @@ export function seite(wurzel: HTMLElement): () => void {
   const tiefe = select("Belegtiefe", [["", "Alle Belegtiefen"], ...Object.entries(TIEFE_LABEL)], w => filter.tiefe = (w || null) as Filter["tiefe"]);
   const quelle = el("input", { type: "checkbox" });
   quelle.addEventListener("change", () => { filter.nurMitQuelle = quelle.checked; zeichnen(); });
-  extraFelder.append(familie, tiefe, el("label", { class: "haken" }, [quelle, "Mit Quelle"]));
+  const testbilder = el("input", { type: "checkbox" });
+  testbilder.addEventListener("change", () => { filter.nurTestbilder = testbilder.checked; zeichnen(); });
+  extraFelder.append(
+    familie,
+    tiefe,
+    el("label", { class: "haken" }, [quelle, "Mit Quelle"]),
+    el("label", { class: "haken" }, [testbilder, "Testbilder"]),
+  );
   extras.append(extrasTitel, extraFelder);
   reset.addEventListener("click", () => {
-    Object.assign(filter, { suche: "", altersstufe: null, familie: null, kompetenz: null, tiefe: null, nurMitQuelle: false });
-    suche.value = ""; familie.value = ""; tiefe.value = ""; quelle.checked = false;
+    Object.assign(filter, { suche: "", altersstufe: null, familie: null, kompetenz: null, tiefe: null, nurMitQuelle: false, nurTestbilder: false });
+    suche.value = ""; familie.value = ""; tiefe.value = ""; quelle.checked = false; testbilder.checked = false;
     zeichnen();
   });
 
@@ -191,6 +233,7 @@ export function seite(wurzel: HTMLElement): () => void {
     const bild = uebungsbildFuer(d);
     const inhalt: (HTMLElement | string)[] = [
       el("span", { class: "drill-alter" }, [altersname(d)]),
+      ...(!d.ablauf ? [el("span", { class: "drill-ablauf-offen" }, ["Ablauf offen"])] : []),
       el("span", { class: "drill-name" }, [kurzname(d)]),
       el("span", { class: "drill-oeffnen", "aria-hidden": "true" }, ["Ansehen", el("span", {}, ["↗"])]),
     ];
@@ -250,7 +293,8 @@ export function seite(wurzel: HTMLElement): () => void {
     if (filter.familie) chip(filter.familie, () => { filter.familie = null; familie.value = ""; });
     if (filter.tiefe) chip(TIEFE_LABEL[filter.tiefe] ?? filter.tiefe, () => { filter.tiefe = null; tiefe.value = ""; });
     if (filter.nurMitQuelle) chip("Mit Quelle", () => { filter.nurMitQuelle = false; quelle.checked = false; });
-    setText(extrasTitel, `Weitere Filter${filter.familie || filter.tiefe || filter.nurMitQuelle ? " · aktiv" : ""}`);
+    if (filter.nurTestbilder) chip("Testbilder", () => { filter.nurTestbilder = false; testbilder.checked = false; });
+    setText(extrasTitel, `Weitere Filter${filter.familie || filter.tiefe || filter.nurMitQuelle || filter.nurTestbilder ? " · aktiv" : ""}`);
     karten.replaceChildren(...treffer.map(karte));
     if (!treffer.length) karten.append(el("div", { class: "bibliothek-leer" }, [
       el("h3", {}, ["Hier gibt es noch keine passende Übung."]),

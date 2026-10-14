@@ -78,4 +78,5 @@ export interface Filter {
   kompetenz: string | null;
   tiefe: Dokumentationstiefe | null;
   nurMitQuelle: boolean;
+  nurTestbilder?: boolean;
 }

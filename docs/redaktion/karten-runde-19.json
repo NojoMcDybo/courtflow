@@ -1,0 +1,154 @@
+{
+  "version": 1,
+  "stand": "2026-10-11",
+  "karten": [
+    {
+      "id": "EX-115",
+      "titel": "1-on-1 Pivot Pressure",
+      "beleg_id": "NBA-ALLSTAR-02-EX115",
+      "quelle_vorher": {
+        "name": "Jr. NBA All-Star Practice Plans, Practice 2",
+        "url": null,
+        "video_status": null
+      },
+      "felder": {
+        "ablauf": {
+          "vorher": "Im 1 gegen 1 ohne Dribbling durch Pivotieren Raum gewinnen. Der Verteidiger übt aktiven Druck aus.",
+          "de": "Paare bilden und innerhalb des Dreipunktbogens je einen freien Startplatz suchen. Eine Person greift an, die andere verteidigt und beginnt ein paar Schritte entfernt. Die Verteidigung passt den Ball zum Angreifer und setzt ihn dann unter Druck. Der Angreifer darf zunächst nicht dribbeln: Er schafft durch Pivotieren Raum für einen Wurf oder Korbleger. Nach einem Wurf oder Ballgewinn der Verteidigung wechseln beide die Rollen. Nach einigen Runden ist vor dem Pivotieren ein Dribbling erlaubt. Insgesamt sechs Minuten üben.",
+          "en": "Make pairs and find separate starting spots inside the three-point arc. One player attacks and the other defends, starting a few steps away. The defender passes to the attacker and then applies pressure. At first the attacker may not dribble; they pivot to make room for a shot or layup. Switch roles after a shot or a defensive steal. After a few rounds, allow one dribble before pivoting. Practise for six minutes."
+        },
+        "spielerzahl": {
+          "vorher": null,
+          "de": "Paare; je 1 Angriff und 1 Verteidigung",
+          "en": "Pairs; one attacker and one defender each"
+        },
+        "raum": {
+          "vorher": null,
+          "de": "Freie Startplätze innerhalb des Dreipunktbogens mit Zugang zum Korb",
+          "en": "Separate starts inside the arc with access to a basket"
+        },
+        "material": {
+          "vorher": null,
+          "de": "1 Basketball pro Paar und ein Korb",
+          "en": "One basketball per pair and a basket"
+        },
+        "dauer_min": {
+          "vorher": null,
+          "de": "6 Minuten",
+          "en": "Six minutes"
+        }
+      }
+    },
+    {
+      "id": "EX-124",
+      "titel": "Side Ball Screen Drill",
+      "beleg_id": "NBA-MVP-09-EX124",
+      "quelle_vorher": {
+        "name": "Jr. NBA MVP Practice 9",
+        "url": null,
+        "video_status": null
+      },
+      "felder": {
+        "ablauf": {
+          "vorher": "Guard und Post spielen eine 2v2-Situation aus dem Side Ball Screen; die Defense des Pick-and-Roll kann vom Coach vorgegeben oder variiert werden.",
+          "de": "Guards nach Spielstärke zu Paaren ordnen und an beiden Flügeln nahe der Mittellinie je eine Reihe bilden. Postspieler ebenfalls paarweise aufstellen: an jeder Seite eine Reihe an der Grundlinie beim Zonenrand. Auf einer Seite betreten die ersten beiden Guards und die ersten beiden Postspieler das Feld; jeweils eine Person greift an, die andere verteidigt. Auf Zeichen des ballführenden Guards kommt der angreifende Postspieler zum seitlichen Ballblock. Die vier spielen genau einen Ballbesitz zwei gegen zwei aus diesem Block. Direkt danach startet dieselbe Folge auf der anderen Seite. Danach mit den Paaren Seiten sowie Angriff und Verteidigung tauschen. Zehn Minuten wiederholen; die Verteidigung des Blocks kann der Coach vorgeben.",
+          "en": "Pair guards by ability and make a high line on each wing near half-court. Pair post players too, forming one line on each baseline at the lane line. On one side, the first two guards and first two posts enter, with one attacker and one defender at each position. On the ball-handling guard's signal, the attacking post comes to set a side ball screen. The four play exactly one two-on-two possession from the screen. The other side starts immediately afterward. Then partners switch sides and offensive and defensive roles. Repeat for ten minutes; the coach may specify how to defend the screen."
+        },
+        "spielerzahl": {
+          "vorher": null,
+          "de": "Mindestens 8 für beide Seiten; je 4 gleichzeitig aktiv",
+          "en": "At least eight for both sides; four active at a time"
+        },
+        "raum": {
+          "vorher": null,
+          "de": "Zwei Flügelstarts nahe der Mittellinie, Postreihen an beiden Zonenrändern der Grundlinie, ein Korb",
+          "en": "Two wing starts near half-court, post lines at both baseline lane lines, one basket"
+        },
+        "material": {
+          "vorher": null,
+          "de": "Basketball für den jeweiligen angreifenden Guard und ein Korb",
+          "en": "Basketball for the attacking guard and one basket"
+        },
+        "dauer_min": {
+          "vorher": null,
+          "de": "10 Minuten",
+          "en": "Ten minutes"
+        }
+      }
+    },
+    {
+      "id": "EX-126",
+      "titel": "Guards: Pick & Roll Situational Shooting",
+      "beleg_id": "NBA-MVP-01-EX126",
+      "quelle_vorher": {
+        "name": "Jr. NBA MVP Practice 1",
+        "url": null,
+        "video_status": null
+      },
+      "felder": {
+        "ablauf": {
+          "vorher": "Der Coach verteidigt den Screener unterschiedlich (hedge, drop oder zwischen den Spielern), und der Ballhandler soll die passende Anschlussaktion/Wurfentscheidung lesen.",
+          "de": "Alle Kinder starten mit je einem Ball in einer Reihe innerhalb des Halbfelds auf einer Korbseite. Ein Stuhl oder Hütchen stellt den Blocksteller dar; der Coach verteidigt dessen Position. Nacheinander dribbelt ein Kind zum Block, fordert ihn an und nutzt ihn so, als liefe sein eigener Verteidiger über den Block und bliebe dort hängen. Der Coach zeigt eine von drei Reaktionen: am Block heraustreten, tief absinken oder zwischen den beiden Positionen verteidigen. Das ballführende Kind liest diese Reaktion und nimmt den passenden Wurf. Je fünf Wiederholungen pro Kind und Korbseite ausführen, dann die Seite wechseln.",
+          "en": "All players line up inside the half-court on one side of the basket, each with a ball. A chair or cone represents the screener; the coach defends that position. In turn, a player dribbles toward the screen, calls for it and uses it as if their own defender had gone over the screen and been caught. The coach shows one of three reactions: hedge out, drop back or defend between the two positions. The ball-handler reads the response and takes the appropriate shot. Complete five repetitions per player on each side of the basket, then switch sides."
+        },
+        "spielerzahl": {
+          "vorher": null,
+          "de": "Ein Kind und ein Coach aktiv; übrige warten mit Ball",
+          "en": "One player and one coach active; others wait with balls"
+        },
+        "raum": {
+          "vorher": null,
+          "de": "Halbfeld mit seitlicher Blockposition und Korb; beide Korbseiten",
+          "en": "Half-court with a side screen position and basket; both sides"
+        },
+        "material": {
+          "vorher": null,
+          "de": "1 Basketball pro Kind, 1 Stuhl oder Hütchen als Block, 1 Korb",
+          "en": "One basketball per player, one chair or cone as screen, one basket"
+        },
+        "dauer_min": {
+          "vorher": null,
+          "de": "5 Wiederholungen pro Kind und Seite",
+          "en": "Five repetitions per player on each side"
+        }
+      }
+    },
+    {
+      "id": "EX-134",
+      "titel": "3 on 3 from Help the Helper",
+      "beleg_id": "NBA-MVP-01-EX134",
+      "quelle_vorher": {
+        "name": "Jr. NBA MVP",
+        "url": "https://jr.nba.com/basketball-practice-plans/mvp/",
+        "video_status": null
+      },
+      "felder": {
+        "ablauf": {
+          "vorher": "Mit einem Zug zum Korb beginnen. Die Verteidigung reagiert mit Hilfe und einer weiteren Hilfe für den helfenden Verteidiger. Danach wird im 3 gegen 3 frei weitergespielt.",
+          "de": "Dreierteams bilden und an einem Korb drei gegen drei spielen; ab vier Teams können beide Körbe genutzt werden. Der erste Angriff beginnt mit einem Zug entlang der Grundlinie. Ein Verteidiger hilft zum Ball und stoppt den Zug; der dritte Verteidiger sichert den helfenden Mitspieler ab. Der Ballführer passt aus der Hilfe nach außen, erst danach wird das Spiel frei. Nach jedem Ballbesitzwechsel muss der Ball vor dem neuen Angriff zurück an die Spitze des Dreipunktbogens. Nach einem Treffer behält das angreifende Team den Ball; ohne Check schnell weiterspielen. Sechs Minuten üben.",
+          "en": "Make teams of three and play three-on-three at one basket; use both baskets if there are four or more teams. The first attack starts with a baseline drive. One defender helps to stop the ball and the third defender helps that helper. The ball-handler kicks the ball back out, and only then is play live. After every change of possession, return the ball to the top of the arc before attacking again. The offense keeps the ball after a basket; continue quickly without a check. Practise for six minutes."
+        },
+        "spielerzahl": {
+          "vorher": null,
+          "de": "6 pro Spiel; zwei Dreierteams",
+          "en": "Six per game; two teams of three"
+        },
+        "raum": {
+          "vorher": null,
+          "de": "Halbfeld mit Grundlinie, Dreipunktbogenspitze und Korb",
+          "en": "Half-court with baseline, top of the arc and basket"
+        },
+        "material": {
+          "vorher": null,
+          "de": "1 Basketball und 1 Korb pro Spiel",
+          "en": "One basketball and one basket per game"
+        },
+        "dauer_min": {
+          "vorher": null,
+          "de": "6 Minuten",
+          "en": "Six minutes"
+        }
+      }
+    }
+  ]
+}

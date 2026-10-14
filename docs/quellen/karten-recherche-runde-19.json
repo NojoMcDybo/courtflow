@@ -1,0 +1,74 @@
+{
+  "version": 1,
+  "stand": "2026-10-11",
+  "belege": [
+    {
+      "id": "NBA-ALLSTAR-02-EX115",
+      "karten_id": "EX-115",
+      "karten_titel": "1-on-1 Pivot Pressure",
+      "name": "Jr. NBA · Pivot 1 on 1",
+      "url": "https://jr.nba.com/basketball-practice-plans/all-star/page/2/",
+      "abschnitt": "Pivot 1 on 1",
+      "abgerufen": "2026-10-11",
+      "felder": [
+        "ablauf",
+        "spielerzahl",
+        "raum",
+        "material",
+        "dauer_min"
+      ],
+      "pruefnotiz": "Ablauf und Organisation nach der ausdrücklich betitelten Übung im offiziellen interaktiven Practice Plan."
+    },
+    {
+      "id": "NBA-MVP-09-EX124",
+      "karten_id": "EX-124",
+      "karten_titel": "Side Ball Screen Drill",
+      "name": "Jr. NBA · Side Ball Screen Drill",
+      "url": "https://jr.nba.com/basketball-practice-plans/mvp/page/9/",
+      "abschnitt": "Side Ball Screen Drill",
+      "abgerufen": "2026-10-11",
+      "felder": [
+        "ablauf",
+        "spielerzahl",
+        "raum",
+        "material",
+        "dauer_min"
+      ],
+      "pruefnotiz": "Ablauf und Organisation nach der ausdrücklich betitelten Übung im offiziellen interaktiven Practice Plan."
+    },
+    {
+      "id": "NBA-MVP-01-EX126",
+      "karten_id": "EX-126",
+      "karten_titel": "Guards: Pick & Roll Situational Shooting",
+      "name": "Jr. NBA · GUARDS: Pick & Roll Situational Shooting",
+      "url": "https://jr.nba.com/basketball-practice-plans/mvp/",
+      "abschnitt": "GUARDS: Pick & Roll Situational Shooting",
+      "abgerufen": "2026-10-11",
+      "felder": [
+        "ablauf",
+        "spielerzahl",
+        "raum",
+        "material",
+        "dauer_min"
+      ],
+      "pruefnotiz": "Ablauf und Organisation nach der ausdrücklich betitelten Übung im offiziellen interaktiven Practice Plan."
+    },
+    {
+      "id": "NBA-MVP-01-EX134",
+      "karten_id": "EX-134",
+      "karten_titel": "3 on 3 from Help the Helper",
+      "name": "Jr. NBA · 3 on 3 from Help the Helper",
+      "url": "https://jr.nba.com/basketball-practice-plans/mvp/",
+      "abschnitt": "3 on 3 from Help the Helper",
+      "abgerufen": "2026-10-11",
+      "felder": [
+        "ablauf",
+        "spielerzahl",
+        "raum",
+        "material",
+        "dauer_min"
+      ],
+      "pruefnotiz": "Ablauf und Organisation nach der ausdrücklich betitelten Übung im offiziellen interaktiven Practice Plan."
+    }
+  ]
+}

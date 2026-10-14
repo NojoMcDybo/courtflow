@@ -1,0 +1,58 @@
+{
+  "version": 1,
+  "stand": "2026-10-03",
+  "karten": [
+    {
+      "id": "EX-049",
+      "titel": "Free Dribble + Whistle Pass",
+      "beleg_id": "FIBA-MINI-45-1-EX-049",
+      "quelle_vorher": {"name": "Q4", "url": null, "video_status": null},
+      "felder": {
+        "lernziel": {"vorher": null, "de": "Während des Dribblings auf ein Signal reagieren und weiterpassen.", "en": "React to a signal while dribbling and pass on."},
+        "ablauf": {"vorher": null, "de": "Eine Spielfläche festlegen. Einige Spieler dribbeln dort frei mit Ball; niemand bleibt stehen. Auf den Pfiff des Coaches passt jede Person mit Ball zu einer anderen. Die Empfänger dribbeln weiter.", "en": "Mark out a playing area. Some players dribble freely with a ball; nobody stands still. On the coach's whistle, each ball carrier passes to another player. The receivers continue dribbling."},
+        "raum": {"vorher": null, "de": "Halb- oder Ganzfeld je nach Gruppengröße", "en": "Half or full court depending on group size"},
+        "material": {"vorher": null, "de": "Basketbälle für einen Teil der Gruppe", "en": "Basketballs for some of the players"}
+      }
+    },
+    {
+      "id": "EX-050",
+      "titel": "Dribble Under Arms + Pivot & Pass",
+      "beleg_id": "FIBA-MINI-45-2-EX-050",
+      "quelle_vorher": {"name": "Q4", "url": null, "video_status": null},
+      "felder": {
+        "lernziel": {"vorher": null, "de": "Dribbling, Stopp, Pivot und Pass verbinden.", "en": "Combine dribbling, stopping, pivoting and passing."},
+        "ablauf": {"vorher": null, "de": "Paare stehen 3–4 m auseinander. Eine Person steht mit gegrätschten Beinen und ausgestreckten Armen, die andere startet mit Ball. Auf Signal unter den Armen hindurch und um den Partner herum dribbeln, zum Ausgangspunkt zurückkehren, stoppen, vorwärts und rückwärts pivotieren und zum Partner passen. Rollen tauschen.", "en": "Partners stand 3–4 m apart. One stands with legs apart and arms extended; the other starts with a ball. On the signal, dribble under the arms and around the partner, return to the starting point, stop, pivot forward and reverse, and pass to the partner. Swap roles."},
+        "spielerzahl": {"vorher": null, "de": "Paare", "en": "Pairs"},
+        "raum": {"vorher": null, "de": "3–4 m Startabstand pro Paar", "en": "3–4 m starting distance per pair"},
+        "material": {"vorher": null, "de": "Ein Basketball pro Paar", "en": "One basketball per pair"}
+      }
+    },
+    {
+      "id": "EX-051",
+      "titel": "Hand-Off from Jump Stop",
+      "beleg_id": "FIBA-MINI-45-3-EX-051",
+      "quelle_vorher": {"name": "Q4", "url": null, "video_status": null},
+      "felder": {
+        "lernziel": {"vorher": null, "de": "Aus dem Sprungstopp sicher an den Partner übergeben.", "en": "Hand the ball safely to a partner after a jump stop."},
+        "ablauf": {"vorher": null, "de": "Paare stehen etwa 3–4 m auseinander. Eine Person dribbelt zum Partner, stoppt beidbeinig vor ihm und übergibt den Ball direkt. Der Empfänger dribbelt los, während die erste Person rückwärts zum Ausgangspunkt geht. Dann wiederholen.", "en": "Partners stand about 3–4 m apart. One dribbles toward the partner, jump-stops in front of them and hands over the ball. The receiver starts dribbling while the first player walks backward to the starting point. Repeat."},
+        "coachingpunkte": {"vorher": null, "de": "Bei der Übergabe eine Hand über und eine unter dem Ball halten, damit der Partner ihn gut greifen kann.", "en": "At the handoff, keep one hand above and one below the ball so the partner can take it easily."},
+        "spielerzahl": {"vorher": null, "de": "Paare", "en": "Pairs"},
+        "raum": {"vorher": null, "de": "Etwa 3–4 m Abstand pro Paar", "en": "About 3–4 m between partners"},
+        "material": {"vorher": null, "de": "Ein Basketball pro Paar", "en": "One basketball per pair"}
+      }
+    },
+    {
+      "id": "EX-052",
+      "titel": "Double-Ball Dribble → Pass",
+      "beleg_id": "FIBA-MINI-45-4-EX-052",
+      "quelle_vorher": {"name": "Q4", "url": null, "video_status": null},
+      "felder": {
+        "lernziel": {"vorher": null, "de": "Zwei Bälle gleichzeitig kontrollieren und übergeben.", "en": "Control and pass two balls at the same time."},
+        "ablauf": {"vorher": null, "de": "Zu zweit arbeiten. Eine Person dribbelt gleichzeitig zwei Bälle und passt auf Signal des Coaches beide zum Partner. Dieser übernimmt das Dribbling mit beiden Bällen; danach erneut wechseln.", "en": "Work in pairs. One player dribbles two balls simultaneously and, on the coach's signal, passes both to the partner. The partner takes over dribbling both balls; then switch again."},
+        "spielerzahl": {"vorher": null, "de": "Paare", "en": "Pairs"},
+        "material": {"vorher": null, "de": "Zwei Basketbälle pro Paar", "en": "Two basketballs per pair"},
+        "progression": {"vorher": null, "de": "Die Aufgabe erst im Gehen, dann im Laufen ausführen.", "en": "Perform the activity first while walking, then while running."}
+      }
+    }
+  ]
+}

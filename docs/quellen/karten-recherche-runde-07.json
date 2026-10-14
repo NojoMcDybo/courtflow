@@ -1,0 +1,28 @@
+{
+  "version": 1,
+  "methode": "Offiziellen DBB-Videokatalog Minibasketball, PDF-Seite 11, als Text und gerenderte Seite geprüft. Video selbst nicht geprüft. Videostellen sind keine Übungsdauer.",
+  "belege": [
+    {
+      "id": "DBB-MTO-P11-EX-011",
+      "karten_id": "EX-011",
+      "karten_titel": "Passen & Werfen – 5er-Team",
+      "name": "DBB · Videokatalog Minibasketball · Passen und Werfen",
+      "url": "https://www.basketball-bund.de/wp-content/uploads/sites/2/2022/02/Videokatalog-Minibasketball.pdf",
+      "abschnitt": "Playlist Minitrainer-Offensive · Passen und Werfen · PDF-Seite 11",
+      "abgerufen": "2026-10-03",
+      "felder": ["lernziel", "ablauf", "spielerzahl", "raum", "material"],
+      "pruefnotiz": "Fünferteams passen ohne Dribbling zum anderen Korb. Die Timecode-Spalte ist leer; kein Videozeitpunkt oder Übungsdauer ergänzt."
+    },
+    {
+      "id": "DBB-MTO-P11-EX-012",
+      "karten_id": "EX-012",
+      "karten_titel": "Reaktionsspiel",
+      "name": "DBB · Videokatalog Minibasketball · Reaktionsspiel",
+      "url": "https://www.basketball-bund.de/wp-content/uploads/sites/2/2022/02/Videokatalog-Minibasketball.pdf",
+      "abschnitt": "Playlist Minitrainer-Offensive · Reaktionsspiel · PDF-Seite 11 · Video 1:14:00–1:18:00",
+      "abgerufen": "2026-10-03",
+      "felder": ["lernziel", "ablauf", "raum", "material", "progression"],
+      "pruefnotiz": "Videostelle 1:14:00–1:18:00, keine Übungsdauer. Ballorganisation und Gruppengröße werden nicht spezifiziert."
+    }
+  ]
+}

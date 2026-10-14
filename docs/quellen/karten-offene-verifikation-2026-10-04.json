@@ -1,0 +1,119 @@
+{
+  "stand": "2026-10-04",
+  "regel": "Kein Ablauf aus einem bloßen Skillnamen, einem taktischen Prinzip oder einem unspezifischen Katalogbeleg. Diese Einträge bleiben im Datenbestand erhalten, ohne QA-Aufwertung.",
+  "ohne_ablauf_und_evidenz": [
+    {
+      "id": "EX-016",
+      "status": "v2-negativ",
+      "grund": "Change of Direction Dribble erscheint in der Jr.-NBA-Rookie-Skills-Checklist nur als Kompetenzname; eine genau zugeordnete Originaldurchführung fehlt.",
+      "gepruefte_quelle": "https://jr.nba.com/basketball-practice-plans/rookie/"
+    },
+    {
+      "id": "EX-023",
+      "status": "v2-negativ",
+      "grund": "Slide & Pass erscheint in der Jr.-NBA-Rookie-Skills-Checklist nur als Kompetenzname; keine kartengebundene Originaldurchführung verifiziert.",
+      "gepruefte_quelle": "https://jr.nba.com/basketball-practice-plans/rookie/"
+    },
+    {
+      "id": "EX-028",
+      "status": "v2-negativ",
+      "grund": "1-2 Step Shooting erscheint in der Jr.-NBA-Rookie-Skills-Checklist nur als Kompetenzname; keine kartengebundene Originaldurchführung verifiziert.",
+      "gepruefte_quelle": "https://jr.nba.com/basketball-practice-plans/rookie/"
+    },
+    {
+      "id": "EX-075",
+      "status": "v2-negativ",
+      "grund": "Closeout to Slide erscheint in der Jr.-NBA-Starter-Skills-Checklist nur als Kompetenzname; die konkrete Originalübung ist nicht zugeordnet.",
+      "gepruefte_quelle": "https://jr.nba.com/basketball-practice-plans/starter/"
+    }
+  ],
+  "evidenz_ohne_eigenen_ablauf": [
+    {
+      "id": "EX-062",
+      "status": "ablaufplatzhalter_entfernt",
+      "grund": "Der ursprüngliche Text beschreibt nur einen Kompetenzanker und einen noch ausstehenden Quellencheck, nicht die Durchführung einer Übung."
+    },
+    {
+      "id": "EX-064",
+      "status": "ablaufplatzhalter_entfernt",
+      "grund": "Der ursprüngliche Text beschreibt nur einen Kompetenzanker und einen noch ausstehenden Quellencheck, nicht die Durchführung einer Übung."
+    },
+    {
+      "id": "EX-066",
+      "status": "ablaufplatzhalter_entfernt",
+      "grund": "Der ursprüngliche Text beschreibt nur einen Kompetenzanker und einen noch ausstehenden Quellencheck, nicht die Durchführung einer Übung."
+    },
+    {
+      "id": "EX-068",
+      "status": "ablaufplatzhalter_entfernt",
+      "grund": "Der ursprüngliche Text beschreibt nur einen Kompetenzanker und einen noch ausstehenden Quellencheck, nicht die Durchführung einer Übung."
+    },
+    {
+      "id": "EX-106",
+      "status": "quellenzuordnung_offen",
+      "grund": "Der Katalog nennt eine DBB-3x3-Progression, enthält aber keinen eindeutig zugeordneten Originalbeleg für diese Karte."
+    },
+    {
+      "id": "EX-107",
+      "status": "prinzip_statt_drill",
+      "grund": "FIBA-3x3- und Verteidigungsprinzipien sind im Katalog belegt, aber nicht als einzelne Originalübung mit Ablauf."
+    },
+    {
+      "id": "EX-136",
+      "status": "prinzip_statt_drill",
+      "grund": "Die Dribbleroptionen am On-Ball-Screen sind technische Inhalte, jedoch keine eindeutig abgegrenzte Übungsorganisation."
+    },
+    {
+      "id": "EX-137",
+      "status": "methodik_statt_drill",
+      "grund": "Rebounding and Defensive Transition ist laut Katalog eher eine Querschnittsregel als ein isolierter Drill."
+    }
+  ],
+  "zusatzpruefung": {
+    "originaldurchfuehrung_offen_trotz_ablauf": [
+      "EX-022",
+      "EX-040"
+    ],
+    "quellenzuordnung_offen": [
+      "EX-106",
+      "EX-107"
+    ],
+    "doppelte_originaluebung_im_katalog": [
+      [
+        "EX-140",
+        "EX-148"
+      ]
+    ],
+    "abgleich_mit_bereits_vorhandener_uebung": [
+      {"kompetenzkarte": "EX-016", "uebungskarte": "EX-076", "hinweis": "Cone Dribbling ist als eigenständige Starter-Übung vorhanden; eine zweite nahezu gleiche Ablaufkarte wird nicht allein aus dem Kompetenznamen erzeugt."},
+      {"kompetenzkarte": "EX-028", "uebungskarte": "EX-044", "hinweis": "1-2 Step Lay-Ups ist als eigenständige Rookie-Übung vorhanden; der Kompetenzanker bleibt bis zur Modellierungsentscheidung ohne duplizierten Ablauf."}
+    ],
+    "alterszuordnung_pruefen": [
+      {"id": "EX-036", "hinweis": "Konkrete Praxisform stammt aus Starter Practice 3, während der Kompetenzanker im Katalog Rookie/U10–U12 nennt."}
+    ],
+    "ablaufplatzhalter_bereinigt": [
+      "EX-062",
+      "EX-063",
+      "EX-064",
+      "EX-065",
+      "EX-066",
+      "EX-067",
+      "EX-068"
+    ]
+  },
+  "abgeschlossen_in_runde_11": [
+    {
+      "id": "EX-135",
+      "status": "originalpassage_geprueft",
+      "beleg": "FIBA/WABC Level 1, Abschnitt 2.1.8, PDF-Seite 327 / Handbuchseite 325"
+    }
+  ],
+  "belegte_praxisformen_in_runde_12": [
+    {"id": "EX-024", "beleg": "Jr. NBA Rookie Practice 9, Who Is Ready Drill"},
+    {"id": "EX-031", "beleg": "Jr. NBA Rookie Practice 6, Zig-Zag V Jumps"},
+    {"id": "EX-036", "beleg": "Jr. NBA Starter Practice 3, The Kick Pass Drill; Alterszuordnung offen"},
+    {"id": "EX-063", "beleg": "Jr. NBA Starter Practice 8, Dribble & Pass to Target Drill"},
+    {"id": "EX-065", "beleg": "Jr. NBA Starter Practice 3, 2 on 2 Box Out Game"},
+    {"id": "EX-067", "beleg": "Jr. NBA Starter Practice 4, Pass, Cut & Replace Drill"}
+  ]
+}

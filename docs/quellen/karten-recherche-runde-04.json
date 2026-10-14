@@ -1,0 +1,76 @@
+{
+  "version": 1,
+  "methode": "Manueller Abgleich der genannten Originalabschnitte; Eigenformulierungen. Videos und vollständige QA nicht geprüft.",
+  "belege": [
+    {
+      "id": "JRN-ROOKIE-1-EX-010",
+      "karten_id": "EX-010",
+      "karten_titel": "Partner Shooting / Form Shooting",
+      "name": "Jr. NBA · Rookie Practice 1 · Partner Shooting Game",
+      "url": "https://jr.nba.com/basketball-practice-plans/rookie/",
+      "abschnitt": "Partner Shooting Game",
+      "abgerufen": "2026-10-02",
+      "felder": [
+        "ablauf",
+        "spielerzahl",
+        "material",
+        "dauer_min",
+        "progression"
+      ],
+      "pruefnotiz": "Partnerform ohne Korb; Wiederholungsumfang, keine Minutenangabe."
+    },
+    {
+      "id": "JRN-ROOKIE-1-EX-025",
+      "karten_id": "EX-025",
+      "karten_titel": "Stationary Form Shooting",
+      "name": "Jr. NBA · Rookie Practice 1 · Shooting Fundamental Skill",
+      "url": "https://jr.nba.com/basketball-practice-plans/rookie/",
+      "abschnitt": "Shooting Fundamental Skill",
+      "abgerufen": "2026-10-02",
+      "felder": [
+        "lernziel",
+        "ablauf",
+        "coachingpunkte",
+        "material"
+      ],
+      "pruefnotiz": "Technikbeschreibung zum Skill-Anker, keine erfundene Übungsserie."
+    },
+    {
+      "id": "JRN-ROOKIE-6-EX-026",
+      "karten_id": "EX-026",
+      "karten_titel": "Using the Backboard",
+      "name": "Jr. NBA · Rookie Practice 6 · Block to Block Shooting Drill",
+      "url": "https://jr.nba.com/basketball-practice-plans/rookie/page/6/",
+      "abschnitt": "Block to Block Shooting Drill",
+      "abgerufen": "2026-10-02",
+      "felder": [
+        "lernziel",
+        "ablauf",
+        "coachingpunkte",
+        "spielerzahl",
+        "material",
+        "dauer_min",
+        "progression"
+      ],
+      "pruefnotiz": "Konkrete Brettwurf-Übungsform zum bisherigen Skill-Anker; beide Partner je 30 Sekunden, zusammen eine Minute."
+    },
+    {
+      "id": "JRN-STARTER-11-EX-048",
+      "karten_id": "EX-048",
+      "karten_titel": "Pass & Cut Decision Game",
+      "name": "Jr. NBA · Starter Practice 11 · Pass & Cut Decision Game",
+      "url": "https://jr.nba.com/basketball-practice-plans/starter/page/11/",
+      "abschnitt": "Pass & Cut Decision Game",
+      "abgerufen": "2026-10-02",
+      "felder": [
+        "lernziel",
+        "ablauf",
+        "spielerzahl",
+        "dauer_min",
+        "material",
+        "progression"
+      ],
+      "pruefnotiz": "Eigenständige Originaldurchführung; zwei Spieler plus Coach aktiv. Bisheriger Skill-Anker erhält keine zusätzliche QA-Freigabe."
+    }
+  ]
+}

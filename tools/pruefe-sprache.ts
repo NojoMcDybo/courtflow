@@ -8,9 +8,15 @@ await englischBereit();
 
 for (const [de, en] of [
   ["Übungen entdecken", "Discover drills"],
+  ["Illustration der Fertigkeit, nicht des genauen Übungsablaufs.", "Illustration of the skill, not the exact drill setup."],
+  ["Kein gesicherter Übungsablauf dokumentiert.", "No verified drill instructions documented."],
+  ["Quellenhinweis", "Source note"],
+  ["1 Übung", "1 drill"],
+  ["146 Übungen", "146 drills"],
+  ["T2 Passen/Fangen, U8: 1 Übung", "T2 Passing/catching, U8: 1 drill"],
   ["Abdeckung · Passen/Fangen · U12", "Coverage · Passing/catching · U12"],
   ["T2 Passen/Fangen, U12: 3 Übungen", "T2 Passing/catching, U12: 3 drills"],
-  ["Beleg: Kurzerfassung — leere Felder fehlen in der Quelle · QA A", "Documentation: brief record — blank fields are missing from the source · QA A"],
+  ["Katalogerfassung: Kurzerfassung — leere Felder sind bisher nicht dokumentiert · QA A", "Catalog record: brief record — blank fields have not yet been documented · QA A"],
   ["Dein Plan → Fundament · 15 min", "Your plan → Foundation · 15 min"],
   ["Karte → Aktivieren", "Card → Activate"],
   [" / 60 min geplant", " / 60 min planned"],

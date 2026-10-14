@@ -1,0 +1,8 @@
+{
+  "version": 1,
+  "methode": "Manueller Abgleich mit den konkret nummerierten Aktivitäten im offiziellen FIBA/WABC Mini-Basketball Coaches Manual. Die Aufgaben enthalten keine feste Dauer oder Spielerzahl; dies bleibt offen. QA nicht geändert.",
+  "belege": [
+    {"id": "FIBA-MINI-42-1-EX109", "karten_id": "EX-109", "karten_titel": "Zielwürfe mit unterschiedlichen Bällen, Höhen und Distanzen", "name": "FIBA/WABC · Mini-Basketball Coaches Manual · 4.2 Shooting, Activity 1", "url": "https://assets.fiba.basketball/image/upload/documents-corporate-wabc-coaching-manual-mini-basketball-eng.pdf", "abschnitt": "4.2 Shooting, Activity 1, PDF-Seite 23", "abgerufen": "2026-10-03", "felder": ["ablauf", "material", "progression"], "pruefnotiz": "Original nennt verschiedene Ballgewichte/-größen, Behälter, Kreise und Körbe auf unterschiedlichen Höhen und Distanzen."},
+    {"id": "FIBA-MINI-32-11-EX110", "karten_id": "EX-110", "karten_titel": "Throw High / Far – variabler Zielwurf", "name": "FIBA/WABC · Mini-Basketball Coaches Manual · 3.2, Activity 11", "url": "https://assets.fiba.basketball/image/upload/documents-corporate-wabc-coaching-manual-mini-basketball-eng.pdf", "abschnitt": "3.2 Balance and coordination, Activity 11, PDF-Seite 15", "abgerufen": "2026-10-03", "felder": ["ablauf", "material"], "pruefnotiz": "Original besteht aus dem Auftrag, hoch und weit zu werfen. Wiederholungen und Zeit nicht festgelegt; Basketballbezug begrenzt."}
+  ]
+}

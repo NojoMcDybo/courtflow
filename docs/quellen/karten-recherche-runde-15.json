@@ -1,0 +1,28 @@
+{
+  "version": 1,
+  "stand": "2026-10-06",
+  "belege": [
+    {
+      "id": "NBA-ALLSTAR-5-EX117",
+      "karten_id": "EX-117",
+      "karten_titel": "Shell Drill 4 on 4",
+      "name": "Jr. NBA · All-Star Practice 5 · Shell Drill – 4 on 4",
+      "url": "https://jr.nba.com/basketball-practice-plans/all-star/page/5/",
+      "abschnitt": "Shell Drill – 4 on 4, sechs Minuten",
+      "abgerufen": "2026-10-06",
+      "felder": ["ablauf", "spielerzahl", "raum", "material", "dauer_min"],
+      "pruefnotiz": "Die offizielle Übungsseite beschreibt zwei Viererteams, vier Angreifende am Perimeter, fünf kontrollierte Pässe, danach Live-Spiel und Rollenwechsel nach jedem Ballbesitz. Kein zugehöriger YouTube-Einzelclip ausgewiesen."
+    },
+    {
+      "id": "NBA-MVP-11-EX128",
+      "karten_id": "EX-128",
+      "karten_titel": "3 on 3 Dictated – Screen the Screener",
+      "name": "Jr. NBA · MVP Practice 11 · 3 on 3 Dictated – Screen the Screener",
+      "url": "https://jr.nba.com/basketball-practice-plans/mvp/page/11/",
+      "abschnitt": "3 on 3 Dictated – Screen the Screener, Spiel bis drei Treffer",
+      "abgerufen": "2026-10-06",
+      "felder": ["ablauf", "spielerzahl", "raum", "material"],
+      "pruefnotiz": "Die offizielle Seite nennt die genaue Folge aus Querblock und anschließendem Block für die erste blockstellende Person sowie Neustart an der Spitze nach Ballbesitzwechsel. Die konkrete Ballübergabe des Coaches nach der Blockfolge bleibt in der Quelle offen; kein Einzelvideo ausgezeichnet."
+    }
+  ]
+}

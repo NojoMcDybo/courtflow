@@ -1,0 +1,23 @@
+{
+  "stand": "2026-10-03",
+  "regel": "Kein Ablauf aus einem bloßen Skillnamen, einem taktischen Prinzip oder einem unspezifischen Katalogbeleg. Diese Einträge bleiben im Datenbestand erhalten, ohne QA-Aufwertung.",
+  "ohne_ablauf_und_evidenz": [
+    {"id": "EX-016", "status": "v2-negativ", "grund": "Change of Direction Dribble erscheint in der Jr.-NBA-Rookie-Skills-Checklist nur als Kompetenzname; eine genau zugeordnete Originaldurchführung fehlt.", "gepruefte_quelle": "https://jr.nba.com/basketball-practice-plans/rookie/"},
+    {"id": "EX-023", "status": "v2-negativ", "grund": "Slide & Pass erscheint in der Jr.-NBA-Rookie-Skills-Checklist nur als Kompetenzname; keine kartengebundene Originaldurchführung verifiziert.", "gepruefte_quelle": "https://jr.nba.com/basketball-practice-plans/rookie/"},
+    {"id": "EX-028", "status": "v2-negativ", "grund": "1-2 Step Shooting erscheint in der Jr.-NBA-Rookie-Skills-Checklist nur als Kompetenzname; keine kartengebundene Originaldurchführung verifiziert.", "gepruefte_quelle": "https://jr.nba.com/basketball-practice-plans/rookie/"},
+    {"id": "EX-031", "status": "v2-negativ", "grund": "Body Control erscheint in der Jr.-NBA-Rookie-Skills-Checklist nur als Kompetenzname; keine kartengebundene Originaldurchführung verifiziert.", "gepruefte_quelle": "https://jr.nba.com/basketball-practice-plans/rookie/"},
+    {"id": "EX-075", "status": "v2-negativ", "grund": "Closeout to Slide erscheint in der Jr.-NBA-Starter-Skills-Checklist nur als Kompetenzname; die konkrete Originalübung ist nicht zugeordnet.", "gepruefte_quelle": "https://jr.nba.com/basketball-practice-plans/starter/"}
+  ],
+  "evidenz_ohne_eigenen_ablauf": [
+    {"id": "EX-106", "status": "quellenzuordnung_offen", "grund": "Der Katalog nennt eine DBB-3x3-Progression, enthält aber keinen eindeutig zugeordneten Originalbeleg für diese Karte."},
+    {"id": "EX-107", "status": "prinzip_statt_drill", "grund": "FIBA-3x3- und Verteidigungsprinzipien sind im Katalog belegt, aber nicht als einzelne Originalübung mit Ablauf."},
+    {"id": "EX-135", "status": "originalpassage_offen", "grund": "Der Katalog nennt Two Halves Scrimmage aus dem FIBA/WABC-Level-1-Handbuch; die konkrete Passage wurde für eine Ablaufübernahme noch nicht hinreichend abgeglichen."},
+    {"id": "EX-136", "status": "prinzip_statt_drill", "grund": "Die Dribbleroptionen am On-Ball-Screen sind technische Inhalte, jedoch keine eindeutig abgegrenzte Übungsorganisation."},
+    {"id": "EX-137", "status": "methodik_statt_drill", "grund": "Rebounding and Defensive Transition ist laut Katalog eher eine Querschnittsregel als ein isolierter Drill."}
+  ],
+  "zusatzpruefung": {
+    "originaldurchfuehrung_offen_trotz_ablauf": ["EX-022", "EX-024", "EX-035", "EX-036", "EX-040", "EX-062", "EX-063", "EX-064", "EX-065", "EX-066", "EX-067", "EX-068"],
+    "quellenzuordnung_offen": ["EX-106", "EX-107"],
+    "doppelte_originaluebung_im_katalog": [["EX-140", "EX-148"]]
+  }
+}

@@ -1,0 +1,467 @@
+{
+  "version": 1,
+  "stand": "2026-10-01",
+  "methode": "Redaktionelle Eigenformulierungen ausschließlich aus den beigefügten Katalogbelegen. Keine neue externe Quellenprüfung; fehlende Detailregeln bleiben ausdrücklich offen. Erfassungsstufe und Freigabe werden nicht verändert.",
+  "karten": [
+    {
+      "id": "EX-077",
+      "titel": "2 on 2 Numbers Game",
+      "beleg": {
+        "datei": "docs/quellen/catalog-extracted.txt",
+        "text": "Jr. NBA Rookie Practice 7 dokumentiert das „2 on 2 Numbers Game“: Zwei aufgerufene Spieler greifen den Ball an; das Ballbesitzteam spielt Angriff, die anderen beiden verteidigen für eine Possession. Die Quelle fordert ausdrücklich aktive Defense, Fußarbeit und Shot-Contest. Die Aufgabe ist deshalb als spielnaher Team-Defense-Kontext belastbar, aber nicht als spezifische Help-/Recover-Schulung."
+      },
+      "felder": {
+        "ablauf": {
+          "vorher": null,
+          "de": "Zwei aufgerufene Spieler versuchen, den Ball zu gewinnen. Das Team mit Ball greift an; die beiden anderen Spieler verteidigen. Die Teams spielen eine Possession im 2 gegen 2.",
+          "en": "Two called players try to win the ball. The team with the ball attacks; the other two players defend. The teams play one possession of 2-on-2."
+        },
+        "coachingpunkte": {
+          "vorher": null,
+          "de": "Aktiv verteidigen, mit den Füßen arbeiten und den Wurf stören.",
+          "en": "Defend actively, use defensive footwork and contest the shot."
+        }
+      }
+    },
+    {
+      "id": "EX-111",
+      "titel": "„Fühl den Rhythmus“",
+      "beleg": {
+        "datei": "docs/quellen/catalog-extracted.txt",
+        "text": "EX-111 – „Fühl den Rhythmus“: Der DBB beschreibt an einer Station ausdrücklich, dass der Rhythmus der letzten zwei Schritte vor dem Wurf für den Korbleger aus Bewegung wichtig ist. Die Kinder üben zunächst den Absprungrhythmus, nehmen anschließend einen Ball an, bleiben im Rhythmus und schließen ab. Hindernisse und variable Laufbahnen erzeugen zusätzlich einen Übergang von Bewegung zu Ballaktion. Quelle: DBB, Grundschulwoche – Stationsschilder „Fühl den Rhythmus“, https://www.basketball-bund.de/wp-content/uploads/sites/2/2024/09/DBB_Grundschulwoche_Stationsschilder.pdf QA: A."
+      },
+      "felder": {
+        "ablauf": {
+          "vorher": "Der DBB beschreibt an einer Station ausdrücklich, dass der Rhythmus der letzten zwei Schritte vor dem Wurf für den Korbleger aus Bewegung wichtig ist. Die Kinder üben zunächst den Absprungrhythmus, nehmen anschließend einen Ball an, bleiben im Rhythmus und schließen ab. Hindernisse und variable Laufbahnen erzeugen zusätzlich einen Übergang von Bewegung zu Ballaktion.",
+          "de": "Zunächst den Absprungrhythmus des Korblegers üben. Anschließend einen Ball annehmen, den Rhythmus der letzten beiden Schritte beibehalten und abschließen. Hindernisse und unterschiedliche Laufbahnen verbinden die Bewegung mit der Ballannahme.",
+          "en": "First practise the layup take-off rhythm. Then receive a ball, maintain the rhythm of the final two steps and finish. Obstacles and different running paths connect movement with receiving the ball."
+        }
+      }
+    },
+    {
+      "id": "EX-112",
+      "titel": "„Korbleger – 2er-Rhythmus“",
+      "beleg": {
+        "datei": "docs/quellen/catalog-extracted.txt",
+        "text": "EX-112 – „Korbleger – 2er-Rhythmus“: Der DBB-Jugend-Minileitfaden definiert als Lernziel ausdrücklich, den 2er-Rhythmus des Korblegers zu verinnerlichen. Die Originalaufgabe verbindet Dribbling, Passannahme, zwei Schritte und Absprung; die Methodik erlaubt zu Beginn eine flexible Links-Rechts- bzw. Rechts-Links-Folge und ergänzt später ein Dribbling vor dem 2er-Kontakt. Quelle: DBB Jugend-Minileitfaden, S. 66, https://basketball-bund.de/content/uploads/2022/07/DBB_Jugend_Minileitfaden.pdf QA: A."
+      },
+      "felder": {
+        "lernziel": {
+          "vorher": null,
+          "de": "Den Zweier-Rhythmus des Korblegers verinnerlichen.",
+          "en": "Internalise the two-step rhythm of the layup."
+        },
+        "ablauf": {
+          "vorher": "Der DBB-Jugend-Minileitfaden definiert als Lernziel ausdrücklich, den 2er-Rhythmus des Korblegers zu verinnerlichen. Die Originalaufgabe verbindet Dribbling, Passannahme, zwei Schritte und Absprung; die Methodik erlaubt zu Beginn eine flexible Links-Rechts- bzw. Rechts-Links-Folge und ergänzt später ein Dribbling vor dem 2er-Kontakt.",
+          "de": "Die Aufgabe verbindet Dribbling, Passannahme, zwei Schritte und Absprung zum Korbleger. Zu Beginn sind sowohl eine Links-Rechts- als auch eine Rechts-Links-Folge erlaubt.",
+          "en": "The task combines dribbling, receiving a pass, two steps and a layup take-off. Initially, both a left-right and a right-left sequence are allowed."
+        },
+        "progression": {
+          "vorher": null,
+          "de": "Ein Dribbling vor den beiden Schrittkontakten ergänzen.",
+          "en": "Add one dribble before the two steps."
+        }
+      }
+    },
+    {
+      "id": "EX-113",
+      "titel": "Dribbeln mit Partner und Signalwechsel",
+      "beleg": {
+        "datei": "docs/quellen/catalog-extracted.txt",
+        "text": "EX-113 – Dribbeln mit Partner und Signalwechsel: FIBA/WABC beschreibt eine konkrete Partneraufgabe mit je einem Ball, bei der ein Spieler vorwärts und der andere rückwärts dribbelt. Auf das Coaching-Signal wechseln beide die Rollen/Richtung; als Progression kann der führende Spieler auch seitwärts wählen und der Partner die Gegenrichtung übernehmen. Für das Modell ist dies K4, weil der Lauf-/Dribbelrhythmus bei einem Signalwechsel neu organisiert werden muss; K2/K3 sind ebenfalls unmittelbar beteiligt. Quelle: FIBA/WABC Mini-Basketball Coaches Manual, Kapitel 3.2 „Balance and coordination“, https://assets.fiba.basketball/image/upload/documents-corporate-wabc-coaching-manual-mini-basketball-eng.pdf QA: A."
+      },
+      "felder": {
+        "ablauf": {
+          "vorher": "FIBA/WABC beschreibt eine konkrete Partneraufgabe mit je einem Ball, bei der ein Spieler vorwärts und der andere rückwärts dribbelt. Auf das Coaching-Signal wechseln beide die Rollen/Richtung; als Progression kann der führende Spieler auch seitwärts wählen und der Partner die Gegenrichtung übernehmen. Für das Modell ist dies K4, weil der Lauf-/Dribbelrhythmus bei einem Signalwechsel neu organisiert werden muss; K2/K3 sind ebenfalls unmittelbar beteiligt.",
+          "de": "Zwei Spieler dribbeln mit je einem Ball: einer vorwärts, der andere rückwärts. Auf das Signal des Coaches wechseln beide die Richtung und damit ihre Rollen.",
+          "en": "Two players each dribble a ball: one moves forwards, the other backwards. On the coach’s signal, both change direction and exchange roles."
+        },
+        "spielerzahl": {
+          "vorher": null,
+          "de": "Paare",
+          "en": "Pairs"
+        },
+        "material": {
+          "vorher": null,
+          "de": "1 Ball pro Spieler",
+          "en": "1 ball per player"
+        },
+        "progression": {
+          "vorher": null,
+          "de": "Der führende Spieler darf auch eine seitliche Richtung wählen. Der Partner übernimmt die Gegenrichtung.",
+          "en": "The leading player may also choose a lateral direction. The partner moves in the opposite direction."
+        }
+      }
+    },
+    {
+      "id": "EX-115",
+      "titel": "1-on-1 Pivot Pressure",
+      "beleg": {
+        "datei": "docs/quellen/catalog-extracted.txt",
+        "text": "EX-115 – 1-on-1 Pivot Pressure: Jr. NBA All-Star beschreibt eine 1v1-Aufgabe ohne Dribbling mit Pivotieren zur Raumgewinnung, anschließend mit einem Dribbling als technische Progression. Der Verteidiger übt echten Druck aus; die Aufgabe kann über Startposition und Zeitlimit taktisch bzw. wettbewerblich verändert werden. Quelle: Jr. NBA All-Star Practice Plans, Practice 2. QA: A."
+      },
+      "felder": {
+        "ablauf": {
+          "vorher": "Jr. NBA All-Star beschreibt eine 1v1-Aufgabe ohne Dribbling mit Pivotieren zur Raumgewinnung, anschließend mit einem Dribbling als technische Progression. Der Verteidiger übt echten Druck aus; die Aufgabe kann über Startposition und Zeitlimit taktisch bzw. wettbewerblich verändert werden.",
+          "de": "Im 1 gegen 1 ohne Dribbling durch Pivotieren Raum gewinnen. Der Verteidiger übt aktiven Druck aus.",
+          "en": "In 1-on-1 without dribbling, use pivots to create space. The defender applies active pressure."
+        },
+        "progression": {
+          "vorher": null,
+          "de": "Ein Dribbling erlauben. Als weitere Varianten Startposition oder Zeitlimit verändern.",
+          "en": "Allow one dribble. Further variations change the starting position or time limit."
+        }
+      }
+    },
+    {
+      "id": "EX-117",
+      "titel": "Shell Drill 4 on 4",
+      "beleg": {
+        "datei": "docs/quellen/catalog-extracted.txt",
+        "text": "EX-117 – Shell Drill 4 on 4: Die Offense beginnt mit fünf Pässen, danach wird live gespielt. Als Progressionen sind insbesondere „nur aus Screening-Aktion punkten“ oder „nur aus Drive-and-Kick punkten“ dokumentiert. Das ist ein brauchbarer Kern für Team-Defense, Spacing und Gruppenentscheidungen. Quelle: Jr. NBA All-Star Practice 5. QA: A."
+      },
+      "felder": {
+        "ablauf": {
+          "vorher": "Die Offense beginnt mit fünf Pässen, danach wird live gespielt. Als Progressionen sind insbesondere „nur aus Screening-Aktion punkten“ oder „nur aus Drive-and-Kick punkten“ dokumentiert. Das ist ein brauchbarer Kern für Team-Defense, Spacing und Gruppenentscheidungen.",
+          "de": "Im 4 gegen 4 beginnt die Offense mit fünf Pässen. Danach wird frei weitergespielt.",
+          "en": "In 4-on-4, the offence starts with five passes. Play then becomes live."
+        },
+        "progression": {
+          "vorher": null,
+          "de": "Punkte nur nach einer Blockaktion oder nur nach Drive-and-Kick zählen lassen.",
+          "en": "Only count scores following a screening action, or only following drive-and-kick."
+        }
+      }
+    },
+    {
+      "id": "EX-118",
+      "titel": "Screening Reaction Bursts",
+      "beleg": {
+        "datei": "docs/quellen/catalog-extracted.txt",
+        "text": "EX-118 – Screening Reaction Bursts: Drei offensive Spieler (Passer, Screener, Cutter) spielen Screen-/Read-Aktionen in kurzen Bursts; möglich sind 3v3 oder Überzahlformen, verschiedene Screenarten und defensive Anpassung. Die Quelle nennt Timing, Spacing, Kommunikation und Entscheidungsfindung als Ziele. Quelle: Jr. NBA All-Star Practice 5. QA: A."
+      },
+      "felder": {
+        "lernziel": {
+          "vorher": null,
+          "de": "Timing, Raumaufteilung, Kommunikation und Entscheidungen bei Blockaktionen entwickeln.",
+          "en": "Develop timing, spacing, communication and decision-making in screening actions."
+        },
+        "ablauf": {
+          "vorher": "Drei offensive Spieler (Passer, Screener, Cutter) spielen Screen-/Read-Aktionen in kurzen Bursts; möglich sind 3v3 oder Überzahlformen, verschiedene Screenarten und defensive Anpassung. Die Quelle nennt Timing, Spacing, Kommunikation und Entscheidungsfindung als Ziele.",
+          "de": "Passgeber, Blocksteller und Cutter spielen Blockaktionen mit anschließender Entscheidung in kurzen Sequenzen. Die Aufgabe kann im 3 gegen 3 oder in Überzahl gespielt werden; Blockarten und defensive Reaktionen können wechseln.",
+          "en": "A passer, screener and cutter run screening actions with a subsequent read in short sequences. The task can be played as 3-on-3 or with an offensive advantage; screen types and defensive responses can vary."
+        }
+      }
+    },
+    {
+      "id": "EX-120",
+      "titel": "3 on 2, 2 on 1",
+      "beleg": {
+        "datei": "docs/quellen/catalog-extracted.txt",
+        "text": "EX-120 – 3 on 2, 2 on 1: Ein 3v2-Fastbreak wird unmittelbar in eine 2v1-Gegenrichtung überführt. Die aktuelle Jr.-NBA-Beschreibung nennt Spacing und gute Entscheidungen in Transition ausdrücklich als Lernziel. Quelle: Jr. NBA All-Star Practice 11. QA: A."
+      },
+      "felder": {
+        "lernziel": {
+          "vorher": null,
+          "de": "Im Umschaltspiel Räume sinnvoll besetzen und passende Entscheidungen treffen.",
+          "en": "Use effective spacing and make appropriate decisions in transition."
+        },
+        "ablauf": {
+          "vorher": "Ein 3v2-Fastbreak wird unmittelbar in eine 2v1-Gegenrichtung überführt. Die aktuelle Jr.-NBA-Beschreibung nennt Spacing und gute Entscheidungen in Transition ausdrücklich als Lernziel.",
+          "de": "Einen Schnellangriff im 3 gegen 2 spielen. Unmittelbar danach folgt ein Gegenangriff im 2 gegen 1 in die andere Richtung.",
+          "en": "Play a 3-on-2 fast break. Immediately follow it with a 2-on-1 counterattack in the opposite direction."
+        }
+      }
+    },
+    {
+      "id": "EX-128",
+      "titel": "3 on 3 Dictated – Screen the Screener",
+      "beleg": {
+        "datei": "docs/quellen/catalog-extracted.txt",
+        "text": "EX-128 – 3 on 3 Dictated – Screen the Screener: Eine komplexere Screenfolge wird vorgegeben; danach wird 3v3 live gespielt. Quelle: Jr. NBA MVP Practice 11. QA: A."
+      },
+      "felder": {
+        "ablauf": {
+          "vorher": null,
+          "de": "Im 3 gegen 3 mit einer vom Coach vorgegebenen Blockfolge beginnen. Anschließend wird frei weitergespielt. Die genaue Blockfolge ist im vorliegenden Beleg noch nicht beschrieben.",
+          "en": "Start 3-on-3 with a screening sequence specified by the coach. Then continue with live play. The available evidence does not yet describe the exact screening sequence."
+        }
+      }
+    },
+    {
+      "id": "EX-130",
+      "titel": "2 on 1 Bunch Spacing – No Dribble",
+      "beleg": {
+        "datei": "docs/quellen/catalog-extracted.txt",
+        "text": "EX-130: Jr. NBA All-Star beschreibt eine 2v1-Aufgabe, die bewusst mit schlechter Ausgangs-Spacierung startet. Ohne Dribbling müssen die Angreifer durch Pass und Bewegung Raum herstellen; Varianten verändern Raum und Gegnerdruck. Quelle: https://jr.nba.com/basketball-practice-plans/all-star/page/11/ . QA A."
+      },
+      "felder": {
+        "ablauf": {
+          "vorher": null,
+          "de": "Zwei Angreifer starten gegen einen Verteidiger mit ungünstiger Raumaufteilung. Dribbling ist nicht erlaubt. Durch Pässe und Bewegung stellen die Angreifer Platz her.",
+          "en": "Two attackers start against one defender with poor spacing. Dribbling is not allowed. The attackers create space through passing and movement."
+        }
+      }
+    },
+    {
+      "id": "EX-131",
+      "titel": "Chaos Rebounding",
+      "beleg": {
+        "datei": "docs/quellen/catalog-extracted.txt",
+        "text": "EX-131: Jr. NBA All-Star „Chaos Rebounding“ startet nach einem nicht verteidigten Anfangswurf in ein Live-2v2/3v3. Shot-Clock-, Dribble-, Pass-, Wurfpositions- und Punktvarianten verändern die Aufgabe. Quelle: https://jr.nba.com/basketball-practice-plans/all-star/page/11/ . QA A."
+      },
+      "felder": {
+        "ablauf": {
+          "vorher": null,
+          "de": "Mit einem unverteidigten Wurf beginnen. Anschließend wird im 2 gegen 2 oder 3 gegen 3 frei weitergespielt. Varianten verändern die Wurfuhr, Dribbling- und Passregeln, Wurfpositionen oder Wertung.",
+          "en": "Start with an undefended shot. Then continue with live 2-on-2 or 3-on-3. Variations change the shot clock, dribbling and passing rules, shooting positions or scoring."
+        }
+      }
+    },
+    {
+      "id": "EX-134",
+      "titel": "3 on 3 from Help the Helper",
+      "beleg": {
+        "datei": "docs/quellen/catalog-extracted.txt",
+        "text": "EX-134: Jr. NBA MVP „3 on 3 from Help the Helper“ startet mit Drive, Help und Help-the-Helper, danach live 3v3. Quelle: https://jr.nba.com/basketball-practice-plans/mvp/ . QA A."
+      },
+      "felder": {
+        "ablauf": {
+          "vorher": null,
+          "de": "Mit einem Zug zum Korb beginnen. Die Verteidigung reagiert mit Hilfe und einer weiteren Hilfe für den helfenden Verteidiger. Danach wird im 3 gegen 3 frei weitergespielt.",
+          "en": "Start with a drive to the basket. The defence responds with help and another rotation to help the helping defender. Then continue with live 3-on-3."
+        }
+      }
+    },
+    {
+      "id": "EX-138",
+      "titel": "3 on 3 Dictated – Down Screen",
+      "beleg": {
+        "datei": "docs/quellen/catalog-extracted.txt",
+        "text": "EX-138/139: Jr. NBA MVP nutzt diktierte 3v3-Starts mit Down Screen bzw. Pick & Roll, bevor das Spiel live wird. Diese Form ist besonders wertvoll für den Transfer vom vorgegebenen Muster zur offenen Entscheidung. Quelle: https://jr.nba.com/basketball-practice-plans/mvp/page/11/ . QA A."
+      },
+      "felder": {
+        "ablauf": {
+          "vorher": null,
+          "de": "Im 3 gegen 3 mit einem vorgegebenen Down Screen beginnen. Danach wird frei weitergespielt.",
+          "en": "Start 3-on-3 with a prescribed down screen. Then continue with live play."
+        }
+      }
+    },
+    {
+      "id": "EX-139",
+      "titel": "3 on 3 Dictated – Pick & Roll",
+      "beleg": {
+        "datei": "docs/quellen/catalog-extracted.txt",
+        "text": "EX-138/139: Jr. NBA MVP nutzt diktierte 3v3-Starts mit Down Screen bzw. Pick & Roll, bevor das Spiel live wird. Diese Form ist besonders wertvoll für den Transfer vom vorgegebenen Muster zur offenen Entscheidung. Quelle: https://jr.nba.com/basketball-practice-plans/mvp/page/11/ . QA A."
+      },
+      "felder": {
+        "ablauf": {
+          "vorher": null,
+          "de": "Im 3 gegen 3 mit einem vorgegebenen Pick-and-Roll beginnen. Danach wird frei weitergespielt.",
+          "en": "Start 3-on-3 with a prescribed pick-and-roll. Then continue with live play."
+        }
+      }
+    },
+    {
+      "id": "EX-142",
+      "titel": "3-Person Pass, Cut and Replace",
+      "beleg": {
+        "datei": "docs/quellen/catalog-extracted.txt",
+        "text": "EX-142: Jr. NBA All-Star „3-Person Pass, Cut and Replace“ verbindet Pass, Cut, Replace und den Übergang in Live-Spiel. Quelle: https://jr.nba.com/basketball-practice-plans/all-star/ . QA A."
+      },
+      "felder": {
+        "ablauf": {
+          "vorher": null,
+          "de": "Zu dritt Pass, Cut und Nachbesetzen verbinden. Die vorgegebene Folge geht anschließend in freies Spiel über. Der genaue Übergang ist im vorliegenden Beleg noch nicht beschrieben.",
+          "en": "With three players, combine a pass, cut and replacement movement. The prescribed sequence then transitions into live play. The available evidence does not yet describe the exact transition."
+        }
+      }
+    },
+    {
+      "id": "EX-145",
+      "titel": "Advantage Numbers Game",
+      "beleg": {
+        "datei": "docs/quellen/catalog-extracted.txt",
+        "text": "EX-145: Jr. NBA Rookie „Advantage Numbers Game“ kombiniert zufälligen Start, numerische Auswahl, einen kleinen Offensivvorteil und ein Live-Spiel bis zum Score/Stop. Die Quelle nennt schnelle Entscheidungen und einen leicht veränderten Aufgabenstart ausdrücklich. QA A. Quelle: https://jr.nba.com/basketball-practice-plans/rookie/page/2/ ."
+      },
+      "felder": {
+        "ablauf": {
+          "vorher": null,
+          "de": "Mit einem zufälligen Start und einer nummerngesteuerten Spielerauswahl beginnen. Die Offense erhält einen kleinen Vorteil. Die Situation bis zu einem Korberfolg oder Defensivstopp ausspielen. Startaufstellung und Art des Vorteils sind im vorliegenden Beleg noch nicht genauer beschrieben.",
+          "en": "Begin with a random start and number-based player selection. The offence receives a small advantage. Play until a score or defensive stop. The available evidence does not yet specify the starting formation or type of advantage."
+        }
+      }
+    },
+    {
+      "id": "EX-149",
+      "titel": "11-Person Transition Drill",
+      "beleg": {
+        "datei": "docs/quellen/catalog-extracted.txt",
+        "text": "EX-149: Jr. NBA All-Star „11-Person Transition Drill“ verbindet 3v2-Überzahl, Rebound/Turnover und sofortiges Umschalten in die Gegenrichtung. Ein Outlet-Pass und eine begrenzte Zahl von Pässen können als technische Constraints verwendet werden. QA A. Quelle: https://jr.nba.com/basketball-practice-plans/all-star/page/7/ ."
+      },
+      "felder": {
+        "ablauf": {
+          "vorher": null,
+          "de": "Im 3 gegen 2 angreifen. Nach Rebound oder Ballverlust sofort in die Gegenrichtung umschalten. Als Varianten einen Outlet-Pass verlangen oder die Zahl der Pässe begrenzen. Die genaue Rotation aller elf Spieler ist im vorliegenden Beleg noch nicht beschrieben.",
+          "en": "Attack 3-on-2. After a rebound or turnover, immediately transition in the opposite direction. Variations require an outlet pass or limit the number of passes. The available evidence does not yet describe the exact rotation of all eleven players."
+        }
+      }
+    },
+    {
+      "id": "EX-150",
+      "titel": "5 on 1 Build Up",
+      "beleg": {
+        "datei": "docs/quellen/catalog-extracted.txt",
+        "text": "EX-150: Jr. NBA All-Star „5 on 1 Build Up“ entwickelt einen numerischen Vorteil schrittweise von 5v1 bis 5v5 und erlaubt eine Variation der defensiven Eintrittsreihenfolge sowie der Offensivausrichtung. QA A. Quelle: https://jr.nba.com/basketball-practice-plans/all-star/page/8/ ."
+      },
+      "felder": {
+        "ablauf": {
+          "vorher": null,
+          "de": "Mit fünf Angreifern gegen einen Verteidiger beginnen. Die Verteidigung schrittweise bis zum 5 gegen 5 ergänzen. Die Eintrittsreihenfolge der Verteidiger und die offensive Ausrichtung können verändert werden. Die Auslöser für den Eintritt sind im vorliegenden Beleg noch nicht beschrieben.",
+          "en": "Start with five attackers against one defender. Gradually add defenders until play reaches 5-on-5. The defenders’ entry order and the offensive approach can vary. The available evidence does not yet describe the triggers for entry."
+        }
+      }
+    },
+    {
+      "id": "EX-151",
+      "titel": "Square Rebounding",
+      "beleg": {
+        "datei": "docs/quellen/catalog-extracted.txt",
+        "text": "EX-151: Jr. NBA All-Star „Square Rebounding“ kombiniert Rotationssignal, Box-out und anschließendes Live-Spiel. Die Quelle unterscheidet Innen- und Perimeter-Box-outs und lässt nach Defensivrebound in Transition übergehen. QA A. Quelle: https://jr.nba.com/basketball-practice-plans/all-star/page/8/ ."
+      },
+      "felder": {
+        "ablauf": {
+          "vorher": null,
+          "de": "Auf ein Rotationssignal reagieren, ausboxen und anschließend frei weiterspielen. Innen- und Außenpositionen werden beim Ausboxen unterschieden. Nach einem Defensivrebound in den Gegenangriff umschalten. Startaufstellung und Rotationsweg sind im vorliegenden Beleg noch nicht beschrieben.",
+          "en": "React to a rotation signal, box out and then continue with live play. Distinguish between interior and perimeter box-outs. After a defensive rebound, transition into offence. The available evidence does not yet describe the starting formation or rotation path."
+        }
+      }
+    },
+    {
+      "id": "EX-152",
+      "titel": "Low-Post Decision 3v3",
+      "beleg": {
+        "datei": "docs/quellen/catalog-extracted.txt",
+        "text": "EX-152: FIBA/WABC beschreibt eine 3v3-Aktivität mit Low-Post-Entscheidung, bei der der Post nach Help-Information zwischen 1v1 und Pass wählen muss. Das Format ist für U16–U18 als komplexe Entscheidungs-/Teamoffensive zu klassifizieren. QA A. Quelle: https://assets.fiba.basketball/image/upload/documents-corporate-wabc-coaching-manual-level-2-eng.pdf ."
+      },
+      "felder": {
+        "ablauf": {
+          "vorher": null,
+          "de": "Eine 3-gegen-3-Situation mit Entscheidung im Low Post spielen. Der Postspieler liest die Hilfe der Verteidigung und entscheidet zwischen einem eigenen 1-gegen-1-Angriff und einem Pass.",
+          "en": "Play a 3-on-3 situation with a low-post decision. The post player reads defensive help and chooses between a 1-on-1 attack and a pass."
+        }
+      }
+    },
+    {
+      "id": "EX-153",
+      "titel": "5 on 5 Controlled",
+      "beleg": {
+        "datei": "docs/quellen/catalog-extracted.txt",
+        "text": "EX-153 – 5 on 5 Controlled: Jr. NBA beschreibt 4-Minuten-Spiele, in denen Teams 5v5 auf dem ganzen Feld spielen und die kurze Spielzeit die Intensität hoch halten soll. QA: A. Quelle: https://jr.nba.com/basketball-practice-plans/all-star/ ."
+      },
+      "felder": {
+        "ablauf": {
+          "vorher": "Jr. NBA beschreibt 4-Minuten-Spiele, in denen Teams 5v5 auf dem ganzen Feld spielen und die kurze Spielzeit die Intensität hoch halten soll.",
+          "de": "Im 5 gegen 5 auf dem ganzen Feld spielen. Jedes Spiel dauert vier Minuten; die kurze Spielzeit soll die Intensität hoch halten.",
+          "en": "Play 5-on-5 on the full court. Each game lasts four minutes; the short playing time is intended to maintain intensity."
+        },
+        "dauer_min": {
+          "vorher": null,
+          "de": "4 min je Spiel",
+          "en": "4 min per game"
+        },
+        "raum": {
+          "vorher": null,
+          "de": "Ganzfeld",
+          "en": "Full court"
+        }
+      }
+    },
+    {
+      "id": "EX-154",
+      "titel": "5 on 5 Situational Play",
+      "beleg": {
+        "datei": "docs/quellen/catalog-extracted.txt",
+        "text": "EX-154 – 5 on 5 Situational Play: Jr. NBA gibt dem Team einen konkreten Spielstand bzw. eine Spielzeit vor und lässt die Situation anschließend live ausspielen. Beispiele umfassen eine Führung mit Ballbesitz sowie einen Rückstand mit eigener Possession. QA: A. Quelle: https://jr.nba.com/basketball-practice-plans/mvp/page/8/ ."
+      },
+      "felder": {
+        "ablauf": {
+          "vorher": "Jr. NBA gibt dem Team einen konkreten Spielstand bzw. eine Spielzeit vor und lässt die Situation anschließend live ausspielen. Beispiele umfassen eine Führung mit Ballbesitz sowie einen Rückstand mit eigener Possession.",
+          "de": "Der Coach gibt einen Spielstand oder eine verbleibende Spielzeit vor. Die Teams spielen die Situation im 5 gegen 5 aus, beispielsweise mit Führung und Ballbesitz oder mit Rückstand und eigenem Ballbesitz.",
+          "en": "The coach specifies a score or remaining game time. The teams play out the situation 5-on-5, for example leading with possession or trailing with possession."
+        }
+      }
+    },
+    {
+      "id": "EX-155",
+      "titel": "3 on 3 – Defense Wins",
+      "beleg": {
+        "datei": "docs/quellen/catalog-extracted.txt",
+        "text": "EX-155 – 3 on 3 – Defense Wins: Jr. NBA lässt 3v3 frei spielen, wobei ein Defensivstopp einen Punkt gibt und das Team auf Defense bleiben kann. Das schafft einen klaren Transfer von Team-Defense in Wettbewerb. QA: A. Quelle: https://jr.nba.com/basketball-practice-plans/all-star/page/4/ ."
+      },
+      "felder": {
+        "ablauf": {
+          "vorher": "Jr. NBA lässt 3v3 frei spielen, wobei ein Defensivstopp einen Punkt gibt und das Team auf Defense bleiben kann. Das schafft einen klaren Transfer von Team-Defense in Wettbewerb.",
+          "de": "Im 3 gegen 3 frei spielen. Ein Defensivstopp zählt einen Punkt. Das erfolgreiche Team darf in der Verteidigung bleiben.",
+          "en": "Play live 3-on-3. A defensive stop scores one point. The successful team may remain on defence."
+        }
+      }
+    },
+    {
+      "id": "EX-156",
+      "titel": "3 on 2 Trailer Game",
+      "beleg": {
+        "datei": "docs/quellen/catalog-extracted.txt",
+        "text": "EX-156 – 3 on 2 Trailer Game: Jr. NBA verbindet einen 3v2-Angriff mit einem nachkommenden dritten Verteidiger und unmittelbar anschließendem Gegenangriff. Die Aufgabe verknüpft numerische Überzahl, Transition und Rückwärtsverteidigung. QA: A. Quelle: https://jr.nba.com/basketball-practice-plans/all-star/page/6/ ."
+      },
+      "felder": {
+        "ablauf": {
+          "vorher": "Jr. NBA verbindet einen 3v2-Angriff mit einem nachkommenden dritten Verteidiger und unmittelbar anschließendem Gegenangriff. Die Aufgabe verknüpft numerische Überzahl, Transition und Rückwärtsverteidigung.",
+          "de": "Mit einem Angriff im 3 gegen 2 beginnen; ein dritter Verteidiger kommt nach. Unmittelbar anschließend folgt der Gegenangriff. Der genaue Startzeitpunkt des nachkommenden Verteidigers ist im vorliegenden Beleg noch nicht beschrieben.",
+          "en": "Start with a 3-on-2 attack; a third defender trails into the play. Immediately follow with a counterattack. The available evidence does not yet describe the trailing defender’s exact starting time."
+        }
+      }
+    },
+    {
+      "id": "EX-157",
+      "titel": "Using a Screen 2 on 1 Game / Tactical Load 2v2",
+      "beleg": {
+        "datei": "docs/quellen/catalog-extracted.txt",
+        "text": "EX-157 – Using a Screen 2 on 1 Game / Tactical Load 2v2: Jr. NBA baut ein off-ball Screen zunächst als 2-on-1-Situation auf und erweitert es anschließend auf 2v2; die Verteidigungsregel kann gezielt verändert werden. QA: A. Quelle: https://jr.nba.com/basketball-practice-plans/starter/page/5/ ."
+      },
+      "felder": {
+        "ablauf": {
+          "vorher": "Jr. NBA baut ein off-ball Screen zunächst als 2-on-1-Situation auf und erweitert es anschließend auf 2v2; die Verteidigungsregel kann gezielt verändert werden.",
+          "de": "Einen Block abseits des Balls zunächst im 2 gegen 1 spielen. Danach die Aufgabe auf 2 gegen 2 erweitern.",
+          "en": "Begin with an off-ball screen in 2-on-1. Then expand the task to 2-on-2."
+        },
+        "progression": {
+          "vorher": null,
+          "de": "Auf 2 gegen 2 erweitern und die Verteidigungsregel gezielt verändern.",
+          "en": "Expand to 2-on-2 and deliberately change the defensive rule."
+        }
+      }
+    },
+    {
+      "id": "EX-158",
+      "titel": "Keep Away Game",
+      "beleg": {
+        "datei": "docs/quellen/catalog-extracted.txt",
+        "text": "EX-158 – Keep Away Game: Jr. NBA Starter beschreibt eine 5er-Gruppe, in der vier Spieler aktiv sind und eine Person an einer definierten Rest-/Wechselstation wartet; drei Angreifer spielen gegen einen Verteidiger. Die Übung ist damit als direkt dokumentierter Organisationsfall für kleine Gruppen besonders nützlich. Sie kann im Katalog zusätzlich als Referenz für „3 aktiv + 1 Verteidiger + 1 Wechselrolle“ markiert werden. QA: A. Quelle: https://jr.nba.com/basketball-practice-plans/starter/page/4/ ."
+      },
+      "felder": {
+        "ablauf": {
+          "vorher": "Jr. NBA Starter beschreibt eine 5er-Gruppe, in der vier Spieler aktiv sind und eine Person an einer definierten Rest-/Wechselstation wartet; drei Angreifer spielen gegen einen Verteidiger. Die Übung ist damit als direkt dokumentierter Organisationsfall für kleine Gruppen besonders nützlich. Sie kann im Katalog zusätzlich als Referenz für „3 aktiv + 1 Verteidiger + 1 Wechselrolle“ markiert werden.",
+          "de": "Eine Gruppe besteht aus fünf Spielern. Drei Angreifer spielen gegen einen Verteidiger; der fünfte Spieler wartet an einer festgelegten Pausen- oder Wechselstation. Die genaue Wechselregel ist im vorliegenden Beleg noch nicht beschrieben.",
+          "en": "A group consists of five players. Three attackers play against one defender; the fifth player waits at a designated rest or substitution station. The available evidence does not yet describe the exact rotation rule."
+        },
+        "spielerzahl": {
+          "vorher": null,
+          "de": "5 pro Gruppe (3 Angreifer, 1 Verteidiger, 1 Wechselrolle)",
+          "en": "5 per group (3 attackers, 1 defender, 1 rotating player)"
+        }
+      }
+    }
+  ]
+}

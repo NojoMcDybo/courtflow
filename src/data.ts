@@ -2,6 +2,7 @@ import drillsRoh from "../data/drills.json";
 import taxonomieRoh from "../data/taxonomy.json";
 import type { Drill, Filter, Taxonomie } from "./types";
 import { english } from "./i18n";
+import { hatUebungsbild } from "./uebungsbilder";
 
 export const taxonomie = taxonomieRoh as unknown as Taxonomie;
 
@@ -61,6 +62,7 @@ export function filtern(drills: Drill[], f: Filter): Drill[] {
     .filter((d) => (f.kompetenz ? d.kompetenz.alle.includes(f.kompetenz) : true))
     .filter((d) => (f.tiefe ? d.dokumentationstiefe === f.tiefe : true))
     .filter((d) => (f.nurMitQuelle ? Boolean(d.quelle.url ?? d.quelle.name) : true))
+    .filter((d) => (f.nurTestbilder ? hatUebungsbild(d) : true))
     .filter((d) => (begriff ? suchtext(d).includes(begriff) : true))
     .sort(
       (a, b) =>

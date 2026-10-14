@@ -1,6 +1,6 @@
 # CourtFlow — Steuerungsdokument
 
-Stand: 14.09.2026 · Datengrundlage: Kompetenzkatalog v3.8 (Research Freeze mit Backlog)
+Stand: 14.10.2026 · Datengrundlage: Kompetenzkatalog v3.8 (Research Freeze mit Backlog)
 Repo: <https://github.com/NojoMcDybo/courtflow> · Live: <https://nojomcdybo.github.io/courtflow/>
 
 ## Was steht
@@ -86,8 +86,10 @@ gleichzeitig den Platz frei, den der Text braucht. Die Rechnung steht in
 
 ## Regeln mit Zähnen
 
-- **Belegpflicht.** Kein Feld wird gefüllt, das im Katalog nicht steht. Fehlende
-  Angaben bleiben `null` und werden in der Oberfläche als Lücke gezeigt.
+- **Belegpflicht.** Felder stammen aus dem Katalog oder aus einer ausdrücklich
+  beauftragten Nachrecherche zu seinen Lücken. Nachrecherchen benötigen einen
+  kartengebundenen Primärbeleg und eine dokumentierte Eigenformulierung.
+  Unbelegte Angaben bleiben `null` und werden als Lücke gezeigt.
 - **Keine Herleitung aus dem Umfeld.** Eine Quelle wird nicht aus der
   Abschnittsüberschrift auf eine Karte übertragen. Unklare Zuordnungen bleiben
   offen; eindeutige Kartenbelege werden übernommen.
@@ -194,14 +196,115 @@ und Grenzen stehen in [`docs/katalog-importkorrekturen.md`](docs/katalog-importk
 - **Lokaler Datenprüfstand: zwei Befunde.** Der letzte dokumentierte
   Veröffentlichungsstand hatte 35. Die aktuellen Änderungen sind lokal
   geprüft und mit diesem Arbeitsschritt noch nicht veröffentlicht.
-- **Jord trägt fremde Marken.** Beide Referenzbilder zeigen NBA-, Bulls-,
-  Nike- und Jordan-Zeichen samt Trikot „Jordan 23". Solange das so ist, ist
-  Jord auf einer öffentlichen Seite nicht einsetzbar — weder als Hero noch als
-  Kartenmotiv. Entweder eine markenfreie Fassung des Charakters oder Jord
-  bleibt internes Moodboard.
-- **Kein Bildbestand.** Die Bildprompt-Datei beschreibt Motive, enthält aber keine
-  Bilder. Die drei Jord-Referenzbilder unter `assets/reference/` sind
-  Charakterreferenz, keine Kartenmotive.
+- **Jord-Referenz festgelegt (18.09.2026).** `assets/reference/jord-master-v6.png`
+  ist die vom Nutzer bestätigte markenfreie Vorlage: schlanker mechanischer Körper,
+  schwarz-pink-lila Kleidung, kompakte mechanische Schuhe und neutrale Beleuchtung
+  ohne violetten Lichtsaum. Frühere Referenzbilder liegen in
+  `assets/reference/PICTURE-DUMP-ARCHIVE/` und gelten nicht als aktive Vorlagen.
+- **Zehn Testmotive (18.09.2026).** Je ein Bild pro Themen-Court ist lokal in
+  der Bibliothek eingebunden, auffindbar über „Weitere Filter → Testbilder“.
+  Jord v6 stellt alle Mitspieler dar, AntiJord v6 mit invertierten Farben alle
+  Gegner. PNG-Master liegen unter `assets/testkarten/`, optimierte WebP-Bilder
+  unter `public/bilder/uebungen/`; Zuordnung in `data/uebungsbilder.json`.
+  Auswahl, Korrekturen und Prüfgrenzen stehen in `docs/testkarten-jord-v6.md`.
+- **Stapel 02 fertig (23.09.2026).** Zehn weitere Motive (EX-014, EX-037,
+  EX-044, EX-065, EX-071, EX-087, EX-115, EX-125, EX-147, EX-154) sind lokal
+  eingebunden; damit sind 20 kanonische Übungen bebildert.
+  Originale mit Kennung und Übungsname liegen unter `assets/uebungsbilder/stapel-02/`.
+  Dort dokumentieren `README.md` und `zuordnung.json` die Zuordnung und Prüfgrenzen.
+  Das Bildlimit wurde nach dem vom Nutzer gemeldeten Reset aufgehoben. WebP-Vorschauen
+  und Detailbilder liegen unter `public/bilder/uebungen/`; Dubletten teilen das
+  kanonische Motiv. Kein automatischer Folgelauf eingerichtet.
+
+- **Stapel 03 fertig (24.09.2026).** Zehn Motive (EX-002, EX-015, EX-020,
+  EX-026, EX-038, EX-066, EX-083, EX-135, EX-136, EX-146) sind lokal eingebunden;
+  damit sind 30 kanonische Übungen bebildert. PNG-Master mit Kennung und Namen
+  liegen unter assets/uebungsbilder/stapel-03/, optimierte WebP-Vorschauen und
+  Details unter public/bilder/uebungen/. EX-143 teilt das Bild von EX-146.
+  Korrekturen, Zuordnung und Prüfgrenzen sind im Stapelordner dokumentiert.
+
+- **Stapel 04 fertig (25.09.2026).** Zehn weitere Motive (EX-004, EX-017,
+  EX-021, EX-022, EX-027, EX-039, EX-074, EX-080, EX-118, EX-120) sind lokal
+  eingebunden; insgesamt sind 40 kanonische Übungen bebildert. Der Post-Apocalyptic-
+  Court ist bereits vollständig; dieser Stapel deckt neun Courts ab, mit einem
+  zusätzlichen Passmotiv im Team Court. EX-001 teilt das Bild von EX-017.
+  Dateien, Prompts, Zuordnung und Prüfgrenzen: assets/uebungsbilder/stapel-04/.
+
+- **Stapel 05 fertig (25.09.2026).** Zehn weitere Motive (EX-012, EX-030,
+  EX-018, EX-028, EX-005, EX-041, EX-079, EX-082, EX-090, EX-126) sind lokal eingebunden;
+  insgesamt sind 50 kanonische Übungen bebildert. Neun Courts mit einem zusätzlichen
+  Gym-Court-Motiv. Dateinamen, Prompts, Korrekturen, Zuordnung und Prüfstand stehen
+  unter assets/uebungsbilder/stapel-05/. Vorschauen, Details und zwei mobile Stichproben geprüft.
+
+- **Stapel 06 fertig (26.09.2026).** Zehn weitere Motive (EX-016, EX-029,
+  EX-006, EX-008, EX-025, EX-053, EX-064, EX-131, EX-137, EX-138) sind lokal
+  eingebunden; insgesamt sind 60 kanonische Übungen bebildert. Acht Courts mit je
+  einem zusätzlichen Gym- und Team-Court-Motiv. Dateien, Prompts, Korrekturen und
+  Prüfstand: assets/uebungsbilder/stapel-06/.
+
+- **Stapel 07 fertig (27.09.2026).** Zehn weitere Motive (EX-031, EX-032,
+  EX-019, EX-024, EX-010, EX-049, EX-081, EX-151, EX-145, EX-157) sind lokal
+  eingebunden; insgesamt 70 kanonische Übungen bebildert. Acht Courts mit je einem
+  zusätzlichen Gym- und Team-Court-Motiv. Dateien, Prompts, Zuordnung und Prüfstand:
+  assets/uebungsbilder/stapel-07/.
+
+- **Stapel 08 fertig (Handyprüfung ergänzt am 29.09.2026).** Zehn weitere Motive (EX-033, EX-050,
+  EX-023, EX-035, EX-042, EX-052, EX-075, EX-127, EX-156, EX-139) sind lokal
+  eingebunden; insgesamt 80 kanonische Übungen bebildert. EX-123 teilt das Bild
+  von EX-139. Build und Bildabrufe geprüft; die zuvor offene mobile Website-Prüfung
+  für EX-127 und EX-139 erfolgreich nachgeholt. Dateien, Prompts, Korrekturen und Prüfstand:
+  assets/uebungsbilder/stapel-08/.
+
+- **Stapel 09 fertig (Abschlussprüfung am 29.09.2026).** Zehn weitere Motive (EX-060, EX-062,
+  EX-036, EX-051, EX-043, EX-045, EX-055, EX-059, EX-128, EX-141) sind lokal
+  eingebunden; insgesamt 90 kanonische Übungen bebildert. Sieben Courts;
+  Build, alle 20 Bildabrufe und mobile Stichproben EX-051/EX-128 am 29.09.2026 geprüft;
+  unabhängige Daten- und Dateiprüfung ohne blockierenden Befund.
+  Dateien, Prompts, Korrekturen und Prüfstand: assets/uebungsbilder/stapel-09/.
+
+- **Stapel 10 fertig (29.09.2026).** Zehn weitere Motive (EX-076, EX-048,
+  EX-054, EX-063, EX-046, EX-058, EX-069, EX-070, EX-085, EX-133) sind lokal
+  eingebunden; insgesamt 100 von 146 kanonischen Übungen bebildert. Sechs Courts.
+  Build, 20 Bildabrufe, mobile Stichproben EX-063/EX-133 und unabhängige Dateiprüfung erfolgreich.
+  Dateien, Prompts, Korrekturen und Prüfstand: assets/uebungsbilder/stapel-10/.
+
+- **Stapel 11 fertig (29.09.2026).** Zehn weitere Motive (EX-011, EX-061,
+  EX-067, EX-084, EX-091, EX-092, EX-088, EX-089, EX-111, EX-149) sind lokal
+  zugeordnet; insgesamt 110 von 146 kanonischen Übungen bebildert. Fünf Courts.
+  EX-121 teilt das Motiv von EX-149. Build, 20 Bildabrufe, mobile Stichproben
+  EX-092/EX-061 und unabhängige Dateiprüfung erfolgreich.
+  Dateien, Prompts und Prüfstand: assets/uebungsbilder/stapel-11/.
+
+- **Stapel 12 fertig (30.09.2026).** Zehn weitere Motive (EX-068, EX-072,
+  EX-073, EX-077, EX-096, EX-097, EX-099, EX-102, EX-103, EX-112) sind lokal
+  eingebunden; insgesamt 120 von 146 kanonischen Übungen bebildert. Vier Courts.
+  EX-104 und EX-119 teilen das Motiv von EX-077. Build, 20 Bildabrufe, mobile
+  Stichproben EX-112/EX-102 und unabhängige Dateiprüfung erfolgreich.
+  Dateien, Prompts, Korrekturen und Prüfstand: assets/uebungsbilder/stapel-12/.
+
+- **Stapel 13 fertig (30.09.2026).** Zehn weitere Motive (EX-093, EX-095,
+  EX-098, EX-101, EX-100, EX-109, EX-110, EX-105, EX-134, EX-132) sind lokal
+  eingebunden; insgesamt 130 von 146 kanonischen Übungen bebildert. Vier Courts.
+  EX-122 teilt das Motiv von EX-134. Build, 20 Bildabrufe, mobile Stichproben
+  EX-109/EX-134 und unabhängige Dateiprüfung erfolgreich.
+  Dateien, Prompts und Prüfstand: assets/uebungsbilder/stapel-13/.
+
+- **Stapel 14 fertig (Abschlussprüfung 01.10.2026).** Zehn Motive (EX-108,
+  EX-116, EX-129, EX-130, EX-140, EX-142, EX-113, EX-114, EX-117, EX-155)
+  sind lokal eingebunden; insgesamt 140 von 146 kanonischen Übungen bebildert.
+  Drei Courts. Build, 20 Bildabrufe, mobile Stichproben EX-117/EX-129 und
+  unabhängige Dateiprüfung erfolgreich; erster Reviewversuch durch Nutzungslimit
+  unterbrochen. Drei verworfene Korrekturfassungen archiviert.
+  Dateien, Prompts und Prüfstand: assets/uebungsbilder/stapel-14/.
+
+- **Bildbestand vollständig (01.10.2026).** Stapel 15 ergänzt die letzten sechs
+  Motive EX-106, EX-107, EX-148, EX-150, EX-152 und EX-158. Alle 146 kanonischen
+  Übungen haben nun ein lokal eingebundenes Bild; elf Alias-Karten teilen die
+  kanonischen Motive. Kleine WebP-Vorschauen und größere Detailansichten vorhanden.
+  Build, zwölf neue Bildabrufe, mobile Stichproben EX-150/EX-158 und unabhängige
+  Prüfung erfolgreich. Zwei verworfene EX-158-Fassungen archiviert.
+  Dateien, Prompts und Prüfgrenzen: assets/uebungsbilder/stapel-15/.
+  Die offenen Quellenfragen EX-106/EX-107 bleiben davon unberührt.
 
 ## Nächste Schritte
 
@@ -230,3 +333,82 @@ DE/EN-Schalter in allen Kopfzeilen; Sprachwahl lokal gespeichert. Oberfläche,
 Übungstexte und Merkmale werden übersetzt, Filter und Trainingsentwürfe bleiben
 beim Umschalten erhalten. Zweisprachige Suche und eigene Sprachprüfungen ergänzt.
 Details: `docs/sprachen.md`. Lokal geprüft, noch nicht veröffentlicht.
+
+## Kartenüberarbeitung 01.10.2026 – Runde 1
+
+26 Karten auf Basis vorhandener Katalogbelege überarbeitet: 40 Inhaltsfelder,
+darunter 13 neu erschlossene Kurzabläufe. Eigenes Ablauffeld jetzt bei 94 von
+146 kanonischen Karten; 52 bleiben ohne. Zusätzlich zwölf fehlerhafte Zeitwerte
+und die Auslegung von Spieler-/Team-/Materialzahlen beim Import korrigiert.
+Insgesamt ändern sich 45 kanonische Datensätze. Alle neuen Texte liegen auf
+Deutsch und Englisch vor.
+
+Die beleggebundene Redaktion liegt in `docs/redaktion/karten-runde-01.json`
+und wird nach dem Rohimport durch `tools/normalize.py` eingespielt. ID, Titel,
+vorheriger Feldwert und Belegtext werden geprüft. Rohquelle, Evidenz, Alter,
+Kompetenzen, Quellenzuordnung, Erfassungsstufen und Freigaben bleiben erhalten.
+20 Import-/Redaktionstests, Build, Plan- und Sprachprüfung bestanden; der
+Datenprüfer meldet weiterhin EX-106/EX-107 ohne Quelle. Lokal, nicht veröffentlicht.
+Details und offene Arbeit: `docs/karten-ueberarbeitung-runde-01.md`.
+
+
+## Karteninhalt – Fortsetzung am 02.10.2026
+
+Auf den Auftrag zur weiteren Überarbeitung folgen vier konkrete Lücken aus der
+Gesamtprüfung: EX-013, EX-014, EX-015 und EX-038. Die Primärquellen sind separat
+kartengebunden dokumentiert; 22 Inhaltsfelder und vier Quellenlinks ergänzt.
+Aktueller Stand und Restlücken: [Runde 2](docs/karten-ueberarbeitung-runde-02.md).
+Der Datenimport spielt beide Redaktionsrunden ein. Keine neue QA-Freigabe.
+
+## Karteninhalt – Runde 3 am 02.10.2026
+
+Zehn weitere Karten mit 47 belegten Inhaltsfeldern und zehn Quellenlinks ergänzt.
+Der Datenimport spielt jetzt alle drei Redaktionsrunden ein; jede Rechercherunde
+behält ihre eigene Herkunft. 108 von 146 Karten haben ein eigenes Ablauffeld,
+19 weiterhin weder Ablauf noch Evidenztext. Insgesamt 40 Karten inhaltlich
+bearbeitet. 27 Importtests, Build, Sprach- und Planprüfung bestanden; die bekannten
+Quellenlücken EX-106/EX-107 bestehen fort. Keine neue QA-Freigabe.
+Details: [Runde 3](docs/karten-ueberarbeitung-runde-03.md).
+
+## Karteninhalt – Runde 4 am 03.10.2026
+
+Vier weitere Karten mit 22 belegten Inhaltsfeldern und vier Quellenlinks ergänzt.
+Der Datenimport spielt alle vier Redaktionsrunden ein. 112 von 146 Karten haben
+ein eigenes Ablauffeld; 15 haben weiterhin weder Ablauf noch Evidenztext.
+Insgesamt 44 Karten inhaltlich bearbeitet. 28 Importtests, Build, Sprach- und
+Planprüfung bestanden; die bekannten Quellenlücken EX-106/EX-107 bestehen fort.
+Keine neue QA-Freigabe. Details: [Runde 4](docs/karten-ueberarbeitung-runde-04.md).
+
+## Karteninhalt – Gesamtfortsetzung am 03.10.2026
+
+Alle 146 kanonischen Karten erneut inventarisiert. In den Runden 5–10 wurden
+25 weitere Karten anhand kartengebundener Primärquellen um 135 Inhaltsfelder
+ergänzt. 136 Karten haben nun einen Ablauf und 106 einen direkten Quellenlink.
+Zehn Karten bleiben ohne eigenen Ablauf; die Gründe sind einzeln festgehalten.
+Die importierten Inhalte sind zweisprachig. Keine neue QA-Freigabe.
+Details der früheren Runden: [Gesamtstand](docs/karten-gesamtstand-2026-10-04.md).
+
+## Karteninhalt – Quellenkorrektur am 05.10.2026
+
+Bei EX-022 und EX-040 wurden zwei bisher als Ablauf gezählte, nicht eindeutig
+belegte Skizzen entfernt. Diese Karten zeigen jetzt einen zweisprachigen
+Prüfhinweis und einen direkten Link zur Rookie-Skills-Checklist. Acht weitere
+Kompetenzkarten erhielten kartenbezogene Hinweise zur fehlenden
+Originaldurchführung. Anschließend wurde EX-106 mit der konkreten
+DBB-2-gegen-2-Form und EX-107 mit dem FIBA-Verteidigungsprinzip belegt.
+Der aktuelle Stand: 133 von 146 Karten mit Ablauf, 117 mit Quellenlink;
+13 ohne Ablauf, aber keine mehr ohne Ablauf und Hinweis.
+Details: [Gesamtstand](docs/karten-gesamtstand-2026-10-05.md) und
+[Einzelinventar](docs/karten-bestandsstand-2026-10-05.md).
+
+## Karteninhalt – Stand 14.10.2026
+
+Alle 146 kanonischen Karten haben inzwischen einen eigenen Ablauf. Die letzte
+Einzelprüfung führte bei EX-027 und EX-112 zu präziseren Angaben für Aufbau,
+Wechsel und Durchführung. Für EX-027 ist das von Jr. NBA zugeordnete Video in
+der Karte verlinkt und nach Klick einbettbar; insgesamt sind 18 Übungsvideos
+zugeordnet. Die Kartenbilder erscheinen in Vorschau und Detailansicht auch auf
+schmalen Bildschirmen. EX-098 ist als allgemeines Kompetenzmotiv gekennzeichnet.
+Die überarbeiteten Texte und Übersetzungen sind aus den Redaktions- und
+Quellenakten reproduzierbar. Dieser Stand bedeutet keine neue sportfachliche
+QA-Freigabe. Details: [Durchführbarkeit](docs/karten-durchfuehrbarkeit-2026-10-11.md).

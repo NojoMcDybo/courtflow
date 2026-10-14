@@ -1,0 +1,61 @@
+{
+  "version": 1,
+  "methode": "Manueller Abgleich der fünf genannten Jr.-NBA-Originalabschnitte. Bestehender Evidenztext bleibt erhalten; keine neue Video- oder QA-Prüfung.",
+  "belege": [
+    {
+      "id": "JRN-ROOKIE-2-EX-002",
+      "karten_id": "EX-002",
+      "karten_titel": "Red Light Game",
+      "name": "Jr. NBA · Rookie Practice 2 · Red Light",
+      "url": "https://jr.nba.com/basketball-practice-plans/rookie/page/2/",
+      "abschnitt": "Red Light",
+      "abgerufen": "2026-10-03",
+      "felder": ["lernziel", "ablauf", "coachingpunkte", "raum", "dauer_min", "material", "progression"],
+      "pruefnotiz": "Vier Farbsignale; 1–2 Spiele sind Umfang, keine Minutenzahl. Gewinner als Coach ist Originalvariante."
+    },
+    {
+      "id": "JRN-ROOKIE-1-EX-003",
+      "karten_id": "EX-003",
+      "karten_titel": "Jump Stop Game",
+      "name": "Jr. NBA · Rookie Practice 1 · Jump Stop Game",
+      "url": "https://jr.nba.com/basketball-practice-plans/rookie/",
+      "abschnitt": "Jump Stop Game",
+      "abgerufen": "2026-10-03",
+      "felder": ["lernziel", "ablauf", "coachingpunkte", "raum", "dauer_min", "material", "progression"],
+      "pruefnotiz": "Hin- und Rückweg statt Minuten; Grundform ohne Ball, Ballvariante ausdrücklich benannt."
+    },
+    {
+      "id": "JRN-ROOKIE-11-EX-006",
+      "karten_id": "EX-006",
+      "karten_titel": "Pass & Cut Drill",
+      "name": "Jr. NBA · Rookie Practice 11 · Pass & Cut Drill",
+      "url": "https://jr.nba.com/basketball-practice-plans/rookie/page/11/",
+      "abschnitt": "Pass & Cut Drill",
+      "abgerufen": "2026-10-03",
+      "felder": ["lernziel", "ablauf", "coachingpunkte", "spielerzahl", "dauer_min", "material"],
+      "pruefnotiz": "Zwei aktive Angreifer und Coach als Verteidiger; drei Minuten je Richtung, zusammen sechs Minuten."
+    },
+    {
+      "id": "JRN-ROOKIE-12-EX-008",
+      "karten_id": "EX-008",
+      "karten_titel": "Cone Knockdown / Hit the Cone",
+      "name": "Jr. NBA · Rookie Practice 12 · Cone Knockdown Game",
+      "url": "https://jr.nba.com/basketball-practice-plans/rookie/page/12/",
+      "abschnitt": "Cone Knockdown Game",
+      "abgerufen": "2026-10-03",
+      "felder": ["lernziel", "ablauf", "coachingpunkte", "raum", "dauer_min", "material", "regression"],
+      "pruefnotiz": "Ein Spiel bis gesetzte Punktzahl oder Zeitgrenze, keine konkrete Minutenzahl."
+    },
+    {
+      "id": "JRN-ROOKIE-7-EX-077",
+      "karten_id": "EX-077",
+      "karten_titel": "2 on 2 Numbers Game",
+      "name": "Jr. NBA · Rookie Practice 7 · 2 on 2 Numbers Game",
+      "url": "https://jr.nba.com/basketball-practice-plans/rookie/page/7/",
+      "abschnitt": "2 on 2 Numbers Game",
+      "abgerufen": "2026-10-03",
+      "felder": ["lernziel", "ablauf", "spielerzahl", "dauer_min", "material"],
+      "pruefnotiz": "Bereits vorhandener Evidenztext verweist auf Rookie 7, während der Quellenname Starter lautete. Rookie 7 enthält die vollständige Form und fünf Punkte."
+    }
+  ]
+}

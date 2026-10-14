@@ -1,0 +1,173 @@
+{
+  "version": 1,
+  "methode": "Manueller Abgleich eigenständiger Abschnitte offizieller Jr.-NBA-HTML-Trainingspläne. Eigenformulierungen; Videos und vollständige QA nicht geprüft.",
+  "belege": [
+    {
+      "id": "JRN-ROOKIE-12-EX-004",
+      "karten_id": "EX-004",
+      "karten_titel": "5-5-5 Creative Dribble Drill",
+      "name": "Jr. NBA · Rookie Practice 12 · 5-5-5 Creative Dribble",
+      "url": "https://jr.nba.com/basketball-practice-plans/rookie/page/12/",
+      "abschnitt": "5-5-5 Creative Dribble",
+      "abgerufen": "2026-10-02",
+      "felder": [
+        "ablauf",
+        "material",
+        "dauer_min"
+      ],
+      "pruefnotiz": "Grundform geprüft."
+    },
+    {
+      "id": "JRN-ROOKIE-12-EX-005",
+      "karten_id": "EX-005",
+      "karten_titel": "Dribble Knockout",
+      "name": "Jr. NBA · Rookie Practice 12 · Dribble Knockout",
+      "url": "https://jr.nba.com/basketball-practice-plans/rookie/page/12/",
+      "abschnitt": "Dribble Knockout",
+      "abgerufen": "2026-10-02",
+      "felder": [
+        "ablauf",
+        "coachingpunkte",
+        "raum",
+        "material",
+        "dauer_min"
+      ],
+      "pruefnotiz": "Zwei Spiele, keine Minutenangabe."
+    },
+    {
+      "id": "JRN-ROOKIE-2-EX-030",
+      "karten_id": "EX-030",
+      "karten_titel": "Athletic Stance / Triple Threat",
+      "name": "Jr. NBA · Rookie Practice 2 · Fundamentals of the Triple Threat",
+      "url": "https://jr.nba.com/basketball-practice-plans/rookie/page/2/",
+      "abschnitt": "Fundamentals of the Triple Threat",
+      "abgerufen": "2026-10-02",
+      "felder": [
+        "lernziel",
+        "ablauf",
+        "coachingpunkte",
+        "material"
+      ],
+      "pruefnotiz": "Grundstellung mit Ball; keine fremde Übungsserie übernommen."
+    },
+    {
+      "id": "JRN-ROOKIE-1-EX-032",
+      "karten_id": "EX-032",
+      "karten_titel": "Two-Foot Jump Stop",
+      "name": "Jr. NBA · Rookie Practice 1 · Jump Stop Fundamental Skill",
+      "url": "https://jr.nba.com/basketball-practice-plans/rookie/",
+      "abschnitt": "Jump Stop Fundamental Skill",
+      "abgerufen": "2026-10-02",
+      "felder": [
+        "lernziel",
+        "ablauf",
+        "coachingpunkte"
+      ],
+      "pruefnotiz": "Technikanker, nicht das benachbarte Jump Stop Game. Keine allgemeine Schrittregel abgeleitet."
+    },
+    {
+      "id": "JRN-ROOKIE-4-EX-033",
+      "karten_id": "EX-033",
+      "karten_titel": "Pivoting Basics",
+      "name": "Jr. NBA · Rookie Practice 4 · Forward Pivot Basic",
+      "url": "https://jr.nba.com/basketball-practice-plans/rookie/page/4/",
+      "abschnitt": "Forward Pivot Basic",
+      "abgerufen": "2026-10-02",
+      "felder": [
+        "lernziel",
+        "ablauf",
+        "coachingpunkte",
+        "raum",
+        "material",
+        "dauer_min"
+      ],
+      "pruefnotiz": "Belegte Vorwärtspivot-Grundform zum Kompetenzanker; keine vollständige Pivot-Regellehre."
+    },
+    {
+      "id": "JRN-ROOKIE-7-EX-035",
+      "karten_id": "EX-035",
+      "karten_titel": "Ball Reversal",
+      "name": "Jr. NBA · Rookie Practice 7 · Reverse the Ball Drill",
+      "url": "https://jr.nba.com/basketball-practice-plans/rookie/page/7/",
+      "abschnitt": "Reverse the Ball Drill",
+      "abgerufen": "2026-10-02",
+      "felder": [
+        "lernziel",
+        "ablauf",
+        "dauer_min",
+        "raum",
+        "material"
+      ],
+      "pruefnotiz": "Konkrete Practice-Plan-Form für Ball Reversal; Quellwechsel zur eigenständigen Anleitung."
+    },
+    {
+      "id": "JRN-ROOKIE-8-EX-041",
+      "karten_id": "EX-041",
+      "karten_titel": "Tracing the Ball",
+      "name": "Jr. NBA · Rookie Practice 8 · Tracing the Ball Breakdown Drill",
+      "url": "https://jr.nba.com/basketball-practice-plans/rookie/page/8/",
+      "abschnitt": "Tracing the Ball Breakdown Drill",
+      "abgerufen": "2026-10-02",
+      "felder": [
+        "lernziel",
+        "ablauf",
+        "coachingpunkte",
+        "spielerzahl",
+        "material",
+        "dauer_min"
+      ],
+      "pruefnotiz": "Konkrete Dreierform; Ballbewegung und Rollenwechsel geprüft."
+    },
+    {
+      "id": "JRN-STARTER-8-EX-073",
+      "karten_id": "EX-073",
+      "karten_titel": "Open & Decide Drill",
+      "name": "Jr. NBA · Starter Practice 8 · Open & Decide Drill",
+      "url": "https://jr.nba.com/basketball-practice-plans/starter/page/8/",
+      "abschnitt": "Open & Decide Drill",
+      "abgerufen": "2026-10-02",
+      "felder": [
+        "lernziel",
+        "ablauf",
+        "spielerzahl",
+        "dauer_min",
+        "material"
+      ],
+      "pruefnotiz": "Drei Angreifer plus Verteidiger; widersprüchliche Dreierangabe im Katalog nicht übernommen."
+    },
+    {
+      "id": "JRN-STARTER-11-EX-074",
+      "karten_id": "EX-074",
+      "karten_titel": "3-Second Box Out Game",
+      "name": "Jr. NBA · Starter Practice 11 · 3-Second Box Out Game",
+      "url": "https://jr.nba.com/basketball-practice-plans/starter/page/11/",
+      "abschnitt": "3-Second Box Out Game",
+      "abgerufen": "2026-10-02",
+      "felder": [
+        "lernziel",
+        "ablauf",
+        "spielerzahl",
+        "material",
+        "dauer_min"
+      ],
+      "pruefnotiz": "Drei Sekunden je Versuch, zwei Minuten Gesamtspiel; Punkte und Wechsel geprüft."
+    },
+    {
+      "id": "JRN-STARTER-1-EX-076",
+      "karten_id": "EX-076",
+      "karten_titel": "Cone Dribbling",
+      "name": "Jr. NBA · Starter Practice 1 · Cone Dribbling",
+      "url": "https://jr.nba.com/basketball-practice-plans/starter/",
+      "abschnitt": "Cone Dribbling",
+      "abgerufen": "2026-10-02",
+      "felder": [
+        "lernziel",
+        "ablauf",
+        "coachingpunkte",
+        "material",
+        "dauer_min"
+      ],
+      "pruefnotiz": "Aktuelle Starter-Seite: drei Minuten mit Varianten. Historischer Fünf-Minuten-Vermerk bleibt im Originalbeleg erhalten."
+    }
+  ]
+}
