@@ -10,7 +10,7 @@ aus und dürfen sich nicht vermischen.
 | Grund | drei Wege, wenige Sekunden Aufenthalt | lange Sitzungen, hohe Dichte |
 | Grund­fläche | Schwarz | Systemfläche, hell oder dunkel |
 | Farbe | fünf Neonfarben in Verläufen | Apple Systemfarben, ein Akzent |
-| Schrift | 900, übergroß, angeschnitten | 13 px, ruhig, tabellarisch |
+| Schrift | große Schlagzeile und farbige Ziffern | 13 px, ruhig, tabellarisch |
 
 Die Grenze verläuft am Attribut `data-ansicht` auf dem Wurzelelement, gesetzt
 vom Router in `src/main.ts`. **Nur `start` ist Plakat**, alles andere ist
@@ -101,10 +101,12 @@ Daraus vier Verläufe: `--verlauf-1` bis `--verlauf-3` je Einstieg,
 alle mit drei bis vier Halten. Ein fünfter Verlauf gehört in die Markendatei,
 nicht in eine Bauteilregel.
 
-### Die Ziffernmechanik
+### Einstieg und Ziffern
 
-Das ist der eigentliche Kern des Systems und der Grund, warum es auf jedem
-Gerät funktioniert.
+Die Startseite nennt zuerst den Zweck von CourtFlow. Darunter erklären drei
+Einstiege in normal lesbarer Schrift, was im jeweiligen Bereich geschieht. Die
+farbigen Ziffern bleiben als Plakatmotiv erhalten, haben aber weniger Gewicht
+als die Schlagzeile und die Handlungstitel.
 
 **Die Ziffer bemisst sich an der Höhe ihrer eigenen Zeile, nicht am
 Bildschirm.** Die drei Einstiege teilen sich die Resthöhe der Seite zu gleichen
@@ -112,24 +114,21 @@ Teilen (`flex: 1 1 0`). Jede Zeile ist ein Größencontainer; die Ziffer bekommt
 ihren Schriftgrad in `cqh`, also in Prozent der Zeilenhöhe.
 
 ```
---ziffer-ueberstand: 1.34   Schriftgrad als Vielfaches der Zeilenhöhe
---ziffer-breite:     1.28   waagerechte Dehnung (0.94 unter 500 px)
---ziffer-aspekt:     0.58   Vorschub einer Ziffer in em
+--ziffer-ueberstand: 1.05   Schriftgrad als Vielfaches der Zeilenhöhe
+--ziffer-breite:     1.04   waagerechte Dehnung (0.82 unter 500 px)
+--ziffer-aspekt:     0.47   Abstand für die Ziffer in em
 --ziffer-platz:      ueberstand × breite × aspekt
 ```
 
 Daraus folgt beides zugleich:
 
-- **Höhe.** `font-size = ueberstand × Zeilenhöhe`. Weil der Wert über 1 liegt,
-  ragt die Ziffer über ihre Zeile hinaus und wird oben wie unten angeschnitten —
-  auf einem 360-px-Handy genauso wie auf einem 1440-px-Bildschirm. Gemessen
-  belegt die Ziffer auf jeder geprüften Größe 93 bis 94 Prozent der Zeilenhöhe.
+- **Höhe.** `font-size = ueberstand × Zeilenhöhe`. Die Ziffer bleibt groß genug,
+  um die Zeile zu prägen, ohne deren Inhalt zu verdrängen.
 - **Platz.** Der Textblock hält den Abstand `platz × Zeilenhöhe + luft`. Weil
   derselbe Zeilenwert beide Seiten speist, kann der Text nicht in die Ziffer
   laufen, egal wie hoch die Zeile gerade ist.
 
-Auf schmalen Geräten wird die Ziffer **nicht kleiner, sondern schlanker**
-(`--ziffer-breite: 0.94`). Volle Höhe bleibt, der Text bekommt trotzdem Platz.
+Auf schmalen Geräten wird die Ziffer schlanker (`--ziffer-breite: 0.82`).
 
 Ohne Unterstützung für Container-Einheiten greift ein `@supports`-Zweig mit
 Schätzwerten nach Fensterbreite. Die Reihenfolge im Stylesheet ist dabei
@@ -141,12 +140,12 @@ und hat den Text auf 65 px zusammengedrückt.
 
 Die Mechanik wird nicht nach Augenmaß beurteilt, sondern gemessen. Je Fenster­größe:
 
-1. Füllen die drei Zeilen die Seitenhöhe? (`scrollHeight ≤ innerHeight`)
-2. Wie groß ist die Ziffer im Verhältnis zur Zeile? (Soll: 0.9 bis 1.0)
+1. Sind Schlagzeile und alle drei Einstiege ohne waagerechtes Scrollen lesbar?
+2. Wie groß ist die Ziffer im Verhältnis zur Zeile?
 3. Überlappt die rechte Kante der Ziffer die linke Kante des Textes? (Soll: nein)
 4. Läuft die Seite waagerecht über? (Soll: nein)
 
-Geprüfte Größen: 360×640, 390×844, 430×932, 820×1180, 1440×900.
+Die neue Fassung wurde bei 390×844 und 1265×720 im Browser geprüft.
 
 ## Bewegung im Werkzeugsystem
 

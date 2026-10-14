@@ -1,7 +1,7 @@
 /* SYSTEM PLAKAT — Marken
    Gilt nur auf den Einstiegsflächen (Start und gesperrte Bereiche).
    Grundlage ist eine Saisongrafik als Stilvorlage: schwarzer Grund,
-   übergroße Ziffern mit mehrstufigem Verlauf, oben und unten angeschnitten,
+   große Ziffern mit mehrstufigem Verlauf,
    dazu eine Zeile gesperrter Versalien. Übernommen ist die Machart, nicht
    die Marke. Beschrieben in docs/gestaltung.md. */
 
@@ -43,29 +43,27 @@
 
   --plakat-grund: #000;
   --plakat-tinte: #fff;
-  --plakat-tinte-2: rgba(255, 255, 255, 0.66);
+  --plakat-tinte-2: rgba(255, 255, 255, 0.72);
   --plakat-tinte-3: rgba(255, 255, 255, 0.34);
   --plakat-linie: rgba(255, 255, 255, 0.16);
 
   /* Die Ziffer bemisst sich an der Höhe ihrer Zeile.
-     ueberstand: Schriftgrad als Vielfaches der Zeilenhöhe — daraus entsteht
-       der Anschnitt oben und unten.
+     ueberstand: Schriftgrad als Vielfaches der Zeilenhöhe.
      breite: waagerechte Dehnung, macht aus der Systemschrift eine Plakatschrift.
      aspekt: Vorschub einer Ziffer in em, gemessen an der Systemschrift.
      platz: was die Ziffer waagerecht belegt — Produkt der drei. Der Text
        hält genau diesen Abstand, deshalb kollidiert nichts, egal wie hoch
        die Zeile gerade ist. */
-  --ziffer-ueberstand: 1.34;
-  --ziffer-breite: 1.28;
-  --ziffer-aspekt: 0.58;
+  --ziffer-ueberstand: 1.05;
+  --ziffer-breite: 1.04;
+  --ziffer-aspekt: 0.47;
   --ziffer-platz: calc(
     var(--ziffer-ueberstand) * var(--ziffer-breite) * var(--ziffer-aspekt)
   );
-  --ziffer-luft: clamp(12px, 3vw, 44px);
+  --ziffer-luft: clamp(16px, 2.2vw, 28px);
 }
 
-/* Auf schmalen Geräten wird die Ziffer nicht kleiner, sondern schlanker:
-   volle Höhe bleibt, der Text bekommt trotzdem Platz. */
+/* Auf schmalen Geräten bleibt die Ziffer hoch, wird aber schlanker. */
 @media (max-width: 500px) {
-  :root { --ziffer-breite: 0.94; --ziffer-luft: 10px; }
+  :root { --ziffer-breite: 0.82; --ziffer-luft: 14px; }
 }

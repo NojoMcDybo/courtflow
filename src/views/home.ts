@@ -7,73 +7,66 @@ type Tor = {
   ziffer: string;
   name: string;
   ziel: string;
-  meta: string[];
-  gebaut: boolean;
+  beschreibung: string;
 };
 
-const zahlen = () => kennzahlen(alleDrills);
-
-function tore(): Tor[] {
-  const z = zahlen();
-  return [
-    {
-      ziffer: "1",
-      name: "Drill-Liste",
-      ziel: "#/bibliothek",
-      meta: [`${z.gesamt} Übungen`, "U8–U18", "mit Quelle"],
-      gebaut: true,
-    },
-    {
-      ziffer: "2",
-      name: "Trainingsaufbau",
-      ziel: "#/aufbau",
-      meta: ["Block für Block", "du wählst die Übungen"],
-      gebaut: true,
-    },
-    {
-      ziffer: "3",
-      name: "Automatischer Plan",
-      ziel: "#/generator",
-      meta: ["Rahmen rein, Einheit raus", "jedes Mal neu"],
-      gebaut: true,
-    },
-  ];
-}
+const TORE: Tor[] = [
+  {
+    ziffer: "1",
+    name: "Übungen entdecken",
+    ziel: "#/bibliothek",
+    beschreibung: "Nach Alter und Können filtern. Ablauf, Material und Quelle auf der Karte prüfen.",
+  },
+  {
+    ziffer: "2",
+    name: "Training selbst bauen",
+    ziel: "#/aufbau",
+    beschreibung: "Übungen Block für Block auswählen und zu einer Einheit verbinden.",
+  },
+  {
+    ziffer: "3",
+    name: "Plan erstellen lassen",
+    ziel: "#/generator",
+    beschreibung: "Altersgruppe und Zeit vorgeben. CourtFlow stellt eine Einheit zusammen.",
+  },
+];
 
 export function startseite(wurzel: HTMLElement): () => void {
-  const z = zahlen();
+  const z = kennzahlen(alleDrills);
   const seite = el("div", { class: "poster" });
 
   const kopf = el("header", { class: "poster-kopf" });
   kopf.append(
     el("span", { class: "poster-marke" }, [markenIcon(), "CourtFlow"]),
-    el("p", { class: "mikro" }, [
-      `Saison 26/27 · Kinder- und Jugendbasketball · ${z.gesamt} Übungen · ${z.mitQuelle} mit Quelle · ${
-        z.gesamt - z.mitQuelle
-      } offen`,
-    ]),
+    el("span", { class: "mikro poster-saison" }, ["Saison 26/27 · Jugendbasketball"]),
     sprachwahl(),
   );
-  seite.append(kopf);
+  const inhalt = el("main", { class: "poster-inhalt" });
+  seite.append(kopf, inhalt);
+  inhalt.append(el("section", { class: "poster-intro" }, [
+    el("p", { class: "mikro" }, [`${z.gesamt} Übungen · U8–U18`]),
+    el("h1", {}, ["Vom Übungskatalog zur fertigen Einheit."]),
+    el("p", { class: "poster-lead" }, [
+      "Finde passende Übungen, stelle dein Training zusammen oder lass dir einen Plan erstellen.",
+    ]),
+  ]));
 
   const liste = el("nav", { class: "tore", "aria-label": "Bereiche" });
-  for (const t of tore()) {
+  for (const t of TORE) {
     const a = el("a", {
-      class: `tor tor--${t.ziffer}${t.gebaut ? "" : " geplant"}`,
+      class: `tor tor--${t.ziffer}`,
       href: t.ziel,
     });
     const ziffer = el("span", { class: "ziffer", "aria-hidden": "true" }, [t.ziffer]);
 
     const text = el("span", { class: "tor-text" });
-    const meta = el("span", { class: "mikro tor-meta" }, [
-      t.meta.join(" • ") + (t.gebaut ? "" : " • noch nicht gebaut"),
-    ]);
-    text.append(el("span", { class: "tor-name" }, [t.name]), meta);
+    text.append(el("span", { class: "tor-name" }, [t.name]),
+      el("span", { class: "tor-beschreibung" }, [t.beschreibung]));
 
     a.append(ziffer, text, el("span", { class: "pfeil", "aria-hidden": "true" }, ["→"]));
     liste.append(a);
   }
-  seite.append(liste);
+  inhalt.append(liste);
 
   seite.append(
     el("footer", { class: "poster-fuss" }, [

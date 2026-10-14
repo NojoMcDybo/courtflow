@@ -28,6 +28,34 @@
   padding: clamp(12px, 2.4vh, 32px) 0 clamp(10px, 2vh, 22px);
 }
 
+.poster-kopf .sprachwahl { margin-left: auto; }
+
+.poster-inhalt {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.poster-intro {
+  padding: clamp(18px, 3vh, 30px) 0 clamp(20px, 3vh, 30px);
+  border-top: 1px solid var(--plakat-linie);
+}
+
+.poster-intro h1 {
+  max-width: 22ch;
+  margin: 8px 0 10px;
+  font: 720 clamp(36px, 4.7vw, 58px)/1.02 var(--sf);
+  letter-spacing: -0.055em;
+  text-wrap: balance;
+}
+
+.poster-lead {
+  max-width: 58ch;
+  margin: 0;
+  color: var(--plakat-tinte-2);
+  font: 400 clamp(16px, 1.45vw, 19px)/1.45 var(--sf);
+}
+
 .poster-marke {
   display: inline-flex;
   align-items: center;
@@ -58,7 +86,7 @@
   -webkit-text-fill-color: transparent;
 }
 
-/* Die drei Einstiege teilen sich die Resthöhe zu gleichen Teilen. */
+/* Die drei Einstiege teilen sich den Platz unter der Einführung. */
 .tore {
   flex: 1 1 auto;
   display: flex;
@@ -70,7 +98,7 @@
   flex: 1 1 0;
   display: flex;
   align-items: center;
-  min-height: 148px;
+  min-height: 110px;
   padding: 0;
   overflow: hidden;
   border-top: 1px solid var(--plakat-linie);
@@ -79,16 +107,14 @@
 }
 .tore .tor:last-of-type { border-bottom: 1px solid var(--plakat-linie); }
 
-/* Die Ziffer bemisst sich an der Höhe ihrer eigenen Zeile, nicht am
-   Bildschirm. Dadurch füllt sie jede Zeile auf jedem Gerät gleich aus und
-   wird oben wie unten angeschnitten. */
+/* Die Ziffer bemisst sich an ihrer Zeile, nicht am Bildschirm. */
 .ziffer {
   position: absolute;
-  left: clamp(-40px, -2.6vw, -14px);
+  left: 0;
   top: 50%;
   transform: translateY(-50%) scaleX(var(--ziffer-breite));
   transform-origin: left center;
-  font: 900 clamp(200px, 34vh, 380px)/0.7 var(--sf);
+  font: 900 clamp(130px, 22vh, 220px)/0.7 var(--sf);
   letter-spacing: -0.07em;
   background-image: var(--verlauf-1);
   background-size: 240% 100%;
@@ -103,8 +129,8 @@
 
 /* Ohne Container-Einheiten bleibt der Platz eine Schätzung nach Fensterbreite. */
 @supports not (container-type: size) {
-  .tor { padding-left: clamp(150px, 16vw, 250px); }
-  .ziffer { font-size: clamp(200px, 34vh, 380px); }
+  .tor { padding-left: clamp(110px, 13vw, 175px); }
+  .ziffer { font-size: clamp(130px, 22vh, 220px); }
 }
 
 @supports (container-type: size) {
@@ -117,17 +143,20 @@
 .tor--1 .ziffer { background-image: var(--verlauf-1); }
 .tor--2 .ziffer { background-image: var(--verlauf-2); }
 .tor--3 .ziffer { background-image: var(--verlauf-3); }
-.tor--2 .tor-meta { background-image: var(--verlauf-2); }
-.tor--3 .tor-meta { background-image: var(--verlauf-3); }
-
 .tor-text { flex: 1 1 auto; min-width: 0; }
 .tor-name {
   display: block;
-  font: 640 clamp(19px, 3.1vw, 34px)/1.08 var(--sf);
+  font: 640 clamp(21px, 2.5vw, 31px)/1.1 var(--sf);
   letter-spacing: -0.025em;
   text-wrap: balance;
 }
-.tor-meta { display: block; margin-top: 7px; }
+.tor-beschreibung {
+  display: block;
+  max-width: 48ch;
+  margin-top: 8px;
+  color: var(--plakat-tinte-2);
+  font: 400 clamp(14px, 1.25vw, 16px)/1.4 var(--sf);
+}
 
 .pfeil {
   flex: 0 0 auto;
@@ -143,15 +172,12 @@
 .tor:focus-visible .pfeil { transform: translateX(7px); color: var(--plakat-tinte); }
 .tor:focus-visible { outline: none; box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.5); }
 
-.tor.geplant .tor-name { color: var(--plakat-tinte-2); }
-.tor.geplant .ziffer { opacity: 0.78; }
-
 .poster-fuss { flex: 0 0 auto; padding: clamp(10px, 2vh, 26px) 0 clamp(14px, 3vh, 32px); }
 .poster-fuss .mikro {
   overflow-wrap: anywhere;
   background-image: none;
-  color: var(--plakat-tinte-3);
-  -webkit-text-fill-color: var(--plakat-tinte-3);
+  color: var(--plakat-tinte-2);
+  -webkit-text-fill-color: var(--plakat-tinte-2);
   letter-spacing: 0.07em;
 }
 
@@ -160,14 +186,19 @@
 }
 
 @media (max-width: 700px) {
-  .tor { min-height: 132px; }
-  .ziffer { left: -10px; }
+  .poster-intro { padding: 28px 0 30px; }
+  .poster-intro h1 { font-size: clamp(34px, 9vw, 50px); }
+  .tor { min-height: 150px; }
+  .pfeil { font-size: 20px; }
+}
+
+@media (max-width: 380px) {
   .pfeil { display: none; }
 }
 
 @supports not (container-type: size) {
   @media (max-width: 700px) {
-    .tor { padding-left: clamp(92px, 27vw, 150px); }
-    .ziffer { font-size: clamp(132px, 42vw, 220px); }
+    .tor { padding-left: clamp(82px, 24vw, 130px); }
+    .ziffer { font-size: clamp(130px, 34vw, 180px); }
   }
 }
