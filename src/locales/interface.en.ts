@@ -65,7 +65,7 @@ export const interfaceEnglish: Record<string, string> = {
   "Individualverteidigung": "Individual defense", "Gleichgewicht": "Balance", "Orientierung": "Spatial awareness",
   "Reaktion": "Reaction", "Rhythmus": "Rhythm", "Differenzierung": "Movement precision", "Kopplung": "Movement coordination",
   "Agilität": "Agility", "1v1 Angriff": "1v1 offense", "1v1 Verteidigung": "1v1 defense", "Off-Ball/Freilaufen": "Off-ball movement",
-  "Zusammenspiel": "Team play", "Übungen": "drills", "Übung": "drill",
+  "Zusammenspiel": "Team play", "Übungen": "Drills", "Übung": "drill",
   "Paare": "Pairs", "Paare / 3er": "Pairs / groups of 3", "Paare / Dreier": "Pairs / groups of 3",
   "2 Teams": "2 teams", "4+ Teams": "4+ teams", "4er-Gruppen": "Groups of 4", "4+ pro Diamond": "4+ per diamond",
   "2-3 Spiele": "2–3 games", "3-5 min + Variationen": "3–5 min + variations",
