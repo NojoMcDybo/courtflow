@@ -48,7 +48,12 @@
   --plakat-linie: rgba(255, 255, 255, 0.16);
   --plakat-karte: #1c1c1f;
   --plakat-karte-hover: #28282c;
-  --plakat-bildschleier: rgba(0, 0, 0, 0.88);
+  --plakat-bildschleier: linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.94) 0%,
+    rgba(0, 0, 0, 0.68) 62%,
+    rgba(0, 0, 0, 0.08) 100%
+  );
   --plakat-nav: rgba(37, 37, 40, 0.9);
 
   /* Die Ziffer bemisst sich an der Höhe ihrer Zeile.

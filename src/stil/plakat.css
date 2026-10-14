@@ -82,7 +82,7 @@
   position: absolute;
   inset: 0;
   z-index: 0;
-  background: linear-gradient(0deg, var(--plakat-bildschleier), transparent 90%);
+  background: var(--plakat-bildschleier);
 }
 .start-feature-inhalt {
   position: relative;
@@ -201,7 +201,7 @@
   .start-karte-titel { font-size: 15px; }
   .start-karte-wert { font-size: clamp(31px, 9vw, 43px); }
   .start-karte--blau .start-karte-wert { font-size: clamp(27px, 7vw, 34px); }
-  .start-karte-text { font-size: 12px; }
+  .start-karte-text { font-size: 13px; }
 }
 @media (max-width: 360px) {
   .start-karten { gap: 9px; }
