@@ -8,6 +8,24 @@ export const interfaceEnglish: Record<string, string> = {
   "du wählst die Übungen": "you choose the drills", "Rahmen rein, Einheit raus": "Set your preferences, get a session",
   "jedes Mal neu": "a fresh selection every time", "noch nicht gebaut": "coming soon",
   "Saison 26/27 · Jugendbasketball": "Season 26/27 · Youth basketball",
+  "CourtFlow — Startseite": "CourtFlow — Home",
+  "Für dein nächstes Training.": "For your next practice.",
+  "Entdecke Übungen, baue deine Einheit oder lass dir einen Plan erstellen.": "Explore drills, build a session or generate a practice plan.",
+  "AUTOMATISCHER PLAN": "AUTOMATIC PLAN",
+  "Aus Alter und Zeit wird eine Einheit.": "Turn an age group and time into a practice.",
+  "Wähle den Rahmen. CourtFlow stellt die Übungen zusammen.": "Set the parameters. CourtFlow puts the drills together.",
+  "Plan erstellen": "Generate plan",
+  "Auf einen Blick": "At a glance",
+  "Deine Möglichkeiten": "What you can do",
+  "Nach Alter und Thema filtern.": "Filter by age and topic.",
+  "Übungsvideos": "Drill videos",
+  "Bei ausgewählten Karten öffnen.": "Open them on selected drill cards.",
+  "Altersstufen": "Age groups",
+  "Passende Übungen fürs Team finden.": "Find drills for your team.",
+  "Bausteine": "Building blocks",
+  "Dein Training Schritt für Schritt bauen.": "Build your practice step by step.",
+  "Aufbau": "Builder",
+  "Plan": "Plan",
   "Vom Übungskatalog zur fertigen Einheit.": "From drill library to complete practice.",
   "Finde passende Übungen, stelle dein Training zusammen oder lass dir einen Plan erstellen.": "Find the right drills, build your own practice or get a plan made for you.",
   "Übungen entdecken": "Discover drills",
@@ -65,6 +83,8 @@ export function interfacePattern(text: string, translate: (text: string) => stri
     return `Season ${m[1]} · Youth basketball · ${m[2]} drills · ${m[3]} with sources · ${m[4]} pending`;
   if ((m = text.match(/^Grundlage: Kompetenzkatalog v(.+) · Beschreibungen sind Eigenformulierungen mit Link auf das Original$/)))
     return `Based on skills catalogue v${m[1]} · Descriptions are paraphrased, with links to the originals`;
+  if ((m = text.match(/^Grundlage: Kompetenzkatalog v(.+) · Beschreibungen mit Link auf die Originalquelle$/)))
+    return `Based on skills catalogue v${m[1]} · Descriptions link to the original source`;
   if ((m = text.match(/^(\d+) ohne Altersangabe · unter „Alles anzeigen“\.$/))) return `${m[1]} with no age specified · under “Show all”.`;
   if ((m = text.match(/^Übungsabdeckung: (.+)$/))) return `Drill coverage: ${translate(m[1]!)}`;
   if ((m = text.match(/^(.+), U(\d+): (\d+) Übung(?:en)?$/))) return `${translate(m[1]!)}, U${m[2]}: ${m[3]} ${m[3] === "1" ? "drill" : "drills"}`;

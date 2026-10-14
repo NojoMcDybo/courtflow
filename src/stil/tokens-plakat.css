@@ -46,6 +46,10 @@
   --plakat-tinte-2: rgba(255, 255, 255, 0.72);
   --plakat-tinte-3: rgba(255, 255, 255, 0.34);
   --plakat-linie: rgba(255, 255, 255, 0.16);
+  --plakat-karte: #1c1c1f;
+  --plakat-karte-hover: #28282c;
+  --plakat-bildschleier: rgba(0, 0, 0, 0.88);
+  --plakat-nav: rgba(37, 37, 40, 0.9);
 
   /* Die Ziffer bemisst sich an der Höhe ihrer Zeile.
      ueberstand: Schriftgrad als Vielfaches der Zeilenhöhe.

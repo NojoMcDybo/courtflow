@@ -5,12 +5,12 @@ aus und dürfen sich nicht vermischen.
 
 | | System Plakat | System Werkzeug |
 |---|---|---|
-| Wo | Startseite, gesperrte Bereiche | Bibliothek, Abdeckung, Detailblatt |
-| Aufgabe | eine Entscheidung anbieten | mit 146 Datensätzen arbeiten |
-| Grund | drei Wege, wenige Sekunden Aufenthalt | lange Sitzungen, hohe Dichte |
+| Wo | Startseite | Bibliothek, Trainingsaufbau, Plan, Detailblatt |
+| Aufgabe | Überblick und Einstieg anbieten | mit 146 Datensätzen arbeiten |
+| Grund | schneller Einstieg mit belegbaren Angaben | lange Sitzungen, hohe Dichte |
 | Grund­fläche | Schwarz | Systemfläche, hell oder dunkel |
 | Farbe | fünf Neonfarben in Verläufen | Apple Systemfarben, ein Akzent |
-| Schrift | große Schlagzeile und farbige Ziffern | 13 px, ruhig, tabellarisch |
+| Schrift | klare Schlagzeile und farbige Werte | 13 px, ruhig, tabellarisch |
 
 Die Grenze verläuft am Attribut `data-ansicht` auf dem Wurzelelement, gesetzt
 vom Router in `src/main.ts`. **Nur `start` ist Plakat**, alles andere ist
@@ -33,8 +33,9 @@ src/stil/tokens-werkzeug.css   Marken des Werkzeugsystems
 src/stil/tokens-plakat.css     Marken des Plakatsystems
 src/stil/basis.css             gilt für beide: Reset, Fließtext, Fokus
 src/stil/werkzeug.css          Bauteile: Leiste, Matrix, Karten, Blatt
-src/stil/plakat.css            Bauteile: Einstiege, Ziffern, Mikroschrift
-src/styles.css                 bindet die fünf in dieser Reihenfolge ein
+src/stil/plakat.css            Bauteile: Bild- und Infokarten
+src/stil/bereichswechsel.css   gemeinsame Navigation der drei Arbeitsbereiche
+src/styles.css                 bindet die Gestaltungsdateien ein
 ```
 
 Regel: eine Datei mit Bauteilen benutzt **nur** Marken aus der Markendatei
@@ -79,73 +80,25 @@ Apples Sheet-Kurve, schnell los, weich aus. Vibrancy auf den Leisten:
 - Text ist kein Gestaltungsmittel. Zusammenhängender Text steht nur im
   Detailblatt, wo er der Inhalt ist.
 
-## System Plakat
+## Startseite und Bereichswechsel
 
-**Herkunft.** Eine Saisongrafik als Stilvorlage: schwarzer Grund, übergroße
-Ziffern mit mehrstufigem Verlauf, oben und unten angeschnitten, dazu eine Zeile
-gesperrter Versalien mit `•` als Trenner. Übernommen ist die Machart, nicht die
-Marke — keine fremden Zeichen, keine nachgebaute Komposition.
+Die Startseite ist eine ruhige Übersicht auf schwarzem Grund. Sie kombiniert
+eine große Bildkarte mit vier kompakten Infokarten. Die Bildkarte führt zum
+automatischen Plan. Die Infokarten nennen echte Angaben aus dem Katalog:
+Übungsanzahl, Anzahl zugeordneter Videos, filterbare Altersstufen und die
+Bausteine des Trainingsmodells. Keine Fortschrittsringe oder Auszeichnungen
+ohne Nutzerdaten.
 
-**Fünf Farben**, aus denen jeder Verlauf gemischt wird:
+Die Neonfarben aus `tokens-plakat.css` markieren Werte und Akzente; dunkle
+Karten geben ihnen Platz. Das Hero-Bild ist ein vorhandenes CourtFlow-Motiv und
+wird als echtes `img` mit zur Seite relativ aufgelöster URL geladen, auch unter
+GitHub Pages und auf Mobilgeräten.
 
-| Marke | Wert |
-|---|---|
-| `--neon-violett` | `#8b2cf5` |
-| `--neon-magenta` | `#e0308f` |
-| `--neon-orange` | `#ff7a1a` |
-| `--neon-amber` | `#ffb02e` |
-| `--neon-blau` | `#2f6bff` |
-
-Daraus vier Verläufe: `--verlauf-1` bis `--verlauf-3` je Einstieg,
-`--verlauf-mikro` für die Versalienzeile. Alle mit demselben Winkel (104°),
-alle mit drei bis vier Halten. Ein fünfter Verlauf gehört in die Markendatei,
-nicht in eine Bauteilregel.
-
-### Einstieg und Ziffern
-
-Die Startseite nennt zuerst den Zweck von CourtFlow. Darunter erklären drei
-Einstiege in normal lesbarer Schrift, was im jeweiligen Bereich geschieht. Die
-farbigen Ziffern bleiben als Plakatmotiv erhalten, haben aber weniger Gewicht
-als die Schlagzeile und die Handlungstitel.
-
-**Die Ziffer bemisst sich an der Höhe ihrer eigenen Zeile, nicht am
-Bildschirm.** Die drei Einstiege teilen sich die Resthöhe der Seite zu gleichen
-Teilen (`flex: 1 1 0`). Jede Zeile ist ein Größencontainer; die Ziffer bekommt
-ihren Schriftgrad in `cqh`, also in Prozent der Zeilenhöhe.
-
-```
---ziffer-ueberstand: 1.05   Schriftgrad als Vielfaches der Zeilenhöhe
---ziffer-breite:     1.04   waagerechte Dehnung (0.82 unter 500 px)
---ziffer-aspekt:     0.47   Abstand für die Ziffer in em
---ziffer-platz:      ueberstand × breite × aspekt
-```
-
-Daraus folgt beides zugleich:
-
-- **Höhe.** `font-size = ueberstand × Zeilenhöhe`. Die Ziffer bleibt groß genug,
-  um die Zeile zu prägen, ohne deren Inhalt zu verdrängen.
-- **Platz.** Der Textblock hält den Abstand `platz × Zeilenhöhe + luft`. Weil
-  derselbe Zeilenwert beide Seiten speist, kann der Text nicht in die Ziffer
-  laufen, egal wie hoch die Zeile gerade ist.
-
-Auf schmalen Geräten wird die Ziffer schlanker (`--ziffer-breite: 0.82`).
-
-Ohne Unterstützung für Container-Einheiten greift ein `@supports`-Zweig mit
-Schätzwerten nach Fensterbreite. Die Reihenfolge im Stylesheet ist dabei
-bindend: Gerätespezifische Regeln stehen **vor** dem `@supports`-Block, sonst
-überschreibt die Ausnahme das System. Genau dieser Fehler ist einmal passiert
-und hat den Text auf 65 px zusammengedrückt.
-
-### Prüfung
-
-Die Mechanik wird nicht nach Augenmaß beurteilt, sondern gemessen. Je Fenster­größe:
-
-1. Sind Schlagzeile und alle drei Einstiege ohne waagerechtes Scrollen lesbar?
-2. Wie groß ist die Ziffer im Verhältnis zur Zeile?
-3. Überlappt die rechte Kante der Ziffer die linke Kante des Textes? (Soll: nein)
-4. Läuft die Seite waagerecht über? (Soll: nein)
-
-Die neue Fassung wurde bei 390×844 und 1265×720 im Browser geprüft.
+Unten bleibt ein Bereichswechsel mit Bibliothek, manuellem Aufbau und
+automatischem Plan sichtbar. Sein aktiver Zustand folgt dem Router. Auf der
+Startseite nutzt er die Plakatfarben, auf Arbeitsflächen die Werkzeugmarken.
+Druckansichten blenden ihn aus. Zusätzlicher Abstand am Seitenende hält die
+letzten Inhalte oberhalb der Leiste erreichbar.
 
 ## Bewegung im Werkzeugsystem
 

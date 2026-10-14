@@ -1,10 +1,4 @@
-/* SYSTEM PLAKAT — Bauteile
-   Verwendet ausschließlich Marken aus tokens-plakat.css.
-   Grenze zum Werkzeugsystem: data-ansicht="start" auf dem Wurzelelement.
-   Genau diese eine Route. Wer hier eine weitere einträgt, muss prüfen, ob
-   die Seite wirklich ein Plakat ist -- sonst steht weiße Schrift auf weißem
-   Grund, weil die Werkzeugfarben überschrieben werden. */
-
+/* Die Startseite nutzt CourtFlows Schwarz und Neonfarben als ruhiges Dashboard. */
 :root[data-ansicht="start"] { background: var(--plakat-grund); }
 :root[data-ansicht="start"] body {
   background: var(--plakat-grund);
@@ -12,193 +6,209 @@
 }
 
 .poster {
-  display: flex;
-  flex-direction: column;
+  width: min(100%, 1100px);
   min-height: 100svh;
-  padding: 0 clamp(16px, 5vw, 64px);
-  overflow-x: clip;
+  margin: 0 auto;
+  padding: 0 clamp(16px, 4vw, 36px) 118px;
 }
 
 .poster-kopf {
-  flex: 0 0 auto;
   display: flex;
-  flex-wrap: wrap;
-  align-items: baseline;
-  gap: 6px 20px;
-  padding: clamp(12px, 2.4vh, 32px) 0 clamp(10px, 2vh, 22px);
+  align-items: center;
+  justify-content: space-between;
+  min-height: 78px;
+  gap: 16px;
 }
-
-.poster-kopf .sprachwahl { margin-left: auto; }
-
-.poster-inhalt {
-  flex: 1 1 auto;
-  display: flex;
-  flex-direction: column;
-}
-
-.poster-intro {
-  padding: clamp(18px, 3vh, 30px) 0 clamp(20px, 3vh, 30px);
-  border-top: 1px solid var(--plakat-linie);
-}
-
-.poster-intro h1 {
-  max-width: 22ch;
-  margin: 8px 0 10px;
-  font: 720 clamp(36px, 4.7vw, 58px)/1.02 var(--sf);
-  letter-spacing: -0.055em;
-  text-wrap: balance;
-}
-
-.poster-lead {
-  max-width: 58ch;
-  margin: 0;
-  color: var(--plakat-tinte-2);
-  font: 400 clamp(16px, 1.45vw, 19px)/1.45 var(--sf);
-}
-
 .poster-marke {
   display: inline-flex;
   align-items: center;
-  gap: 9px;
-  font: 600 17px/1 var(--sf);
-  letter-spacing: -0.02em;
+  gap: 8px;
   color: var(--plakat-tinte);
   text-decoration: none;
+  font: 650 18px/1 var(--sf);
+  letter-spacing: -.03em;
 }
-.poster-marke .marken-icon {
-  display: block;
-  flex: 0 0 48px;
-  width: 48px;
-  height: 48px;
-  object-fit: contain;
-}
+.poster-marke .marken-icon { width: 46px; height: 46px; object-fit: contain; }
+.poster-kopf .sprachwahl { margin-left: auto; }
+.poster-kopf .sprachwahl button[aria-pressed="true"] { background: var(--neon-violett); }
 
-/* Gesperrte Versalien mit Verlauf */
+.poster-intro { padding: clamp(22px, 4vw, 50px) 0 30px; }
 .mikro {
   margin: 0;
-  font: 600 11px/1.45 "SF Compact Text", "Helvetica Neue", "Arial Narrow", var(--sf);
-  letter-spacing: 0.11em;
+  font: 700 11px/1.4 var(--sf);
+  letter-spacing: .12em;
   text-transform: uppercase;
-  background-image: var(--verlauf-mikro);
+  background: var(--verlauf-mikro);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-  -webkit-text-fill-color: transparent;
 }
-
-/* Die drei Einstiege teilen sich den Platz unter der Einführung. */
-.tore {
-  flex: 1 1 auto;
-  display: flex;
-  flex-direction: column;
-}
-
-.tor {
-  position: relative;
-  flex: 1 1 0;
-  display: flex;
-  align-items: center;
-  min-height: 110px;
-  padding: 0;
-  overflow: hidden;
-  border-top: 1px solid var(--plakat-linie);
-  color: var(--plakat-tinte);
-  text-decoration: none;
-}
-.tore .tor:last-of-type { border-bottom: 1px solid var(--plakat-linie); }
-
-/* Die Ziffer bemisst sich an ihrer Zeile, nicht am Bildschirm. */
-.ziffer {
-  position: absolute;
-  left: 0;
-  top: 50%;
-  transform: translateY(-50%) scaleX(var(--ziffer-breite));
-  transform-origin: left center;
-  font: 900 clamp(130px, 22vh, 220px)/0.7 var(--sf);
-  letter-spacing: -0.07em;
-  background-image: var(--verlauf-1);
-  background-size: 240% 100%;
-  background-position: 0% 50%;
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  -webkit-text-fill-color: transparent;
-  transition: background-position 0.6s var(--feder);
-  pointer-events: none;
-}
-
-/* Ohne Container-Einheiten bleibt der Platz eine Schätzung nach Fensterbreite. */
-@supports not (container-type: size) {
-  .tor { padding-left: clamp(110px, 13vw, 175px); }
-  .ziffer { font-size: clamp(130px, 22vh, 220px); }
-}
-
-@supports (container-type: size) {
-  .tor { container-type: size; padding-left: 0; }
-  .ziffer { font-size: calc(var(--ziffer-ueberstand) * 100cqh); }
-  /* Der Textblock hält genau den Platz frei, den die Ziffer belegt. */
-  .tor-text { margin-left: calc(var(--ziffer-platz) * 100cqh + var(--ziffer-luft)); }
-}
-
-.tor--1 .ziffer { background-image: var(--verlauf-1); }
-.tor--2 .ziffer { background-image: var(--verlauf-2); }
-.tor--3 .ziffer { background-image: var(--verlauf-3); }
-.tor-text { flex: 1 1 auto; min-width: 0; }
-.tor-name {
-  display: block;
-  font: 640 clamp(21px, 2.5vw, 31px)/1.1 var(--sf);
-  letter-spacing: -0.025em;
+.poster-intro h1 {
+  max-width: 17ch;
+  margin: 10px 0 12px;
+  font: 730 clamp(38px, 5.7vw, 68px)/1.03 var(--sf);
+  letter-spacing: -.055em;
   text-wrap: balance;
 }
-.tor-beschreibung {
+.poster-lead {
+  max-width: 55ch;
+  margin: 0;
+  color: var(--plakat-tinte-2);
+  font: 400 clamp(16px, 1.7vw, 19px)/1.45 var(--sf);
+}
+
+.start-feature {
+  position: relative;
   display: block;
-  max-width: 48ch;
+  min-height: clamp(310px, 37vw, 425px);
+  overflow: hidden;
+  border-radius: clamp(22px, 3vw, 30px);
+  background: var(--plakat-karte);
+  color: var(--plakat-tinte);
+  text-decoration: none;
+  isolation: isolate;
+}
+.start-feature-bild {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 42%;
+  transition: transform .5s var(--feder);
+}
+.start-feature::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: linear-gradient(0deg, var(--plakat-bildschleier), transparent 90%);
+}
+.start-feature-inhalt {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  align-items: start;
+  min-height: inherit;
+  padding: clamp(22px, 4vw, 42px);
+}
+.start-feature-kicker {
+  color: var(--neon-amber);
+  font: 750 11px/1.4 var(--sf);
+  letter-spacing: .12em;
+}
+.start-feature-titel {
+  display: block;
+  max-width: 17ch;
+  margin-top: 8px;
+  font: 700 clamp(27px, 3.7vw, 43px)/1.06 var(--sf);
+  letter-spacing: -.045em;
+  text-wrap: balance;
+}
+.start-feature-text {
+  display: block;
+  max-width: 42ch;
+  margin-top: 9px;
+  color: var(--plakat-tinte-2);
+  font: 400 clamp(14px, 1.45vw, 17px)/1.4 var(--sf);
+}
+.start-feature-taste {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  min-width: 210px;
+  min-height: 48px;
+  margin-top: 24px;
+  padding: 10px 17px;
+  border-radius: 999px;
+  background: var(--plakat-tinte);
+  color: var(--plakat-grund);
+  font: 700 15px/1.2 var(--sf);
+}
+.start-feature-taste > span { font-size: 20px; font-weight: 400; }
+.start-feature:hover .start-feature-bild { transform: scale(1.035); }
+.start-feature:focus-visible { outline: 3px solid var(--neon-violett); outline-offset: 4px; }
+
+.start-ueberblick { padding-top: clamp(26px, 4vw, 40px); }
+.start-ueberblick-kopf {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 15px;
+}
+.start-ueberblick h2 {
+  margin: 0;
+  font: 690 clamp(23px, 2.6vw, 31px)/1.2 var(--sf);
+  letter-spacing: -.035em;
+}
+.start-ueberblick-hinweis { color: var(--plakat-tinte-3); font-size: 13px; }
+.start-karten { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+.start-karte {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  min-height: 182px;
+  padding: clamp(17px, 2vw, 23px);
+  border: 1px solid var(--plakat-linie);
+  border-radius: 23px;
+  background: var(--plakat-karte);
+  color: var(--plakat-tinte);
+  text-decoration: none;
+  transition: background .2s ease, transform .2s ease;
+}
+.start-karte:hover { background: var(--plakat-karte-hover); transform: translateY(-2px); }
+.start-karte:focus-visible { outline: 3px solid var(--neon-violett); outline-offset: 3px; }
+.start-karte-kopf { display: flex; justify-content: space-between; align-items: start; gap: 8px; }
+.start-karte-titel { font: 620 16px/1.2 var(--sf); }
+.start-karte-pfeil { color: var(--plakat-tinte-3); font-size: 18px; line-height: 1; }
+.start-karte-wert {
+  margin-top: auto;
+  font: 750 clamp(35px, 4vw, 48px)/1 var(--sf);
+  letter-spacing: -.05em;
+  white-space: nowrap;
+}
+.start-karte--violett .start-karte-wert { color: var(--neon-violett); }
+.start-karte--magenta .start-karte-wert { color: var(--neon-magenta); }
+.start-karte--blau .start-karte-wert { color: var(--neon-blau); }
+.start-karte--blau .start-karte-wert { font-size: clamp(27px, 3vw, 38px); }
+.start-karte--orange .start-karte-wert { color: var(--neon-orange); }
+.start-karte-text {
   margin-top: 8px;
   color: var(--plakat-tinte-2);
-  font: 400 clamp(14px, 1.25vw, 16px)/1.4 var(--sf);
+  font: 400 13px/1.35 var(--sf);
 }
 
-.pfeil {
-  flex: 0 0 auto;
-  align-self: center;
-  font-size: 24px;
-  color: var(--plakat-tinte-3);
-  transition: transform 0.3s var(--feder), color 0.3s var(--feder);
+.poster-fuss { padding: 30px 0 0; }
+.poster-fuss p { margin: 0; color: var(--plakat-tinte-3); font-size: 11px; }
+
+@media (max-width: 820px) {
+  .start-karten { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
-
-.tor:hover .ziffer,
-.tor:focus-visible .ziffer { background-position: 100% 50%; }
-.tor:hover .pfeil,
-.tor:focus-visible .pfeil { transform: translateX(7px); color: var(--plakat-tinte); }
-.tor:focus-visible { outline: none; box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.5); }
-
-.poster-fuss { flex: 0 0 auto; padding: clamp(10px, 2vh, 26px) 0 clamp(14px, 3vh, 32px); }
-.poster-fuss .mikro {
-  overflow-wrap: anywhere;
-  background-image: none;
-  color: var(--plakat-tinte-2);
-  -webkit-text-fill-color: var(--plakat-tinte-2);
-  letter-spacing: 0.07em;
+@media (max-width: 500px) {
+  .poster { padding-inline: 16px; }
+  .poster-kopf { min-height: 70px; }
+  .poster-intro { padding: 24px 0 25px; }
+  .poster-intro h1 { font-size: clamp(36px, 10vw, 48px); }
+  .start-feature { min-height: 360px; }
+  .start-feature-bild { object-position: 47% center; }
+  .start-feature-inhalt { padding: 24px; }
+  .start-feature-taste { width: 100%; }
+  .start-karte { min-height: 172px; }
+  .start-karte-titel { font-size: 15px; }
+  .start-karte-wert { font-size: clamp(31px, 9vw, 43px); }
+  .start-karte--blau .start-karte-wert { font-size: clamp(27px, 7vw, 34px); }
+  .start-karte-text { font-size: 12px; }
 }
-
+@media (max-width: 360px) {
+  .start-karten { gap: 9px; }
+  .start-karte { padding: 14px; }
+  .start-karte-wert { font-size: 31px; }
+  .start-ueberblick-hinweis { display: none; }
+}
 @media (prefers-reduced-motion: reduce) {
-  .ziffer, .pfeil { transition: none; }
-}
-
-@media (max-width: 700px) {
-  .poster-intro { padding: 28px 0 30px; }
-  .poster-intro h1 { font-size: clamp(34px, 9vw, 50px); }
-  .tor { min-height: 150px; }
-  .pfeil { font-size: 20px; }
-}
-
-@media (max-width: 380px) {
-  .pfeil { display: none; }
-}
-
-@supports not (container-type: size) {
-  @media (max-width: 700px) {
-    .tor { padding-left: clamp(82px, 24vw, 130px); }
-    .ziffer { font-size: clamp(130px, 34vw, 180px); }
-  }
+  .start-feature-bild, .start-karte { transition: none; }
 }
